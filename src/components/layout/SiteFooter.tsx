@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Send } from "lucide-react";
 import { siteConfig } from "@/config/site";
 
@@ -34,12 +35,13 @@ export function SiteFooter() {
           {/* Brand block */}
           <div className="lg:col-span-1">
             <Link href="/" className="inline-flex items-center cursor-pointer">
-              <img
+              <Image
                 src="/logo1.png"
                 alt="techfixsoftware"
+                width={48}
+                height={48}
                 className="h-10 w-auto"
-                width={120}
-                height={80}
+                priority
               />
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">

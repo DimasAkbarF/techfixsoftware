@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 import { Search, X } from "lucide-react";
 import { mainNav } from "@/components/navigation/navItems";
 import { cn } from "@/lib/utils";
@@ -14,12 +15,13 @@ function Logo({ compact = false }: { compact?: boolean }) {
       className="flex shrink-0 items-center cursor-pointer"
       aria-label="techfixsoftware — beranda"
     >
-      <img
+      <Image
         src="/logo.png"
         alt="techfixsoftware"
+        width={44}
+        height={44}
         className={compact ? "h-9 w-auto" : "h-10 w-auto sm:h-11"}
-        width={120}
-        height={80}
+        priority
       />
     </Link>
   );

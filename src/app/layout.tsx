@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/navigation/SiteHeader";
@@ -10,16 +10,38 @@ const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {
   ...defaultMetadata,
+  metadataBase: new URL(siteConfig.url),
+  robots: { index: true, follow: true },
+  openGraph: {
+    siteName: siteConfig.name,
+    locale: "id_ID",
+    type: "website",
+  },
 };
 
-export const viewport = {
+export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   themeColor: "#0f172a",
+};
+
+export const manifest = {
+  name: siteConfig.name,
+  short_name: siteConfig.shortName,
+  description: siteConfig.description,
+  start_url: "/",
+  display: "standalone",
+  background_color: "#f8fafc",
+  theme_color: "#0f172a",
+  icons: [
+    { src: "/icon-192.png", sizes: "192x192", type: "image/png" },
+    { src: "/icon-512.png", sizes: "512x512", type: "image/png" },
+  ],
 };
 
 function OrganizationJsonLd() {
