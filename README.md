@@ -70,7 +70,7 @@ Salin `.env.example` ke `.env.local` dan isi:
 NEXT_PUBLIC_SITE_URL=https://techfixsoftware.my.id
 
 # WhatsApp: format internasional angka saja (628xxxxxxxxxx)
-NEXT_PUBLIC_WHATSAPP_NUMBER=6289515001716
+NEXT_PUBLIC_WHATSAPP_NUMBER=
 
 # Telegram: URL channel/username (https://t.me/TechFixSoftware)
 NEXT_PUBLIC_TELEGRAM_URL=https://t.me/TechFixSoftware
@@ -138,4 +138,4 @@ npm start
 
 ## License
 
-Proprietary — techfixsoftware. All rights reserved.
+MIT License — see [LICENSE](LICENSE) for details.
