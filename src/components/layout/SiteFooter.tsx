@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Send } from "lucide-react";
 import { siteConfig } from "@/config/site";
 
 export function SiteFooter() {
@@ -47,19 +46,6 @@ export function SiteFooter() {
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">
               Teknisi software Android untuk membantu Anda memahami dan menyelesaikan masalah perangkat.
             </p>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {siteConfig.telegramUrl ? (
-                <Link
-                  href={siteConfig.telegramUrl}
-                  target="_blank"
-                  rel="noopener noreferrer nofollow"
-                  className="inline-flex items-center gap-1.5 rounded-md bg-white/10 px-3 py-1.5 text-xs font-medium text-white/80 hover:bg-white/15 hover:text-white transition-colors cursor-pointer"
-                >
-                  <Send className="size-3.5" aria-hidden="true" />
-                  Telegram
-                </Link>
-              ) : null}
-            </div>
           </div>
 
           {/* Layanan */}
