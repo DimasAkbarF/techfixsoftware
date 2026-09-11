@@ -13,6 +13,7 @@ export const categories: Category[] = [
       title: "Jasa Root Android Profesional — Konsultasi Dulu",
       description:
         "Service root Android dengan pendekatan aman: konsultasi terlebih dahulu, pengecekan kompatibilitas device, dan dukungan Magisk. Klik untuk detail.",
+      keywords: ["root android", "jasa root", "magisk", "akses root"],
     },
   },
   {
@@ -27,6 +28,7 @@ export const categories: Category[] = [
       title: "Bantuan Unlock Bootloader Android — Konsultasi",
       description:
         "Perlu bantuan unlock bootloader? Dapatkan penjelasan kompatibilitas, risiko, dan proses sebelum eksekusi. Konsultasi via WhatsApp atau Telegram.",
+      keywords: ["unlock bootloader", "buka bootloader", "asistensi bootloader"],
     },
   },
   {
@@ -41,6 +43,7 @@ export const categories: Category[] = [
       title: "Fix Bootloop Android — HP Stuck Logo, Sering Restart",
       description:
         "HP stuck di logo atau restart terus-menerus? Cek layanan fix bootloop, baca persyaratan dan risikonya, lalu konsultasi dengan CS kami.",
+      keywords: ["fix bootloop", "hp stuck logo", "restart terus", "jasa service hp"],
     },
   },
   {
@@ -55,6 +58,7 @@ export const categories: Category[] = [
       title: "Jasa Unbrick Android — Asesmen Soft Brick",
       description:
         "Perangkat soft brick setelah modifikasi gagal? Layanan unbrick menilai kondisi, menjelaskan kemungkinan pemulihan, dan langkah selanjutnya.",
+      keywords: ["unbrick android", "soft brick", "hp brick", "perbaikan software hp"],
     },
   },
   {
@@ -69,6 +73,7 @@ export const categories: Category[] = [
       title: "Flash Firmware Android — Instalasi & Pemulihan",
       description:
         "Instalasi firmware stock, restore firmware, atau perlu bantuan upgrade/downgrade? Baca detail layanan flash firmware dan konsultasikan device Anda.",
+      keywords: ["flash firmware", "firmware stock", "restore firmware", "service software hp"],
     },
   },
   {
@@ -83,6 +88,7 @@ export const categories: Category[] = [
       title: "Bantuan Instalasi Custom ROM Android",
       description:
         "Instalasi custom ROM dengan dukungan pengecekan kompatibilitas, migrasi, dan troubleshooting pasca-install. Konsultasi sebelum eksekusi.",
+      keywords: ["custom rom", "install custom rom", "jasa teknisi software"],
     },
   },
   {
@@ -97,6 +103,7 @@ export const categories: Category[] = [
       title: "Bantuan Recovery Android — Setup & Troubleshooting",
       description:
         "Perlu bantuan mode recovery Android? Baca detail layanan, persyaratan, dan proses sebelum berkonsultasi dengan tim kami.",
+      keywords: ["recovery android", "twrp", "custom recovery", "fix software"],
     },
   },
   {
@@ -111,6 +118,7 @@ export const categories: Category[] = [
       title: "Perbaikan Software Android — Error & Update Gagal",
       description:
         "Error software, update gagal, atau sistem tidak stabil? Jelaskan kondisi perangkat Anda dan konsultasikan dengan CS kami.",
+      keywords: ["perbaikan software android", "error android", "update gagal", "jasa software hp"],
     },
   },
 ];

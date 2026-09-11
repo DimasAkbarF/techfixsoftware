@@ -8,6 +8,7 @@ export interface Category {
   seo: {
     title: string;
     description: string;
+    keywords?: string[];
   };
 }
 

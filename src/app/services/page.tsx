@@ -12,6 +12,13 @@ export const metadata: Metadata = buildMetadata({
   description:
     "Jelajahi semua layanan teknis Android kami: root, unlock bootloader, fix bootloop, unbrick, flash firmware, custom ROM, recovery, dan software repair.",
   path: "/services",
+  keywords: [
+    "jasa service android",
+    "perbaikan software android",
+    "tech service",
+    "jasa teknisi hp",
+    "service hp software",
+  ],
 });
 
 export default function ServicesPage() {

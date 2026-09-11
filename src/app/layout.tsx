@@ -5,7 +5,7 @@ import { SiteHeader } from "@/components/navigation/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { FloatingContact } from "@/components/contact/FloatingContact";
 import { defaultMetadata } from "@/lib/seo";
-import { siteConfig } from "@/config/site";
+import { siteConfig, siteKeywords } from "@/config/site";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -18,10 +18,16 @@ export const metadata: Metadata = {
   ...defaultMetadata,
   metadataBase: new URL(siteConfig.url),
   robots: { index: true, follow: true },
+  keywords: siteKeywords,
   openGraph: {
     siteName: siteConfig.name,
     locale: "id_ID",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteConfig.name} — ${siteConfig.tagline}`,
+    description: siteConfig.description,
   },
   verification: {
     google: "SOxMjvuuVmLZkR3hJ-59pKx9RVm0DiwyrBK_3d01nFk",

@@ -55,7 +55,7 @@ export const services: Service[] = [
       title: "Jasa Root Android Profesional — Konsultasi Sebelum Eksekusi",
       description:
         "Butuh bantuan root Android? Kami mendampingi dari pengecekan kompatibilitas hingga eksekusi. Baca persyaratan, proses, dan risiko, lalu konsultasi dengan CS.",
-      keywords: ["root android", "jasa root", "magisk", "akses root"],
+      keywords: ["root android", "jasa root", "magisk", "akses root", "jasa teknisi hp"],
     },
   },
   {
@@ -107,7 +107,7 @@ export const services: Service[] = [
       title: "Bantuan Unlock Bootloader Android — Cek Kompatibilitas Dulu",
       description:
         "Cari tahu apakah perangkat Anda mendukung unlock bootloader, apa konsekuensinya, dan bagaimana prosesnya. Konsultasi dengan CS sebelum eksekusi.",
-      keywords: ["unlock bootloader", "buka bootloader", "asistensi bootloader"],
+      keywords: ["unlock bootloader", "buka bootloader", "asistensi bootloader", "jasa service android"],
     },
   },
   {
@@ -163,7 +163,7 @@ export const services: Service[] = [
       title: "Fix Bootloop Android — HP Stuck Logo & Sering Restart",
       description:
         "HP Android stuck di logo atau restart terus-menerus? Baca cara kami menilai dan memulihkan kondisi boot, serta konsultasikan gejala perangkat Anda.",
-      keywords: ["bootloop", "hp stuck logo", "restart terus", "fix bootloop"],
+      keywords: ["bootloop", "hp stuck logo", "restart terus", "fix bootloop", "fix software android"],
     },
   },
   {
@@ -216,7 +216,7 @@ export const services: Service[] = [
       title: "Jasa Unbrick Android — Asesmen Soft Brick yang Jujur",
       description:
         "Perangkat tidak berfungsi setelah flashing atau modifikasi gagal? Kami menilai kondisi secara jujur sebelum menentukan apakah pemulihan software mungkin dilakukan.",
-      keywords: ["unbrick", "soft brick", "hp brick", "pemulihan brick"],
+      keywords: ["unbrick", "soft brick", "hp brick", "pemulihan brick", "service software hp"],
     },
   },
   {
@@ -270,7 +270,7 @@ export const services: Service[] = [
       title: "Jasa Flash Firmware Android — Stock & Restore",
       description:
         "Instalasi firmware stock, restore setelah update gagal, atau bantuan upgrade/downgrade versi yang didukung. Konsultasikan model perangkat Anda.",
-      keywords: ["flash firmware", "firmware stock", "restore firmware", "reinstall android"],
+      keywords: ["flash firmware", "firmware stock", "restore firmware", "reinstall android", "jasa flashing"],
     },
   },
   {
@@ -324,7 +324,7 @@ export const services: Service[] = [
       title: "Bantuan Instalasi Custom ROM Android",
       description:
         "Cari tahu custom ROM yang cocok, proses instalasi/migrasi, dan troubleshooting pasca-pasang. Konsultasikan model perangkat Anda dengan CS.",
-      keywords: ["custom rom", "install custom rom", "jasa custom rom"],
+      keywords: ["custom rom", "install custom rom", "jasa custom rom", "rom android"],
     },
   },
   {
@@ -374,7 +374,7 @@ export const services: Service[] = [
       title: "Bantuan Recovery Android — Setup, Keluar, Troubleshoot",
       description:
         "Butuh bantuan mode recovery Android: terjebak di recovery, ingin setup custom recovery, atau troubleshooting? Konsultasikan kondisinya.",
-      keywords: ["recovery", "twrp", "custom recovery", "mode recovery"],
+      keywords: ["recovery", "twrp", "custom recovery", "mode recovery", "service hp"],
     },
   },
   {
@@ -428,7 +428,7 @@ export const services: Service[] = [
       title: "Perbaikan Software Android — Error, Update Gagal, Cepat Lambat",
       description:
         "Masalah software Android yang tidak kunjung selesai? Ceritakan gejalanya, dan tim kami membantu mengarahkan serta menangani masalah yang didukung.",
-      keywords: ["perbaikan software", "error android", "update gagal", "force close"],
+      keywords: ["perbaikan software", "error android", "update gagal", "force close", "software repair android"],
     },
   },
   {
@@ -471,7 +471,7 @@ export const services: Service[] = [
       title: "Root Android dengan Magisk — Setup & Konsultasi",
       description:
         "Asistensi root berbasis Magisk untuk perangkat yang kompatibel. Baca risiko, proses, dan konsultasikan kebutuhan Anda sebelum eksekusi.",
-      keywords: ["magisk root", "root magisk", "magisk"],
+      keywords: ["magisk root", "root magisk", "magisk", "jasa software android"],
     },
   },
 ];

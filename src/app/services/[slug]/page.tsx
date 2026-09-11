@@ -30,6 +30,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: service.seo.title,
     description: service.seo.description,
     path: `/services/${service.slug}`,
+    keywords: service.seo.keywords,
   });
 }
 

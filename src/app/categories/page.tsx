@@ -12,6 +12,12 @@ export const metadata: Metadata = buildMetadata({
   description:
     "Jelajahi kategori layanan teknis Android: root, unlock bootloader, fix bootloop, unbrick, flash firmware, custom ROM, recovery, dan software repair.",
   path: "/categories",
+  keywords: [
+    "kategori service android",
+    "perbaikan software",
+    "tech service android",
+    "jasa service hp",
+  ],
 });
 
 export default function CategoriesPage() {

@@ -1,10 +1,23 @@
+export const siteKeywords: string[] = [
+  "jasa perbaikan software android",
+  "tech service android",
+  "service software hp",
+  "perbaikan software handphone",
+  "jasa teknisi software hp",
+  "fix bootloop",
+  "flashing firmware",
+  "unbrick android",
+  "root android",
+  "techfix",
+];
+
 export const siteConfig = {
   name: "TechFix Software",
   shortName: "TechFix",
   alternateName: ["TechFix", "Tech Fix", "Tech Fix Software"],
-  tagline: "Layanan Teknis Android Profesional",
+  tagline: "Jasa Service & Perbaikan Software Android Profesional",
   description:
-    "TechFix Software adalah platform layanan teknis Android: root, unlock bootloader, fix bootloop, unbrick, flash firmware, custom ROM, recovery, dan perbaikan software. Konsultasi langsung dengan CS manusia via WhatsApp atau Telegram.",
+    "TechFix Software adalah platform jasa service & perbaikan software Android: root, unlock bootloader, fix bootloop, unbrick, flash firmware, custom ROM, recovery, dan software repair. Konsultasi langsung dengan CS manusia via WhatsApp atau Telegram.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://techfixsoftware.example.com",
   locale: "id_ID",
   whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "",

@@ -24,6 +24,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: category.seo.title,
     description: category.seo.description,
     path: `/categories/${category.slug}`,
+    keywords: category.seo.keywords,
   });
 }
 
