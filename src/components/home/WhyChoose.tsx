@@ -29,7 +29,7 @@ const reasons = [
 
 export function WhyChoose() {
   return (
-    <section className="py-18 md:py-28" aria-labelledby="whychoose-heading">
+    <section className="py-16 md:py-24" aria-labelledby="whychoose-heading">
       <div className="container-page">
         <h2 id="whychoose-heading" className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">
           Pendekatan yang berbeda

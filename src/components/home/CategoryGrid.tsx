@@ -4,7 +4,7 @@ import { CategoryIcon } from "@/components/icons/CategoryIcon";
 
 export function CategoryGrid() {
   return (
-    <section className="container-page py-20 md:py-32" aria-labelledby="categories-heading">
+    <section className="container-page py-16 md:py-24" aria-labelledby="categories-heading">
       <h2 id="categories-heading" className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">
         Kategori layanan
       </h2>

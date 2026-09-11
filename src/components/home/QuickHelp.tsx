@@ -19,7 +19,7 @@ export function QuickHelp() {
     .filter((entry) => entry.service !== undefined);
 
   return (
-    <section className="container-page py-18 md:py-28" aria-labelledby="quickhelp-heading">
+    <section className="container-page py-16 md:py-24" aria-labelledby="quickhelp-heading">
       <div className="grid gap-8 lg:grid-cols-[1fr_1.4fr] lg:items-start">
         <div>
           <h2 id="quickhelp-heading" className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">

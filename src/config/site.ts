@@ -1,9 +1,10 @@
 export const siteConfig = {
-  name: "techfixsoftware",
-  shortName: "techfixsoftware",
+  name: "TechFix Software",
+  shortName: "TechFix",
+  alternateName: ["TechFix", "Tech Fix", "Tech Fix Software"],
   tagline: "Layanan Teknis Android Profesional",
   description:
-    "Platform layanan teknis Android: root, unlock bootloader, fix bootloop, unbrick, flash firmware, custom ROM, recovery, dan perbaikan software. Konsultasi langsung dengan CS manusia via WhatsApp atau Telegram.",
+    "TechFix Software adalah platform layanan teknis Android: root, unlock bootloader, fix bootloop, unbrick, flash firmware, custom ROM, recovery, dan perbaikan software. Konsultasi langsung dengan CS manusia via WhatsApp atau Telegram.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://techfixsoftware.example.com",
   locale: "id_ID",
   whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "",

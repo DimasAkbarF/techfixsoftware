@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/navigation/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
+import { FloatingContact } from "@/components/contact/FloatingContact";
 import { defaultMetadata } from "@/lib/seo";
 import { siteConfig } from "@/config/site";
 
@@ -30,6 +31,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  viewportFit: "cover",
   themeColor: "#0f172a",
 };
 
@@ -56,7 +58,9 @@ function OrganizationJsonLd() {
           "@context": "https://schema.org",
           "@type": "Organization",
           name: siteConfig.name,
+          alternateName: ["TechFix", "Tech Fix"],
           url: siteConfig.url,
+          logo: `${siteConfig.url}/icon-192.png`,
           description: siteConfig.description,
           contactPoint: siteConfig.supportEmail
             ? [
@@ -82,6 +86,7 @@ function WebSiteJsonLd() {
           "@context": "https://schema.org",
           "@type": "WebSite",
           name: siteConfig.name,
+          alternateName: siteConfig.alternateName,
           url: siteConfig.url,
           description: siteConfig.description,
           inLanguage: "id-ID",
@@ -118,6 +123,7 @@ export default function RootLayout({
         <SiteHeader />
         <main id="main-content">{children}</main>
         <SiteFooter />
+        <FloatingContact />
       </body>
     </html>
   );

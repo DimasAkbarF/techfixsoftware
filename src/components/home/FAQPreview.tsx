@@ -6,7 +6,7 @@ import { FAQAccordion } from "@/components/faq/FAQAccordion";
 export function FAQPreview() {
   const preview = faqItems.slice(0, 5);
   return (
-    <section className="container-page py-18 md:py-28" aria-labelledby="faq-preview-heading">
+    <section className="container-page py-16 md:py-24" aria-labelledby="faq-preview-heading">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <h2 id="faq-preview-heading" className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">
@@ -18,7 +18,7 @@ export function FAQPreview() {
         </div>
         <Link
           href="/faq"
-          className="mb-6 md:mb-8 inline-flex items-center gap-1 text-xs font-semibold text-accent hover:text-accent-hover transition-colors cursor-pointer"
+          className="inline-flex items-center gap-1 text-xs font-semibold text-accent hover:text-accent-hover transition-colors cursor-pointer"
         >
           Semua FAQ
           <ArrowRight className="size-3.5" aria-hidden="true" />

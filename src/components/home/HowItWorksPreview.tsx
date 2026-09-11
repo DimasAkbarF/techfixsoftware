@@ -26,7 +26,7 @@ const steps = [
 
 export function HowItWorksPreview() {
   return (
-    <section className="border-y border-border bg-white py-18 md:py-28" aria-labelledby="howitworks-heading">
+    <section className="border-y border-border bg-white py-16 md:py-24" aria-labelledby="howitworks-heading">
       <div className="container-page">
         <h2 id="howitworks-heading" className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">
           Cara kerja

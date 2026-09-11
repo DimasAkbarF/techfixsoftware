@@ -6,7 +6,7 @@ import { ServiceGrid } from "@/components/service/ServiceGrid";
 export function FeaturedServices() {
   const featured = getFeaturedServices();
   return (
-    <section className="border-y border-border bg-white py-20 md:py-28" aria-labelledby="featured-heading">
+    <section className="border-y border-border bg-white py-16 md:py-24" aria-labelledby="featured-heading">
       <div className="container-page">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
@@ -19,7 +19,7 @@ export function FeaturedServices() {
           </div>
           <Link
             href="/services"
-            className="mb-8 md:mb-10 inline-flex items-center gap-1 text-xs font-semibold text-accent hover:text-accent-hover transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1 text-xs font-semibold text-accent hover:text-accent-hover transition-colors cursor-pointer"
           >
             Semua layanan
             <ArrowRight className="size-3.5" aria-hidden="true" />

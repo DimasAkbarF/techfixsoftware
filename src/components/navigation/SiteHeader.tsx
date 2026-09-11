@@ -8,21 +8,23 @@ import { Search, X } from "lucide-react";
 import { mainNav } from "@/components/navigation/navItems";
 import { cn } from "@/lib/utils";
 
-function Logo({ compact = false }: { compact?: boolean }) {
+function Logo({ compact = false, onClick }: { compact?: boolean; onClick?: () => void }) {
   return (
     <Link
       href="/"
-      className="flex shrink-0 items-center cursor-pointer"
-      aria-label="techfixsoftware — beranda"
+      onClick={onClick}
+      className="flex shrink-0 items-center gap-2 cursor-pointer"
+      aria-label="TechFix Software — beranda"
     >
       <Image
-        src="/logo.png"
-        alt="techfixsoftware"
+        src="/navbar.png"
+        alt="TechFix Software"
         width={44}
-        height={44}
-        className={compact ? "h-9 w-auto" : "h-10 w-auto sm:h-11"}
+        height={33}
+        className={compact ? "h-8 w-auto" : "h-9 w-auto sm:h-10"}
         priority
       />
+      <span className="text-base font-semibold tracking-tight text-primary">TechFix Software</span>
     </Link>
   );
 }
@@ -31,6 +33,11 @@ export function SiteHeader() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const closeRef = useRef<HTMLButtonElement>(null);
+
+  const closeMenu = useCallback(() => {
+    setMenuOpen(false);
+    requestAnimationFrame(() => closeRef.current?.focus());
+  }, []);
 
   useEffect(() => {
     if (menuOpen) {
@@ -47,13 +54,11 @@ export function SiteHeader() {
   useEffect(() => {
     if (!menuOpen) return;
     function onKey(e: KeyboardEvent) {
-      if (e.key === "Escape") setMenuOpen(false);
+      if (e.key === "Escape") closeMenu();
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [menuOpen]);
-
-  const closeMenu = useCallback(() => setMenuOpen(false), []);
+  }, [menuOpen, closeMenu]);
 
   function isActive(href: string) {
     if (href === "/") return pathname === "/";
@@ -97,7 +102,7 @@ export function SiteHeader() {
               className="flex size-10 items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground transition-colors cursor-pointer"
               aria-label="Buka pencarian"
             >
-              <Search className="size-[18px]" aria-hidden="false" />
+              <Search className="size-[18px]" aria-hidden="true" />
             </Link>
 
             {/* Mobile menu trigger */}
@@ -158,18 +163,16 @@ function MobileMenuOverlay({
     >
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/30"
+        className="absolute inset-0 bg-black/30 animate-fade-in"
         onClick={onClose}
         aria-hidden="true"
       />
 
       {/* Menu panel */}
-      <div className="absolute inset-x-0 top-0 bottom-0 bg-card shadow-lg flex flex-col">
+      <div className="absolute inset-x-0 top-0 bottom-0 bg-card shadow-lg flex flex-col animate-slide-in">
         {/* Menu header */}
         <div className="flex h-14 items-center justify-between border-b border-border px-4 sm:h-16">
-          <div onClick={onClose}>
-            <Logo compact />
-          </div>
+          <Logo compact onClick={onClose} />
           <button
             type="button"
             onClick={onClose}

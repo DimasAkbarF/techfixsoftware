@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { siteConfig } from "@/config/site";
 
 export function SiteFooter() {
@@ -29,19 +28,18 @@ export function SiteFooter() {
 
   return (
     <footer className="border-t border-border bg-primary text-primary-foreground">
-      <div className="container-page py-24 md:py-32">
+      <div className="container-page py-16 md:py-24">
         <div className="grid gap-8 lg:grid-cols-[1.5fr_1fr_1fr_1fr] lg:gap-12">
           {/* Brand block */}
           <div className="lg:col-span-1">
-            <Link href="/" className="inline-flex items-center cursor-pointer">
-              <Image
-                src="/logo1.png"
-                alt="techfixsoftware"
-                width={48}
-                height={48}
-                className="h-10 w-auto"
-                priority
-              />
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2 cursor-pointer"
+              aria-label="TechFix Software — beranda"
+            >
+              <span className="text-lg font-semibold tracking-tight text-white">
+                TechFix Software
+              </span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">
               Teknisi software Android untuk membantu Anda memahami dan menyelesaikan masalah perangkat.
@@ -101,7 +99,7 @@ export function SiteFooter() {
 
       {/* Bottom bar */}
       <div className="border-t border-white/10">
-        <div className="container-page flex flex-col gap-2 py-5 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
+        <div className="container-page flex flex-col gap-2 py-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
           <p>&copy; {year} {siteConfig.name}. Seluruh hak dilindungi.</p>
           <p>Remote support untuk perangkat Android di seluruh Indonesia.</p>
         </div>

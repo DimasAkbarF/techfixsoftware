@@ -9,7 +9,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Tentang Kami",
   description:
-    "techfixsoftware — layanan teknis Android yang dimulai sejak 2025 dengan pendekatan konsultasi manusia, kejujuran soal risiko, dan keamanan komunikasi.",
+    "TechFix Software — layanan teknis Android yang dimulai sejak 2025 dengan pendekatan konsultasi manusia, kejujuran soal risiko, dan keamanan komunikasi.",
   path: "/about",
 });
 

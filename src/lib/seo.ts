@@ -12,6 +12,7 @@ interface PageMetadataOptions {
   description: string;
   path: string;
   noindex?: boolean;
+  absoluteTitle?: boolean;
 }
 
 export function buildMetadata({
@@ -19,15 +20,16 @@ export function buildMetadata({
   description,
   path,
   noindex = false,
+  absoluteTitle = false,
 }: PageMetadataOptions): Metadata {
   return {
-    title,
+    title: absoluteTitle ? { absolute: title } : title,
     description,
     alternates: {
       canonical: absoluteUrl(path),
     },
     openGraph: {
-      title: `${title} | ${siteConfig.name}`,
+      title: absoluteTitle ? title : `${title} | ${siteConfig.name}`,
       description,
       url: absoluteUrl(path),
       siteName: siteConfig.name,

@@ -11,10 +11,11 @@ import { FinalCTA } from "@/components/home/FinalCTA";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Jasa Service & Perbaikan Software Android",
+  title: "TechFix Software — Jasa Service & Perbaikan Software Android",
   description:
-    "Platform layanan teknis Android profesional: root, unlock bootloader, fix bootloop, unbrick, flash firmware, custom ROM, dan perbaikan software. Konsultasi langsung dengan CS manusia sebelum eksekusi.",
+    "TechFix Software — platform layanan teknis Android profesional: root, unlock bootloader, fix bootloop, unbrick, flash firmware, dan custom ROM. Konsultasikan kondisi perangkat Anda langsung ke CS manusia.",
   path: "/",
+  absoluteTitle: true,
 });
 
 export default function HomePage() {

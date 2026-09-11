@@ -18,7 +18,7 @@ interface SearchFormProps {
 export function SearchForm({
   size = "default",
   className,
-  placeholder = "Cari layanan atau masalah… mis. bootloop, root, flash firmware",
+  placeholder = "Cari layanan atau masalah…",
   autoFocus = false,
   name = "q",
 }: SearchFormProps) {
@@ -78,11 +78,10 @@ export function SearchForm({
 
   return (
     <div className={cn("relative w-full", className)}>
-      <div className="relative">
-        <Search
-          className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground"
-          aria-hidden="true"
-        />
+      <div className="flex items-stretch overflow-hidden rounded-md border border-input bg-card transition-colors focus-within:border-accent focus-within:ring-2 focus-within:ring-ring/20">
+        <span className="flex shrink-0 items-center pl-3.5 pr-1 text-muted-foreground" aria-hidden="true">
+          <Search className="size-4" />
+        </span>
         <input
           ref={inputRef}
           type="search"
@@ -106,8 +105,8 @@ export function SearchForm({
           aria-controls="search-suggestions"
           aria-activedescendant={activeIndex >= 0 ? `suggestion-${activeIndex}` : undefined}
           className={cn(
-            "w-full rounded-md border border-border bg-card text-foreground placeholder:text-muted-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-ring/20",
-            size === "large" ? "h-11 pr-10 pl-10 text-sm" : "h-10 pr-10 pl-10 text-sm",
+            "w-full flex-1 bg-transparent text-sm text-foreground placeholder:text-muted-foreground focus:outline-none",
+            size === "large" ? "h-12 pl-1" : "h-11 px-1",
           )}
         />
         {query ? (
@@ -120,20 +119,19 @@ export function SearchForm({
               inputRef.current?.focus();
             }}
             aria-label="Hapus pencarian"
-            className="absolute right-2.5 top-1/2 -translate-y-1/2 flex size-7 items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground cursor-pointer"
+            className="flex w-10 shrink-0 items-center justify-center text-muted-foreground transition-colors hover:bg-muted hover:text-foreground cursor-pointer"
           >
-            <X className="size-3.5" aria-hidden="true" />
+            <X className="size-4" aria-hidden="true" />
           </button>
-        ) : (
-          <button
-            type="button"
-            onClick={() => submit(query)}
-            aria-label="Cari"
-            className="absolute right-2 top-1/2 -translate-y-1/2 flex size-8 items-center justify-center rounded-md bg-accent text-white hover:bg-accent-hover cursor-pointer"
-          >
-            <Search className="size-4" aria-hidden="true" />
-          </button>
-        )}
+        ) : null}
+        <button
+          type="button"
+          onClick={() => submit(query)}
+          aria-label="Cari"
+          className="flex w-12 shrink-0 items-center justify-center self-stretch bg-accent text-white transition-colors hover:bg-accent-hover active:bg-accent-active cursor-pointer"
+        >
+          <Search className="size-4" aria-hidden="true" />
+        </button>
       </div>
 
       {showSuggestions ? (

@@ -4,7 +4,7 @@ import { siteConfig } from "@/config/site";
 
 export function RemoteGuidePreview() {
   return (
-    <section className="container-page py-18 md:py-28" aria-labelledby="remote-preview-heading">
+    <section className="container-page py-16 md:py-24" aria-labelledby="remote-preview-heading">
       <div className="rounded-xl border border-border bg-background p-6 md:p-8 lg:grid lg:grid-cols-[1.3fr_1fr] lg:items-start lg:gap-10">
         <div>
           <h2 id="remote-preview-heading" className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">
