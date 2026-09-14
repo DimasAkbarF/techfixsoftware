@@ -63,11 +63,15 @@ function OrganizationJsonLd() {
         __html: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",
+          "@id": `${siteConfig.url}#organization`,
           name: siteConfig.name,
           alternateName: ["TechFix", "Tech Fix"],
           url: siteConfig.url,
           logo: `${siteConfig.url}/icon-192.png`,
           description: siteConfig.description,
+          foundingDate: "2025",
+          areaServed: "Indonesia",
+          sameAs: siteConfig.telegramUrl ? [siteConfig.telegramUrl] : undefined,
           contactPoint: siteConfig.supportEmail
             ? [
                 {

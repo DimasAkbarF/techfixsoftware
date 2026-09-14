@@ -9,7 +9,6 @@ import { WhyChoose } from "@/components/home/WhyChoose";
 import { FAQPreview } from "@/components/home/FAQPreview";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { buildMetadata, absoluteUrl } from "@/lib/seo";
-import { siteConfig } from "@/config/site";
 import { getFeaturedServices } from "@/data/services";
 
 export const metadata: Metadata = buildMetadata({
@@ -51,16 +50,7 @@ export default function HomePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify([
-            itemListJsonLd,
-            {
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              name: siteConfig.name,
-              alternateName: siteConfig.alternateName,
-              url: absoluteUrl("/"),
-            },
-          ]),
+          __html: JSON.stringify(itemListJsonLd),
         }}
       />
       <Hero />

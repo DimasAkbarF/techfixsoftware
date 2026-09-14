@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
-import { Search, FileText, MessageCircle, ClipboardPen, Lightbulb, HandshakeIcon, MonitorSmartphone, PlayCircle } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { ButtonLink } from "@/components/ui/Button";
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { buildMetadata } from "@/lib/seo";
+import { getContactMessage, getWhatsappUrl, getTelegramUrl } from "@/lib/contact";
 
 export const metadata: Metadata = buildMetadata({
   title: "Cara Kerja Layanan",
@@ -13,111 +16,147 @@ export const metadata: Metadata = buildMetadata({
 
 const steps = [
   {
-    icon: Search,
-    title: "Temukan layanan yang Anda butuhkan",
-    description:
-      "Gunakan pencarian atau telusuri kategori untuk menemukan layanan yang paling relevan dengan kondisi perangkat Anda.",
+    number: "01",
+    title: "Temukan layanan",
+    description: "Temukan layanan yang paling sesuai dengan kondisi perangkat Anda.",
   },
   {
-    icon: FileText,
-    title: "Baca informasi layanan dengan teliti",
-    description:
-      "Setiap halaman layanan memuat deskripsi, persyaratan persiapan, alur proses, dan risiko yang perlu Anda ketahui.",
+    number: "02",
+    title: "Konsultasi",
+    description: "Jelaskan merek, model, gejala, dan riwayat masalah kepada Customer Service.",
   },
   {
-    icon: MessageCircle,
-    title: "Hubungi Customer Service",
-    description:
-      "Konsultasikan kondisi perangkat Anda melalui WhatsApp atau Telegram dengan menyertakan merek, model, dan gejalanya.",
+    number: "03",
+    title: "Pemeriksaan",
+    description: "Kondisi perangkat dan kompatibilitas diperiksa sebelum tindakan ditentukan.",
   },
   {
-    icon: ClipboardPen,
-    title: "Jelaskan kondisi perangkat",
-    description:
-      "Ceritakan yang Anda alami: kapan mulai, apa yang sudah dicoba, dan gejala spesifik yang muncul.",
+    number: "04",
+    title: "Tindakan",
+    description: "Solusi dilakukan berdasarkan hasil pemeriksaan dan kesepakatan.",
   },
   {
-    icon: Lightbulb,
-    title: "Terima panduan awal",
-    description:
-      "CS memberikan penilaian awal dan mengarahkan ke langkah yang paling masuk akal — tanpa memaksakan keputusan.",
-  },
-  {
-    icon: HandshakeIcon,
-    title: "Sepakati proses selanjutnya",
-    description:
-      "Feasibility, metode, dan risiko dibahas bersama sebelum ada kesepakatan untuk melanjutkan.",
-  },
-  {
-    icon: MonitorSmartphone,
-    title: "Siapkan remote support bila diperlukan",
-    description:
-      "Siapkan PC/laptop, internet stabil, kabel USB, dan aplikasi AnyDesk resmi sesuai Panduan Remote kami.",
-  },
-  {
-    icon: PlayCircle,
-    title: "Lanjutkan proses eksekusi",
-    description:
-      "Proses berjalan sesuai kesepakatan di luar website, dengan koordinasi bersama tim kami.",
+    number: "05",
+    title: "Selesai",
+    description: "Anda mendapatkan informasi mengenai hasil penanganan dan langkah selanjutnya.",
   },
 ];
 
+const prepareItems = [
+  "Merek dan model perangkat",
+  "Kondisi atau gejala yang terjadi",
+  "Riwayat update, flashing, atau root jika ada",
+  "Kabel USB dan PC/laptop jika diperlukan",
+  "Backup data jika perangkat masih dapat diakses",
+];
+
 export default function HowItWorksPage() {
+  const wa = getWhatsappUrl(getContactMessage());
+  const tg = getTelegramUrl(getContactMessage());
+
   return (
     <div className="container-page py-12 md:py-16">
       <Breadcrumbs items={[{ label: "Cara Kerja" }]} />
-      <SectionHeading as="h1"
+
+      <SectionHeading
+        as="h1"
         eyebrow="Cara Kerja"
         title="Bagaimana layanan kami bekerja"
-        description="Kami mengutamakan pemahaman dan konsultasi manusia sebelum eksekusi. Berikut alur lengkapnya."
+        description="Kami mulai dari memahami kondisi perangkat Anda, lalu menentukan langkah yang paling sesuai sebelum tindakan dilakukan."
         className="max-w-2xl"
       />
 
-      <div className="mx-auto max-w-3xl">
-        <ol className="space-y-4">
-          {steps.map((step, index) => (
-            <li key={step.title} className="flex gap-4">
-              <div className="flex flex-col items-center">
-                <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary text-white" aria-hidden="true">
-                  <step.icon className="size-5" />
-                </span>
-                {index < steps.length - 1 ? (
-                  <span className="mt-2 w-px flex-1 bg-border" aria-hidden="true" />
-                ) : null}
-              </div>
-              <div className="flex-1 pb-6">
-                <p className="text-xs font-semibold uppercase tracking-wide text-accent">
-                  Langkah {index + 1}
-                </p>
-                <h2 className="mt-1 text-lg font-semibold text-foreground md:text-xl">
-                  {step.title}
-                </h2>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground md:text-base">
-                  {step.description}
-                </p>
-              </div>
+      {/* Alur proses dalam 5 langkah */}
+      <section aria-labelledby="process-heading" className="mt-8 md:mt-10">
+        <h2 id="process-heading" className="sr-only">
+          Alur layanan dalam lima langkah
+        </h2>
+        <ol className="grid list-none gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-5">
+          {steps.map((step) => (
+            <li
+              key={step.number}
+              className="border-t border-border pt-4 transition-colors duration-150 hover:border-accent/50"
+            >
+              <p className="text-xs font-semibold uppercase tracking-widest text-accent tabular-nums">
+                {step.number}
+              </p>
+              <h3 className="mt-3 text-base font-bold tracking-tight text-foreground">
+                {step.title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                {step.description}
+              </p>
             </li>
           ))}
         </ol>
-      </div>
+      </section>
 
-      <div className="mx-auto mt-4 max-w-3xl rounded-lg border border-warning/30 bg-warning/5 p-6">
-        <p className="text-sm leading-relaxed text-foreground md:text-base">
-          <strong>Penting:</strong> kelayakan layanan selalu bergantung pada kondisi spesifik
-          perangkat Anda. Kami tidak menjamin keberhasilan 100% atau kondisi tanpa risiko
-          untuk semua perangkat. Keputusan akhir dibuat setelah konsultasi dan penilaian
-          oleh CS.
+      {/* Disclaimer */}
+      <div className="mt-10 max-w-3xl rounded-lg border border-warning/30 bg-warning/5 p-4 md:p-5">
+        <p className="text-sm leading-relaxed text-foreground">
+          <strong className="font-semibold">Penting:</strong> kelayakan layanan selalu bergantung
+          pada kondisi spesifik perangkat Anda. Kami tidak menjamin keberhasilan 100% atau kondisi
+          tanpa risiko. Keputusan akhir dibuat setelah konsultasi dan penilaian oleh Customer Service.
         </p>
       </div>
 
-      <section className="mt-14 text-center" aria-labelledby="howitworks-cta">
-        <h2 id="howitworks-cta" className="text-xl font-bold tracking-tight text-foreground md:text-2xl">
-          Siap untuk memulai?
+      {/* Persiapan */}
+      <section aria-labelledby="prepare-heading" className="mt-14 border-t border-border pt-10">
+        <h2 id="prepare-heading" className="text-lg font-bold tracking-tight text-foreground md:text-xl">
+          Sebelum menghubungi kami
         </h2>
-        <p className="mx-auto mt-2 max-w-lg text-base text-muted-foreground">
-          Bicarakan kondisi perangkat Anda dengan CS kami — tanpa biaya konsultasi dan tanpa
-          tekanan.
+        <p className="mt-1.5 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+          Siapkan informasi berikut agar konsultasi dapat berjalan lebih cepat.
         </p>
+        <ul className="mt-6 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+          {prepareItems.map((item) => (
+            <li key={item} className="flex items-start gap-2.5 text-sm leading-relaxed text-foreground">
+              <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" aria-hidden="true" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* CTA */}
+      <section aria-labelledby="cta-heading" className="mt-14">
+        <div className="mx-auto max-w-xl rounded-xl border border-border bg-card px-6 py-8 text-center md:px-10 md:py-10">
+          <h2 id="cta-heading" className="text-lg font-bold tracking-tight text-foreground md:text-xl">
+            Sudah tahu masalahnya?
+          </h2>
+          <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-muted-foreground md:text-base">
+            Kirim detail kondisi perangkat Anda. Kami akan membantu menentukan langkah yang paling
+            sesuai sebelum tindakan dilakukan.
+          </p>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+            {wa ? (
+              <ButtonLink
+                variant="whatsapp"
+                size="large"
+                href={wa}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+              >
+                <WhatsAppIcon className="size-4" />
+                Konsultasi via WhatsApp
+              </ButtonLink>
+            ) : null}
+            {tg ? (
+              <ButtonLink
+                variant="telegram"
+                size="large"
+                href={tg}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+              >
+                Konsultasi via Telegram
+              </ButtonLink>
+            ) : null}
+          </div>
+          <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
+            Konsultasi gratis dan tanpa kewajiban untuk melanjutkan.
+          </p>
+        </div>
       </section>
     </div>
   );

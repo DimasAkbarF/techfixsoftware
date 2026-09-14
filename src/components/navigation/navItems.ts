@@ -3,7 +3,7 @@ import type { NavItem } from "@/types";
 export const mainNav: NavItem[] = [
   { label: "Beranda", href: "/" },
   { label: "Layanan", href: "/services" },
-  { label: "Kategori", href: "/categories" },
+  { label: "Testimoni", href: "/testimonials" },
   { label: "Cara Kerja", href: "/how-it-works" },
   { label: "FAQ", href: "/faq" },
   { label: "Tentang Kami", href: "/about" },
@@ -12,7 +12,7 @@ export const mainNav: NavItem[] = [
 
 export const footerNav: NavItem[] = [
   { label: "Layanan", href: "/services" },
-  { label: "Kategori", href: "/categories" },
+  { label: "Testimoni", href: "/testimonials" },
   { label: "Cara Kerja", href: "/how-it-works" },
   { label: "Panduan Remote", href: "/remote-guide" },
   { label: "FAQ", href: "/faq" },

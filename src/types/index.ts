@@ -59,3 +59,10 @@ export interface BreadcrumbItem {
   label: string;
   href?: string;
 }
+
+export interface Testimonial {
+  id: string;
+  image: string;
+  rating: number;
+  services: string[];
+}

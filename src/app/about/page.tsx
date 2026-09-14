@@ -119,31 +119,51 @@ export default function AboutPage() {
               sebagai bentuk transparansi layanan.
             </p>
 
-            {siteConfig.telegramUrl ? (
+{siteConfig.telegramUrl ? (
               <div className="mt-6 rounded-lg border border-warning/30 bg-warning/5 p-4">
                 <h3 className="flex items-center gap-2 text-sm font-semibold text-foreground">
                   <ShieldAlert className="size-4 shrink-0 text-warning" aria-hidden="true" />
                   Catatan keamanan — kanal Telegram
                 </h3>
                 <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                  Kanal Telegram kami sebelumnya pernah disusupi oleh pihak yang tidak
-                  bertanggung jawab. Anda tetap bisa membuka kanal tersebut di{" "}
+                  Kanal Telegram kami sebelumnya pernah disusupi oleh pihak yang tidak bertanggung
+                  jawab dan sudah tidak digunakan. Kanal resmi saat ini dapat diakses di{" "}
                   <a
                     href={siteConfig.telegramUrl}
                     target="_blank"
                     rel="noopener noreferrer nofollow"
-                    className="font-medium text-accent underline underline-offset-2 transition-colors hover:text-accent-hover cursor-pointer"
+                    className="break-all font-medium text-accent underline underline-offset-2 transition-colors hover:text-accent-hover cursor-pointer"
                   >
-                    t.me/TechFixSoftware
+                    {siteConfig.telegramUrl}
                   </a>{" "}
-                  untuk melihat, tetapi mohon berhati-hati dan hanya mempercayai informasi
-                  dari saluran resmi yang tertera di situs ini.
+                  — mohon abaikan kanal lama atau kanal lain yang mengatasnamakan kami.
                 </p>
               </div>
             ) : null}
           </div>
 
           <div className="space-y-4">
+            <div className="flex items-start gap-3 rounded-lg border-l-4 border-accent bg-accent-subtle/60 p-5">
+              <BadgeCheck className="mt-0.5 size-5 shrink-0 text-accent" aria-hidden="true" />
+              <div>
+                <h3 className="text-base font-semibold text-foreground">
+                  Satu-satunya situs web resmi kami
+                </h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                  Situs web resmi TechFix Software hanya satu, yaitu{" "}
+                  <a
+                    href="https://techfixsoftware.my.id"
+                    className="font-medium text-accent underline underline-offset-2 transition-colors hover:text-accent-hover cursor-pointer"
+                  >
+                    techfixsoftware.my.id
+                  </a>
+                  . Kami tidak memiliki situs web lain. Jika Anda menemukan situs atau akun lain yang
+                  mengatasnamakan TechFix Software dan meminta pembayaran, mohon abaikan — transaksi
+                  hanya diproses melalui kanal resmi kami.
+                </p>
+              </div>
+            </div>
+
             <div className="flex items-start gap-3 rounded-lg border-l-4 border-warning bg-warning/5 p-5">
               <ShieldAlert className="mt-0.5 size-5 shrink-0 text-warning" aria-hidden="true" />
               <div>

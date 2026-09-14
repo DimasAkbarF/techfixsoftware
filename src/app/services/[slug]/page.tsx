@@ -8,9 +8,11 @@ import { ServiceHero } from "@/components/service/ServiceHero";
 import { ProcessTimeline } from "@/components/service/ProcessTimeline";
 import { ImportantNotice } from "@/components/service/ImportantNotice";
 import { PreparationChecklist } from "@/components/service/PreparationChecklist";
+import { ServiceFaq } from "@/components/service/ServiceFaq";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { ServiceGrid } from "@/components/service/ServiceGrid";
 
+import { getServiceFaqItems } from "@/data/serviceFaq";
 import { buildMetadata, absoluteUrl } from "@/lib/seo";
 import { siteConfig } from "@/config/site";
 
@@ -44,14 +46,36 @@ export default async function ServiceDetailPage({ params }: PageProps) {
     ? getServicesByCategory(service.categoryId).filter((s) => s.id !== service.id).slice(0, 3)
     : [];
 
+  const breadcrumbItems = [
+    { "@type": "ListItem", position: 1, name: "Beranda", item: absoluteUrl("/") },
+    { "@type": "ListItem", position: 2, name: "Layanan", item: absoluteUrl("/services") },
+    ...(category
+      ? [{ "@type": "ListItem", position: 3, name: category.name, item: absoluteUrl(`/categories/${category.slug}`) }]
+      : []),
+    {
+      "@type": "ListItem",
+      position: category ? 4 : 3,
+      name: service.name,
+      item: absoluteUrl(`/services/${service.slug}`),
+    },
+  ];
+
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Beranda", item: absoluteUrl("/") },
-      { "@type": "ListItem", position: 2, name: "Layanan", item: absoluteUrl("/services") },
-      { "@type": "ListItem", position: 3, name: service.name, item: absoluteUrl(`/services/${service.slug}`) },
-    ],
+    itemListElement: breadcrumbItems,
+  };
+
+  const serviceFaqItems = getServiceFaqItems(service);
+
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: serviceFaqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
   };
 
   const serviceJsonLd = {
@@ -60,7 +84,12 @@ export default async function ServiceDetailPage({ params }: PageProps) {
     name: service.name,
     description: service.shortDescription,
     serviceType: service.name,
-    provider: { "@type": "Organization", name: siteConfig.name, url: absoluteUrl("/") },
+    provider: {
+      "@type": "Organization",
+      "@id": `${absoluteUrl("/")}#organization`,
+      name: siteConfig.name,
+      url: absoluteUrl("/"),
+    },
     url: absoluteUrl(`/services/${service.slug}`),
     audience: { "@type": "Audience", audienceType: "Android device users" },
   };
@@ -69,7 +98,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
     <div className="container-page py-10 md:py-14">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbJsonLd, serviceJsonLd]) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbJsonLd, serviceJsonLd, faqJsonLd]) }}
       />
       <Breadcrumbs
         items={[
@@ -136,6 +165,8 @@ export default async function ServiceDetailPage({ params }: PageProps) {
             </h2>
             <ImportantNotice title="Hal yang perlu Anda ketahui sebelumnya" items={service.importantNotices} />
           </section>
+
+          <ServiceFaq items={serviceFaqItems} />
         </div>
 
         <aside aria-label="Konsultasi">

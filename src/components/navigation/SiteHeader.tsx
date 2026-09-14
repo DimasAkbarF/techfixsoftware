@@ -17,7 +17,7 @@ function Logo({ compact = false, onClick }: { compact?: boolean; onClick?: () =>
       aria-label="TechFix Software — beranda"
     >
       <Image
-        src="/navbar.png"
+        src="/techfix-software-logo.png"
         alt="TechFix Software"
         width={44}
         height={33}

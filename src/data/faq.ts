@@ -78,6 +78,13 @@ export const faqItems: FAQItem[] = [
       "Risiko utama adalah kehilangan data, perangkat tidak berfungsi seperti sebelumnya, dan dampak pada garansi untuk proses modifikasi tertentu. Kami tidak pernah menjanjikan keberhasilan 100% atau risiko nol. Seluruh risiko dijelaskan sebelum eksekusi, dan Anda bebas memutuskan tanpa tekanan.",
   },
   {
+    id: "biaya-layanan",
+    category: "umum",
+    question: "Berapa biaya layanan — dan apakah konsultasi dikenakan biaya?",
+    answer:
+      "Konsultasi dengan CS kami gratis dan tanpa kewajiban untuk melanjutkan. Biaya layanan baru dikonfirmasi setelah kondisi perangkat Anda diperiksa dan layanan yang tepat disepakati bersama. Karena setiap kondisi berbeda, tidak ada tarif tetap yang bisa diumumkan di awal.",
+  },
+  {
     id: "data-rahasiakan",
     category: "keselamatan",
     question: "Apakah saya perlu memberikan informasi sensitif?",
