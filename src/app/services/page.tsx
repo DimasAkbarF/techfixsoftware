@@ -58,46 +58,47 @@ export default function ServicesPage() {
         </Link>
       </div>
 
-      {/* Category quick nav — in-page anchors to the grouped sections below */}
-      <nav
-        aria-label="Kategori layanan"
-        className="mb-10 flex flex-wrap gap-2 border-y border-border py-4"
-      >
-        {categories.map((category) => (
-          <a
-            key={category.id}
-            href={`#${category.slug}`}
-            className="rounded-md px-3 py-1.5 text-xs font-semibold text-muted-foreground transition-colors hover:bg-accent-subtle hover:text-accent"
-          >
-            {category.shortName}
-          </a>
-        ))}
-      </nav>
+      {/* Uniform service grid — same rhythm as the rest of the site */}
+      <ServiceGrid services={services} />
 
-      {/* Services grouped by category — each group carries its own explanation
-          so the hub page has unique, useful text instead of a bare grid. */}
-      <div className="space-y-12">
-        {categories.map((category) => {
-          const categoryServices = getServicesByCategory(category.id);
-          if (categoryServices.length === 0) return null;
-          return (
-            <section key={category.id} id={category.slug} className="scroll-mt-24">
-              <div className="flex items-center gap-2.5">
-                <CategoryIcon name={category.icon} className="size-5 shrink-0 text-accent" />
-                <h2 className="text-lg font-bold tracking-tight text-foreground md:text-xl">
-                  {category.name}
-                </h2>
+      {/* Category reference — one tidy row per category, each linking to its service */}
+      <section aria-labelledby="category-heading" className="mt-16 border-t border-border pt-10">
+        <h2
+          id="category-heading"
+          className="text-lg font-bold tracking-tight text-foreground md:text-xl"
+        >
+          Kelompok Layanan
+        </h2>
+        <p className="mt-1 max-w-3xl text-sm text-muted-foreground">
+          Layanan dikelompokkan berdasarkan jenis penanganan agar mudah dicocokkan dengan gejala yang
+          Anda alami.
+        </p>
+        <div className="mt-6 grid gap-x-10 gap-y-5 sm:grid-cols-2">
+          {categories.map((category) => {
+            const primary = getServicesByCategory(category.id)[0];
+            return (
+              <div key={category.id} className="border-t border-border pt-3">
+                <div className="flex items-center gap-2">
+                  <CategoryIcon name={category.icon} className="size-4 shrink-0 text-accent" />
+                  <h3 className="text-sm font-bold text-foreground">{category.name}</h3>
+                </div>
+                <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+                  {category.description}
+                </p>
+                {primary && (
+                  <Link
+                    href={`/services/${primary.slug}`}
+                    className="mt-2.5 inline-flex items-center gap-1 text-xs font-semibold text-accent transition-colors hover:text-accent-hover"
+                  >
+                    <span>{primary.name}</span>
+                    <ArrowRight className="size-3" aria-hidden="true" />
+                  </Link>
+                )}
               </div>
-              <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-                {category.description}
-              </p>
-              <div className="mt-5">
-                <ServiceGrid services={categoryServices} />
-              </div>
-            </section>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
+      </section>
 
       {/* Bottom Conversion Section */}
       <section className="mt-14 rounded-2xl bg-primary p-8 text-center text-primary-foreground sm:p-12">
