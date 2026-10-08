@@ -18,7 +18,10 @@ export const siteConfig = {
   tagline: "Jasa Service & Perbaikan Software Android Profesional",
   description:
     "TechFix Software adalah platform jasa service & perbaikan software Android: root, unlock bootloader, fix bootloop, unbrick, flash firmware, custom ROM, recovery, dan software repair. Konsultasi langsung dengan CS manusia via WhatsApp atau Telegram.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://techfixsoftware.example.com",
+  // Canonical production domain. Keep this fallback in sync with the real
+  // domain — if NEXT_PUBLIC_SITE_URL is unset on a build, canonicals,
+  // sitemap.xml and OG URLs would otherwise point at a placeholder host.
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://techfixsoftware.my.id",
   locale: "id_ID",
   whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "",
   telegramUrl: process.env.NEXT_PUBLIC_TELEGRAM_URL ?? "",

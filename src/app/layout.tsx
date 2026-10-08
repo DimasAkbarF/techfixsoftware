@@ -4,7 +4,9 @@ import "./globals.css";
 import { SiteHeader } from "@/components/navigation/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { FloatingContact } from "@/components/contact/FloatingContact";
+import { MobileCTABar } from "@/components/navigation/MobileCTABar";
 import { defaultMetadata } from "@/lib/seo";
+
 import { siteConfig, siteKeywords } from "@/config/site";
 
 const inter = Inter({
@@ -119,9 +121,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="id">
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} font-sans antialiased pb-12 md:pb-0`}>
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
@@ -134,7 +137,9 @@ export default function RootLayout({
         <main id="main-content">{children}</main>
         <SiteFooter />
         <FloatingContact />
+        <MobileCTABar />
       </body>
     </html>
   );
 }
+

@@ -11,7 +11,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Pertanyaan yang Sering Diajukan (FAQ)",
   description:
-    "Jawaban atas pertanyaan umum seputar layanan teknis Android: memilih layanan, kompatibilitas perangkat, proses remote, pengaruh pada data, dan keamanan konsultasi.",
+    "Jawaban pertanyaan umum layanan teknis Android: memilih layanan, kompatibilitas perangkat, proses remote, pengaruh ke data, dan keamanan konsultansi.",
   path: "/faq",
 });
 
@@ -78,13 +78,21 @@ export default function FaqPage() {
               href={waHref}
               target="_blank"
               rel="noopener noreferrer nofollow"
-              className="inline-flex h-11 items-center gap-2 rounded-md bg-whatsapp px-5 text-sm font-semibold text-whatsapp-foreground shadow-lg shadow-black/10 transition-all hover:brightness-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
+              className="inline-flex h-11 items-center gap-2 rounded-md bg-whatsapp px-6 text-sm font-semibold text-whatsapp-foreground shadow-lg shadow-black/10 transition-all hover:brightness-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
             >
               <WhatsAppIcon className="size-4" />
               Konsultasi via WhatsApp
             </a>
-          ) : null}
+          ) : (
+            <a
+              href="/contact"
+              className="inline-flex h-11 items-center gap-2 rounded-md bg-white px-6 text-sm font-semibold text-primary shadow-lg shadow-black/10 transition-all hover:bg-white/90 cursor-pointer"
+            >
+              Konsultasi dengan CS Kami
+            </a>
+          )}
         </div>
+
       </section>
     </div>
   );

@@ -1,43 +1,47 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/home/Hero";
-import { CategoryGrid } from "@/components/home/CategoryGrid";
-import { FeaturedServices } from "@/components/home/FeaturedServices";
-import { QuickHelp } from "@/components/home/QuickHelp";
-import { HowItWorksPreview } from "@/components/home/HowItWorksPreview";
-import { RemoteGuidePreview } from "@/components/home/RemoteGuidePreview";
-import { WhyChoose } from "@/components/home/WhyChoose";
-import { FAQPreview } from "@/components/home/FAQPreview";
-import { FinalCTA } from "@/components/home/FinalCTA";
+import { TrustStrip } from "@/components/home/TrustStrip";
+import { ProblemFirstSection } from "@/components/home/ProblemFirstSection";
+import { InteractiveServiceFinder } from "@/components/home/InteractiveServiceFinder";
+import { GroupedServicesSection } from "@/components/home/GroupedServicesSection";
+import { ComparisonSection } from "@/components/home/ComparisonSection";
+import { WhyTechFix } from "@/components/home/WhyTechFix";
+import { HowItWorksSixSteps } from "@/components/home/HowItWorksSixSteps";
+import { RealSocialProof } from "@/components/home/RealSocialProof";
+import { GuidesPreview } from "@/components/home/GuidesPreview";
+import { ObjectionFAQ } from "@/components/home/ObjectionFAQ";
+import { FinalConsultationCTA } from "@/components/home/FinalConsultationCTA";
 import { buildMetadata, absoluteUrl } from "@/lib/seo";
-import { getFeaturedServices } from "@/data/services";
+import { services } from "@/data/services";
 
 export const metadata: Metadata = buildMetadata({
-  title: "TechFix Software — Jasa Service & Perbaikan Software Android",
+  title: "Jasa Android & Technical Support | TechFix Software",
   description:
-    "TechFix Software — jasa service & perbaikan software Android profesional: root, unlock bootloader, fix bootloop, unbrick, flash firmware, custom ROM, recovery, dan software repair. Konsultasikan kondisi perangkat Anda langsung ke CS manusia via WhatsApp atau Telegram.",
+    "TechFix Software bantu atasi masalah Android: bootloop, flashing, firmware, bootloader, recovery, root, custom ROM, dan optimasi. Konsultasi teknisi.",
   path: "/",
   absoluteTitle: true,
   keywords: [
     "jasa perbaikan software android",
     "tech service android",
     "service software hp",
-    "jasa teknisi software",
+    "jasa teknisi software hp",
     "fix bootloop",
     "flash firmware",
     "unbrick android",
-    "root android",
+    "root android magisk",
+    "unlock bootloader",
+    "custom rom android",
   ],
 });
 
 export default function HomePage() {
-  const featured = getFeaturedServices();
   const itemListJsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Layanan Unggulan TechFix Software",
+    name: "Layanan Software Android TechFix Software",
     url: absoluteUrl("/"),
-    numberOfItems: featured.length,
-    itemListElement: featured.map((service, index) => ({
+    numberOfItems: services.length,
+    itemListElement: services.map((service, index) => ({
       "@type": "ListItem",
       position: index + 1,
       url: absoluteUrl(`/services/${service.slug}`),
@@ -53,15 +57,41 @@ export default function HomePage() {
           __html: JSON.stringify(itemListJsonLd),
         }}
       />
+      {/* 1. Hero */}
       <Hero />
-      <CategoryGrid />
-      <FeaturedServices />
-      <QuickHelp />
-      <HowItWorksPreview />
-      <RemoteGuidePreview />
-      <WhyChoose />
-      <FAQPreview />
-      <FinalCTA />
+
+      {/* 2. Trust Strip */}
+      <TrustStrip />
+
+      {/* 3. Problem-First Section */}
+      <ProblemFirstSection />
+
+      {/* 4. Interactive Guided Service Finder */}
+      <InteractiveServiceFinder />
+
+      {/* 5. Grouped Technical Services */}
+      <GroupedServicesSection />
+
+      {/* 6. Comparison / Decision Content */}
+      <ComparisonSection />
+
+      {/* 7. Why TechFix */}
+      <WhyTechFix />
+
+      {/* 8. How It Works (6 Steps) */}
+      <HowItWorksSixSteps />
+
+      {/* 9. Verified Social Proof & Screenshots */}
+      <RealSocialProof />
+
+      {/* 10. Educational Guides Preview */}
+      <GuidesPreview />
+
+      {/* 11. Objection Handling FAQ */}
+      <ObjectionFAQ />
+
+      {/* 12. Final Consultation CTA */}
+      <FinalConsultationCTA />
     </>
   );
 }

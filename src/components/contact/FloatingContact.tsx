@@ -8,6 +8,8 @@ import { hasWhatsapp, hasTelegram, whatsappLink, telegramLink } from "@/config/s
 import { getContactMessage } from "@/lib/contact";
 import { cn } from "@/lib/utils";
 
+import { trackEvent } from "@/lib/analytics";
+
 export function FloatingContact() {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -21,6 +23,16 @@ export function FloatingContact() {
     setOpen(false);
     requestAnimationFrame(() => triggerRef.current?.focus());
   }, []);
+
+  const handleWaClick = () => {
+    trackEvent("whatsapp_click", { source_page: "floating_contact_fab" });
+    close();
+  };
+
+  const handleTgClick = () => {
+    trackEvent("consultation_started", { source_page: "floating_contact_fab", channel: "telegram" });
+    close();
+  };
 
   useEffect(() => {
     if (!open) return;
@@ -53,8 +65,9 @@ export function FloatingContact() {
   return (
     <div
       ref={rootRef}
-      className="fixed bottom-0 right-0 z-40 flex flex-col items-end pb-[max(1rem,env(safe-area-inset-bottom))] pr-4 sm:pr-6 sm:pb-[max(1.5rem,env(safe-area-inset-bottom))] print:hidden"
+      className="fixed bottom-0 right-0 z-40 flex flex-col items-end pb-[max(4.25rem,calc(3.5rem+env(safe-area-inset-bottom)))] pr-3 sm:pr-6 md:pb-[max(1.5rem,env(safe-area-inset-bottom))] print:hidden"
     >
+
       <div className="relative">
         {open ? (
           <div
@@ -73,7 +86,7 @@ export function FloatingContact() {
                   href={wa}
                   target="_blank"
                   rel="noopener noreferrer nofollow"
-                  onClick={close}
+                  onClick={handleWaClick}
                   className="group flex min-h-11 items-center gap-3 rounded-md px-2 py-1.5 transition-colors duration-150 hover:bg-muted active:bg-muted/80 cursor-pointer"
                 >
                   <span
@@ -94,9 +107,10 @@ export function FloatingContact() {
                   href={tg}
                   target="_blank"
                   rel="noopener noreferrer nofollow"
-                  onClick={close}
+                  onClick={handleTgClick}
                   className="group flex min-h-11 items-center gap-3 rounded-md px-2 py-1.5 transition-colors duration-150 hover:bg-muted active:bg-muted/80 cursor-pointer"
                 >
+
                   <span
                     className="flex size-8 shrink-0 items-center justify-center rounded-md bg-telegram text-telegram-foreground transition-transform duration-150 group-hover:scale-[1.05]"
                     aria-hidden="true"

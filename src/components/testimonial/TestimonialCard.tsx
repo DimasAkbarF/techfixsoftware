@@ -1,31 +1,34 @@
 import Image from "next/image";
+import { MessageSquareCheck } from "lucide-react";
 import type { Testimonial } from "@/types";
-import { StarRating } from "./StarRating";
 
 export function TestimonialScreenshotCard({ item }: { item: Testimonial }) {
   return (
-    <figure className="flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card shadow-card transition-all duration-200 hover:border-accent/40">
-      <div className="relative h-[440px] overflow-hidden bg-muted sm:h-[500px] md:h-[540px]">
+    <figure className="flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card shadow-xs transition-colors hover:border-accent/40">
+      <div className="relative aspect-[9/16] max-h-[560px] w-full overflow-hidden bg-slate-900/5">
         <Image
           src={item.image}
-          alt={`Screenshot percakapan pelanggan — ${item.services.join(" + ")}`}
+          alt={`Tangkapan layar percakapan pelanggan WhatsApp untuk layanan ${item.services.join(" & ")}`}
           fill
-          sizes="(min-width: 768px) 33vw, 100vw"
-          className="object-contain"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-contain object-center"
         />
       </div>
-      <figcaption className="flex items-center justify-between gap-3 border-t border-border px-5 py-4">
-        <StarRating rating={item.rating} />
-        <span className="flex flex-wrap items-center justify-end gap-1.5">
+      <figcaption className="flex flex-col gap-2 border-t border-border px-4 py-3.5 bg-card">
+        <div className="flex items-center gap-1.5 text-xs font-semibold text-accent">
+          <MessageSquareCheck className="size-4" />
+          <span>Percakapan Pelanggan Terverifikasi</span>
+        </div>
+        <div className="flex flex-wrap items-center gap-1.5">
           {item.services.map((service) => (
             <span
               key={service}
-              className="inline-flex items-center rounded-full bg-muted px-2.5 py-1 text-xs font-medium text-muted-foreground"
+              className="inline-flex items-center rounded-md bg-accent-subtle px-2 py-0.5 text-xs font-semibold text-accent"
             >
               {service}
             </span>
           ))}
-        </span>
+        </div>
       </figcaption>
     </figure>
   );

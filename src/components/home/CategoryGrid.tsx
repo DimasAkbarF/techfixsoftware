@@ -16,7 +16,7 @@ export function CategoryGrid() {
         {categories.map((category) => (
           <Link
             key={category.id}
-            href={`/categories/${category.slug}`}
+            href={`/services#${category.slug}`}
             className="group flex flex-col rounded-lg border border-border bg-card p-4 transition-all duration-200 hover:border-accent/40 cursor-pointer"
           >
             <span className="flex size-8 items-center justify-center rounded-md bg-muted text-muted-foreground transition-colors group-hover:bg-accent group-hover:text-white" aria-hidden="true">

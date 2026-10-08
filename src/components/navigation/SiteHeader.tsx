@@ -4,9 +4,63 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import { Search, X } from "lucide-react";
+import { Search, X, ArrowRight } from "lucide-react";
 import { mainNav } from "@/components/navigation/navItems";
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
+import { hasWhatsapp, whatsappLink } from "@/config/site";
+import { buildConsultationMessage } from "@/lib/contact";
+import { trackEvent } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
+
+function HeaderConsultationCTA({ mobile = false, onClick }: { mobile?: boolean; onClick?: () => void }) {
+  const isWa = hasWhatsapp();
+  const waHref = isWa ? whatsappLink(buildConsultationMessage()) : null;
+
+  const handleClick = () => {
+    trackEvent("whatsapp_click", {
+      source_page: mobile ? "header_mobile_menu" : "header_desktop",
+      action: "consultation_button",
+    });
+    if (onClick) onClick();
+  };
+
+  if (waHref) {
+    return (
+      <a
+        href={waHref}
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+        onClick={handleClick}
+        className={cn(
+          "inline-flex items-center justify-center gap-2 rounded-md font-semibold transition-all cursor-pointer",
+          mobile
+            ? "h-11 w-full bg-whatsapp text-whatsapp-foreground text-sm hover:brightness-95 shadow-sm"
+            : "hidden sm:inline-flex h-9 px-3.5 text-xs bg-whatsapp text-whatsapp-foreground hover:brightness-95",
+        )}
+      >
+        <WhatsAppIcon className="size-4 shrink-0" />
+        <span>Konsultasi Gratis</span>
+      </a>
+    );
+  }
+
+  return (
+    <Link
+      href="/contact"
+      onClick={handleClick}
+      className={cn(
+        "inline-flex items-center justify-center gap-1.5 rounded-md font-semibold transition-colors cursor-pointer",
+        mobile
+          ? "h-11 w-full bg-primary text-primary-foreground text-sm hover:bg-primary-hover shadow-sm"
+          : "hidden sm:inline-flex h-9 px-3.5 text-xs bg-primary text-primary-foreground hover:bg-primary-hover",
+      )}
+    >
+      <span>Konsultasi Gratis</span>
+      <ArrowRight className="size-3.5" aria-hidden="true" />
+    </Link>
+  );
+}
+
 
 function Logo({ compact = false, onClick }: { compact?: boolean; onClick?: () => void }) {
   return (
@@ -95,7 +149,7 @@ export function SiteHeader() {
           </nav>
 
           {/* Right actions */}
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-2">
             {/* Search trigger */}
             <Link
               href="/search"
@@ -104,6 +158,9 @@ export function SiteHeader() {
             >
               <Search className="size-[18px]" aria-hidden="true" />
             </Link>
+
+            {/* Consultation CTA button - Desktop */}
+            <HeaderConsultationCTA />
 
             {/* Mobile menu trigger */}
             <button
@@ -126,6 +183,7 @@ export function SiteHeader() {
               )}
             </button>
           </div>
+
         </div>
       </header>
 
@@ -210,19 +268,21 @@ function MobileMenuOverlay({
         </nav>
 
         {/* Menu footer — consultation CTAs */}
-        <div className="border-t border-border px-4 py-4">
-          <div className="flex flex-col gap-2">
+        <div className="border-t border-border px-4 py-4 bg-muted/40">
+          <div className="flex flex-col gap-2.5">
+            <HeaderConsultationCTA mobile onClick={onClose} />
             <Link
               href="/search"
               onClick={onClose}
-              className="flex h-11 items-center justify-center gap-2 rounded-md border border-border bg-background px-4 text-sm font-medium text-foreground hover:border-accent hover:text-accent transition-colors cursor-pointer"
+              className="flex h-11 items-center justify-center gap-2 rounded-md border border-border bg-card px-4 text-sm font-medium text-foreground hover:border-accent hover:text-accent transition-colors cursor-pointer"
             >
               <Search className="size-4" aria-hidden="true" />
-              Cari Layanan
+              Cari Masalah atau Layanan
             </Link>
           </div>
         </div>
       </div>
     </div>
+
   );
 }

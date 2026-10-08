@@ -42,7 +42,7 @@ export default function NotFound() {
           {categories.map((category) => (
             <Link
               key={category.id}
-              href={`/categories/${category.slug}`}
+              href={`/services#${category.slug}`}
               className="rounded-md border border-border bg-card px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-accent hover:text-foreground cursor-pointer"
             >
               {category.name}

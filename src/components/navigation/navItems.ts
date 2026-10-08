@@ -1,17 +1,17 @@
 import type { NavItem } from "@/types";
 
 export const mainNav: NavItem[] = [
-  { label: "Beranda", href: "/" },
   { label: "Layanan", href: "/services" },
+  { label: "Masalah Android", href: "/#masalah-android" },
+  { label: "Panduan", href: "/guides" },
   { label: "Testimoni", href: "/testimonials" },
   { label: "Cara Kerja", href: "/how-it-works" },
-  { label: "FAQ", href: "/faq" },
   { label: "Tentang Kami", href: "/about" },
-  { label: "Kontak", href: "/contact" },
 ];
 
 export const footerNav: NavItem[] = [
   { label: "Layanan", href: "/services" },
+  { label: "Panduan & Artikel", href: "/guides" },
   { label: "Testimoni", href: "/testimonials" },
   { label: "Cara Kerja", href: "/how-it-works" },
   { label: "Panduan Remote", href: "/remote-guide" },

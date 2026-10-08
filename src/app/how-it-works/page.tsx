@@ -1,161 +1,247 @@
 import type { Metadata } from "next";
-import { CheckCircle2 } from "lucide-react";
+import Link from "next/link";
+import { AlertTriangle, CheckCircle2, ShieldCheck, ArrowRight, Laptop } from "lucide-react";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { ButtonLink } from "@/components/ui/Button";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
+import { hasWhatsapp, whatsappLink } from "@/config/site";
+import { buildConsultationMessage } from "@/lib/contact";
 import { buildMetadata } from "@/lib/seo";
-import { getContactMessage, getWhatsappUrl, getTelegramUrl } from "@/lib/contact";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Cara Kerja Layanan",
+  title: "Cara Kerja Layanan — 6 Langkah Transparan",
   description:
-    "Pahami alur layanan kami: cari layanan, baca informasi, konsultasi dengan CS, sepakati proses, siapkan perangkat, dan lanjutkan eksekusi.",
+    "Pahami alur layanan TechFix Software: dari menceritakan kendala, pengecekan kondisi, penjelasan risiko, kesepakatan, hingga eksekusi dan follow-up.",
   path: "/how-it-works",
+  keywords: [
+    "cara kerja service android",
+    "alur konsultasi techfix",
+    "prosedur perbaikan software",
+    "service software tanpa toko",
+  ],
 });
 
 const steps = [
   {
     number: "01",
-    title: "Temukan layanan",
-    description: "Temukan layanan yang paling sesuai dengan kondisi perangkat Anda.",
+    title: "Ceritakan Masalah",
+    description:
+      "Jelaskan merek, tipe perangkat, gejala yang Anda alami, dan kronologi awal kejadian melalui chat WhatsApp atau formulir kami.",
   },
   {
     number: "02",
-    title: "Konsultasi",
-    description: "Jelaskan merek, model, gejala, dan riwayat masalah kepada Customer Service.",
+    title: "Kami Cek Kondisi Perangkat",
+    description:
+      "Teknisi memverifikasi varian model teknis, arsitektur chipset, status bootloader, dan ketersediaan file firmware yang kompatibel.",
   },
   {
     number: "03",
-    title: "Pemeriksaan",
-    description: "Kondisi perangkat dan kompatibilitas diperiksa sebelum tindakan ditentukan.",
+    title: "Kami Jelaskan Opsi & Risiko",
+    description:
+      "Kami paparkan opsi tindakan terbaik, peluang pemulihan, transparansi risiko terhadap data, estimasi durasi, dan biaya secara terbuka.",
   },
   {
     number: "04",
-    title: "Tindakan",
-    description: "Solusi dilakukan berdasarkan hasil pemeriksaan dan kesepakatan.",
+    title: "Anda Memutuskan",
+    description:
+      "Anda bebas menentukan apakah ingin melanjutkan atau tidak. Tidak ada komitmen belanja atau biaya jika Anda memutuskan berhenti di konsultasi.",
   },
   {
     number: "05",
-    title: "Selesai",
-    description: "Anda mendapatkan informasi mengenai hasil penanganan dan langkah selanjutnya.",
+    title: "Proses Dilakukan Sesuai Kesepakatan",
+    description:
+      "Penanganan teknis dijalankan (remote support via AnyDesk bila didukung) secara bertahap dan teratur di bawah pemantauan langsung Anda.",
+  },
+  {
+    number: "06",
+    title: "Follow-Up & Dukungan Pasca-Servis",
+    description:
+      "Kami memverifikasi perangkat kembali berjalan stabil dan memberikan rekomendasi pemeliharaan agar masalah tidak berulang.",
   },
 ];
 
 const prepareItems = [
-  "Merek dan model perangkat",
-  "Kondisi atau gejala yang terjadi",
-  "Riwayat update, flashing, atau root jika ada",
-  "Kabel USB dan PC/laptop jika diperlukan",
-  "Backup data jika perangkat masih dapat diakses",
+  "Merek dan nomor model spesifik perangkat Anda.",
+  "Kronologi kejadian (apakah setelah update OTA, gagal flash mandiri, atau crash tiba-tiba).",
+  "PC / laptop dengan sistem Windows dan akses internet stabil bila butuh remote.",
+  "Kabel USB berkualitas untuk sambungan data ke komputer.",
+  "Kesiapan memahami bahwa pemulihan software memprioritaskan fungsi sistem perangkat.",
 ];
 
 export default function HowItWorksPage() {
-  const wa = getWhatsappUrl(getContactMessage());
-  const tg = getTelegramUrl(getContactMessage());
+  const isWa = hasWhatsapp();
+  const waHref = isWa ? whatsappLink(buildConsultationMessage()) : null;
 
   return (
-    <div className="container-page py-12 md:py-16">
+    <div className="container-page py-10 md:py-16">
       <Breadcrumbs items={[{ label: "Cara Kerja" }]} />
 
       <SectionHeading
         as="h1"
-        eyebrow="Cara Kerja"
-        title="Bagaimana layanan kami bekerja"
-        description="Kami mulai dari memahami kondisi perangkat Anda, lalu menentukan langkah yang paling sesuai sebelum tindakan dilakukan."
-        className="max-w-2xl"
+        eyebrow="Alur Layanan Transparan"
+        title="Bagaimana Layanan TechFix Software Bekerja"
+        description="Kami mengutamakan pemahaman masalah Anda terlebih dahulu. Tidak ada checkout otomatis atau paksaan transaksi."
       />
 
-      {/* Alur proses dalam 5 langkah */}
-      <section aria-labelledby="process-heading" className="mt-8 md:mt-10">
-        <h2 id="process-heading" className="sr-only">
-          Alur layanan dalam lima langkah
+      {/* 6 Steps Grid */}
+      <section aria-labelledby="steps-heading" className="mt-8 md:mt-10">
+        <h2 id="steps-heading" className="sr-only">
+          Enam langkah alur kerja
         </h2>
-        <ol className="grid list-none gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {steps.map((step) => (
-            <li
+            <div
               key={step.number}
-              className="border-t border-border pt-4 transition-colors duration-150 hover:border-accent/50"
+              className="flex flex-col justify-between rounded-xl border border-border bg-card p-6 shadow-xs"
             >
-              <p className="text-xs font-semibold uppercase tracking-widest text-accent tabular-nums">
-                {step.number}
-              </p>
-              <h3 className="mt-3 text-base font-bold tracking-tight text-foreground">
-                {step.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {step.description}
-              </p>
-            </li>
+              <div>
+                <span className="font-mono text-xl font-bold text-accent">
+                  {step.number}
+                </span>
+                <h3 className="mt-2 text-base font-bold text-foreground">
+                  {step.title}
+                </h3>
+                <p className="mt-2 text-xs sm:text-sm leading-relaxed text-muted-foreground">
+                  {step.description}
+                </p>
+              </div>
+            </div>
           ))}
-        </ol>
+        </div>
       </section>
 
-      {/* Disclaimer */}
-      <div className="mt-10 max-w-3xl rounded-lg border border-warning/30 bg-warning/5 p-4 md:p-5">
-        <p className="text-sm leading-relaxed text-foreground">
-          <strong className="font-semibold">Penting:</strong> kelayakan layanan selalu bergantung
-          pada kondisi spesifik perangkat Anda. Kami tidak menjamin keberhasilan 100% atau kondisi
-          tanpa risiko. Keputusan akhir dibuat setelah konsultasi dan penilaian oleh Customer Service.
-        </p>
-      </div>
-
-      {/* Persiapan */}
-      <section aria-labelledby="prepare-heading" className="mt-14 border-t border-border pt-10">
-        <h2 id="prepare-heading" className="text-lg font-bold tracking-tight text-foreground md:text-xl">
-          Sebelum menghubungi kami
+      {/* Preparation Checklist */}
+      <section aria-labelledby="prepare-heading" className="mt-14 rounded-2xl border border-border bg-card p-6 sm:p-8">
+        <h2 id="prepare-heading" className="text-lg sm:text-xl font-bold tracking-tight text-foreground">
+          Hal yang Perlu Disiapkan Sebelum Berkonsultasi
         </h2>
-        <p className="mt-1.5 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-          Siapkan informasi berikut agar konsultasi dapat berjalan lebih cepat.
+        <p className="mt-1 text-xs sm:text-sm text-muted-foreground">
+          Menyiapkan poin-poin berikut membantu teknisi menganalisis respon unit lebih cepat:
         </p>
-        <ul className="mt-6 grid gap-x-8 gap-y-3 sm:grid-cols-2">
-          {prepareItems.map((item) => (
-            <li key={item} className="flex items-start gap-2.5 text-sm leading-relaxed text-foreground">
-              <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" aria-hidden="true" />
-              <span>{item}</span>
+        <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+          {prepareItems.map((item, index) => (
+            <li key={index} className="flex items-start gap-2.5 text-xs sm:text-sm text-foreground">
+              <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" />
+              <span className="leading-relaxed">{item}</span>
             </li>
           ))}
         </ul>
       </section>
 
-      {/* CTA */}
-      <section aria-labelledby="cta-heading" className="mt-14">
-        <div className="mx-auto max-w-xl rounded-xl border border-border bg-card px-6 py-8 text-center md:px-10 md:py-10">
-          <h2 id="cta-heading" className="text-lg font-bold tracking-tight text-foreground md:text-xl">
-            Sudah tahu masalahnya?
-          </h2>
-          <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-muted-foreground md:text-base">
-            Kirim detail kondisi perangkat Anda. Kami akan membantu menentukan langkah yang paling
-            sesuai sebelum tindakan dilakukan.
-          </p>
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-            {wa ? (
-              <ButtonLink
-                variant="whatsapp"
-                size="large"
-                href={wa}
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-              >
-                <WhatsAppIcon className="size-4" />
-                Konsultasi via WhatsApp
-              </ButtonLink>
-            ) : null}
-            {tg ? (
-              <ButtonLink
-                variant="telegram"
-                size="large"
-                href={tg}
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-              >
-                Konsultasi via Telegram
-              </ButtonLink>
-            ) : null}
+      {/* Scope boundaries — honest expectations before the consultation */}
+      <section aria-labelledby="scope-heading" className="mt-14">
+        <h2 id="scope-heading" className="text-lg sm:text-xl font-bold tracking-tight text-foreground">
+          Batas Layanan yang Perlu Anda Ketahui
+        </h2>
+        <p className="mt-1 max-w-3xl text-xs sm:text-sm text-muted-foreground">
+          Teknisi kami menangani sisi software perangkat. Keluhan yang masuk kategori kedua kami
+          sampaikan sejak awal agar waktu Anda tidak terbuang.
+        </p>
+        <div className="mt-5 grid gap-4 md:grid-cols-2">
+          <div className="rounded-xl border border-border bg-card p-5">
+            <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-success">
+              <CheckCircle2 className="size-4" />
+              Yang Bisa Kami Kerjakan
+            </p>
+            <ul className="mt-3 space-y-2">
+              {["Perangkat yang masih menyala, termasuk yang tersangkut di logo boot.", "Gangguan software: update gagal, sistem error, penyimpanan penuh.", "Root, bootloader, recovery, dan custom ROM pada perangkat yang kompatibel.", "Remote support dengan persetujuan Anda di setiap sesi."].map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-2 text-xs sm:text-sm leading-relaxed text-foreground"
+                >
+                  <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-success" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-          <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
-            Konsultasi gratis dan tanpa kewajiban untuk melanjutkan.
-          </p>
+          <div className="rounded-xl border border-border bg-card p-5">
+            <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-muted-foreground">
+              <AlertTriangle className="size-4" />
+              Yang Harus Menuju Service Center
+            </p>
+            <ul className="mt-3 space-y-2">
+              {["Kerusakan hardware: layar, baterai, tombol power, port pengisi daya.", "Perangkat mati total tanpa indikasi masalah software.", "Perangkat terkena air atau terjatuh dengan kerusakan fisik.", "Penggantian komponen fisik seperti kamera atau sensor."].map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-2 text-xs sm:text-sm leading-relaxed text-foreground"
+                >
+                  <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-slate-400" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Remote Support Callout */}
+      <div className="mt-8 rounded-xl border border-accent/20 bg-accent-subtle/40 p-5 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-accent text-white">
+            <Laptop className="size-5" />
+          </span>
+          <div>
+            <h3 className="text-sm font-bold text-foreground">
+              Ingin tahu lebih detail cara kerja sesi AnyDesk?
+            </h3>
+            <p className="text-xs text-muted-foreground">
+              Baca panduan keamanan remote, syarat perangkat, dan cara menghentikan sesi kapan saja.
+            </p>
+          </div>
+        </div>
+
+        <Link
+          href="/remote-guide"
+          className="inline-flex shrink-0 items-center gap-1.5 rounded-md border border-border bg-card px-4 py-2 text-xs font-semibold text-foreground hover:border-accent hover:text-accent transition-colors"
+        >
+          <span>Panduan Remote Lengkap</span>
+          <ArrowRight className="size-3.5" />
+        </Link>
+      </div>
+
+      {/* Final Consultation Action */}
+      <section className="mt-14 rounded-2xl bg-primary p-8 text-center text-primary-foreground sm:p-12">
+        <div className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-white mb-3">
+          <ShieldCheck className="size-3.5 text-whatsapp" />
+          <span>Langkah Pertama Dimulai dari Anda</span>
+        </div>
+
+        <h2 className="text-xl font-bold tracking-tight text-white sm:text-2xl md:text-3xl">
+          Siap menjelaskan kondisi perangkat Anda?
+        </h2>
+
+        <p className="mx-auto mt-2 max-w-lg text-xs sm:text-sm text-white/80 leading-relaxed">
+          Hubungi kami via WhatsApp resmi untuk konsultasi gratis tanpa kewajiban menggunakan jasa perbaikan.
+        </p>
+
+        <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+          {waHref ? (
+            <a
+              href={waHref}
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              className="inline-flex h-11 items-center gap-2 rounded-md bg-whatsapp px-6 text-sm font-semibold text-whatsapp-foreground shadow-sm hover:brightness-95 transition-all cursor-pointer"
+            >
+              <WhatsAppIcon className="size-4 shrink-0" />
+              <span>Konsultasi Gratis via WhatsApp</span>
+            </a>
+          ) : (
+            <Link
+              href="/contact"
+              className="inline-flex h-11 items-center gap-2 rounded-md bg-white px-6 text-sm font-semibold text-primary hover:bg-white/90 transition-colors cursor-pointer"
+            >
+              <span>Hubungi CS TechFix</span>
+            </Link>
+          )}
+
+          <Link
+            href="/services"
+            className="inline-flex h-11 items-center gap-1.5 rounded-md border border-white/20 bg-white/5 px-5 text-sm font-medium text-white hover:bg-white/10 transition-colors cursor-pointer"
+          >
+            <span>Lihat Daftar Layanan</span>
+            <ArrowRight className="size-3.5" />
+          </Link>
         </div>
       </section>
     </div>

@@ -1,95 +1,88 @@
 import type { FAQItem } from "@/types";
 
 export const faqCategories = [
-  { id: "umum", name: "Umum" },
-  { id: "proses", name: "Proses & Remote" },
-  { id: "keselamatan", name: "Keselamatan & Data" },
+  { id: "umum", name: "Umum & Konsultasi" },
+  { id: "proses", name: "Proses & Remote Support" },
+  { id: "keselamatan", name: "Keamanan, Data & Risiko" },
 ] as const;
 
 export const faqItems: FAQItem[] = [
   {
-    id: "pilih-layanan",
+    id: "konsultasi-gratis",
     category: "umum",
-    question: "Bagaimana cara memilih layanan yang tepat untuk perangkat saya?",
+    question: "Apakah konsultasi awal benar-benar gratis dan tidak mengikat?",
     answer:
-      "Mulailah dari gejala yang Anda alami. Jika perangkat stuck di logo atau restart berulang, kategorinya adalah Fix Bootloop. Jika ingin akses sistem penuh, lihat Root Android. Bila ragu, gunakan pencarian atau langsung hubungi CS — kami akan membantu mengarahkan Anda ke layanan yang sesuai dengan kondisi perangkat.",
-  },
-  {
-    id: "semua-device",
-    category: "umum",
-    question: "Apakah semua perangkat Android dapat dilayani?",
-    answer:
-      "Tidak semua. Dukungan bergantung pada model, varian, versi OS, dan kondisi perangkat. Karena itu setiap proses diawali konsultasi dan pengecekan kompatibilitas oleh CS sebelum eksekusi. Kami tidak memberikan jaminan universal.",
-  },
-  {
-    id: "proses-remote",
-    category: "proses",
-    question: "Apakah proses dilakukan secara remote?",
-    answer:
-      "Sebagian layanan dapat dilakukan secara remote dengan pendampingan, terutama yang dapat ditangani melalui sambungan dari PC/laptop. Namun tidak semua kondisi bisa ditangani remote. Ketersediaan remote akan dikonfirmasi saat konsultasi, berdasarkan jenis layanan dan kondisi perangkat Anda.",
-  },
-  {
-    id: "persiapan-remote",
-    category: "proses",
-    question: "Apa yang harus disiapkan sebelum remote support?",
-    answer:
-      "PC atau laptop dengan koneksi internet stabil, kabel USB yang sesuai bila dibutuhkan, baterai perangkat terisi cukup, dan aplikasi AnyDesk resmi bila diminta CS. Panduan lengkap ada di halaman Remote Guide. Selalu ikuti instruksi CS dan jangan berikan akses ke pihak yang tidak dikenal.",
+      "Ya, 100% gratis. Anda bebas menanyakan kondisi perangkat, berkonsultasi mengenai kelayakan penanganan, dan mengetahui estimasi tanpa kewajiban apapun untuk menggunakan jasa. Kami mengutamakan pemahaman masalah Anda terlebih dahulu sebelum Anda mengambil keputusan.",
   },
   {
     id: "data-terpengaruh",
     category: "keselamatan",
-    question: "Apakah data saya bisa terpengaruh?",
+    question: "Apakah data saya aman dan tidak akan terhapus?",
     answer:
-      "Bisa. Beberapa proses, seperti flashing firmware, instalasi ROM, atau unlock bootloader pada prosedur tertentu, berpotensi menghapus data. Kami selalu menyarankan backup data penting bila memungkinkan dan menjelaskan risiko spesifik sebelum proses berjalan. Tidak ada layanan yang menjamin data aman tanpa pengecekan kondisi perangkat.",
+      "Tergantung pada jenis penanganan dan kondisi awal perangkat. Tindakan flashing firmware clean atau unlock bootloader standar Android otomatis menghapus memori internal. Namun jika perangkat memungkinkan untuk diselamatkan tanpa format, kami akan mengupayakan opsi tersebut dan selalu menjelaskan konsekuensi data secara jujur sebelum tindakan dimulai.",
   },
   {
-    id: "hubungi-cs",
+    id: "semua-device",
     category: "umum",
-    question: "Bagaimana cara menghubungi CS?",
+    question: "Apakah semua merek dan tipe HP Android bisa ditangani?",
     answer:
-      "Anda dapat menghubungi kami melalui WhatsApp atau Telegram. Tombol konsultasi tersedia di setiap halaman layanan dan menyertakan konteks layanan yang sedang Anda buka. Sertakan merek, model, versi Android, dan gejala yang Anda alami agar CS dapat merespons lebih cepat.",
+      "Tidak semua. Setiap pabrikan memiliki kebijakan keamanan, proteksi chipset (seperti EDL auth Xiaomi baru atau Knox Samsung), dan ketersediaan firmware resmi yang berbeda. Karena itu kami selalu melakukan pengecekan kompatibilitas tipe persis perangkat sebelum memberikan konfirmasi penanganan.",
   },
   {
-    id: "kapan-anydesk",
+    id: "proses-remote",
     category: "proses",
-    question: "Kapan AnyDesk diperlukan?",
+    question: "Bagaimana cara kerja remote support dari jarak jauh?",
     answer:
-      "AnyDesk biasanya diminta pada layanan yang membutuhkan pendampingan remote dari PC/laptop Anda. CS akan memberi tahu jika layanan Anda memerlukannya. Gunakan hanya aplikasi AnyDesk resmi dan berikan akses hanya setelah Anda memastikan sedang berkomunikasi dengan CS resmi kami.",
+      "Proses dilakukan dengan menghubungkan ponsel Anda ke PC/laptop Anda sendiri via kabel USB. Teknisi kami akan mendampingi Anda melalui sesi AnyDesk resmi yang Anda pantau langsung secara real-time di layar komputer Anda. Anda tetap memegang kendali penuh atas komputer dan perangkat Anda sepanjang sesi.",
   },
   {
-    id: "setelah-konsultasi",
+    id: "persiapan-remote",
     category: "proses",
-    question: "Apa yang terjadi setelah konsultasi?",
+    question: "Apa saja yang harus saya siapkan sebelum memulai sesi remote?",
     answer:
-      "Setelah Anda menjelaskan kondisi perangkat, CS akan melakukan penilaian awal, membahas kelayakan dan prosesnya, lalu bersama Anda menyepakati langkah berikutnya. Bila membutuhkan remote support, Anda akan diarahkan ke Remote Guide untuk persiapan, lalu proses dilanjutkan di luar website.",
+      "Anda hanya perlu menyiapkan PC/laptop dengan Windows, koneksi internet stabil, kabel data USB yang terhubung baik dengan ponsel, daya baterai ponsel terisi minimal 50%, dan aplikasi AnyDesk resmi. Panduan lengkap dan aman tersedia di halaman Panduan Remote.",
+  },
+  {
+    id: "lama-proses",
+    category: "proses",
+    question: "Berapa lama estimasi waktu proses pengerjaan software?",
+    answer:
+      "Rata-rata proses pengerjaan teknis berkisar antara 30 hingga 60 menit setelah file firmware yang cocok selesai diunduh dan alat pendukung siap. Durasi juga bergantung pada kecepatan internet komputer Anda untuk transfer data.",
+  },
+  {
+    id: "sudah-gagal-sendiri",
+    category: "umum",
+    question: "Bagaimana jika sebelumnya saya sudah mencoba oprek sendiri dan gagal?",
+    answer:
+      "Tidak masalah. Ceritakan apa adanya apa file yang terakhir Anda flash atau langkah apa yang sudah dilakukan. Informasi jujur tentang kronologi kegagalan sangat membantu teknisi kami dalam mendiagnosis status partisi perangkat dan menentukan langkah koreksi yang tepat tanpa menebak-nebak.",
+  },
+  {
+    id: "wajib-ubl",
+    category: "proses",
+    question: "Apakah HP saya wajib unlock bootloader terlebih dahulu?",
+    answer:
+      "Tidak selalu. Untuk pemulihan bootloop firmware stock resmi pabrik, sebagian besar perangkat tidak membutuhkan unlock bootloader. Namun untuk kebutuhan root dan custom ROM, pembukaan bootloader adalah syarat wajib sistem Android.",
   },
   {
     id: "garansi",
-    category: "umum",
-    question: "Apakah layanan ini memengaruhi garansi?",
-    answer:
-      "Pada sebagian besar perangkat, proses seperti root, unlock bootloader, atau pemasangan custom ROM dapat memengaruhi garansi pabrik. Besar pengaruhnya tergantung kebijakan merek. Hal ini dibahas secara terbuka sebelum Anda memutuskan melanjutkan.",
-  },
-  {
-    id: "risiko",
     category: "keselamatan",
-    question: "Apa risiko utama yang perlu saya ketahui?",
+    question: "Apakah layanan ini berpengaruh terhadap garansi resmi perangkat?",
     answer:
-      "Risiko utama adalah kehilangan data, perangkat tidak berfungsi seperti sebelumnya, dan dampak pada garansi untuk proses modifikasi tertentu. Kami tidak pernah menjanjikan keberhasilan 100% atau risiko nol. Seluruh risiko dijelaskan sebelum eksekusi, dan Anda bebas memutuskan tanpa tekanan.",
-  },
-  {
-    id: "biaya-layanan",
-    category: "umum",
-    question: "Berapa biaya layanan — dan apakah konsultasi dikenakan biaya?",
-    answer:
-      "Konsultasi dengan CS kami gratis dan tanpa kewajiban untuk melanjutkan. Biaya layanan baru dikonfirmasi setelah kondisi perangkat Anda diperiksa dan layanan yang tepat disepakati bersama. Karena setiap kondisi berbeda, tidak ada tarif tetap yang bisa diumumkan di awal.",
+      "Untuk tindakan modifikasi seperti root, unlock bootloader, atau custom ROM, sebagian besar produsen menetapkan bahwa garansi resmi gugur. Namun untuk pemulihan firmware stock pada bootloop murni, status garansi biasanya tetap terjaga selama bootloader tetap terkunci.",
   },
   {
     id: "data-rahasiakan",
     category: "keselamatan",
-    question: "Apakah saya perlu memberikan informasi sensitif?",
+    question: "Apakah saya perlu memberikan password, akun, atau info sensitif?",
     answer:
-      "Tidak. Kami tidak pernah meminta password, data perbankan, atau informasi sensitif lain melalui website. Gunakan saluran resmi yang digunakan saat konsultasi, dan jangan bagikan kode verifikasi atau akses remote ke siapapun yang tidak Anda kenal.",
+      "SAMA SEKALI TIDAK. TechFix Software tidak pernah meminta PIN layar, password email/Google, akun perbankan, atau kode OTP apapun. Akses remote hanya digunakan untuk menjalankan tool flashing dan command line di komputer Anda di bawah pengawasan Anda.",
+  },
+  {
+    id: "biaya-layanan",
+    category: "umum",
+    question: "Berapa biaya layanannya dan kapan pembayaran dilakukan?",
+    answer:
+      "Biaya layanan dikonfirmasi secara transparan di awal setelah model dan tingkat kesulitan teridentifikasi saat konsultasi WhatsApp. Tidak ada biaya tersembunyi. Kesepakatan biaya disetujui bersama sebelum tindakan dimulai.",
   },
 ];
 

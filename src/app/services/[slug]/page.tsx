@@ -1,17 +1,26 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { AlertTriangle, CheckCircle2, ListChecks, ClipboardList } from "lucide-react";
+import {
+  CheckCircle2,
+  ListChecks,
+  ClipboardList,
+  AlertCircle,
+  XCircle,
+  BookOpen,
+  ArrowRight,
+} from "lucide-react";
 import { services, getServiceBySlug, getServicesByCategory } from "@/data/services";
 import { getCategoryById } from "@/data/categories";
+import { getRelatedGuides } from "@/data/guides";
 import { ServiceHero } from "@/components/service/ServiceHero";
 import { ProcessTimeline } from "@/components/service/ProcessTimeline";
 import { ImportantNotice } from "@/components/service/ImportantNotice";
 import { PreparationChecklist } from "@/components/service/PreparationChecklist";
 import { ServiceFaq } from "@/components/service/ServiceFaq";
+import { ServiceConsultationAside } from "@/components/service/ServiceConsultationAside";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { ServiceGrid } from "@/components/service/ServiceGrid";
-
 import { getServiceFaqItems } from "@/data/serviceFaq";
 import { buildMetadata, absoluteUrl } from "@/lib/seo";
 import { siteConfig } from "@/config/site";
@@ -45,16 +54,14 @@ export default async function ServiceDetailPage({ params }: PageProps) {
   const related = service.categoryId
     ? getServicesByCategory(service.categoryId).filter((s) => s.id !== service.id).slice(0, 3)
     : [];
+  const relatedGuides = getRelatedGuides(service.slug);
 
   const breadcrumbItems = [
     { "@type": "ListItem", position: 1, name: "Beranda", item: absoluteUrl("/") },
     { "@type": "ListItem", position: 2, name: "Layanan", item: absoluteUrl("/services") },
-    ...(category
-      ? [{ "@type": "ListItem", position: 3, name: category.name, item: absoluteUrl(`/categories/${category.slug}`) }]
-      : []),
     {
       "@type": "ListItem",
-      position: category ? 4 : 3,
+      position: 3,
       name: service.name,
       item: absoluteUrl(`/services/${service.slug}`),
     },
@@ -103,46 +110,117 @@ export default async function ServiceDetailPage({ params }: PageProps) {
       <Breadcrumbs
         items={[
           { label: "Layanan", href: "/services" },
-          ...(category ? [{ label: category.name, href: `/categories/${category.slug}` }] : []),
           { label: service.name },
         ]}
       />
 
+      {/* Hero with Search Intent & Primary Action */}
       <ServiceHero service={service} />
 
-      <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_300px] lg:items-start">
+      {/* Main Grid: Content (Left) + High-Converting Consultation Sidebar (Right) */}
+      <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_340px] lg:items-start">
         <div className="space-y-12">
+          {/* Symptoms Checklist */}
+          {service.symptoms && service.symptoms.length > 0 && (
+            <section id="symptoms-heading" aria-labelledby="symptoms-title" className="max-w-3xl">
+              <h2 id="symptoms-title" className="flex items-center gap-2 text-lg font-bold tracking-tight text-foreground md:text-xl">
+                <AlertCircle className="size-5 text-accent" aria-hidden="true" />
+                Apakah Kondisi Seperti Ini Terjadi pada HP Anda?
+              </h2>
+              <p className="mt-1 text-xs sm:text-sm text-muted-foreground">
+                Jika Anda mengalami salah satu gejala berikut, layanan ini dirancang untuk menanganinya:
+              </p>
+              <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                {service.symptoms.map((symptom, idx) => (
+                  <li key={idx} className="flex items-start gap-2.5 rounded-lg border border-border bg-card p-3.5 shadow-xs">
+                    <span className="mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full bg-accent-subtle text-accent font-bold text-xs">
+                      !
+                    </span>
+                    <span className="text-xs sm:text-sm leading-relaxed text-foreground">{symptom}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          {/* Service Overview */}
           <section aria-labelledby="overview-heading" className="max-w-3xl">
             <h2 id="overview-heading" className="text-lg font-bold tracking-tight text-foreground md:text-xl">
-              Tentang Layanan Ini
+              Tentang Penanganan {service.name}
             </h2>
-            <div className="mt-3 space-y-4 leading-relaxed text-foreground">
+            <div className="mt-3 space-y-4 text-sm sm:text-base leading-relaxed text-foreground">
               {service.description.split("\n\n").map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
               ))}
             </div>
           </section>
 
+          {/* Who It's For & Who It's Not For */}
+          {(service.whoIsItFor || service.whoIsItNotFor) && (
+            <section aria-labelledby="audience-heading" className="max-w-3xl">
+              <h2 id="audience-heading" className="text-lg font-bold tracking-tight text-foreground md:text-xl">
+                Kesesuaian Layanan
+              </h2>
+              <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                {service.whoIsItFor && (
+                  <div className="rounded-xl border border-success/30 bg-success/5 p-4 sm:p-5">
+                    <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-success">
+                      <CheckCircle2 className="size-4" />
+                      Cocok untuk Anda Jika:
+                    </p>
+                    <ul className="mt-3 space-y-2">
+                      {service.whoIsItFor.map((item, i) => (
+                        <li key={i} className="flex items-start gap-2 text-xs text-foreground leading-relaxed">
+                          <span className="mt-1 size-1.5 rounded-full bg-success shrink-0" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {service.whoIsItNotFor && (
+                  <div className="rounded-xl border border-border bg-slate-50 p-4 sm:p-5">
+                    <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-500">
+                      <XCircle className="size-4 text-slate-400" />
+                      Tidak Cocok untuk:
+                    </p>
+                    <ul className="mt-3 space-y-2">
+                      {service.whoIsItNotFor.map((item, i) => (
+                        <li key={i} className="flex items-start gap-2 text-xs text-muted-foreground leading-relaxed">
+                          <span className="mt-1 size-1.5 rounded-full bg-slate-400 shrink-0" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </section>
+          )}
+
+          {/* Use Cases / What TechFix Can Help With */}
           <section aria-labelledby="usecases-heading" className="max-w-3xl">
             <h2 id="usecases-heading" className="flex items-center gap-2 text-lg font-bold tracking-tight text-foreground md:text-xl">
               <ListChecks className="size-5 text-accent" aria-hidden="true" />
-              Kapan Layanan Ini Dibutuhkan
+              Apa Saja yang Bisa Dibantu
             </h2>
-            <ul className="mt-3 grid gap-3 sm:grid-cols-2">
+            <ul className="mt-4 grid gap-3 sm:grid-cols-2">
               {service.useCases.map((item, index) => (
-                <li key={index} className="flex items-start gap-2.5 rounded-lg border border-border bg-card p-4">
+                <li key={index} className="flex items-start gap-2.5 rounded-lg border border-border bg-card p-4 shadow-xs">
                   <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" aria-hidden="true" />
-                  <span className="text-sm leading-relaxed text-foreground">{item}</span>
+                  <span className="text-xs sm:text-sm leading-relaxed text-foreground">{item}</span>
                 </li>
               ))}
             </ul>
           </section>
 
+          {/* Preparation Checklist */}
           <section aria-labelledby="preparation-heading" className="max-w-3xl">
             <div className="flex items-center gap-2">
               <ClipboardList className="size-5 text-accent" aria-hidden="true" />
               <h2 id="preparation-heading" className="text-lg font-bold tracking-tight text-foreground md:text-xl">
-                Persiapan yang Perlu Anda Siapkan
+                Hal yang Perlu Anda Siapkan
               </h2>
             </div>
             <div className="mt-3 rounded-lg border border-border bg-card p-5">
@@ -150,60 +228,78 @@ export default async function ServiceDetailPage({ params }: PageProps) {
             </div>
           </section>
 
+          {/* Process Timeline */}
           <section aria-labelledby="process-heading" className="max-w-3xl">
             <h2 id="process-heading" className="text-lg font-bold tracking-tight text-foreground md:text-xl">
-              Alur Proses
+              Alur Proses Penanganan
             </h2>
             <div className="mt-3 rounded-lg border border-border bg-card p-5">
               <ProcessTimeline steps={service.processSteps} />
             </div>
           </section>
 
+          {/* Risk Transparency Notice */}
           <section aria-labelledby="notice-heading" className="max-w-3xl">
             <h2 id="notice-heading" className="sr-only">
-              Pemberitahuan Penting
+              Pemberitahuan Penting &amp; Risiko
             </h2>
-            <ImportantNotice title="Hal yang perlu Anda ketahui sebelumnya" items={service.importantNotices} />
+            <ImportantNotice title="Risiko dan Hal yang Perlu Diketahui Sebelum Memulai" items={service.importantNotices} />
           </section>
 
+          {/* Related Educational Guides */}
+          {relatedGuides.length > 0 && (
+            <section aria-labelledby="guides-related-heading" className="max-w-3xl border-t border-border pt-8">
+              <div className="flex items-center gap-2">
+                <BookOpen className="size-5 text-accent" />
+                <h2 id="guides-related-heading" className="text-lg font-bold tracking-tight text-foreground md:text-xl">
+                  Panduan Edukasi Terkait
+                </h2>
+              </div>
+              <p className="mt-1 text-xs sm:text-sm text-muted-foreground">
+                Pelajari rincian teknis sebelum menentukan langkah penanganan:
+              </p>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                {relatedGuides.map((guide) => (
+                  <Link
+                    key={guide.id}
+                    href={`/guides/${guide.slug}`}
+                    className="group rounded-lg border border-border bg-card p-4 transition-colors hover:border-accent"
+                  >
+                    <span className="text-[11px] font-semibold text-accent">{guide.categoryName}</span>
+                    <h3 className="mt-1 text-sm font-bold text-foreground group-hover:text-accent transition-colors line-clamp-1">
+                      {guide.title}
+                    </h3>
+                    <p className="mt-1 text-xs text-muted-foreground line-clamp-2">
+                      {guide.excerpt}
+                    </p>
+                    <div className="mt-2 flex items-center gap-1 text-xs font-semibold text-accent">
+                      <span>Baca selengkapnya</span>
+                      <ArrowRight className="size-3" />
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* Service FAQ */}
           <ServiceFaq items={serviceFaqItems} />
         </div>
 
-        <aside aria-label="Konsultasi">
-          <div className="rounded-lg border border-border bg-card p-5">
-            <h2 className="text-base font-bold tracking-tight text-foreground">
-              Bicara dengan CS kami
-            </h2>
-            <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-              Jelaskan kondisi perangkat Anda. CS akan menilai kelayakan dan menjelaskan
-              langkah selanjutnya.
-            </p>
-            <Link
-              href="/contact"
-              className="mt-4 inline-flex h-11 items-center gap-2 rounded-md bg-primary px-5 text-sm font-semibold text-primary-foreground hover:bg-primary-hover transition-colors cursor-pointer"
-            >
-              Konsultasi Sekarang
-            </Link>
-            <p className="mt-3 flex items-start gap-2 rounded-md bg-muted p-2.5 text-xs leading-relaxed text-muted-foreground">
-              <AlertTriangle className="mt-0.5 size-3.5 shrink-0 text-warning" aria-hidden="true" />
-              Hasil tidak dijamin sebelum kondisi perangkat Anda diperiksa oleh CS.
-            </p>
-            <p className="mt-3 rounded-md border border-warning/30 bg-warning/5 p-2.5 text-xs leading-relaxed text-foreground">
-              Konsultasi gratis. Biaya layanan dikonfirmasi setelah pengecekan perangkat Anda.
-            </p>
-          </div>
-        </aside>
+        {/* Right Sticky Column: High-Converting Consultation Aside */}
+        <ServiceConsultationAside service={service} />
       </div>
 
+      {/* Related Services */}
       {related.length > 0 ? (
-        <section className="mt-12" aria-labelledby="related-heading">
+        <section className="mt-16 border-t border-border pt-10" aria-labelledby="related-heading">
           <h2 id="related-heading" className="mb-5 text-lg font-bold tracking-tight text-foreground md:text-xl">
-            Layanan lain di kategori {category?.name}
+            Layanan Lain di Kategori {category?.name}
           </h2>
           <ServiceGrid services={related} />
           <p className="mt-5">
             <Link href="/services" className="text-sm font-semibold text-accent hover:text-accent-hover transition-colors cursor-pointer">
-              Lihat semua layanan →
+              Lihat seluruh katalog layanan lengkap →
             </Link>
           </p>
         </section>

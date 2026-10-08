@@ -1,195 +1,190 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Target, ShieldCheck, MessageSquareText, GitBranch, CalendarClock, BadgeCheck, ShieldAlert } from "lucide-react";
+import {
+  Target,
+  ShieldCheck,
+  MessageSquareText,
+  CalendarClock,
+  BadgeCheck,
+  ShieldAlert,
+  Wrench,
+  Users,
+  Lock,
+} from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Tentang Kami",
+  title: "Tentang TechFix Software",
   description:
-    "TechFix Software — layanan teknis Android yang dimulai sejak 2025 dengan pendekatan konsultasi manusia, kejujuran soal risiko, dan keamanan komunikasi.",
+    "TechFix Software: spesialis technical support Android sejak 2025 dengan konsultasi manusia, pengecekan kompatibilitas, dan transparansi risiko.",
   path: "/about",
+  keywords: [
+    "tentang techfix software",
+    "profil teknisi android",
+    "jasa teknisi software indonesia",
+    "layanan remote android",
+  ],
 });
 
 const values = [
   {
     icon: Target,
-    title: "Pemahaman di atas transaksi",
+    title: "Pemahaman di Atas Transaksi",
     description:
-      "Kami mengoptimalkan pemahaman masalah Anda sebelum deal, bukan sekadar mengejar checkout.",
+      "Kami memastikan Anda memahami akar masalah perangkat dan opsi yang tersedia sebelum deal, bukan sekadar mengejar transaksi cepat.",
   },
   {
     icon: ShieldCheck,
-    title: "Kejujuran soal risiko",
+    title: "Kejujuran Mutlak Soal Risiko",
     description:
-      "Tidak ada jaminan palsu. Semua risiko dan keterbatasan dibahas secara terbuka.",
+      "Tidak ada janji palsu 100% tanpa risiko. Dampak terhadap data, garansi pabrik, dan batas kemampuan software dijelaskan terbuka.",
   },
   {
     icon: MessageSquareText,
-    title: "Konsultasi manusia",
+    title: "Konsultasi Manusia Spesialis",
     description:
-      "Setiap kondisi perangkat dinilai oleh CS manusia — bukan algoritma yang menebak.",
+      "Kondisi perangkat Anda diteliti oleh teknisi manusia yang memahami arsitektur Android — bukan bot penjawab otomatis.",
   },
   {
-    icon: GitBranch,
-    title: "Siap berkembang",
+    icon: Lock,
+    title: "Keamanan & Privasi Data",
     description:
-      "Arsitektur data dirancang agar bisa bertumbuh menjadi pasar multi-teknisi tanpa rombak total.",
+      "Kami tidak pernah meminta data pribadi sensitif seperti kata sandi atau kode OTP. Sesi remote dipantau langsung di layar PC Anda.",
   },
 ];
 
 export default function AboutPage() {
   return (
-    <div className="container-page py-12 md:py-16">
+    <div className="container-page py-10 md:py-16">
       <Breadcrumbs items={[{ label: "Tentang Kami" }]} />
-      <SectionHeading as="h1"
-        eyebrow="Tentang Kami"
-        title="Layanan teknis Android yang jujur dan terarah"
-        description="Kami hadir sejak 2025 untuk membantu pemilik perangkat Android memahami masalahnya sebelum mengambil keputusan."
+
+      <SectionHeading
+        as="h1"
+        eyebrow="Tentang TechFix Software"
+        title="Layanan Teknis Android yang Jujur, Transparan, dan Terarah"
+        description="Beroperasi sejak 2025 untuk membantu pengguna Android di Indonesia memahami dan memulihkan masalah perangkat dengan bimbingan teknisi spesialis."
       />
 
-      {/* Cerita kami */}
-      <div className="grid gap-8 lg:grid-cols-[1fr_1.2fr] lg:items-start">
-        <div>
-          <span className="inline-flex size-10 items-center justify-center rounded-md bg-accent/10 text-accent" aria-hidden="true">
+      {/* Brand Story Grid */}
+      <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_1.3fr] lg:items-start">
+        <div className="rounded-xl border border-border bg-card p-6 shadow-xs">
+          <span className="inline-flex size-10 items-center justify-center rounded-md bg-accent-subtle text-accent" aria-hidden="true">
             <CalendarClock className="size-5" />
           </span>
-          <h2 className="mt-3 text-xl font-bold tracking-tight text-foreground sm:text-2xl">
-            Mulai tahun 2025
+          <h2 className="mt-3 text-xl font-bold tracking-tight text-foreground">
+            Dimulai Sejak 2025
           </h2>
-          <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Kami memulai layanan teknis Android pada tahun 2025 dan terus
-            berfokus pada satu hal: membantu Anda memahami kondisi perangkat
-            sebelum melanjutkan.
+          <p className="mt-2 text-xs sm:text-sm leading-relaxed text-muted-foreground">
+            TechFix Software beroperasi sejak 2025 dengan fokus spesifik: menjadi mitra teknis yang memberikan solusi software Android secara rasional, realistis, dan berorientasi pada keamanan perangkat.
           </p>
-        </div>
 
-        <div className="space-y-6 text-base leading-relaxed text-foreground md:text-lg">
-          <p>
-            Banyak pemilik perangkat Android kesulitan karena tidak tahu layanan apa
-            yang mereka butuhkan, tidak mengerti istilah teknis, dan tidak yakin apakah
-            perangkat mereka bisa ditangani. Kami hadir untuk menjawab tiga masalah itu:
-            dengan informasi yang jelas, persyaratan yang terbuka, dan konsultasi langsung
-            bersama CS manusia sebelum ada keputusan.
-          </p>
-          <p>
-            Anda bisa menjelajahi kategori, mencari berdasarkan gejala, membaca detail
-            setiap layanan beserta persyaratan dan risikonya, lalu berbicara langsung
-            dengan tim kami. Proses eksekusi disepakati setelah konsultasi — bukan
-            dipaksakan melalui keranjang belanja.
-          </p>
-          <p>
-            Saat ini seluruh layanan ditangani oleh tim kami secara langsung. Struktur
-            platform dirancang agar kelak dapat berkembang menjadi pasar multi-teknisi
-            tanpa mengubah pengalaman pelanggan secara mendasar.
-          </p>
-        </div>
-      </div>
-
-      {/* Nilai */}
-      <div className="mt-14 grid gap-5 sm:grid-cols-2">
-        {values.map((value) => (
-          <div key={value.title} className="rounded-lg border border-border bg-card p-6">
-            <span className="mb-4 flex size-10 items-center justify-center rounded-md bg-accent/10 text-accent" aria-hidden="true">
-              <value.icon className="size-5" />
-            </span>
-            <h2 className="text-lg font-semibold text-foreground">{value.title}</h2>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{value.description}</p>
+          <div className="mt-6 border-t border-border/80 pt-4 space-y-2 text-xs text-foreground/80 font-medium">
+            <div className="flex items-center gap-2">
+              <Wrench className="size-3.5 text-accent" />
+              <span>Spesialis Software: Bootloop, Root, ROM, Firmware</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Users className="size-3.5 text-accent" />
+              <span>Melayani Pengguna Android di Seluruh Indonesia</span>
+            </div>
           </div>
-        ))}
+        </div>
+
+        {/* Narrative & Philosophy */}
+        <div className="space-y-5 text-sm sm:text-base leading-relaxed text-foreground">
+          <p>
+            Banyak pemilik perangkat Android menghadapi situasi rumit saat ponsel mereka tiba-tiba berhenti di logo (bootloop), mati setelah update, atau saat ingin melakukan modifikasi seperti root dan custom ROM. Di internet, informasi yang beredar kerap membingungkan, tautan file berisiko malware, atau banyak teknisi yang memberikan janji manis tanpa menjelaskan potensi data terhapus.
+          </p>
+          <p>
+            <strong>TechFix Software hadir untuk mengubah pengalaman itu.</strong> Filosofi kami sederhana: <em>Diagnosis yang benar harus mendahului tindakan apa pun</em>. Kami tidak pernah menyuruh pelanggan langsung melakukan flashing sebelum varian nomor model, versi chipset, dan status bootloader diperiksa secara teliti.
+          </p>
+          <p>
+            Jika ponsel Anda masih bisa diselamatkan tanpa menghapus data, kami akan mengupayakan opsi tersebut. Namun jika kerusakan software mengharuskan clean flash pabrik, kami akan menyampaikannya secara jujur di depan agar Anda dapat mengambil keputusan dengan tenang.
+          </p>
+        </div>
       </div>
 
-      {/* Testimoni & transparansi */}
+      {/* Values Grid */}
+      <div className="mt-14">
+        <h2 className="text-xl font-bold tracking-tight text-foreground sm:text-2xl text-center">
+          Empat Pilar Filosofi Layanan Kami
+        </h2>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {values.map((value) => (
+            <div key={value.title} className="rounded-xl border border-border bg-card p-5 shadow-xs">
+              <span className="flex size-10 items-center justify-center rounded-md bg-accent-subtle text-accent" aria-hidden="true">
+                <value.icon className="size-5" />
+              </span>
+              <h3 className="mt-3.5 text-sm font-bold text-foreground">{value.title}</h3>
+              <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{value.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Security Advisory & Verification */}
       <section
-        aria-labelledby="testimonial-heading"
-        className="mt-14 rounded-xl border border-border bg-card p-6 md:p-10"
+        aria-labelledby="security-story-heading"
+        className="mt-14 rounded-2xl border border-border bg-card p-6 sm:p-8 md:p-10 shadow-xs"
       >
         <div className="grid gap-8 md:grid-cols-[1fr_1.2fr] md:gap-10">
           <div>
-            <span className="inline-flex size-10 items-center justify-center rounded-md bg-accent/10 text-accent" aria-hidden="true">
+            <span className="inline-flex size-10 items-center justify-center rounded-md bg-accent-subtle text-accent" aria-hidden="true">
               <BadgeCheck className="size-5" />
             </span>
-            <h2 id="testimonial-heading" className="mt-3 text-xl font-bold tracking-tight text-foreground">
-              Testimoni &amp; transparansi
+            <h2 id="security-story-heading" className="mt-3 text-xl font-bold tracking-tight text-foreground">
+              Transparansi &amp; Keamanan Kanal
             </h2>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Sejak mulai beroperasi pada 2025, kami mengumpulkan testimoni dari pelanggan
-              sebagai bentuk transparansi layanan.
+            <p className="mt-2 text-xs sm:text-sm leading-relaxed text-muted-foreground">
+              Bagi kami, kepercayaan dibangun dari keterbukaan. Kami secara konsisten melindungi pengunjung dari risiko penipuan digital yang mengatasnamakan layanan teknis.
             </p>
 
-{siteConfig.telegramUrl ? (
-              <div className="mt-6 rounded-lg border border-warning/30 bg-warning/5 p-4">
-                <h3 className="flex items-center gap-2 text-sm font-semibold text-foreground">
+            {siteConfig.telegramUrl && (
+              <div className="mt-5 rounded-lg border border-warning/30 bg-warning/5 p-4">
+                <h3 className="flex items-center gap-1.5 text-xs font-bold text-foreground">
                   <ShieldAlert className="size-4 shrink-0 text-warning" aria-hidden="true" />
-                  Catatan keamanan — kanal Telegram
+                  Kanal Resmi Telegram Saat Ini
                 </h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                  Kanal Telegram kami sebelumnya pernah disusupi oleh pihak yang tidak bertanggung
-                  jawab dan sudah tidak digunakan. Kanal resmi saat ini dapat diakses di{" "}
+                <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+                  Kanal resmi kami saat ini beralamat di{" "}
                   <a
                     href={siteConfig.telegramUrl}
                     target="_blank"
                     rel="noopener noreferrer nofollow"
-                    className="break-all font-medium text-accent underline underline-offset-2 transition-colors hover:text-accent-hover cursor-pointer"
+                    className="font-semibold text-accent underline break-all"
                   >
                     {siteConfig.telegramUrl}
-                  </a>{" "}
-                  — mohon abaikan kanal lama atau kanal lain yang mengatasnamakan kami.
+                  </a>
+                  . Harap selalu memverifikasi tautan kontak sebelum bertransaksi.
                 </p>
               </div>
-            ) : null}
+            )}
           </div>
 
           <div className="space-y-4">
-            <div className="flex items-start gap-3 rounded-lg border-l-4 border-accent bg-accent-subtle/60 p-5">
+            <div className="flex items-start gap-3 rounded-lg border-l-4 border-accent bg-accent-subtle/50 p-4">
               <BadgeCheck className="mt-0.5 size-5 shrink-0 text-accent" aria-hidden="true" />
               <div>
-                <h3 className="text-base font-semibold text-foreground">
-                  Satu-satunya situs web resmi kami
+                <h3 className="text-sm font-bold text-foreground">
+                  Domain Tunggal Resmi
                 </h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                  Situs web resmi TechFix Software hanya satu, yaitu{" "}
-                  <a
-                    href="https://techfixsoftware.my.id"
-                    className="font-medium text-accent underline underline-offset-2 transition-colors hover:text-accent-hover cursor-pointer"
-                  >
-                    techfixsoftware.my.id
-                  </a>
-                  . Kami tidak memiliki situs web lain. Jika Anda menemukan situs atau akun lain yang
-                  mengatasnamakan TechFix Software dan meminta pembayaran, mohon abaikan — transaksi
-                  hanya diproses melalui kanal resmi kami.
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                  Situs resmi TechFix Software hanya satu, yaitu <strong>techfixsoftware.my.id</strong>. Kami tidak mengoperasikan situs web lain. Transaksi dan koordinasi hanya diproses melalui nomor WhatsApp resmi yang tercantum di web ini.
                 </p>
               </div>
             </div>
 
-            <div className="flex items-start gap-3 rounded-lg border-l-4 border-warning bg-warning/5 p-5">
-              <ShieldAlert className="mt-0.5 size-5 shrink-0 text-warning" aria-hidden="true" />
-              <div>
-                <h3 className="text-base font-semibold text-foreground">
-                  Saluran testimoni sebelumnya pernah diretas
-                </h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                  Sayangnya, saluran testimoni kami sebelumnya pernah disusupi oleh pihak
-                  yang tidak bertanggung jawab. Demi melindungi Anda dari informasi yang
-                  tidak valid, saat ini kami sementara tidak menautkan saluran tersebut
-                  dan sedang menyiapkan kanal yang lebih aman untuk menampilkannya kembali.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-3 rounded-lg border-l-4 border-accent bg-accent-subtle/60 p-5">
+            <div className="flex items-start gap-3 rounded-lg border-l-4 border-accent bg-accent-subtle/50 p-4">
               <BadgeCheck className="mt-0.5 size-5 shrink-0 text-accent" aria-hidden="true" />
               <div>
-                <h3 className="text-base font-semibold text-foreground">
-                  Saluran resmi tetap satu-satunya yang sah
+                <h3 className="text-sm font-bold text-foreground">
+                  Privasi &amp; Tanpa Akses Kredensial Pribadi
                 </h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                  Selalu pastikan Anda berkomunikasi hanya melalui kanal resmi kami:
-                  WhatsApp dan Telegram yang tertera di situs ini. Kami tidak pernah
-                  meminta data perbankan, OTP, atau mengarahkan transaksi di luar kanal
-                  resmi.
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                  Kami tidak pernah meminta PIN layar, kata sandi akun Google/email, maupun kode verifikasi OTP. Pada sesi remote via AnyDesk, Anda memegang kendali penuh untuk menghentikan koneksi kapan pun.
                 </p>
               </div>
             </div>
@@ -197,23 +192,21 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="mt-14">
-        <div className="rounded-xl bg-primary p-8 text-center text-primary-foreground md:p-12">
-          <h2 className="text-xl font-bold tracking-tight text-white md:text-2xl">
-            Ada pertanyaan tentang layanan kami?
-          </h2>
-          <p className="mx-auto mt-2 max-w-lg text-base text-white/80">
-            Hubungi tim kami melalui kanal resmi. Konsultasi gratis tanpa tekanan untuk melanjutkan.
-          </p>
-          <div className="mt-6 flex justify-center">
-            <Link
-              href="/contact"
-              className="inline-flex h-11 items-center justify-center rounded-md bg-white px-6 text-sm font-semibold text-primary shadow-lg shadow-black/10 transition-all hover:bg-white/90 cursor-pointer"
-            >
-              Hubungi Tim Kami
-            </Link>
-          </div>
+      {/* CTA Section */}
+      <section className="mt-14 rounded-2xl bg-primary p-8 text-center text-primary-foreground sm:p-12">
+        <h2 className="text-xl font-bold tracking-tight text-white sm:text-2xl md:text-3xl">
+          Ingin mendiskusikan kondisi perangkat Anda?
+        </h2>
+        <p className="mx-auto mt-2 max-w-lg text-xs sm:text-sm text-white/80 leading-relaxed">
+          Hubungi teknisi kami melalui WhatsApp resmi. Konsultasi gratis tanpa keharusan atau paksaan untuk langsung melakukan perbaikan.
+        </p>
+        <div className="mt-6 flex justify-center">
+          <Link
+            href="/contact"
+            className="inline-flex h-11 items-center justify-center rounded-md bg-white px-6 text-sm font-semibold text-primary shadow-md hover:bg-white/90 transition-colors cursor-pointer"
+          >
+            Konsultasikan Masalah Anda Sekarang
+          </Link>
         </div>
       </section>
     </div>

@@ -1,20 +1,26 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/config/site";
 import { services } from "@/data/services";
-import { categories } from "@/data/categories";
+
+import { guides } from "@/data/guides";
 
 const baseUrl = siteConfig.url.replace(/\/$/, "");
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes: Array<{ path: string; priority: number; changefreq: MetadataRoute.Sitemap[number]["changeFrequency"] }> = [
+  const staticRoutes: Array<{
+    path: string;
+    priority: number;
+    changefreq: MetadataRoute.Sitemap[number]["changeFrequency"];
+  }> = [
     { path: "/", priority: 1, changefreq: "weekly" },
     { path: "/services", priority: 0.9, changefreq: "weekly" },
+    { path: "/guides", priority: 0.85, changefreq: "weekly" },
     { path: "/testimonials", priority: 0.7, changefreq: "monthly" },
     { path: "/how-it-works", priority: 0.7, changefreq: "monthly" },
     { path: "/remote-guide", priority: 0.7, changefreq: "monthly" },
     { path: "/faq", priority: 0.8, changefreq: "monthly" },
-    { path: "/about", priority: 0.4, changefreq: "yearly" },
-    { path: "/contact", priority: 0.6, changefreq: "yearly" },
+    { path: "/about", priority: 0.5, changefreq: "monthly" },
+    { path: "/contact", priority: 0.7, changefreq: "monthly" },
     { path: "/terms", priority: 0.2, changefreq: "yearly" },
     { path: "/privacy", priority: 0.2, changefreq: "yearly" },
     { path: "/disclaimer", priority: 0.2, changefreq: "yearly" },
@@ -27,11 +33,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
-  const categoryRoutes = categories.map((category) => ({
-    url: `${baseUrl}/categories/${category.slug}`,
-    lastModified: new Date(),
+  const guideRoutes = guides.map((guide) => ({
+    url: `${baseUrl}/guides/${guide.slug}`,
+    lastModified: new Date(guide.updatedAt),
     changeFrequency: "weekly" as const,
-    priority: 0.7,
+    priority: 0.8,
   }));
 
   return [
@@ -42,6 +48,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: route.priority,
     })),
     ...serviceRoutes,
-    ...categoryRoutes,
+    ...guideRoutes,
   ];
 }
