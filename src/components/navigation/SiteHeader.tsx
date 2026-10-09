@@ -159,9 +159,6 @@ export function SiteHeader() {
               <Search className="size-[18px]" aria-hidden="true" />
             </Link>
 
-            {/* Consultation CTA button - Desktop */}
-            <HeaderConsultationCTA />
-
             {/* Mobile menu trigger */}
             <button
               ref={closeRef}
