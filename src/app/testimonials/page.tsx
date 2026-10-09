@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MessageSquareQuote, ShieldCheck, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { testimonials } from "@/data/testimonials";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
@@ -11,16 +11,10 @@ import { getContactMessage } from "@/lib/contact";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Testimoni Pelanggan",
+  title: "Testimoni Service Software HP Android",
   description:
-    "Bukti percakapan dan pengalaman pelanggan layanan perbaikan software Android bersama TechFix Software: fix bootloop, custom ROM, dan software repair.",
+    "Bukti chat WhatsApp pengerjaan remote service Android: fix bootloop Xiaomi, flashing Samsung, hingga root Poco. Simak ulasan pelanggan TechFix Software!",
   path: "/testimonials",
-  keywords: [
-    "testimoni techfix software",
-    "review layanan android",
-    "pengalaman pelanggan bootloop",
-    "bukti jasa root android",
-  ],
 });
 
 export default function TestimonialsPage() {
@@ -33,22 +27,19 @@ export default function TestimonialsPage() {
 
       <SectionHeading
         as="h1"
-        eyebrow="Bukti Sosial Asli"
-        title="Pengalaman pelanggan bersama TechFix"
-        description="Dihadirkan secara transparan dari tangkapan layar percakapan pelanggan kami di kanal komunikasi resmi."
+        eyebrow="Dokumentasi Kasus &amp; Reputasi"
+        title="Dokumentasi Pengalaman Pelanggan &amp; Kasus Riil"
+        description="Arsip tangkapan layar percakapan dan evaluasi penyelesaian teknis dari pelanggan di kanal resmi TechFix Software."
       />
 
       {/* Context Notice Banner */}
-      <div className="mt-4 mb-8 rounded-xl border border-accent/20 bg-accent-subtle/50 p-4 text-xs sm:text-sm text-foreground flex items-start gap-3">
-        <MessageSquareQuote className="size-5 shrink-0 text-accent mt-0.5" />
-        <div>
-          <p className="font-semibold text-accent">
-            Prinsip Bukti Sosial TechFix Software:
-          </p>
-          <p className="mt-0.5 text-muted-foreground text-xs leading-relaxed">
-            Testimoni ditampilkan berdasarkan percakapan pelanggan yang tersedia. Kami tidak menggunakan review palsu, nama rekaan, maupun angka rating buatan.
-          </p>
-        </div>
+      <div className="mt-4 mb-8 rounded-lg border border-accent/20 bg-accent-subtle/50 p-4 border-l-4 border-l-accent text-xs sm:text-sm text-foreground">
+        <p className="font-semibold text-accent">
+          Standar Dokumentasi Kasus Pelanggan:
+        </p>
+        <p className="mt-0.5 text-muted-foreground text-xs leading-relaxed">
+          Seluruh rekaman testimoni merupakan arsip tangkapan layar percakapan riil dari sesi konsultasi dan penyelesaian teknis perangkat bersama pelanggan resmi kami.
+        </p>
       </div>
 
       {/* Testimonials Grid */}
@@ -59,11 +50,11 @@ export default function TestimonialsPage() {
       </div>
 
       {/* Consultation Conversion CTA */}
-      <section className="mt-14 rounded-2xl bg-primary p-8 text-center text-primary-foreground sm:p-12">
-        <div className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-white mb-3">
-          <ShieldCheck className="size-3.5 text-whatsapp" />
+      <section className="mt-14 rounded-lg bg-primary p-8 text-center text-primary-foreground sm:p-12">
+        <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-white/90 mb-3">
+          <span className="size-1.5 rounded-full bg-accent" />
           <span>Solusi Nyata Tanpa Spekulasi</span>
-        </div>
+        </p>
 
         <h2 className="text-xl font-bold tracking-tight text-white sm:text-2xl md:text-3xl">
           Ingin HP Android Anda kembali normal seperti mereka?

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Wifi, ArrowRight, ShieldCheck, Check } from "lucide-react";
+import { Wifi, ArrowRight } from "lucide-react";
 import type { Service } from "@/types";
 import { getCategoryById } from "@/data/categories";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
@@ -25,7 +25,7 @@ export function ServiceHero({ service }: { service: Service }) {
   };
 
   return (
-    <div className="rounded-2xl bg-primary p-7 text-primary-foreground sm:p-10 md:p-12 shadow-sm">
+    <div className="rounded-lg bg-primary p-7 text-primary-foreground sm:p-10 md:p-12 shadow-sm">
       <div className="max-w-3xl">
         {/* Badges */}
         <div className="mb-4 flex flex-wrap items-center gap-2">
@@ -95,17 +95,17 @@ export function ServiceHero({ service }: { service: Service }) {
 
         {/* Microcopy */}
         <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-white/15 pt-4 text-xs text-white/70">
-          <span className="flex items-center gap-1.5">
-            <Check className="size-3.5 text-whatsapp" />
-            Pengecekan kompatibilitas di awal
+          <span className="flex items-center gap-2">
+            <span className="size-1.5 rounded-full bg-accent shrink-0" aria-hidden="true" />
+            Validasi kompatibilitas firmware di awal
           </span>
-          <span className="flex items-center gap-1.5">
-            <Check className="size-3.5 text-whatsapp" />
-            Konsultasi manusia, bukan chatbot
+          <span className="flex items-center gap-2">
+            <span className="size-1.5 rounded-full bg-accent shrink-0" aria-hidden="true" />
+            Evaluasi spesialis teknis langsung
           </span>
-          <span className="flex items-center gap-1.5">
-            <ShieldCheck className="size-3.5 text-accent" />
-            Risiko dijelaskan sebelum eksekusi
+          <span className="flex items-center gap-2">
+            <span className="size-1.5 rounded-full bg-accent shrink-0" aria-hidden="true" />
+            Transparansi risiko sebelum eksekusi
           </span>
         </div>
       </div>

@@ -1,21 +1,21 @@
 import Link from "next/link";
-import { ArrowRight, AlertCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { problemsList } from "@/data/problems";
 
 export function ProblemFirstSection() {
   return (
-    <section id="masalah-android" aria-labelledby="problem-section-heading" className="border-b border-border bg-white py-14 md:py-20">
+    <section id="masalah-android" aria-labelledby="problem-section-heading" className="border-b border-border bg-white py-16 md:py-24">
       <div className="container-page">
         <div className="mx-auto max-w-2xl text-center">
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-accent-subtle px-3 py-1 text-xs font-semibold uppercase tracking-wider text-accent">
-            <AlertCircle className="size-3.5" aria-hidden="true" />
-            <span>Problem Discovery</span>
-          </div>
+          <p className="inline-flex items-center gap-2 rounded-full border border-border bg-muted/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+            <span className="size-1.5 rounded-full bg-accent" />
+            Diagnostik Gejala Sistem
+          </p>
           <h2 id="problem-section-heading" className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
-            Masalah Android Anda yang mana?
+            Identifikasi Gejala Masalah Perangkat Anda
           </h2>
           <p className="mt-2 text-sm sm:text-base leading-relaxed text-muted-foreground">
-            Pilih gejala yang paling menggambarkan situasi ponsel Anda saat ini. Kami arahkan langsung ke langkah pemulihan yang tepat.
+            Pilih pola kerusakan atau kondisi partisi yang sesuai dengan perangkat Anda saat ini untuk melihat jalur penanganan teknis yang tepat.
           </p>
         </div>
 
@@ -24,7 +24,7 @@ export function ProblemFirstSection() {
             <Link
               key={item.id}
               href={item.href}
-              className="group flex flex-col justify-between rounded-xl border border-border bg-card p-5 transition-all duration-150 hover:border-accent hover:shadow-card-hover cursor-pointer"
+              className="group flex flex-col justify-between rounded-lg border border-border bg-card p-5 transition-all duration-150 hover:border-accent cursor-pointer"
             >
               <div>
                 <div className="flex items-center justify-between gap-2">
@@ -53,8 +53,8 @@ export function ProblemFirstSection() {
         </div>
 
         <div className="mt-8 rounded-lg border border-accent/20 bg-accent-subtle/50 p-4 text-center text-xs sm:text-sm text-foreground">
-          <span className="font-semibold text-accent">Gejala Anda tidak tercantum di atas?</span>{" "}
-          Gunakan fitur <a href="#interactive-finder" className="underline font-medium hover:text-accent-hover">Ceritakan Masalah Anda</a> di bawah untuk merangkum riwayat HP Anda.
+          <span className="font-semibold text-accent">Gejala sistem Anda membutuhkan analisis khusus?</span>{" "}
+          Gunakan fitur <a href="#interactive-finder" className="underline font-medium hover:text-accent-hover">Formulir Diagnostik Terstruktur</a> di bawah untuk merangkum spesifikasi dan riwayat unit Anda.
         </div>
       </div>
     </section>

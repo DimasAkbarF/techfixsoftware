@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Send, CheckCircle2, ShieldCheck } from "lucide-react";
+import { Send, CheckCircle2 } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { hasWhatsapp, whatsappLink } from "@/config/site";
 import { buildContactFormMessage } from "@/lib/contact";
@@ -73,7 +73,7 @@ export function ContactLeadForm() {
     const waUrl = isWa ? whatsappLink(formattedMessage) : null;
 
     return (
-      <div className="rounded-xl border border-success/30 bg-success/5 p-6 sm:p-8 text-center">
+      <div className="rounded-lg border border-success/30 bg-success/5 p-6 sm:p-8 text-center">
         <span className="mx-auto flex size-12 items-center justify-center rounded-full bg-success/15 text-success">
           <CheckCircle2 className="size-6" />
         </span>
@@ -113,7 +113,7 @@ export function ContactLeadForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 rounded-xl border border-border bg-card p-6 sm:p-8 shadow-xs">
+    <form onSubmit={handleSubmit} className="space-y-4 rounded-lg border border-border bg-card p-6 sm:p-8 shadow-xs">
       <div className="border-b border-border/70 pb-3">
         <h2 className="text-lg font-bold text-foreground">
           Formulir Konsultasi Ringan
@@ -221,11 +221,10 @@ export function ContactLeadForm() {
       </div>
 
       {/* Reassurance Callout */}
-      <div className="rounded-md bg-muted/60 p-3 text-[11px] leading-relaxed text-muted-foreground flex items-start gap-2">
-        <ShieldCheck className="size-4 shrink-0 text-accent mt-0.5" />
-        <span>
-          <strong>Catatan:</strong> Pengisian form ini <em>bukan berarti Anda harus langsung melakukan service</em>. Kami membantu menilai kondisi dan kelayakan perangkat Anda terlebih dahulu secara gratis.
-        </span>
+      <div className="rounded-md border border-border/80 bg-muted/40 p-3 text-[11px] leading-relaxed text-muted-foreground border-l-2 border-l-accent">
+        <p>
+          <strong>Evaluasi Terbuka:</strong> Data formulir digunakan teknisi untuk memeriksa kecocokan file firmware dan analisis partisi secara objektif sebelum tindakan disepakati.
+        </p>
       </div>
 
       {/* Submit Button */}

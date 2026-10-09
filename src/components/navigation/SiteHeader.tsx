@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Search, X, ArrowRight } from "lucide-react";
 import { mainNav } from "@/components/navigation/navItems";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
-import { hasWhatsapp, whatsappLink } from "@/config/site";
+import { hasWhatsapp, whatsappLink, hasTelegram, telegramLink } from "@/config/site";
 import { buildConsultationMessage } from "@/lib/contact";
 import { trackEvent } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
@@ -121,7 +121,7 @@ export function SiteHeader() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 border-b border-border bg-white/95 backdrop-blur-sm">
+      <header className="sticky top-0 z-40 border-b border-border bg-white">
         <div className="container-page flex h-14 items-center justify-between gap-4 sm:h-16">
           {/* Logo */}
           <Logo />
@@ -201,6 +201,7 @@ function MobileMenuOverlay({
   pathname: string;
 }) {
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
+  const tgUrl = hasTelegram() ? telegramLink() : null;
 
   useEffect(() => {
     firstLinkRef.current?.focus();
@@ -279,6 +280,20 @@ function MobileMenuOverlay({
               <Search className="size-4" aria-hidden="true" />
               Cari Masalah atau Layanan
             </Link>
+            {tgUrl && (
+              <div className="flex items-center justify-center gap-1.5 pt-1 text-[11px] text-muted-foreground">
+                <span>Atau hubungi via</span>
+                <a
+                  href={tgUrl}
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
+                  onClick={onClose}
+                  className="font-semibold text-telegram hover:underline cursor-pointer"
+                >
+                  Telegram Support
+                </a>
+              </div>
+            )}
           </div>
         </div>
       </div>

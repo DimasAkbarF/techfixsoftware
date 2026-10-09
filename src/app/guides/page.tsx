@@ -1,25 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BookOpen, Clock, ArrowRight, ShieldCheck } from "lucide-react";
+import { Clock, ArrowRight } from "lucide-react";
 import { guides } from "@/data/guides";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { buildMetadata, absoluteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Panduan & Edukasi Software Android",
+  title: "Panduan Troubleshooting Software Android",
   description:
-    "Panduan teknis Android: penyebab bootloop, risiko root, unlock bootloader, perbedaan soft brick, dan checklist sebelum flash firmware.",
+    "Kumpulan panduan teknis Android terlengkap: cara atasi bootloop, tips flash firmware, tutorial root Magisk, ubl, & unbrick aman. Baca panduan gratisnya!",
   path: "/guides",
-  keywords: [
-    "panduan android",
-    "artikel bootloop",
-    "cara atasi bootloop",
-    "apakah root aman",
-    "unlock bootloader data",
-    "perbedaan bootloop soft brick",
-    "flash firmware android",
-  ],
 });
 
 export default function GuidesIndexPage() {
@@ -57,7 +48,7 @@ export default function GuidesIndexPage() {
         {guides.map((guide) => (
           <article
             key={guide.id}
-            className="group flex flex-col justify-between rounded-xl border border-border bg-card p-6 shadow-xs transition-all duration-150 hover:border-accent hover:shadow-card-hover"
+            className="group flex flex-col justify-between rounded-lg border border-border bg-card p-6 shadow-xs transition-all duration-150 hover:border-accent hover:shadow-card-hover"
           >
             <div>
               <div className="flex items-center justify-between text-xs text-muted-foreground">
@@ -103,12 +94,12 @@ export default function GuidesIndexPage() {
       </div>
 
       {/* Bottom Consultation Banner */}
-      <div className="mt-14 rounded-2xl border border-border bg-slate-50 p-6 sm:p-8 md:p-10 text-center">
+      <div className="mt-14 rounded-lg border border-border bg-slate-50 p-6 sm:p-8 md:p-10 text-center">
         <div className="mx-auto max-w-xl">
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-accent-subtle px-3 py-1 text-xs font-semibold text-accent mb-3">
-            <BookOpen className="size-3.5" />
-            <span>Pendampingan Langsung</span>
-          </div>
+          <p className="inline-flex items-center gap-2 rounded-full border border-border bg-muted/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-3">
+            <span className="size-1.5 rounded-full bg-accent" />
+            Pendampingan Teknis Langsung
+          </p>
           <h2 className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">
             Sudah membaca panduan tetapi HP tetap bermasalah?
           </h2>
@@ -120,8 +111,8 @@ export default function GuidesIndexPage() {
               href="/contact"
               className="inline-flex h-11 items-center gap-2 rounded-md bg-primary px-5 text-sm font-semibold text-primary-foreground hover:bg-primary-hover transition-colors cursor-pointer"
             >
-              <ShieldCheck className="size-4" />
               <span>Konsultasikan dengan Teknisi</span>
+              <ArrowRight className="size-4" />
             </Link>
           </div>
         </div>

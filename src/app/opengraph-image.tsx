@@ -15,9 +15,9 @@ export default function OgImage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "#0f172a",
+          background: "#0b1220",
           color: "#ffffff",
-          fontFamily: "Inter, sans-serif",
+          fontFamily: "sans-serif",
         }}
       >
         <div
@@ -40,7 +40,7 @@ export default function OgImage() {
               width: 84,
               height: 84,
               borderRadius: 20,
-              background: "#0877b5",
+              background: "#0a4fd6",
               fontSize: 44,
               fontWeight: 800,
               color: "#ffffff",
@@ -50,7 +50,7 @@ export default function OgImage() {
           </div>
         </div>
         <div style={{ display: "flex", fontSize: 72, fontWeight: 800, letterSpacing: -1 }}>
-          techfix<span style={{ color: "#38b2e8" }}>software</span>
+          techfix<span style={{ color: "#9db9f2" }}>software</span>
         </div>
         <div
           style={{

@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
-import { ShieldAlert, ShieldCheck } from "lucide-react";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -50,12 +49,11 @@ export function SiteFooter() {
               </span>
             </Link>
             <p className="mt-3 text-xs leading-relaxed text-white/70">
-              Technical Android software support spesialis dengan pendekatan konsultasi manusia, pengecekan kompatibilitas di awal, dan transparansi risiko tanpa janji palsu.
+              Penyedia layanan technical support software Android dengan spesialisasi pemulihan sistem, flashing firmware resmi, dan optimasi partisi di bawah standar rekayasa terverifikasi.
             </p>
 
-            <div className="mt-4 flex items-center gap-2 rounded-md bg-white/5 p-2.5 text-xs text-white/80 border border-white/10">
-              <ShieldCheck className="size-4 shrink-0 text-accent" aria-hidden="true" />
-              <span>Remote support terarah untuk pengguna Android di seluruh Indonesia.</span>
+            <div className="mt-4 border-l-2 border-accent pl-3 text-xs leading-relaxed text-white/70">
+              <span>Layanan remote engineering terarah untuk seluruh wilayah Indonesia.</span>
             </div>
           </div>
 
@@ -78,7 +76,7 @@ export function SiteFooter() {
 
           {/* Col 3: Panduan & Edukasi */}
           <nav aria-label="Navigasi footer — Panduan">
-            <p className="mb-3 text-xs font-bold uppercase tracking-wider text-white/50">Panduan & Solusi</p>
+            <p className="mb-3 text-xs font-bold uppercase tracking-wider text-white/50">Panduan &amp; Solusi</p>
             <ul className="space-y-2">
               {guideLinks.map((item) => (
                 <li key={item.href}>
@@ -95,7 +93,7 @@ export function SiteFooter() {
 
           {/* Col 4: Trust, Saluran Resmi & Legal */}
           <nav aria-label="Navigasi footer — Informasi & Legal">
-            <p className="mb-3 text-xs font-bold uppercase tracking-wider text-white/50">Keamanan & Legal</p>
+            <p className="mb-3 text-xs font-bold uppercase tracking-wider text-white/50">Keamanan &amp; Legal</p>
             <ul className="space-y-2">
               {trustLinks.map((item) => (
                 <li key={item.href}>
@@ -108,14 +106,6 @@ export function SiteFooter() {
                 </li>
               ))}
             </ul>
-
-            <div className="mt-4 rounded-md border border-warning/20 bg-warning/5 p-2.5 text-[11px] leading-relaxed text-white/75">
-              <span className="font-semibold text-warning flex items-center gap-1">
-                <ShieldAlert className="size-3" aria-hidden="true" />
-                Keamanan Saluran
-              </span>
-              Komunikasi resmi hanya melalui WhatsApp &amp; Telegram yang tertera di situs ini. Kami tidak pernah meminta kata sandi akun atau kode OTP.
-            </div>
           </nav>
         </div>
       </div>

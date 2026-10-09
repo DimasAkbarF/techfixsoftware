@@ -10,7 +10,7 @@ export function FinalCTA() {
 
   return (
     <section aria-labelledby="final-cta-heading" className="container-page py-16 md:py-24">
-      <div className="rounded-xl bg-primary p-8 text-center text-primary-foreground md:p-12">
+      <div className="rounded-lg bg-primary p-8 text-center text-primary-foreground md:p-12">
         <h2 id="final-cta-heading" className="mx-auto max-w-2xl text-xl font-bold tracking-tight text-white md:text-2xl">
           Tidak yakin layanan apa yang Anda butuhkan?
         </h2>

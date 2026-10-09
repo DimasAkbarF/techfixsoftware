@@ -6,8 +6,6 @@ import {
   Info,
   AlertTriangle,
   ArrowRight,
-  ShieldCheck,
-  ShieldAlert,
 } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { siteConfig, hasWhatsapp, whatsappLink } from "@/config/site";
@@ -17,17 +15,10 @@ import { ContactLeadForm } from "@/components/contact/ContactLeadForm";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Konsultasi & Kontak Teknisi",
+  title: "Kontak Teknisi & Konsultasi Android",
   description:
-    "Jelaskan masalah Android Anda untuk konsultasi gratis dengan teknisi manusia. Pengecekan kompatibilitas di awal via WhatsApp atau form konsultasi terarah.",
+    "Konsultasikan masalah HP Android Anda dengan teknisi spesialis: bootloop, soft brick, root, & flash firmware via WhatsApp. Hubungi TechFix Software sekarang!",
   path: "/contact",
-  keywords: [
-    "kontak techfix software",
-    "konsultasi bootloop",
-    "jasa root whatsapp",
-    "teknisi software android",
-    "service hp jarak jauh",
-  ],
 });
 
 const deviceInfoItems = [
@@ -48,10 +39,10 @@ export default function ContactPage() {
 
       {/* Header */}
       <div className="mx-auto max-w-2xl text-center">
-        <span className="mb-2 inline-flex items-center gap-1.5 rounded-full bg-accent-subtle px-3 py-1 text-xs font-semibold uppercase tracking-wider text-accent">
-          <ShieldCheck className="size-3.5" />
-          <span>Lead &amp; Consultation Entry</span>
-        </span>
+        <p className="inline-flex items-center gap-2 rounded-full border border-border bg-muted/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-3">
+          <span className="size-1.5 rounded-full bg-accent" />
+          Konsultasi &amp; Triage Teknis
+        </p>
         <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl md:text-4xl">
           Jelaskan Masalah Android Anda
         </h1>
@@ -70,7 +61,7 @@ export default function ContactPage() {
         {/* Right: Direct WhatsApp Card + Channel info */}
         <div className="space-y-6">
           {/* Direct WhatsApp Card */}
-          <div className="rounded-xl bg-primary p-6 text-primary-foreground shadow-sm">
+          <div className="rounded-lg bg-primary p-6 text-primary-foreground shadow-sm">
             <div className="flex items-start gap-3.5">
               <span className="flex size-11 shrink-0 items-center justify-center rounded-lg bg-whatsapp text-whatsapp-foreground">
                 <WhatsAppIcon className="size-5" />
@@ -118,7 +109,7 @@ export default function ContactPage() {
           </div>
 
           {/* Quick Preparation Guidance */}
-          <div className="rounded-xl border border-border bg-card p-5">
+          <div className="rounded-lg border border-border bg-card p-5">
             <h3 className="text-sm font-bold text-foreground flex items-center gap-2">
               <Info className="size-4 text-accent" />
               Info yang Membantu Penilaian Cepat
@@ -134,13 +125,12 @@ export default function ContactPage() {
           </div>
 
           {/* Security & Official Channels Notice */}
-          <div className="rounded-xl border border-warning/30 bg-warning/5 p-4 text-xs leading-relaxed text-foreground">
-            <p className="flex items-center gap-1.5 font-bold text-warning">
-              <ShieldAlert className="size-4 shrink-0" />
-              Pemberitahuan Keamanan Resmi
-            </p>
-            <p className="mt-1 text-muted-foreground text-[11px]">
-              Situs resmi TechFix Software hanya beralamat di <strong>techfixsoftware.my.id</strong>. Kami tidak pernah meminta kata sandi akun, kunci layar, atau kode OTP apa pun. Seluruh transaksi dan konsultasi hanya diproses melalui nomor WhatsApp resmi yang tertera di situs ini.
+          <div className="rounded-lg border border-border bg-card p-5 text-xs leading-relaxed text-foreground shadow-xs">
+            <h3 className="font-bold text-foreground text-xs uppercase tracking-wider">
+              Protokol Keamanan &amp; Integritas Akses
+            </h3>
+            <p className="mt-1.5 text-muted-foreground text-xs leading-relaxed">
+              Seluruh konsultasi diproses via kanal resmi terverifikasi di <strong>techfixsoftware.my.id</strong>. Kami menjamin kerahasiaan data pengguna dan menerapkan prinsip zero-knowledge credential tanpa meminta kata sandi akun atau kode otentikasi pribadi Anda.
             </p>
           </div>
         </div>

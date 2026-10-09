@@ -9,9 +9,9 @@ import { getContactMessage } from "@/lib/contact";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Pertanyaan yang Sering Diajukan (FAQ)",
+  title: "FAQ Jasa Service HP Android Remote Online",
   description:
-    "Jawaban pertanyaan umum layanan teknis Android: memilih layanan, kompatibilitas perangkat, proses remote, pengaruh ke data, dan keamanan konsultansi.",
+    "Jawaban lengkap seputar jasa perbaikan software Android remote: syarat PC, keamanan data perbankan, garansi pengerjaan, & estimasi waktu. Cek di sini!",
   path: "/faq",
 });
 
@@ -65,7 +65,7 @@ export default function FaqPage() {
         })}
       </div>
 
-      <section className="mt-14 rounded-xl bg-primary p-8 text-center text-primary-foreground md:p-12" aria-labelledby="faq-cta">
+      <section className="mt-14 rounded-lg bg-primary p-8 text-center text-primary-foreground md:p-12" aria-labelledby="faq-cta">
         <h2 id="faq-cta" className="text-xl font-bold tracking-tight md:text-2xl">
           Pertanyaan Anda unik? Tanyakan langsung.
         </h2>

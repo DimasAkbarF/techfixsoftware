@@ -7,9 +7,7 @@ import {
   CheckCircle2,
   AlertTriangle,
   ArrowRight,
-  ShieldCheck,
   Check,
-  Wrench,
 } from "lucide-react";
 import { guides, getGuideBySlug } from "@/data/guides";
 import { services } from "@/data/services";
@@ -135,9 +133,9 @@ export default async function GuideDetailPage({ params }: PageProps) {
       {/* Main Layout: Article Body + Consultation Aside */}
       <div className="mx-auto mt-8 grid max-w-3xl gap-8">
         {/* Key Takeaways Box */}
-        <section aria-labelledby="takeaways-heading" className="rounded-xl border border-accent/25 bg-accent-subtle/40 p-5 sm:p-6">
-          <h2 id="takeaways-heading" className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-accent">
-            <ShieldCheck className="size-4.5" />
+        <section aria-labelledby="takeaways-heading" className="rounded-lg border border-accent/25 bg-accent-subtle/40 p-5 sm:p-6">
+          <h2 id="takeaways-heading" className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-accent">
+            <span className="size-1.5 rounded-full bg-accent" />
             Poin Kunci yang Perlu Diketahui
           </h2>
           <ul className="mt-3 space-y-2.5 text-xs sm:text-sm text-foreground">
@@ -152,7 +150,7 @@ export default async function GuideDetailPage({ params }: PageProps) {
 
         {/* Symptoms Checklist (if applicable) */}
         {guide.symptoms && guide.symptoms.length > 0 && (
-          <section aria-labelledby="symptoms-heading" className="rounded-xl border border-border bg-card p-5 sm:p-6 shadow-xs">
+          <section aria-labelledby="symptoms-heading" className="rounded-lg border border-border bg-card p-5 sm:p-6 shadow-xs">
             <h2 id="symptoms-heading" className="text-base font-bold text-foreground">
               Gejala Khas yang Umum Muncul:
             </h2>
@@ -192,7 +190,7 @@ export default async function GuideDetailPage({ params }: PageProps) {
         {/* Practical Checklist: What to check & When to consult */}
         <div className="grid gap-5 sm:grid-cols-2 pt-4 border-t border-border">
           {/* Self check */}
-          <div className="rounded-xl border border-border bg-card p-5">
+          <div className="rounded-lg border border-border bg-card p-5">
             <h3 className="flex items-center gap-2 text-sm font-bold text-foreground">
               <CheckCircle2 className="size-4 text-success" />
               Bisa Dicek Mandiri:
@@ -208,7 +206,7 @@ export default async function GuideDetailPage({ params }: PageProps) {
           </div>
 
           {/* When to consult */}
-          <div className="rounded-xl border border-warning/30 bg-warning/5 p-5">
+          <div className="rounded-lg border border-warning/30 bg-warning/5 p-5">
             <h3 className="flex items-center gap-2 text-sm font-bold text-foreground">
               <AlertTriangle className="size-4 text-warning" />
               Saatnya Konsultasi Teknisi:
@@ -226,9 +224,9 @@ export default async function GuideDetailPage({ params }: PageProps) {
 
         {/* Relevant Service CTA Banner */}
         {relatedServices.length > 0 && (
-          <section aria-labelledby="related-service-cta" className="rounded-xl border border-border bg-primary p-6 sm:p-8 text-primary-foreground">
-            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-whatsapp">
-              <Wrench className="size-4" />
+          <section aria-labelledby="related-service-cta" className="rounded-lg border border-border bg-primary p-6 sm:p-8 text-primary-foreground">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-white/90">
+              <span className="size-1.5 rounded-full bg-accent" />
               <span>Layanan Terkait untuk Kondisi Ini</span>
             </div>
 

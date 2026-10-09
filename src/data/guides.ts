@@ -204,7 +204,7 @@ export const guides: GuideArticle[] = [
     slug: "apakah-root-android-aman",
     title: "Apakah Root Android Aman? Panduan Risiko, Manfaat, dan Magisk",
     excerpt:
-      "Penjelasan transparan tanpa janji palsu tentang apa saja keuntungan dan konsekuensi riil sebelum Anda memutuskan untuk melakukan root pada perangkat Android Anda.",
+      "Penjelasan teknis objektif mengenai keuntungan, konsekuensi keamanan, dan mitigasi risiko sebelum memutuskan melakukan root pada perangkat Android.",
     category: "root",
     categoryName: "Root & Modifikasi",
     readTime: "5 menit baca",

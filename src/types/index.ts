@@ -73,6 +73,8 @@ export interface Testimonial {
   image: string;
   rating: number;
   services: string[];
+  device?: string;
+  altText?: string;
 }
 
 export type GuideCategory =

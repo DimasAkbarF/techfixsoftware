@@ -35,16 +35,23 @@ export function FAQAccordion({ items }: { items: FAQItem[] }) {
                 />
               </button>
             </h3>
+            {/* Answer is always rendered in initial HTML for search crawlers, zero hidden attribute */}
             <div
               id={`faq-panel-${item.id}`}
               role="region"
               aria-labelledby={`faq-trigger-${item.id}`}
-              hidden={!isOpen}
-              className="px-5 pb-4 md:px-6"
+              className={cn(
+                "grid transition-all duration-200 ease-in-out px-5 md:px-6",
+                isOpen
+                  ? "grid-rows-[1fr] opacity-100 pb-4"
+                  : "grid-rows-[0fr] opacity-0 pb-0",
+              )}
             >
-              <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground md:text-base">
-                {item.answer}
-              </p>
+              <div className="overflow-hidden">
+                <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground md:text-base">
+                  {item.answer}
+                </p>
+              </div>
             </div>
           </div>
         );

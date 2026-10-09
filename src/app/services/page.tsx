@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, HelpCircle, ShieldCheck } from "lucide-react";
+import { ArrowRight, HelpCircle } from "lucide-react";
 import { services, getServicesByCategory } from "@/data/services";
 import { categories } from "@/data/categories";
 import { CategoryIcon } from "@/components/icons/CategoryIcon";
@@ -13,17 +13,10 @@ import { getContactMessage } from "@/lib/contact";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Katalog Layanan Software Android Lengkap",
+  title: "Katalog Jasa Service Software Android",
   description:
-    "Katalog layanan teknis Android TechFix: fix bootloop, unbrick, flash firmware, root Magisk, custom ROM, dan unlock bootloader. Konsultasi.",
+    "Daftar lengkap jasa service software Android remote: fix bootloop, unbrick, flash firmware, root Magisk, & custom ROM bergaransi. Konsultasi gratis sekarang!",
   path: "/services",
-  keywords: [
-    "jasa service android",
-    "perbaikan software android",
-    "katalog layanan techfix",
-    "jasa teknisi software hp",
-    "fix bootloop xiaomi samsung poco",
-  ],
 });
 
 export default function ServicesPage() {
@@ -42,7 +35,7 @@ export default function ServicesPage() {
       />
 
       {/* Problem Discovery Shortcut */}
-      <div className="mt-4 mb-6 rounded-xl border border-accent/20 bg-accent-subtle/50 p-4 text-xs sm:text-sm text-foreground flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div className="mt-4 mb-6 rounded-lg border border-accent/20 bg-accent-subtle/50 p-4 text-xs sm:text-sm text-foreground flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div className="flex items-center gap-2">
           <HelpCircle className="size-4.5 text-accent shrink-0" />
           <span>
@@ -101,11 +94,11 @@ export default function ServicesPage() {
       </section>
 
       {/* Bottom Conversion Section */}
-      <section className="mt-14 rounded-2xl bg-primary p-8 text-center text-primary-foreground sm:p-12">
-        <div className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-white mb-3">
-          <ShieldCheck className="size-3.5 text-whatsapp" />
-          <span>Konsultasi Bebas Tekanan</span>
-        </div>
+      <section className="mt-14 rounded-lg bg-primary p-8 text-center text-primary-foreground sm:p-12">
+        <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-white/90 mb-3">
+          <span className="size-1.5 rounded-full bg-accent" />
+          <span>Konsultasi Teknis Terarah</span>
+        </p>
 
         <h2 className="text-xl font-bold tracking-tight text-white sm:text-2xl md:text-3xl">
           Belum yakin layanan mana yang tepat untuk HP Anda?

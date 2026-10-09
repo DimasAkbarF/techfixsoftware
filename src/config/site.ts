@@ -1,14 +1,19 @@
 export const siteKeywords: string[] = [
   "jasa perbaikan software android",
-  "tech service android",
-  "service software hp",
-  "perbaikan software handphone",
+  "jasa root android",
+  "jasa root hp",
+  "jasa root magisk",
+  "jasa flash hp",
+  "jasa fix bootloop",
+  "jasa custom rom",
+  "jasa unlock bootloader",
+  "service software hp online",
   "jasa teknisi software hp",
-  "fix bootloop",
-  "flashing firmware",
-  "unbrick android",
-  "root android",
-  "techfix",
+  "flashing firmware resmi",
+  "unbrick android remote",
+  "root magisk zygisk",
+  "bypass play integrity",
+  "techfix software",
 ];
 
 export const siteConfig = {
@@ -17,7 +22,7 @@ export const siteConfig = {
   alternateName: ["TechFix", "Tech Fix", "Tech Fix Software"],
   tagline: "Jasa Service & Perbaikan Software Android Profesional",
   description:
-    "TechFix Software adalah platform jasa service & perbaikan software Android: root, unlock bootloader, fix bootloop, unbrick, flash firmware, custom ROM, recovery, dan software repair. Konsultasi langsung dengan CS manusia via WhatsApp atau Telegram.",
+    "TechFix Software adalah platform layanan technical support & perbaikan software Android: root, unlock bootloader, fix bootloop, unbrick, flash firmware, custom ROM, recovery, dan software repair. Konsultasi langsung bersama spesialis teknis via WhatsApp atau Telegram.",
   // Canonical production domain. Keep this fallback in sync with the real
   // domain — if NEXT_PUBLIC_SITE_URL is unset on a build, canonicals,
   // sitemap.xml and OG URLs would otherwise point at a placeholder host.

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { siteConfig, siteKeywords } from "@/config/site";
+import { siteConfig } from "@/config/site";
 
 export function absoluteUrl(path: string): string {
   const url = siteConfig.url.replace(/\/$/, "");
@@ -11,7 +11,7 @@ interface PageMetadataOptions {
   title: string;
   description: string;
   path: string;
-  keywords?: string[];
+  keywords?: string[]; // Kept for backwards-compatibility; not emitted to HTML
   noindex?: boolean;
   absoluteTitle?: boolean;
 }
@@ -20,7 +20,6 @@ export function buildMetadata({
   title,
   description,
   path,
-  keywords,
   noindex = false,
   absoluteTitle = false,
 }: PageMetadataOptions): Metadata {
@@ -29,7 +28,6 @@ export function buildMetadata({
   return {
     title: absoluteTitle ? { absolute: title } : title,
     description,
-    keywords: keywords ?? siteKeywords,
     alternates: {
       canonical: url,
     },
@@ -53,13 +51,12 @@ export function buildMetadata({
 }
 
 export const defaultMetadata: Metadata = {
-  metadataBase: new URL(siteConfig.url || "http://localhost:3000"),
+  metadataBase: new URL(siteConfig.url || "https://techfixsoftware.my.id"),
   title: {
     default: `${siteConfig.name} — ${siteConfig.tagline}`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  keywords: siteKeywords,
   openGraph: {
     siteName: siteConfig.name,
     locale: "id_ID",

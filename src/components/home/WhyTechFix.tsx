@@ -2,40 +2,41 @@ import { CheckCircle2, XCircle } from "lucide-react";
 
 const differentiators = [
   {
-    principle: "Konsultasi Sebelum Eksekusi",
-    us: "Kami mengidentifikasi penyebab masalah dan memastikan kondisi unit masuk akal untuk ditangani sebelum meminta persetujuan.",
-    others: "Langsung flash file acak tanpa memeriksa riwayat perangkat atau status partisi terlebih dahulu.",
+    principle: "Diagnosis Awal Sebelum Eksekusi",
+    us: "Kami mengidentifikasi penyebab masalah sistemik dan memastikan kondisi unit masuk akal untuk ditangani sebelum meminta persetujuan.",
+    others: "Flashing langsung tanpa memeriksa riwayat status partisi atau log kegagalan sistem sebelumnya.",
   },
   {
-    principle: "Pengecekan Kompatibilitas Ketat",
-    us: "Varian chipset (Snapdragon/MediaTek), versi OS, dan anti-rollback dicocokkan presisi dengan file firmware resmi.",
-    others: "Sering salah menggunakan file beda region atau varian yang justru berisiko menyebabkan soft brick permanen.",
+    principle: "Validasi Integritas Firmware & Anti-Rollback",
+    us: "Varian chipset (Snapdragon/MediaTek), regional SKU, dan proteksi anti-rollback diverifikasi presisi dengan checksum resmi pabrik.",
+    others: "Penggunaan package firmware beda region atau varian tidak resmi yang berisiko memicu kerusakan permanen (hard brick).",
   },
   {
-    principle: "Transparansi Risiko Terbuka",
-    us: "Jika suatu proses berisiko menghapus data atau membatalkan garansi, kami jelaskan di awal tanpa ada yang ditutupi.",
-    others: "Memberikan janji 100% aman atau 100% berhasil tanpa mengecek kondisi nyata perangkat.",
+    principle: "Transparansi Partisi & Keamanan Data",
+    us: "Penilaian dampak terhadap partisi internal, status enkripsi, dan garansi dijelaskan secara terbuka sebelum tindakan diambil.",
+    others: "Klaim tanpa dasar teknis yang mengabaikan proteksi partisi dan risiko kehilangan data penting.",
   },
   {
-    principle: "Komunikasi Manusia yang Jelas",
-    us: "Dijelaskan dengan bahasa sehari-hari yang mudah dipahami tanpa jargon yang membingungkan pemilik perangkat.",
-    others: "Jawaban robot otomatis yang kaku atau komunikasi yang membingungkan tanpa arahan langkah demi langkah.",
+    principle: "Komunikasi Teknis & Dokumentasi Runtut",
+    us: "Setiap langkah dijelaskan secara terstruktur dengan terminologi yang jelas dan transparan kepada pemilik perangkat.",
+    others: "Minimnya transparansi alur kerja atau komunikasi sepihak tanpa penjelasan prosedur teknis.",
   },
 ];
 
 export function WhyTechFix() {
   return (
-    <section aria-labelledby="why-heading" className="border-b border-border bg-white py-14 md:py-20">
+    <section aria-labelledby="why-heading" className="border-b border-border bg-white py-16 md:py-24">
       <div className="container-page">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-bold uppercase tracking-wider text-accent">
-            Prinsip &amp; Nilai Layanan
+          <p className="inline-flex items-center gap-2 rounded-full border border-border bg-muted/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+            <span className="size-1.5 rounded-full bg-accent" />
+            Metodologi &amp; Kualitas Rekayasa
           </p>
-          <h2 id="why-heading" className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
-            Kenapa bukan sekadar jasa flash sembarangan?
+          <h2 id="why-heading" className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
+            Standar Penanganan Terstruktur vs. Penanganan Konvensional
           </h2>
           <p className="mt-2 text-sm sm:text-base leading-relaxed text-muted-foreground">
-            Memperbaiki software Android membutuhkan ketelitian dan diagnosis yang benar, bukan sekadar klik tombol di software sembarang.
+            Pemulihan sistem operasi Android menuntut verifikasi arsitektur partisi dan validasi checksum resmi pabrikan, bukan sekadar flashing tanpa verifikasi sistematis.
           </p>
         </div>
 
@@ -43,7 +44,7 @@ export function WhyTechFix() {
           {differentiators.map((item) => (
             <div
               key={item.principle}
-              className="rounded-xl border border-border bg-card p-6 shadow-xs"
+              className="rounded-lg border border-border bg-card p-6"
             >
               <h3 className="text-base font-bold text-foreground">
                 {item.principle}
@@ -54,7 +55,7 @@ export function WhyTechFix() {
                   <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" aria-hidden="true" />
                   <div>
                     <span className="font-semibold text-success block text-[11px] uppercase tracking-wider">
-                      Pendekatan TechFix
+                      Standar Prosedur TechFix
                     </span>
                     <span className="text-foreground leading-relaxed">{item.us}</span>
                   </div>
@@ -64,7 +65,7 @@ export function WhyTechFix() {
                   <XCircle className="mt-0.5 size-4 shrink-0 text-slate-400" aria-hidden="true" />
                   <div>
                     <span className="font-semibold text-slate-500 block text-[11px] uppercase tracking-wider">
-                      Servis Tanpa Prosedur Jelas
+                      Penanganan Tanpa Standarisasi
                     </span>
                     <span className="text-muted-foreground leading-relaxed">{item.others}</span>
                   </div>

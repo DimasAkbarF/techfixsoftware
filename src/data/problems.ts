@@ -3,19 +3,19 @@ import type { ProblemItem } from "@/types";
 export const problemsList: ProblemItem[] = [
   {
     id: "p-stuck-logo",
-    title: "HP Stuck di Logo",
-    symptom: "Perangkat berhenti di logo merek atau animasi pembuka dan tidak bisa masuk ke layar utama.",
+    title: "HP Stuck di Logo (Bootloop)",
+    symptom: "Perangkat terhenti di logo vendor atau animasi booting dan tidak bisa masuk ke layar utama.",
     href: "/services/fix-bootloop",
     serviceName: "Fix Bootloop",
     tag: "Repair",
   },
   {
     id: "p-restart-terus",
-    title: "HP Restart Terus-Menerus",
+    title: "HP Restart Berulang / Auto-Reboot",
     symptom: "Ponsel mati lalu menyala kembali secara berulang tanpa henti sebelum sistem sempat selesai dimuat.",
-    href: "/services/fix-bootloop",
-    serviceName: "Fix Bootloop / Repair",
-    tag: "Repair",
+    href: "/guides/kenapa-hp-restart-sendiri-setelah-update",
+    serviceName: "Panduan Diagnosis Restart",
+    tag: "Panduan",
   },
   {
     id: "p-gagal-flash",

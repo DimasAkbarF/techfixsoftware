@@ -1,22 +1,22 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, MessageSquareQuote } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { testimonials } from "@/data/testimonials";
 
 export function RealSocialProof() {
   return (
-    <section aria-labelledby="social-proof-heading" className="border-b border-border bg-white py-14 md:py-20">
+    <section aria-labelledby="social-proof-heading" className="border-b border-border bg-white py-16 md:py-24">
       <div className="container-page">
         <div className="mx-auto max-w-2xl text-center">
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-accent-subtle px-3 py-1 text-xs font-semibold uppercase tracking-wider text-accent">
-            <MessageSquareQuote className="size-3.5" aria-hidden="true" />
-            <span>Social Proof Nyata</span>
-          </div>
+          <p className="inline-flex items-center gap-2 rounded-full border border-border bg-muted/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+            <span className="size-1.5 rounded-full bg-accent" />
+            Dokumentasi Kasus &amp; Bukti Penanganan
+          </p>
           <h2 id="social-proof-heading" className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
-            Pengalaman Pelanggan Bersama TechFix Software
+            Rekam Jejak &amp; Dokumentasi Penanganan Nyata
           </h2>
           <p className="mt-2 text-xs sm:text-sm text-muted-foreground">
-            Testimoni ditampilkan berdasarkan tangkapan layar percakapan pelanggan yang tersedia di kanal resmi kami tanpa ulasan palsu atau karangan.
+            Dokumentasi riil dari sesi konsultasi teknis dan penyelesaian pemulihan sistem bersama pelanggan di berbagai varian perangkat.
           </p>
         </div>
 
@@ -24,13 +24,13 @@ export function RealSocialProof() {
           {testimonials.map((item) => (
             <div
               key={item.id}
-              className="group flex flex-col overflow-hidden rounded-xl border border-border bg-card shadow-xs transition-colors hover:border-accent/40"
+              className="group flex flex-col overflow-hidden rounded-lg border border-border bg-card transition-colors hover:border-accent/40"
             >
               {/* Screenshot Image Container */}
               <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted">
                 <Image
                   src={item.image}
-                  alt={`Tangkapan layar testimoni percakapan pelanggan untuk layanan ${item.services.join(", ")}`}
+                  alt={item.altText ?? `Tangkapan layar testimoni percakapan pelanggan untuk layanan ${item.services.join(", ")}`}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover object-top transition-transform duration-200 group-hover:scale-102"

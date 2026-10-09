@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, ArrowLeft, Check, RefreshCw, Send, HelpCircle } from "lucide-react";
+import { ArrowRight, ArrowLeft, Check, RefreshCw, Send } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { hasWhatsapp, whatsappLink } from "@/config/site";
 import { buildProblemFinderMessage } from "@/lib/contact";
@@ -117,22 +117,22 @@ export function InteractiveServiceFinder() {
   };
 
   return (
-    <section id="interactive-finder" aria-labelledby="finder-heading" className="border-b border-border bg-slate-50/70 py-14 md:py-20">
+    <section id="interactive-finder" aria-labelledby="finder-heading" className="border-b border-border bg-background py-16 md:py-24">
       <div className="container-page">
         <div className="mx-auto max-w-2xl text-center">
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-accent-subtle px-3 py-1 text-xs font-semibold uppercase tracking-wider text-accent">
-            <HelpCircle className="size-3.5" aria-hidden="true" />
-            <span>Interactive Guide</span>
-          </div>
+          <p className="inline-flex items-center gap-2 rounded-full border border-border bg-muted/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+            <span className="size-1.5 rounded-full bg-accent" />
+            Sistem Diagnostik Mandiri
+          </p>
           <h2 id="finder-heading" className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
-            Ceritakan Masalah Android Anda
+            Formulir Diagnostik Kondisi Perangkat
           </h2>
           <p className="mt-2 text-sm sm:text-base leading-relaxed text-muted-foreground">
-            Ikuti 5 langkah sederhana berikut untuk merangkum kondisi perangkat. Kami siapkan format pesan konsultasi siap kirim agar teknisi kami dapat langsung memeriksa kelayakannya.
+            Lengkapi 5 parameter teknis berikut untuk merangkum riwayat sistem. Data ini akan diproses menjadi ringkasan spesifikasi agar teknisi dapat memverifikasi kelayakan prosedur secara presisi.
           </p>
         </div>
 
-        <div className="mx-auto mt-10 max-w-2xl rounded-2xl border border-border bg-card p-6 sm:p-8 shadow-sm">
+        <div className="mx-auto mt-10 max-w-2xl rounded-lg border border-border bg-card p-5 sm:p-8 shadow-sm">
           {/* Step Progress Indicator */}
           {step <= 5 && (
             <div className="mb-6">
@@ -170,7 +170,7 @@ export function InteractiveServiceFinder() {
                     key={opt}
                     type="button"
                     onClick={() => setData({ ...data, problem: opt })}
-                    className={`flex items-center justify-between rounded-lg border p-3 text-left text-xs sm:text-sm font-medium transition-colors cursor-pointer ${
+                    className={`flex min-h-[44px] items-center justify-between rounded-lg border px-3.5 py-2.5 text-left text-xs sm:text-sm font-medium transition-colors cursor-pointer ${
                       data.problem === opt
                         ? "border-accent bg-accent-subtle/50 text-accent font-semibold"
                         : "border-border bg-background text-foreground hover:border-accent/40"
@@ -210,7 +210,7 @@ export function InteractiveServiceFinder() {
                     key={opt}
                     type="button"
                     onClick={() => setData({ ...data, brand: opt })}
-                    className={`flex items-center justify-between rounded-lg border p-3 text-left text-xs sm:text-sm font-medium transition-colors cursor-pointer ${
+                    className={`flex min-h-[44px] items-center justify-between rounded-lg border px-3.5 py-2.5 text-left text-xs sm:text-sm font-medium transition-colors cursor-pointer ${
                       data.brand === opt
                         ? "border-accent bg-accent-subtle/50 text-accent font-semibold"
                         : "border-border bg-background text-foreground hover:border-accent/40"
@@ -264,7 +264,7 @@ export function InteractiveServiceFinder() {
                     key={opt}
                     type="button"
                     onClick={() => setData({ ...data, tried: opt })}
-                    className={`flex items-center justify-between rounded-lg border p-3 text-left text-xs sm:text-sm font-medium transition-colors cursor-pointer ${
+                    className={`flex min-h-[44px] items-center justify-between rounded-lg border px-3.5 py-2.5 text-left text-xs sm:text-sm font-medium transition-colors cursor-pointer ${
                       data.tried === opt
                         ? "border-accent bg-accent-subtle/50 text-accent font-semibold"
                         : "border-border bg-background text-foreground hover:border-accent/40"
@@ -293,7 +293,7 @@ export function InteractiveServiceFinder() {
                     key={opt}
                     type="button"
                     onClick={() => setData({ ...data, goal: opt })}
-                    className={`flex items-center justify-between rounded-lg border p-3 text-left text-xs sm:text-sm font-medium transition-colors cursor-pointer ${
+                    className={`flex min-h-[44px] items-center justify-between rounded-lg border px-3.5 py-2.5 text-left text-xs sm:text-sm font-medium transition-colors cursor-pointer ${
                       data.goal === opt
                         ? "border-accent bg-accent-subtle/50 text-accent font-semibold"
                         : "border-border bg-background text-foreground hover:border-accent/40"
@@ -362,7 +362,7 @@ export function InteractiveServiceFinder() {
               </div>
 
               <p className="mt-3 text-center text-[11px] text-muted-foreground">
-                ✓ Konsultasi gratis &amp; tidak mengikat · Tanpa kewajiban langsung servis
+                ✓ Evaluasi awal bebas biaya &amp; tidak mengikat · Tanpa komitmen langsung servis
               </p>
             </div>
           )}

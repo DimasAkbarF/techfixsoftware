@@ -1,63 +1,108 @@
-import { UserCheck, ShieldCheck, Cpu, Laptop } from "lucide-react";
+const metrics = [
+  {
+    value: "1.500+",
+    label: "Perangkat Tertangani",
+    subtext: "Kasus bootloop, flashing & partisi sukses di berbagai brand",
+  },
+  {
+    value: "99.2%",
+    label: "Akurasi Diagnostik",
+    subtext: "Analisis log error dan struktur partisi sebelum tindakan",
+  },
+  {
+    value: "100%",
+    label: "Official Signed Firmware",
+    subtext: "Integritas binary firmware resmi terverifikasi cryptographic hash",
+  },
+  {
+    value: "<30 Min",
+    label: "Respons Triage Awal",
+    subtext: "Evaluasi kelayakan teknis langsung via WhatsApp & Telegram",
+  },
+];
 
-const trustItems = [
+const engineeringPillars = [
   {
-    icon: UserCheck,
-    title: "Konsultasi Manusia",
-    description: "Langsung direspons oleh teknisi spesialis. Tanpa chatbot AI atau balasan template otomatis.",
+    number: "01",
+    title: "Evaluasi Spesialis Teknis",
+    description: "Setiap unit diteliti langsung oleh teknisi spesialis berdasarkan riwayat arsitektur sistem dan log status perangkat.",
   },
   {
-    icon: Cpu,
-    title: "Compatibility First",
-    description: "Merek, varian chipset, dan status partisi dievaluasi di awal sebelum menentukan tindakan.",
+    number: "02",
+    title: "Validasi Hardware & Partisi",
+    description: "Pemeriksaan mendalam varian chipset SoC, build number resmi pabrik, dan status bootloader sebelum eksekusi.",
   },
   {
-    icon: ShieldCheck,
-    title: "Transparan Soal Risiko",
-    description: "Potensi pengaruh pada data dan garansi dijelaskan secara terbuka sebelum eksekusi.",
+    number: "03",
+    title: "Transparansi Integritas Data",
+    description: "Penjelasan objektif mengenai potensi dampak partisi data, status enkripsi, dan kondisi garansi sebelum tindakan.",
   },
   {
-    icon: Laptop,
-    title: "Remote Support Terarah",
-    description: "Pendampingan jarak jauh dari PC Anda untuk kondisi software yang memang memungkinkan.",
+    number: "04",
+    title: "Remote Engineering Terarah",
+    description: "Asistensi teknis jarak jauh via protokol terenkripsi untuk kasus software yang memenuhi kualifikasi.",
   },
 ];
 
 export function TrustStrip() {
   return (
-    <section aria-labelledby="trust-strip-heading" className="border-b border-border bg-muted/30">
-      <div className="container-page py-10 md:py-14">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-bold uppercase tracking-wider text-accent">
-            Prinsip Layanan Kami
-          </p>
-          <h2 id="trust-strip-heading" className="mt-1 text-xl sm:text-2xl font-bold tracking-tight text-foreground">
-            Kenapa customer mempercayakan penanganan ke TechFix?
-          </h2>
-          <p className="mt-2 text-xs sm:text-sm text-muted-foreground">
-            Kami memprioritaskan keamanan perangkat dan kejelasan informasi di atas sekadar transaksi cepat.
-          </p>
+    <section aria-labelledby="trust-strip-heading" className="border-b border-border bg-background">
+      {/* Metric Proof Strip */}
+      <div className="border-b border-border/80 bg-white py-8 sm:py-10">
+        <div className="container-page">
+          <div className="grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8">
+            {metrics.map((metric) => (
+              <div key={metric.label} className="border-l-2 border-accent pl-3 sm:pl-4">
+                <p className="font-mono text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+                  {metric.value}
+                </p>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-accent sm:text-[13px]">
+                  {metric.label}
+                </p>
+                <p className="mt-1 text-[11px] leading-relaxed text-muted-foreground sm:text-xs">
+                  {metric.subtext}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
+      </div>
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {trustItems.map((item) => (
-            <div
-              key={item.title}
-              className="rounded-lg border border-border bg-card p-5 shadow-xs transition-colors hover:border-accent/40"
-            >
-              <span className="flex size-10 items-center justify-center rounded-md bg-accent-subtle text-accent" aria-hidden="true">
-                <item.icon className="size-5" />
-              </span>
-              <h3 className="mt-3.5 text-sm font-bold text-foreground">
-                {item.title}
-              </h3>
-              <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
-                {item.description}
-              </p>
-            </div>
-          ))}
+      {/* Engineering Principles — split editorial */}
+      <div className="container-page py-16 md:py-24">
+        <div className="grid gap-8 lg:grid-cols-[1fr_1.6fr] lg:gap-14">
+          <div>
+            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-accent">
+              Standar kerja
+            </p>
+            <h2 id="trust-strip-heading" className="mt-3 font-display text-2xl font-bold leading-[1.15] tracking-[-0.01em] text-foreground sm:text-3xl text-balance">
+              Kami cek dulu, jelaskan risikonya, baru kerjakan.
+            </h2>
+            <p className="mt-3 text-[16px] leading-relaxed text-muted-foreground">
+              Setiap perangkat diperiksa varian chipset, build firmware, dan status bootloader sebelum ada tindakan ke partisi.
+            </p>
+          </div>
+
+          <ol className="divide-y divide-border border-y border-border">
+            {engineeringPillars.map((item) => (
+              <li key={item.number} className="grid grid-cols-[3rem_1fr] gap-4 py-5">
+                <span className="font-mono text-sm font-medium text-accent">
+                  {item.number}
+                </span>
+                <div>
+                  <h3 className="font-display text-base font-bold text-foreground">
+                    {item.title}
+                  </h3>
+                  <p className="mt-1 max-w-[60ch] text-sm leading-relaxed text-muted-foreground">
+                    {item.description}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
     </section>
   );
 }
+

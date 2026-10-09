@@ -11,11 +11,21 @@ export const services: Service[] = [
     shortDescription:
       "Bantuan root Android dengan metode Magisk systemless: pengecekan kompatibilitas, patching boot image, dan konfigurasi Zygisk.",
     description:
-      "Layanan Root Android membantu Anda mendapatkan akses sistem penuh pada perangkat Android melalui proses yang terkontrol. Sebelum eksekusi, tim kami memeriksa kondisi perangkat, versi Android, status bootloader, dan kebutuhan Anda. Root dapat membuka banyak kemungkinan seperti aplikasi yang butuh akses khusus, adblocker tingkat sistem, backup penuh, dan modifikasi sistem. Namun root juga membawa risiko: garansi bisa terpengaruh, pembaruan OTA bisa terganggu, dan beberapa aplikasi (misalnya aplikasi perbankan) dapat menolak perangkat yang di-root. Seluruh risiko dan kompatibilitas dibahas bersama CS sebelum ada keputusan.\n\nRoot modern dilakukan dengan Magisk, yaitu metode systemless yang tidak mengubah partisi sistem murni sehingga proses unroot tetap bisa dilakukan kapan saja. Cakupan pekerjaan kami meliputi patching boot image secara presisi, pemasangan aplikasi pengelola Magisk, konfigurasi Zygisk, sampai penyesuaian modul integritas agar aplikasi harian tetap berjalan. Status integritas tidak kami jalkan menjadi janji karena kebijakan Google berubah secara dinamis; setiap kondisi diverifikasi lewat konsultasi sebelum eksekusi dimulai.",
+      "Layanan Root Android membantu Anda mendapatkan akses sistem penuh (superuser) pada perangkat Android melalui proses yang aman dan terkontrol. Sebelum eksekusi, teknisi kami memeriksa kondisi perangkat, versi Android, status bootloader, dan tujuan modifikasi Anda.\n\nRoot modern dilakukan secara systemless menggunakan Magisk, KernelSU, atau APatch yang tidak merusak partisi sistem asli, sehingga proses unroot bisa dilakukan kapan saja. Kami mendukung berbagai merek populer seperti Xiaomi/Poco/Redmi (MIUI & HyperOS), Samsung Galaxy, Google Pixel, Transsion (Infinix & Tecno), hingga Realme.\n\nCakupan pengerjaan kami meliputi analisis kompatibilitas firmware, ekstraksi & patching boot.img secara presisi, konfigurasi Zygisk & Shamiko, hingga setup modul Play Integrity agar aplikasi harian dan kebutuhan kerja tetap dapat berjalan normal. Seluruh proses dipandu secara remote via AnyDesk dengan transparansi risiko di awal.",
     problemKeywords: [
       "root",
       "root android",
       "jasa root",
+      "jasa root android",
+      "jasa root hp",
+      "jasa root online",
+      "jasa root remote",
+      "jasa root magisk",
+      "jasa root xiaomi",
+      "jasa root poco",
+      "jasa root samsung",
+      "jasa root infinix",
+      "bypass play integrity",
       "root magisk",
       "magisk",
       "modul magisk",
@@ -23,6 +33,7 @@ export const services: Service[] = [
       "akses root",
       "superuser",
       "aplikasi butuh root",
+      "jasa unroot",
     ],
     symptoms: [
       "Membutuhkan hak akses superuser untuk aplikasi kerja atau otomasi khusus.",
@@ -85,18 +96,21 @@ export const services: Service[] = [
     featured: true,
     badges: ["Remote support", "Systemless Root"],
     seo: {
-      title: "Jasa Root Android & Magisk",
+      title: "Jasa Root Android & Magisk Remote",
       description:
-        "Jasa root Android dengan Magisk systemless: kompatibilitas, patching boot image, Zygisk, dan modul. Dipandu teknisi, konsultasi transparan.",
+        "Jasa root Android & Magisk systemless remote terpercaya: Xiaomi, Samsung, Pixel, Infinix. Modul Zygisk & Play Integrity aman. Konsultasi teknisi sekarang!",
       keywords: [
-        "root android",
-        "jasa root",
-        "root magisk",
-        "magisk",
-        "modul magisk",
-        "zygisk",
-        "akses root",
-        "jasa teknisi hp",
+        "jasa root android",
+        "jasa root hp",
+        "jasa root magisk",
+        "jasa root online remote",
+        "jasa root xiaomi poco",
+        "jasa root samsung",
+        "jasa root infinix",
+        "bypass play integrity zygisk",
+        "jasa unroot android",
+        "biaya jasa root android",
+        "root android terdekat",
       ],
     },
   },
@@ -162,10 +176,18 @@ export const services: Service[] = [
     featured: false,
     badges: ["Remote support", "Konsultasi diwajibkan"],
     seo: {
-      title: "Jasa Unlock Bootloader Android",
+      title: "Jasa Unlock Bootloader UBL Android",
       description:
-        "Cari tahu apakah perangkat Anda mendukung unlock bootloader, konsekuensi data, dan panduan resminya. Konsultasikan varian perangkat dengan kami.",
-      keywords: ["unlock bootloader", "buka bootloader", "ubl xiaomi", "asistensi bootloader", "jasa service android"],
+        "Jasa unlock bootloader (UBL) Android resmi & aman untuk Xiaomi, Poco, HyperOS & merek lain. Pengecekan syarat & panduan remote. Konsultasi gratis sekarang!",
+      keywords: [
+        "jasa unlock bootloader",
+        "jasa ubl xiaomi",
+        "jasa ubl poco",
+        "jasa ubl hyperos",
+        "unlock bootloader android",
+        "jasa bypass ubl",
+        "buka bootloader android",
+      ],
     },
   },
   {
@@ -233,10 +255,18 @@ export const services: Service[] = [
     featured: true,
     badges: ["Remote support", "Prioritas Repair"],
     seo: {
-      title: "Jasa Fix Bootloop Android",
+      title: "Jasa Fix Bootloop Android Remote",
       description:
-        "HP Android stuck di logo atau restart berulang? Asesmen teknis transparan dan pemulihan bootloop software via remote support. Konsultasi gratis.",
-      keywords: ["bootloop", "hp stuck logo", "restart terus", "fix bootloop", "jasa perbaikan software android"],
+        "HP Android mentok di logo atau restart terus? Jasa flash firmware resmi & perbaikan bootloop Android remote online bergaransi. Konsultasi teknisi gratis!",
+      keywords: [
+        "jasa flash hp",
+        "jasa fix bootloop",
+        "jasa perbaikan hp bootloop",
+        "jasa flash android online",
+        "hp mentok logo",
+        "jasa unbrick android",
+        "jasa flash xiaomi samsung",
+      ],
     },
   },
   {
@@ -300,9 +330,9 @@ export const services: Service[] = [
     featured: false,
     badges: ["Konsultasi diwajibkan", "High Technical"],
     seo: {
-      title: "Jasa Unbrick Android",
+      title: "Jasa Unbrick Android & Soft Brick",
       description:
-        "HP tidak merespons setelah salah flash firmware? Kami lakukan asesmen deteksi port USB dan upaya pemulihan soft brick secara jujur.",
+        "Jasa unbrick Android & perbaikan HP mati total atau soft brick akibat gagal flash. Deteksi port EDL 9008 & BROM remote online. Konsultasi teknisi sekarang!",
       keywords: ["unbrick", "soft brick", "hp brick", "pemulihan brick", "service software hp", "unbrick android"],
     },
   },
@@ -368,9 +398,9 @@ export const services: Service[] = [
     featured: true,
     badges: ["Remote support", "Firmware Stock"],
     seo: {
-      title: "Jasa Flash Firmware Android",
+      title: "Jasa Flash Firmware Android Resmi",
       description:
-        "Instalasi ulang firmware resmi Android, pemulihan sistem, dan asistensi upgrade/downgrade aman. Konsultasikan model HP Anda bersama teknisi.",
+        "Jasa flash firmware Android resmi: instal ulang stock ROM, atasi bootloop, downgrade & upgrade sistem semua merek via AnyDesk. Konsultasi gratis sekarang!",
       keywords: ["flash firmware", "firmware stock", "restore firmware", "reinstall android", "jasa flashing android"],
     },
   },
@@ -436,10 +466,19 @@ export const services: Service[] = [
     featured: false,
     badges: ["Remote support", "Konsultasi diwajibkan"],
     seo: {
-      title: "Jasa Custom ROM Android",
+      title: "Jasa Pasang Custom ROM Android",
       description:
-        "Bantuan pemilihan dan instalasi custom ROM Android (LineageOS, crDroid, dll). Performa lebih kencang tanpa bloatware. Konsultasikan perangkat Anda.",
-      keywords: ["custom rom", "install custom rom", "jasa custom rom", "lineageos indonesia", "rom android"],
+        "Jasa pasang custom ROM Android (LineageOS, PixelOS, crDroid, Evolution X) via remote AnyDesk. Performa lebih kencang, bebas bloatware. Chat teknisi sekarang!",
+      keywords: [
+        "jasa custom rom",
+        "jasa pasang custom rom",
+        "jasa ganti rom android",
+        "jasa custom rom xiaomi",
+        "jasa rom lineageos",
+        "jasa rom pixelos",
+        "jasa oprek hp android",
+        "custom rom android indonesia",
+      ],
     },
   },
   {
@@ -500,9 +539,9 @@ export const services: Service[] = [
     featured: false,
     badges: ["Remote support"],
     seo: {
-      title: "Jasa Recovery Android",
+      title: "Jasa Pasang Recovery TWRP Android",
       description:
-        "Bantuan mode recovery Android: keluar dari stuck recovery, pasang custom recovery TWRP/OrangeFox, dan troubleshooting dekripsi penyimpanan.",
+        "Jasa pasang custom recovery TWRP & OrangeFox Android via remote. Atasi stuck recovery loop dan partisi internal terenkripsi. Hubungi teknisi kami sekarang!",
       keywords: ["recovery", "twrp", "custom recovery", "mode recovery", "stuck di recovery", "service hp"],
     },
   },
@@ -566,9 +605,9 @@ export const services: Service[] = [
     featured: false,
     badges: ["Remote support", "Konsultasi"],
     seo: {
-      title: "Perbaikan Software Android",
+      title: "Jasa Service Software HP Android",
       description:
-        "Masalah software Android: force close berulang, sistem lambat, atau crash update. Dapatkan diagnosis manusia dan solusi teknis yang tepat sasaran.",
+        "Jasa perbaikan software Android online: atasi aplikasi force close, gagal update, system UI error & lemot parah secara remote AnyDesk. Chat WhatsApp teknisi!",
       keywords: ["perbaikan software", "error android", "update gagal", "force close", "software repair android"],
     },
   },

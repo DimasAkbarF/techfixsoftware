@@ -41,7 +41,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: service.seo.title,
     description: service.seo.description,
     path: `/services/${service.slug}`,
-    keywords: service.seo.keywords,
   });
 }
 
@@ -88,17 +87,29 @@ export default async function ServiceDetailPage({ params }: PageProps) {
   const serviceJsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: service.name,
+    "@id": `${absoluteUrl(`/services/${service.slug}`)}#service`,
+    name: service.h1 || service.name,
     description: service.shortDescription,
     serviceType: service.name,
     provider: {
-      "@type": "Organization",
-      "@id": `${absoluteUrl("/")}#organization`,
+      "@type": "LocalBusiness",
+      "@id": `${siteConfig.url}#organization`,
       name: siteConfig.name,
-      url: absoluteUrl("/"),
+      url: siteConfig.url,
+      telephone: siteConfig.whatsappNumber || undefined,
+    },
+    areaServed: {
+      "@type": "Country",
+      name: "Indonesia",
+    },
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "IDR",
+      availability: "https://schema.org/InStock",
+      url: absoluteUrl(`/services/${service.slug}`),
     },
     url: absoluteUrl(`/services/${service.slug}`),
-    audience: { "@type": "Audience", audienceType: "Android device users" },
+    audience: { "@type": "Audience", audienceType: "Pemilik Smartphone Android di Indonesia" },
   };
 
   return (
@@ -132,7 +143,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               </p>
               <ul className="mt-4 grid gap-3 sm:grid-cols-2">
                 {service.symptoms.map((symptom, idx) => (
-                  <li key={idx} className="flex items-start gap-2.5 rounded-lg border border-border bg-card p-3.5 shadow-xs">
+                  <li key={idx} className="flex items-start gap-2.5 rounded-lg border border-border bg-card p-3.5">
                     <span className="mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full bg-accent-subtle text-accent font-bold text-xs">
                       !
                     </span>
@@ -163,7 +174,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               </h2>
               <div className="mt-4 grid gap-4 sm:grid-cols-2">
                 {service.whoIsItFor && (
-                  <div className="rounded-xl border border-success/30 bg-success/5 p-4 sm:p-5">
+                  <div className="rounded-lg border border-success/30 bg-success/5 p-4 sm:p-5">
                     <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-success">
                       <CheckCircle2 className="size-4" />
                       Cocok untuk Anda Jika:
@@ -180,7 +191,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 )}
 
                 {service.whoIsItNotFor && (
-                  <div className="rounded-xl border border-border bg-slate-50 p-4 sm:p-5">
+                  <div className="rounded-lg border border-border bg-slate-50 p-4 sm:p-5">
                     <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-500">
                       <XCircle className="size-4 text-slate-400" />
                       Tidak Cocok untuk:
@@ -207,7 +218,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
             </h2>
             <ul className="mt-4 grid gap-3 sm:grid-cols-2">
               {service.useCases.map((item, index) => (
-                <li key={index} className="flex items-start gap-2.5 rounded-lg border border-border bg-card p-4 shadow-xs">
+                <li key={index} className="flex items-start gap-2.5 rounded-lg border border-border bg-card p-4">
                   <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" aria-hidden="true" />
                   <span className="text-xs sm:text-sm leading-relaxed text-foreground">{item}</span>
                 </li>

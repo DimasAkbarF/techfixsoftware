@@ -1,18 +1,18 @@
 import Link from "next/link";
-import { ArrowRight, BookOpen, Clock } from "lucide-react";
+import { ArrowRight, Clock } from "lucide-react";
 import { guides } from "@/data/guides";
 
 export function GuidesPreview() {
   const featuredGuides = guides.slice(0, 4);
 
   return (
-    <section aria-labelledby="guides-preview-heading" className="border-b border-border bg-slate-50/50 py-14 md:py-20">
+    <section aria-labelledby="guides-preview-heading" className="border-b border-border bg-background py-16 md:py-24">
       <div className="container-page">
         <div className="mx-auto max-w-2xl text-center">
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-accent-subtle px-3 py-1 text-xs font-semibold uppercase tracking-wider text-accent">
-            <BookOpen className="size-3.5" aria-hidden="true" />
-            <span>Pusat Edukasi &amp; Panduan</span>
-          </div>
+          <p className="inline-flex items-center gap-2 rounded-full border border-border bg-muted/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+            <span className="size-1.5 rounded-full bg-accent" />
+            Pusat Edukasi &amp; Panduan Teknis
+          </p>
           <h2 id="guides-preview-heading" className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
             Pelajari Dulu Sebelum Modifikasi Android
           </h2>
@@ -26,7 +26,7 @@ export function GuidesPreview() {
             <Link
               key={guide.id}
               href={`/guides/${guide.slug}`}
-              className="group flex flex-col justify-between rounded-xl border border-border bg-card p-5 shadow-xs transition-all duration-150 hover:border-accent hover:shadow-card-hover cursor-pointer"
+              className="group flex flex-col justify-between rounded-lg border border-border bg-card p-5 transition-all duration-150 hover:border-accent cursor-pointer"
             >
               <div>
                 <div className="flex items-center justify-between text-xs text-muted-foreground">

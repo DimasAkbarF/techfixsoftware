@@ -15,23 +15,11 @@ import { buildMetadata, absoluteUrl } from "@/lib/seo";
 import { services } from "@/data/services";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Jasa Android & Technical Support | TechFix Software",
+  title: "Jasa Fix Bootloop, Unbrick & Flash Android Remote | TechFix Software",
   description:
-    "TechFix Software bantu atasi masalah Android: bootloop, flashing, firmware, bootloader, recovery, root, custom ROM, dan optimasi. Konsultasi teknisi.",
+    "Jasa perbaikan software Android profesional & bergaransi: fix bootloop, unbrick, root Magisk, flash firmware, dan UBL via remote AnyDesk. Konsultasi gratis!",
   path: "/",
   absoluteTitle: true,
-  keywords: [
-    "jasa perbaikan software android",
-    "tech service android",
-    "service software hp",
-    "jasa teknisi software hp",
-    "fix bootloop",
-    "flash firmware",
-    "unbrick android",
-    "root android magisk",
-    "unlock bootloader",
-    "custom rom android",
-  ],
 });
 
 export default function HomePage() {

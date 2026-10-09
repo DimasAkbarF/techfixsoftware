@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { hasWhatsapp, whatsappLink } from "@/config/site";
 import { buildConsultationMessage } from "@/lib/contact";
@@ -22,17 +22,17 @@ export function FinalConsultationCTA() {
     <section aria-labelledby="final-cta-heading" className="bg-primary py-16 md:py-24 text-primary-foreground">
       <div className="container-page">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="flex items-center justify-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/70">
-            <ShieldCheck className="size-3.5 text-whatsapp" aria-hidden="true" />
-            <span>Konsultasi Tanpa Tekanan</span>
+          <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-white/90">
+            <span className="size-1.5 rounded-full bg-accent" />
+            <span>Evaluasi Teknis &amp; Konsultasi</span>
           </p>
 
           <h2 id="final-cta-heading" className="mt-5 text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white text-balance">
-            Masih belum yakin masalahnya apa?
+            Konsultasikan Kebutuhan Perangkat Anda Bersama Tim Teknis
           </h2>
 
           <p className="mt-4 text-sm sm:text-base leading-relaxed text-white/80">
-            Jelaskan kondisi HP Anda. Kami bantu arahkan langkah yang paling masuk akal sebelum Anda mengambil keputusan apa pun.
+            Diskusikan gejala sistem, kompatibilitas firmware, dan opsi pemulihan terbaik bersama spesialis kami sebelum tindakan diputuskan.
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -67,7 +67,7 @@ export function FinalConsultationCTA() {
           </div>
 
           <p className="mt-4 text-xs text-white/60">
-            ✓ Tidak harus langsung melakukan service · Bebas bertanya terlebih dahulu
+            ✓ Evaluasi kelayakan di awal · Transparansi metode, estimasi waktu, dan estimasi biaya sebelum pengerjaan
           </p>
         </div>
       </div>

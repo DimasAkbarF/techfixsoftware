@@ -1,32 +1,33 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #f8fafc;
-  --color-foreground: #0f172a;
+  --breakpoint-xs: 400px;
+  --color-background: #f7f6f3;
+  --color-foreground: #0b1220;
   --color-card: #ffffff;
-  --color-card-foreground: #0f172a;
+  --color-card-foreground: #0b1220;
   --color-popover: #ffffff;
-  --color-popover-foreground: #0f172a;
-  --color-primary: #0f172a;
-  --color-primary-hover: #1e293b;
+  --color-popover-foreground: #0b1220;
+  --color-primary: #0b1220;
+  --color-primary-hover: #1c2740;
   --color-primary-foreground: #ffffff;
   --color-secondary: #334155;
   --color-secondary-foreground: #ffffff;
-  --color-muted: #f1f5f9;
+  --color-muted: #efede8;
   --color-muted-foreground: #475569;
-  --color-accent: #0877b5;
-  --color-accent-hover: #06669c;
-  --color-accent-active: #055a8a;
-  --color-accent-subtle: #e8f4fb;
+  --color-accent: #0a4fd6;
+  --color-accent-hover: #0840ad;
+  --color-accent-active: #073691;
+  --color-accent-subtle: #e8eefc;
   --color-accent-foreground: #ffffff;
   --color-destructive: #dc2626;
   --color-destructive-foreground: #ffffff;
   --color-success: #15803d;
   --color-warning: #b45309;
-  --color-border: #e2e8f0;
-  --color-border-strong: #cbd5e1;
-  --color-input: #e2e8f0;
-  --color-ring: #0877b5;
+  --color-border: #e3e0d8;
+  --color-border-strong: #c9c5b8;
+  --color-input: #e3e0d8;
+  --color-ring: #0a4fd6;
   --color-whatsapp: #25d366;
   --color-whatsapp-foreground: #062b16;
   --color-telegram: #0088CC;
@@ -37,8 +38,10 @@
   --radius-lg: 10px;
   --radius-xl: 12px;
 
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", Roboto, Arial, sans-serif;
+  --font-display: var(--font-heading), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, "SF Mono", Menlo, monospace;
 
   --shadow-card: 0 1px 2px rgba(2, 6, 23, 0.06);
   --shadow-card-hover: 0 2px 8px rgba(2, 6, 23, 0.08);
@@ -46,8 +49,12 @@
   --shadow-modal: 0 8px 32px rgba(2, 6, 23, 0.14);
 
   --animate-fade-in: fade-in 0.15s ease-out both;
-  --animate-slide-in: slide-in 0.15s ease-out both;
+  --animate-slide-in: slide-in 0.2s ease-out both;
   --animate-popover-in: popover-in 180ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-reveal: reveal 0.28s ease-out both;
+  --animate-float-slow: float-slow 4s ease-in-out infinite;
+  --animate-float-reverse: float-reverse 4.6s ease-in-out infinite;
+  --animate-float-alt: float-alt 5.2s ease-in-out infinite;
 
   @keyframes fade-in {
     from { opacity: 0; }
@@ -63,6 +70,38 @@
     from { opacity: 0; transform: translateY(4px) scale(0.98); }
     to { opacity: 1; transform: translateY(0) scale(1); }
   }
+
+  @keyframes reveal {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes float-slow {
+    0%, 100% {
+      transform: translate3d(0, 0px, 0);
+    }
+    50% {
+      transform: translate3d(0, -8px, 0);
+    }
+  }
+
+  @keyframes float-reverse {
+    0%, 100% {
+      transform: translate3d(0, 0px, 0);
+    }
+    50% {
+      transform: translate3d(0, 7px, 0);
+    }
+  }
+
+  @keyframes float-alt {
+    0%, 100% {
+      transform: translate3d(0, 0px, 0);
+    }
+    50% {
+      transform: translate3d(0, -6px, 0);
+    }
+  }
 }
 
 html {
@@ -74,7 +113,17 @@ html {
 body {
   background-color: var(--color-background);
   color: var(--color-foreground);
-  font-feature-settings: "cv02", "cv03", "cv04";
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+p, li {
+  max-width: 75ch;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  text-wrap: balance;
 }
 
 ::selection {

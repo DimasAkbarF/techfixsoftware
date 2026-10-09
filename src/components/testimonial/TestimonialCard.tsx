@@ -4,11 +4,11 @@ import type { Testimonial } from "@/types";
 
 export function TestimonialScreenshotCard({ item }: { item: Testimonial }) {
   return (
-    <figure className="flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card shadow-xs transition-colors hover:border-accent/40">
+    <figure className="flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card shadow-xs transition-colors hover:border-accent/40">
       <div className="relative aspect-[9/16] max-h-[560px] w-full overflow-hidden bg-slate-900/5">
         <Image
           src={item.image}
-          alt={`Tangkapan layar percakapan pelanggan WhatsApp untuk layanan ${item.services.join(" & ")}`}
+          alt={item.altText ?? `Tangkapan layar percakapan pelanggan WhatsApp untuk layanan ${item.services.join(" & ")}`}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-contain object-center"

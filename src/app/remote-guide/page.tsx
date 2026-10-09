@@ -10,7 +10,6 @@ import {
   Lock,
   PowerOff,
   ArrowRight,
-  ShieldCheck,
 } from "lucide-react";
 import { siteConfig, hasWhatsapp, whatsappLink } from "@/config/site";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
@@ -20,17 +19,10 @@ import { buildConsultationMessage } from "@/lib/contact";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Panduan Remote Support AnyDesk",
+  title: "Panduan Remote Support AnyDesk Service HP",
   description:
-    "Panduan resmi sesi remote support teknis Android TechFix Software: persyaratan AnyDesk, protokol keamanan data, hak menghentikan sesi, dan tata cara koneksi.",
+    "Panduan lengkap sesi remote support AnyDesk untuk perbaikan software Android: persiapan PC, kabel USB, izin koneksi, dan keamanan data. Baca selengkapnya!",
   path: "/remote-guide",
-  keywords: [
-    "panduan remote anydesk",
-    "remote support android",
-    "service hp jarak jauh aman",
-    "syarat anydesk service hp",
-    "keamanan remote teknisi",
-  ],
 });
 
 const requirements = [
@@ -107,7 +99,7 @@ export default function RemoteGuidePage() {
 
       {/* When is remote support possible vs not possible */}
       <div className="mt-8 grid gap-5 sm:grid-cols-2">
-        <div className="rounded-xl border border-success/30 bg-success/5 p-5 sm:p-6">
+        <div className="rounded-lg border border-success/30 bg-success/5 p-5 sm:p-6">
           <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-success">
             <CheckCircle2 className="size-4" />
             Kapan Remote Support Bisa Dilakukan:
@@ -128,7 +120,7 @@ export default function RemoteGuidePage() {
           </ul>
         </div>
 
-        <div className="rounded-xl border border-border bg-slate-50 p-5 sm:p-6">
+        <div className="rounded-lg border border-border bg-slate-50 p-5 sm:p-6">
           <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-500">
             <XCircle className="size-4 text-slate-400" />
             Kapan Remote Support TIDAK Bisa Dilakukan:
@@ -153,7 +145,7 @@ export default function RemoteGuidePage() {
       {/* Requirements & Download Grid */}
       <div className="mt-10 grid gap-8 lg:grid-cols-2 lg:items-start">
         {/* Checklist */}
-        <section aria-labelledby="req-heading" className="rounded-xl border border-border bg-card p-6 shadow-xs">
+        <section aria-labelledby="req-heading" className="rounded-lg border border-border bg-card p-6 shadow-xs">
           <h2 id="req-heading" className="flex items-center gap-2 text-lg font-bold tracking-tight text-foreground">
             <CheckCircle2 className="size-5 text-accent" aria-hidden="true" />
             Persiapan Alat &amp; Hardware
@@ -169,7 +161,7 @@ export default function RemoteGuidePage() {
         </section>
 
         {/* AnyDesk Official Download */}
-        <section aria-labelledby="download-heading" className="rounded-xl border border-border bg-card p-6 shadow-xs">
+        <section aria-labelledby="download-heading" className="rounded-lg border border-border bg-card p-6 shadow-xs">
           <h2 id="download-heading" className="flex items-center gap-2 text-lg font-bold tracking-tight text-foreground">
             <Download className="size-5 text-accent" aria-hidden="true" />
             Download Software AnyDesk Resmi
@@ -217,7 +209,7 @@ export default function RemoteGuidePage() {
         </h2>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((s) => (
-            <div key={s.number} className="rounded-xl border border-border bg-card p-5 shadow-xs">
+            <div key={s.number} className="rounded-lg border border-border bg-card p-5 shadow-xs">
               <span className="font-mono text-lg font-bold text-accent">{s.number}</span>
               <h3 className="mt-2 text-sm font-bold text-foreground">{s.title}</h3>
               <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{s.desc}</p>
@@ -227,7 +219,7 @@ export default function RemoteGuidePage() {
       </section>
 
       {/* Security & Customer Rights Callout */}
-      <section aria-labelledby="safety-heading" className="mt-14 rounded-2xl border border-destructive/25 bg-destructive/5 p-6 sm:p-8">
+      <section aria-labelledby="safety-heading" className="mt-14 rounded-lg border border-destructive/25 bg-destructive/5 p-6 sm:p-8">
         <div className="flex items-center gap-2 text-destructive">
           <ShieldAlert className="size-6" />
           <h2 id="safety-heading" className="text-lg sm:text-xl font-bold tracking-tight">
@@ -256,11 +248,11 @@ export default function RemoteGuidePage() {
       </section>
 
       {/* Final Conversion CTA: "Siap untuk remote support?" */}
-      <section className="mt-14 rounded-2xl bg-primary p-8 text-center text-primary-foreground sm:p-12">
-        <div className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-white mb-3">
-          <ShieldCheck className="size-3.5 text-whatsapp" />
-          <span>Bimbingan Langsung</span>
-        </div>
+      <section className="mt-14 rounded-lg bg-primary p-8 text-center text-primary-foreground sm:p-12">
+        <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-white/90 mb-3">
+          <span className="size-1.5 rounded-full bg-accent" />
+          <span>Bimbingan Remote Engineering</span>
+        </p>
 
         <h2 className="text-xl font-bold tracking-tight text-white sm:text-2xl md:text-3xl">
           Siap untuk remote support?

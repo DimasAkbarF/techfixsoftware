@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { AlertTriangle, ShieldCheck, CheckCircle2 } from "lucide-react";
 import type { Service } from "@/types";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { hasWhatsapp, whatsappLink } from "@/config/site";
@@ -24,9 +23,8 @@ export function ServiceConsultationAside({ service }: { service: Service }) {
 
   return (
     <aside aria-label="Konsultasi Layanan" className="sticky top-20">
-      <div className="rounded-xl border border-border bg-card p-5 sm:p-6 shadow-xs">
-        <div className="flex items-center gap-2">
-          <ShieldCheck className="size-5 text-accent" />
+      <div className="rounded-lg border border-border bg-card p-5 sm:p-6">
+        <div>
           <h2 className="text-base font-bold tracking-tight text-foreground">
             Konsultasi Layanan Ini
           </h2>
@@ -72,27 +70,26 @@ export function ServiceConsultationAside({ service }: { service: Service }) {
         {/* Value Points */}
         <ul className="mt-5 space-y-2 border-t border-border/80 pt-4 text-xs text-foreground/80">
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="mt-0.5 size-3.5 shrink-0 text-success" />
-            <span>Konsultasi 100% gratis &amp; tidak mengikat</span>
+            <span className="mt-1.5 size-1.5 rounded-full bg-accent shrink-0" aria-hidden="true" />
+            <span>Konsultasi awal bebas biaya &amp; tidak mengikat</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="mt-0.5 size-3.5 shrink-0 text-success" />
+            <span className="mt-1.5 size-1.5 rounded-full bg-accent shrink-0" aria-hidden="true" />
             <span>Kompatibilitas dicek sebelum tindakan</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="mt-0.5 size-3.5 shrink-0 text-success" />
+            <span className="mt-1.5 size-1.5 rounded-full bg-accent shrink-0" aria-hidden="true" />
             <span>Risiko data dijelaskan secara jujur</span>
           </li>
         </ul>
 
-        {/* Important Warning Notice */}
-        <div className="mt-4 rounded-md border border-warning/30 bg-warning/5 p-3 text-[11px] leading-relaxed text-foreground">
-          <p className="flex items-start gap-1.5 font-semibold text-warning">
-            <AlertTriangle className="mt-0.5 size-3.5 shrink-0" />
-            Pemberitahuan Transparansi
+        {/* Important Technical Notice */}
+        <div className="mt-4 rounded-md border border-border bg-muted/40 p-3 text-[11px] leading-relaxed text-foreground">
+          <p className="font-semibold text-foreground">
+            Standar Verifikasi Teknis
           </p>
           <p className="mt-1 text-muted-foreground">
-            Hasil tidak dapat dijamin sebelum kondisi fisik dan respon perangkat dinilai secara langsung. Biaya disepakati bersama sebelum proses dimulai.
+            Evaluasi kelayakan sistem disesuaikan dengan respon perangkat dan integritas partisi internal. Kesepakatan metode dan estimasi biaya dikonfirmasi sebelum pengerjaan.
           </p>
         </div>
       </div>

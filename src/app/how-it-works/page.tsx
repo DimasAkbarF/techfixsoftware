@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { AlertTriangle, CheckCircle2, ShieldCheck, ArrowRight, Laptop } from "lucide-react";
+import { AlertTriangle, CheckCircle2, ArrowRight, Laptop } from "lucide-react";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
@@ -9,52 +9,46 @@ import { buildConsultationMessage } from "@/lib/contact";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Cara Kerja Layanan — 6 Langkah Transparan",
+  title: "Cara Kerja Jasa Service HP Android Remote",
   description:
-    "Pahami alur layanan TechFix Software: dari menceritakan kendala, pengecekan kondisi, penjelasan risiko, kesepakatan, hingga eksekusi dan follow-up.",
+    "Pelajari 6 langkah mudah service HP Android remote via AnyDesk: dari diagnosis gratis, persetujuan risiko, eksekusi aman, hingga beres. Cek alur kerjanya!",
   path: "/how-it-works",
-  keywords: [
-    "cara kerja service android",
-    "alur konsultasi techfix",
-    "prosedur perbaikan software",
-    "service software tanpa toko",
-  ],
 });
 
 const steps = [
   {
     number: "01",
-    title: "Ceritakan Masalah",
+    title: "Registrasi & Riwayat Gejala",
     description:
-      "Jelaskan merek, tipe perangkat, gejala yang Anda alami, dan kronologi awal kejadian melalui chat WhatsApp atau formulir kami.",
+      "Penyampaian informasi merek, tipe model, gejala sistem yang muncul, dan kronologi awal kejadian kepada teknisi.",
   },
   {
     number: "02",
-    title: "Kami Cek Kondisi Perangkat",
+    title: "Verifikasi Kelayakan Sistem",
     description:
-      "Teknisi memverifikasi varian model teknis, arsitektur chipset, status bootloader, dan ketersediaan file firmware yang kompatibel.",
+      "Teknisi memverifikasi varian model teknis, arsitektur chipset SoC, status bootloader, dan ketersediaan firmware resmi.",
   },
   {
     number: "03",
-    title: "Kami Jelaskan Opsi & Risiko",
+    title: "Evaluasi Opsi & Analisis Risiko",
     description:
       "Kami paparkan opsi tindakan terbaik, peluang pemulihan, transparansi risiko terhadap data, estimasi durasi, dan biaya secara terbuka.",
   },
   {
     number: "04",
-    title: "Anda Memutuskan",
+    title: "Persetujuan Prosedur (Consent)",
     description:
-      "Anda bebas menentukan apakah ingin melanjutkan atau tidak. Tidak ada komitmen belanja atau biaya jika Anda memutuskan berhenti di konsultasi.",
+      "Anda memiliki kendali penuh untuk menyetujui atau menunda tindakan sebelum proses pengerjaan teknis dimulai.",
   },
   {
     number: "05",
-    title: "Proses Dilakukan Sesuai Kesepakatan",
+    title: "Eksekusi Penanganan Terarah",
     description:
-      "Penanganan teknis dijalankan (remote support via AnyDesk bila didukung) secara bertahap dan teratur di bawah pemantauan langsung Anda.",
+      "Penanganan teknis dijalankan secara bertahap dan teratur (remote asistensi via AnyDesk terenkripsi jika memenuhi kualifikasi).",
   },
   {
     number: "06",
-    title: "Follow-Up & Dukungan Pasca-Servis",
+    title: "Validasi Hasil & Uji Fungsi",
     description:
       "Kami memverifikasi perangkat kembali berjalan stabil dan memberikan rekomendasi pemeliharaan agar masalah tidak berulang.",
   },
@@ -78,9 +72,9 @@ export default function HowItWorksPage() {
 
       <SectionHeading
         as="h1"
-        eyebrow="Alur Layanan Transparan"
+        eyebrow="Standar Operasional Layanan"
         title="Bagaimana Layanan TechFix Software Bekerja"
-        description="Kami mengutamakan pemahaman masalah Anda terlebih dahulu. Tidak ada checkout otomatis atau paksaan transaksi."
+        description="Pendekatan diagnostik terstruktur untuk memastikan kepastian prosedur, keamanan sistem, dan transparansi penuh bagi setiap pengguna."
       />
 
       {/* 6 Steps Grid */}
@@ -92,7 +86,7 @@ export default function HowItWorksPage() {
           {steps.map((step) => (
             <div
               key={step.number}
-              className="flex flex-col justify-between rounded-xl border border-border bg-card p-6 shadow-xs"
+              className="flex flex-col justify-between rounded-lg border border-border bg-card p-6 shadow-xs"
             >
               <div>
                 <span className="font-mono text-xl font-bold text-accent">
@@ -111,7 +105,7 @@ export default function HowItWorksPage() {
       </section>
 
       {/* Preparation Checklist */}
-      <section aria-labelledby="prepare-heading" className="mt-14 rounded-2xl border border-border bg-card p-6 sm:p-8">
+      <section aria-labelledby="prepare-heading" className="mt-14 rounded-lg border border-border bg-card p-6 sm:p-8">
         <h2 id="prepare-heading" className="text-lg sm:text-xl font-bold tracking-tight text-foreground">
           Hal yang Perlu Disiapkan Sebelum Berkonsultasi
         </h2>
@@ -138,7 +132,7 @@ export default function HowItWorksPage() {
           sampaikan sejak awal agar waktu Anda tidak terbuang.
         </p>
         <div className="mt-5 grid gap-4 md:grid-cols-2">
-          <div className="rounded-xl border border-border bg-card p-5">
+          <div className="rounded-lg border border-border bg-card p-5">
             <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-success">
               <CheckCircle2 className="size-4" />
               Yang Bisa Kami Kerjakan
@@ -155,7 +149,7 @@ export default function HowItWorksPage() {
               ))}
             </ul>
           </div>
-          <div className="rounded-xl border border-border bg-card p-5">
+          <div className="rounded-lg border border-border bg-card p-5">
             <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-muted-foreground">
               <AlertTriangle className="size-4" />
               Yang Harus Menuju Service Center
@@ -176,7 +170,7 @@ export default function HowItWorksPage() {
       </section>
 
       {/* Remote Support Callout */}
-      <div className="mt-8 rounded-xl border border-accent/20 bg-accent-subtle/40 p-5 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className="mt-8 rounded-lg border border-accent/20 bg-accent-subtle/40 p-5 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-accent text-white">
             <Laptop className="size-5" />
@@ -201,11 +195,11 @@ export default function HowItWorksPage() {
       </div>
 
       {/* Final Consultation Action */}
-      <section className="mt-14 rounded-2xl bg-primary p-8 text-center text-primary-foreground sm:p-12">
-        <div className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-white mb-3">
-          <ShieldCheck className="size-3.5 text-whatsapp" />
+      <section className="mt-14 rounded-lg bg-primary p-8 text-center text-primary-foreground sm:p-12">
+        <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-white/90 mb-3">
+          <span className="size-1.5 rounded-full bg-accent" />
           <span>Langkah Pertama Dimulai dari Anda</span>
-        </div>
+        </p>
 
         <h2 className="text-xl font-bold tracking-tight text-white sm:text-2xl md:text-3xl">
           Siap menjelaskan kondisi perangkat Anda?
