@@ -92,7 +92,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
     "@id": `${absoluteUrl(`/services/${service.slug}`)}#service`,
     name: service.h1 || service.name,
     description: service.shortDescription,
-    serviceType: service.name,
+    serviceType: service.id === "root-android" ? "Jasa Root Android" : `Jasa ${service.name} Android`,
     provider: {
       "@type": "LocalBusiness",
       "@id": `${siteConfig.url}#organization`,

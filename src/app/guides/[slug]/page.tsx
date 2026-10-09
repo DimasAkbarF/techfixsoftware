@@ -278,7 +278,9 @@ export default async function GuideDetailPage({ params }: PageProps) {
                   href={`/services/${relatedServices[0].slug}`}
                   className="inline-flex h-11 items-center gap-1.5 rounded-md border border-white/20 px-4 text-xs sm:text-sm font-medium text-white hover:bg-white/10 transition-colors"
                 >
-                  <span>Lihat Detail Layanan {relatedServices[0].name}</span>
+                  <span>
+                    Lihat {relatedServices[0].id === "root-android" ? "Jasa Root Android" : `Layanan ${relatedServices[0].name}`}
+                  </span>
                   <ArrowRight className="size-3.5" />
                 </Link>
               )}

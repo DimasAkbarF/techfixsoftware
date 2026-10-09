@@ -142,8 +142,9 @@ export function GroupedServicesSection() {
                 <Link
                   href={`/services/${service.slug}`}
                   className="inline-flex items-center gap-1 text-xs font-bold text-accent hover:text-accent-hover transition-colors"
+                  aria-label={`Pelajari ${service.id === "root-android" ? "Jasa Root Android" : `Layanan ${service.name}`}`}
                 >
-                  <span>Detail &amp; Alur Proses</span>
+                  <span>Lihat {service.id === "root-android" ? "Jasa Root Android" : `Layanan ${service.name}`}</span>
                   <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
                 </Link>
 

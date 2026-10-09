@@ -35,9 +35,10 @@
    │      └── /guides/cara-backup-partisi-imei-efs-nvram-sebelum-flashing
    │
    │── [PILAR 4: Root Android & Magisk] /services/root-android
-   │      ├── /guides/apakah-root-android-masih-aman-di-2025
+   │      ├── /guides/apakah-root-android-aman
    │      ├── /guides/magisk-vs-kernelsu-vs-apatch-perbandingan-root-modern
-   │      └── /guides/kenapa-aplikasi-m-banking-terdeteksi-root-dan-cara-atasinya
+   │      ├── /guides/kenapa-aplikasi-m-banking-terdeteksi-root-dan-cara-atasinya
+   │      └── /guides/panduan-root-hp-untuk-ojol-dan-aplikasi-kerja
    │
    │── [PILAR 5: Unlock Bootloader] /services/unlock-bootloader
    │      ├── /guides/apakah-unlock-bootloader-menghapus-data
@@ -65,7 +66,7 @@
 | 3 | `/services/fix-bootloop` | **jasa fix bootloop android** | jasa hp mentok logo, jasa perbaikan bootloop, jasa service hp bootloop xiaomi samsung | Komersial / Transaksional | Jasa Fix Bootloop Android Remote \| TechFix Software | **PILAR 1** (Outbound ke 7 artikel bootloop, Inbound dari homepage & guide) |
 | 4 | `/services/unbrick` | **jasa unbrick hp** | jasa soft brick android, jasa hp mati total software, jasa unbrick qualcomm edl 9008 | Komersial / Transaksional | Jasa Unbrick Android & Soft Brick \| TechFix Software | **PILAR 2** (Outbound ke 5 artikel brick, Inbound dari homepage & guide) |
 | 5 | `/services/flash-firmware` | **jasa flash firmware hp** | jasa instal ulang android, jasa flashing stock rom, flash odin samsung, flash mi flash xiaomi | Komersial / Transaksional | Jasa Flash Firmware Android Resmi \| TechFix Software | **PILAR 3** (Outbound ke 6 artikel firmware, Inbound dari homepage & guide) |
-| 6 | `/services/root-android` | **jasa root android** | jasa root hp, jasa root magisk, jasa root online remote, jasa bypass play integrity | Komersial / Transaksional | Jasa Root Android & Magisk Remote \| TechFix Software | **PILAR 4** (Outbound ke 3 artikel root, Inbound dari homepage & guide) |
+| 6 | `/services/root-android` | **jasa root**, **jasa root android** | jasa root hp, jasa root online, jasa root magisk, jasa root ojol, biaya jasa root android, jasa root hp terdekat | Komersial / Transaksional | Jasa Root Android & HP Online (Magisk) \| TechFix Software | **PILAR 4** (Outbound ke 4 artikel root, Inbound dari homepage & guide) |
 | 7 | `/services/unlock-bootloader` | **jasa unlock bootloader** | jasa ubl xiaomi, jasa ubl poco, unlock bootloader android, bypass ubl hyperos | Komersial / Transaksional | Jasa Unlock Bootloader UBL Android \| TechFix Software | **PILAR 5** (Outbound ke 2 artikel ubl, Inbound dari homepage & guide) |
 | 8 | `/services/custom-rom` | **jasa custom rom** | jasa pasang custom rom, jasa ganti rom android, jasa rom lineageos, jasa rom pixelos | Komersial / Transaksional | Jasa Pasang Custom ROM Android \| TechFix Software | **PILAR 6** (Outbound ke 2 artikel custom rom, Inbound dari homepage & guide) |
 | 9 | `/services/recovery` | **jasa pasang twrp** | jasa pasang custom recovery, jasa orangefox recovery, atasi stuck recovery loop | Komersial / Transaksional | Jasa Pasang Recovery TWRP Android \| TechFix Software | **PILAR 7** (Outbound ke 1 artikel recovery, Inbound dari homepage & guide) |
@@ -95,7 +96,7 @@
 | 16 | `/guides/cara-downgrade-versi-android-tanpa-hard-brick-anti-rollback` | cara downgrade android, anti rollback arb xiaomi | Informasional | Cara Downgrade Versi Android Aman & Anti-Rollback ARB \| TechFix Software | `/services/flash-firmware`, `/services/unbrick` |
 | 17 | `/guides/apa-itu-partisi-a-b-dan-dynamic-partitions-android` | partisi a b android, dynamic partitions super img | Informasional | Memahami Partisi A/B & Dynamic Partitions super.img \| TechFix Software | `/services/flash-firmware`, `/services/recovery` |
 | 18 | `/guides/cara-backup-partisi-imei-efs-nvram-sebelum-flashing` | backup imei efs android, backup nvram nvdata | Informasional | Pentingnya Backup Partisi IMEI EFS & NVRAM Android \| TechFix Software | `/services/flash-firmware`, `/services/unbrick` |
-| 19 | `/guides/apakah-root-android-masih-aman-di-2025` | apakah root android masih aman di 2025 | Informasional | Apakah Root Android Masih Aman di 2025? \| TechFix Software | `/services/root-android` |
+| 19 | `/guides/apakah-root-android-aman` | apakah root android masih aman | Informasional | Apakah Root Android Aman? \| TechFix Software | `/services/root-android` |
 | 20 | `/guides/magisk-vs-kernelsu-vs-apatch-perbandingan-root-modern` | magisk vs kernelsu, apatch android | Informasional | Magisk vs KernelSU vs APatch: Perbandingan Root 2025 \| TechFix Software | `/services/root-android`, `/services/unlock-bootloader` |
 | 21 | `/guides/kenapa-aplikasi-m-banking-terdeteksi-root-dan-cara-atasinya` | m-banking terdeteksi root, bypass root m banking | Informasional -> Komersial | Kenapa M-Banking Terdeteksi Root & Cara Mengatasinya \| TechFix Software | `/services/root-android`, `/services/unlock-bootloader` |
 | 22 | `/guides/apakah-unlock-bootloader-menghapus-data` | apakah unlock bootloader menghapus data | Informasional | Apakah Unlock Bootloader Menghapus Data? \| TechFix Software | `/services/unlock-bootloader`, `/services/root-android` |
@@ -104,6 +105,7 @@
 | 25 | `/guides/rekomendasi-custom-rom-terbaik-ringan-dan-stabil` | custom rom terbaik, custom rom ringan hemat baterai | Informasional -> Komersial | 7 Rekomendasi Custom ROM Android Terbaik & Irit Baterai \| TechFix Software | `/services/custom-rom`, `/services/recovery` |
 | 26 | `/guides/panduan-pasang-twrp-recovery-tanpa-bootloop` | cara pasang twrp recovery, install twrp tanpa bootloop | Informasional -> Komersial | Panduan Pasang TWRP & OrangeFox Recovery Tanpa Bootloop \| TechFix Software | `/services/recovery`, `/services/custom-rom` |
 | 27 | `/guides/cara-mengatasi-error-dm-verity-corruption-android` | dm-verity corruption, your device is corrupt | Informasional -> Komersial | Cara Mengatasi dm-verity Corruption / Device Is Corrupt \| TechFix Software | `/services/software-repair`, `/services/fix-bootloop` |
+| 28 | `/guides/panduan-root-hp-untuk-ojol-dan-aplikasi-kerja` | jasa root ojol, root hp untuk ojol, modul root ojol anti deteksi | Komersial / Informasional | Panduan Root HP Ojol & Aplikasi Kerja 2025 \| TechFix Software | `/services/root-android`, `/services/unlock-bootloader` |
 
 ---
 

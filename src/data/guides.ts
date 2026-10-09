@@ -260,6 +260,11 @@ const baseGuides: GuideArticle[] = [
         body:
           "Berbeda dengan metode root bertahun-tahun lalu yang memodifikasi langsung partisi sistem, saat ini root dilakukan secara 'systemless' melalui Magisk dengan memodifikasi ramdisk boot image. Ini membuat proses jauh lebih bersih, stabil, dan dapat dikembalikan (revert) ke kondisi semula jika diperlukan.",
       },
+      {
+        heading: "Jasa Root Android Profesional & Aman TechFix Software",
+        body:
+          "Bagi Anda yang membutuhkan hak akses superuser untuk kebutuhan ojol, bypass m-banking, atau otomasi tanpa resiko bootloop, TechFix Software menyediakan layanan jasa root Android online via remote AnyDesk. Teknisi kami selalu mem-backup partisi boot orisinal sebelum eksekusi untuk menjamin keamanan perangkat Anda 100%.",
+      },
     ],
     seo: {
       title: "Apakah Root Android Aman?",
