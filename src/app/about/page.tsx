@@ -91,6 +91,63 @@ export default function AboutPage() {
         </div>
       </div>
 
+      {/* Profil Tim Teknisi Spesialis (E-E-A-T Sinyal Teknis) */}
+      <section
+        aria-labelledby="technician-profile-heading"
+        className="mt-14 rounded-lg border border-border bg-card p-6 sm:p-8 md:p-10 shadow-xs"
+      >
+        <div className="max-w-3xl">
+          <p className="inline-flex items-center gap-2 rounded-full border border-border bg-muted/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+            <span className="size-1.5 rounded-full bg-accent" />
+            Profil Teknis &amp; Otoritas Keahlian
+          </p>
+          <h2 id="technician-profile-heading" className="mt-3 text-xl font-bold tracking-tight text-foreground sm:text-2xl">
+            Tim Teknisi Spesialis TechFix Software
+          </h2>
+          <p className="mt-2 text-xs sm:text-sm leading-relaxed text-muted-foreground">
+            Penanganan teknis di TechFix Software dikelola langsung oleh tim teknisi spesialis rekayasa software Android yang beroperasi sejak 2025 dengan fokus kompetensi tingkat rendah (low-level systems):
+          </p>
+        </div>
+
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="rounded-lg border border-border bg-muted/30 p-5">
+            <h3 className="text-sm font-bold text-foreground">
+              Arsitektur Partisi Android
+            </h3>
+            <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+              Penguasaan mendalam atas skema partisi modern: Seamless Updates A/B, Virtual A/B (VAB), dan logical dynamic partitions (super.img) pada Android 10 hingga Android 15.
+            </p>
+          </div>
+
+          <div className="rounded-lg border border-border bg-muted/30 p-5">
+            <h3 className="text-sm font-bold text-foreground">
+              Protokol Darurat Hardware SoC
+            </h3>
+            <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+              Keahlian penanganan komunikasi darurat chipset: Qualcomm Emergency Download (EDL 9008 via Sahara/Firehose), MediaTek Boot ROM (BROM &amp; SLA/DAA bypass), dan Samsung Odin Protocol.
+            </p>
+          </div>
+
+          <div className="rounded-lg border border-border bg-muted/30 p-5">
+            <h3 className="text-sm font-bold text-foreground">
+              Kernel Patching &amp; Modifikasi Aman
+            </h3>
+            <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+              Implementasi root modern systemless: Magisk, KernelSU berbasis kernel GKI, dan APatch, disertai penyetelan modul Zygisk, Shamiko, dan Play Integrity API.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-6 rounded-lg border border-accent/25 bg-accent-subtle/30 p-4 sm:p-5">
+          <p className="text-xs sm:text-sm font-semibold text-foreground">
+            Komitmen Integritas: Tanpa Akses Kredensial Pribadi (Zero Credential Policy)
+          </p>
+          <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+            Kami tidak pernah meminta PIN layar kunci, kata sandi email, akun Google, maupun kode OTP perbankan. Seluruh proses triage teknis berjalan secara remote transparan via AnyDesk di mana Anda dapat memantau setiap baris perintah di layar monitor Anda sendiri.
+          </p>
+        </div>
+      </section>
+
       {/* Values Grid */}
       <div className="mt-14">
         <h2 className="text-xl font-bold tracking-tight text-foreground sm:text-2xl text-center">

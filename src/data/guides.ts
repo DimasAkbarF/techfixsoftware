@@ -1,6 +1,7 @@
 import type { GuideArticle } from "@/types";
+import { newGuides } from "./newGuides";
 
-export const guides: GuideArticle[] = [
+const baseGuides: GuideArticle[] = [
   {
     id: "guide-stuck-logo",
     slug: "apa-penyebab-hp-android-stuck-di-logo",
@@ -434,6 +435,8 @@ export const guides: GuideArticle[] = [
     },
   },
 ];
+
+export const guides: GuideArticle[] = [...baseGuides, ...newGuides];
 
 export function getGuideBySlug(slug: string): GuideArticle | undefined {
   return guides.find((g) => g.slug === slug);

@@ -95,6 +95,44 @@ export const services: Service[] = [
     remoteAvailable: true,
     featured: true,
     badges: ["Remote support", "Systemless Root"],
+    supportedBrands: [
+      "Xiaomi / Poco / Redmi (MIUI & HyperOS)",
+      "Samsung Galaxy (One UI, Knox Patching)",
+      "Google Pixel (Factory Image Patching)",
+      "Infinix & Tecno (Transsion HiOS & XOS)",
+      "Realme / Oppo / OnePlus (OxygenOS)",
+      "Motorola & Asus ROG / Zenfone",
+    ],
+    supportedChipsets: [
+      "Qualcomm Snapdragon (semua seri)",
+      "MediaTek Dimensity & Helio",
+      "Google Tensor (Pixel 6 - 9 Pro)",
+      "Samsung Exynos (model tertentu)",
+    ],
+    estimatedTime: "30 – 45 Menit via Remote AnyDesk",
+    causes: [
+      "Kebutuhan otomasi kerja atau pengujian aplikasi yang mewajibkan hak superuser (su binary).",
+      "Penumpukan bloatware bawaan pabrik yang tidak bisa di-uninstall tanpa akses root.",
+      "Kebutuhan backup partisi data penuh secara offline (misal via Swift Backup atau Neo Backup).",
+      "Kebutuhan tweak kernel, peningkatan refresh rate layar, atau modul audio kustom (Viper4Android).",
+    ],
+    technicalDeepDive: [
+      {
+        heading: "Arsitektur Root Modern: Systemless Magisk, KernelSU, & APatch",
+        body:
+          "Berbeda dengan metode root konvensional era lama seperti KingRoot yang merusak partisi /system dan memicu bootloop permanen, rekayasa root modern di TechFix Software dilakukan secara 100% systemless. Kami memodifikasi ramdisk di dalam boot.img atau init_boot.img tanpa menyentuh integritas partisi sistem baca-saja (read-only system/vendor). Hal ini menjamin ponsel dapat dikembalikan ke kondisi unroot pabrik kapan saja.",
+        bullets: [
+          "Ekstraksi boot.img orisinal yang 100% identik dengan versi firmware aktif (mencegah bootloop akibat mismatch kernel).",
+          "Patching boot image menggunakan Magisk Manager resmi atau injeksi modul KernelSU langsung di level kernel GKI (Generic Kernel Image).",
+          "Flashing partisi boot via Fastboot interface dengan cadangan partisi stok disimpan aman di PC Anda.",
+        ],
+      },
+      {
+        heading: "Konfigurasi Zygisk, Shamiko, & Play Integrity",
+        body:
+          "Setelah hak root aktif, tantangan terbesar pengguna adalah deteksi keamanan Google Play Integrity API dan aplikasi perbankan. Teknisi kami memandu konfigurasi Zygisk modern dengan modul penyembunyi lingkungan (Shamiko / Zygisk Next) serta setup fingerprint keystore agar perangkat tetap dapat menjalankan aktivitas perbankan harian dan verifikasi transaksi digital secara wajar.",
+      },
+    ],
     seo: {
       title: "Jasa Root Android & Magisk Remote",
       description:
@@ -175,6 +213,42 @@ export const services: Service[] = [
     remoteAvailable: true,
     featured: false,
     badges: ["Remote support", "Konsultasi diwajibkan"],
+    supportedBrands: [
+      "Xiaomi / Poco / Redmi (MIUI & HyperOS Global/ID/China)",
+      "Google Pixel (Semua varian non-carrier-locked)",
+      "OnePlus & Motorola",
+      "Transsion (Infinix & Tecno varian tertentu)",
+      "Sony Xperia & Asus Zenfone / ROG Phone",
+    ],
+    supportedChipsets: [
+      "Qualcomm Snapdragon",
+      "MediaTek Helio & Dimensity",
+      "Google Tensor",
+    ],
+    estimatedTime: "20 – 45 Menit (Asistensi Bind Akun & Eksekusi Fastboot)",
+    causes: [
+      "Kebijakan keamanan OEM yang mengunci verifikasi tanda tangan partisi (Signature Verification).",
+      "Kebutuhan persiapan memasang Custom Recovery (TWRP/OrangeFox), Root Magisk, atau Ganti ROM.",
+      "Kendala limit kuota harian atau error perizinan akun resmi Xiaomi Community pada sistem HyperOS.",
+      "Perangkat terjebak error 'Device is locked' saat mencoba instalasi pembaruan firmware pihak ketiga.",
+    ],
+    technicalDeepDive: [
+      {
+        heading: "Prosedur Unlock Resmi vs Kebijakan Vendor Android",
+        body:
+          "Unlock Bootloader (UBL) adalah proses membuka kunci cryptographical pada partisi aboot/xbl/abl. Ketika bootloader tidak terkunci, kernel mengizinkan eksekusi boot image pihak ketiga. Setiap vendor memiliki alur resmi yang berbeda: Xiaomi menggunakan Mi Unlock Tool dengan persyaratan pengikatan Mi Account dan kartu SIM aktif; Google Pixel dan OnePlus menggunakan perintah Fastboot murni (fastboot flashing unlock); sementara Motorola membutuhkan kode token resmi.",
+        bullets: [
+          "Verifikasi status OEM Unlocking di Developer Options dan driver Android Bootloader Interface pada Windows.",
+          "Asistensi mengatasi kendala 'Error 20091 / Account not bound' dan antrean akun Xiaomi HyperOS.",
+          "Pengecekan device identifier token dan eksekusi unlock aman via fastboot tanpa risiko soft brick.",
+        ],
+      },
+      {
+        heading: "Protokol Keamanan Data & Factory Reset Otomatis",
+        body:
+          "Sesuai regulasi keamanan Android (Android Verified Boot / AVB), eksekusi perintah unlock bootloader akan menghapus cryptographic keys pada partisi userdata, yang secara otomatis memicu factory reset penuh. Kami mewajibkan dan memandu backup seluruh file pribadi (foto, chat WhatsApp, dokumen) sebelum tombol konfirmasi dieksekusi.",
+      },
+    ],
     seo: {
       title: "Jasa Unlock Bootloader UBL Android",
       description:
@@ -254,6 +328,45 @@ export const services: Service[] = [
     remoteAvailable: true,
     featured: true,
     badges: ["Remote support", "Prioritas Repair"],
+    supportedBrands: [
+      "Xiaomi / Poco / Redmi (MIUI & HyperOS)",
+      "Samsung Galaxy (One UI, seri A, M, S, Z)",
+      "Oppo & Realme (ColorOS & Realme UI)",
+      "Vivo & iQOO (Funtouch OS & OriginOS)",
+      "Infinix, Tecno, & Itel (Transsion XOS/HiOS)",
+      "Google Pixel, Asus ROG/Zenfone, & Motorola",
+    ],
+    supportedChipsets: [
+      "Qualcomm Snapdragon (semua seri)",
+      "MediaTek Dimensity & Helio (termasuk BROM repair)",
+      "Samsung Exynos (semua generasi)",
+      "Unisoc T-Series / Spreadtrum",
+      "Google Tensor",
+    ],
+    estimatedTime: "30 – 60 Menit via Remote AnyDesk",
+    causes: [
+      "Pembaruan sistem OTA (Over The Air) yang terinterupsi atau korup saat proses instalasi partisi.",
+      "Kapasitas penyimpanan memori internal (userdata) yang terisi penuh 100% sehingga sistem gagal membuat cache boot.",
+      "Konflik modul Magisk, Xposed/LSPosed, atau patch kernel yang tidak kompatibel dengan versi Android terpasang.",
+      "Kerusakan partisi super (system, vendor, product, odm) akibat salah mengeksekusi file update atau flashing mandiri.",
+    ],
+    technicalDeepDive: [
+      {
+        heading: "Diagnosis Tingkat Rendah & Penyelamatan Data (Data Preservation)",
+        body:
+          "Pada kasus bootloop, prinsip utama TechFix Software adalah mengupayakan keselamatan data bila kondisi enkripsi partisi userdata masih memungkinkan. Kami membedakan apakah ponsel mengalami Soft Bootloop (hanya crash Zygote framework) atau Hard Bootloop (partisi kernel/fstab korup). Jika memungkinkan, kami menerapkan metode dirty flash atau flashing firmware stok non-wipe tanpa menghapus direktori pengguna.",
+        bullets: [
+          "Identifikasi status respon perangkat melalui Fastboot Mode, Samsung Download Mode, atau Recovery.",
+          "Verifikasi kode nomor model (product board ID) dan region firmware (misalnya ID, Global, EEA, RU) untuk mencegah salah flashing.",
+          "Eksekusi pemulihan partisi sistem secara presisi dipantau langsung di layar komputer Anda.",
+        ],
+      },
+      {
+        heading: "Penanganan Khusus Xiaomi HyperOS & Samsung Odin",
+        body:
+          "Untuk perangkat Xiaomi modern yang terjebak 'The system has been destroyed' atau recovery loop 'NV Data is Corrupted', teknisi kami menggunakan prosedur penulisan partisi fastboot clean. Pada perangkat Samsung yang stuck di logo Knox, kami menggunakan firmware resmi 4-file (BL, AP, CP, CSC/HOME_CSC) melalui jalur Odin resmi untuk memulihkan integritas signature sistem tanpa memicu knox void palsu.",
+      },
+    ],
     seo: {
       title: "Jasa Fix Bootloop Android Remote",
       description:
@@ -329,6 +442,45 @@ export const services: Service[] = [
     remoteAvailable: true,
     featured: false,
     badges: ["Konsultasi diwajibkan", "High Technical"],
+    supportedBrands: [
+      "Xiaomi / Poco / Redmi",
+      "Samsung Galaxy (Download Mode unbrick)",
+      "Realme / Oppo / OnePlus",
+      "Vivo & iQOO",
+      "Infinix & Tecno (MediaTek Transsion)",
+      "Asus ROG Phone & Zenfone",
+    ],
+    supportedChipsets: [
+      "Qualcomm Snapdragon (Protokol Emergency Download EDL 9008 Sahara / Firehose)",
+      "MediaTek Dimensity & Helio (Mode Boot ROM BROM / Preloader SLA & DAA)",
+      "Samsung Exynos (Emergency UART / EUB Mode)",
+      "Unisoc Spreadtrum (SPRD Protocol)",
+    ],
+    estimatedTime: "45 – 90 Menit via Remote AnyDesk",
+    causes: [
+      "Flashing firmware yang salah model, salah varian SoC, atau salah kode board produk.",
+      "Pemadaman listrik atau kabel USB terputus saat proses penulisan partisi bootloader primer (xbl, abl, sbl1).",
+      "Downgrade firmware yang melanggar indeks Anti-Rollback (ARB) hardware pabrikan.",
+      "Kerusakan Master Boot Record atau GUID Partition Table (GPT) tingkat rendah.",
+    ],
+    technicalDeepDive: [
+      {
+        heading: "Protokol Pemulihan Qualcomm EDL 9008 & MediaTek BROM",
+        body:
+          "Ketika ponsel mengalami Soft Brick parah dan tidak merespons tombol fisik maupun layar (layar hitam pekat), prosesor SoC masuk ke mode darurat pabrik. Pada chipset Qualcomm, SoC masuk ke mode Emergency Download (EDL) dengan ID perangkat 'Qualcomm HS-USB QDLoader 9008'. Pada MediaTek, SoC mengeksekusi Boot ROM (BROM) menunggu komunikasi handshake via USB. Di TechFix Software, kami memiliki alat diagnostik dan file programmer (firehose ELF/MBN dan DA payload) yang tepat untuk menulis ulang partisi vital tanpa membongkar motherboard jika testpoint tidak diwajibkan.",
+        bullets: [
+          "Verifikasi komunikasi handshake COM Port pada Device Manager komputer Anda.",
+          "Injeksi payload programmer sah untuk menginisialisasi controller RAM (LPDDR) dan penyimpanan eMMC/UFS.",
+          "Flashing partisi partisi kritis: partition-table (gpt.bin), xbl, abl, boot, dan recovery.",
+          "Menghidupkan kembali display dan mengembalikan unit ke status Fastboot normal.",
+        ],
+      },
+      {
+        heading: "Transparansi Pembedaan Soft Brick vs Hard Brick Fisik",
+        body:
+          "Kami menjunjung tinggi etika transparansi. Jika saat pengetesan USB port sama sekali tidak mengeluarkan respon hardware (0 ampere pada USB tester atau tidak ada suara connect di Windows), kami akan menyatakan secara jujur bahwa unit mengalami kerusakan hardware (IC Power short, chip UFS mati, atau kerusakan jalur PCB) sehingga Anda tidak membuang waktu dan biaya untuk tindakan software yang sia-sia.",
+      },
+    ],
     seo: {
       title: "Jasa Unbrick Android & Soft Brick",
       description:
@@ -397,6 +549,45 @@ export const services: Service[] = [
     remoteAvailable: true,
     featured: true,
     badges: ["Remote support", "Firmware Stock"],
+    supportedBrands: [
+      "Samsung Galaxy (Flash Odin 4-File: BL, AP, CP, CSC/HOME_CSC)",
+      "Xiaomi / Poco / Redmi (Mi Flash Fastboot TGZ)",
+      "Realme & Oppo (OFP / OZIP & Fastboot ROM)",
+      "Vivo & iQOO (Fastboot & EDL official package)",
+      "Infinix & Tecno (Transsion SP Flash Tool / MDT)",
+      "Google Pixel (Factory Image Fastboot Script)",
+    ],
+    supportedChipsets: [
+      "Qualcomm Snapdragon",
+      "MediaTek Helio & Dimensity",
+      "Samsung Exynos",
+      "Unisoc Spreadtrum",
+      "Google Tensor",
+    ],
+    estimatedTime: "30 – 60 Menit via Remote AnyDesk",
+    causes: [
+      "Penumpukan file residu sistem dan bug sistemik setelah beberapa kali update OS berturut-turut.",
+      "Infeksi adware, malware, atau aplikasi pihak ketiga yang menempel pada partisi sistem.",
+      "Keinginan kembali ke sistem resmi pabrikan (Stock ROM) setelah mencoba Custom ROM atau Root.",
+      "Kebutuhan mengganti wilayah ROM (misal dari ROM China/Telco ke ROM Global Resmi Indonesia).",
+    ],
+    technicalDeepDive: [
+      {
+        heading: "Integritas Sumber ROM & Verifikasi Checksum Resmi",
+        body:
+          "Dalam proses flashing firmware resmi, TechFix Software hanya mengunduh paket firmware langsung dari server CDN resmi pabrikan atau repositori terverifikasi. Kami melakukan pengujian hash SHA-256 / MD5 sebelum file dieksekusi ke perangkat Anda, guna meniadakan risiko file korup yang dapat merusak memori internal.",
+        bullets: [
+          "Verifikasi kesesuaian Product Model Name dan CSC/Region Code secara ketat.",
+          "Analisis Anti-Rollback Protection (ARB Index) untuk memastikan downgrade aman tanpa memicu hardware freeze.",
+          "Instalasi driver USB resmi (Samsung Smart Switch Driver, Google Android USB Driver, MediaTek VCOM Driver) yang terverifikasi.",
+        ],
+      },
+      {
+        heading: "Pemilihan Opsi Clean Flash vs Non-Wipe Restore",
+        body:
+          "Jika Anda ingin memulihkan sistem namun masih ingin mempertahankan data, kami dapat memandu prosedur flash dengan CSC HOME (pada Samsung) atau skrip 'flash_all_except_storage.bat' (pada Xiaomi), asalkan partisi data belum mengalami korupsi enkripsi parah. Jika instalasi bersih (Clean Flash) diwajibkan demi stabilitas, kami memastikan Anda telah memahami konsekuensinya terlebih dahulu.",
+      },
+    ],
     seo: {
       title: "Jasa Flash Firmware Android Resmi",
       description:
@@ -465,6 +656,42 @@ export const services: Service[] = [
     remoteAvailable: true,
     featured: false,
     badges: ["Remote support", "Konsultasi diwajibkan"],
+    supportedBrands: [
+      "Xiaomi / Poco / Redmi (dukungan ROM komunitas terluas)",
+      "Google Pixel (LineageOS, GrapheneOS, CalyxOS)",
+      "OnePlus (OxygenOS alternative / Paranoid Android)",
+      "Realme & Asus Zenfone / ROG Phone",
+      "Samsung Galaxy (model dengan SoC Exynos/Snapdragon unlockable)",
+    ],
+    supportedChipsets: [
+      "Qualcomm Snapdragon (rekomendasi terbaik untuk custom ROM)",
+      "MediaTek Dimensity (pada model dengan source code kernel resmi)",
+      "Google Tensor",
+    ],
+    estimatedTime: "45 – 75 Menit via Remote AnyDesk",
+    causes: [
+      "Ponsel sudah mencapai End-of-Life (EOL) dan tidak lagi menerima update keamanan Android dari pabrikan.",
+      "Antarmuka bawaan pabrik terasa sangat berat, penuh bloatware, dan boros baterai.",
+      "Keinginan merasakan pengalaman Android murni ala Google Pixel (PixelOS / Pixel Experience).",
+      "Kebutuhan kustomisasi tingkat lanjut tanpa batas (crDroid, Evolution X, LineageOS).",
+    ],
+    technicalDeepDive: [
+      {
+        heading: "Pemilihan ROM Resmi (Official Build) & Stabilitas Kernel",
+        body:
+          "TechFix Software mengutamakan keselamatan harian Anda. Kami hanya merekomendasikan varian Custom ROM yang berstatus 'Official' dengan pohon sumber (device tree) dan kernel yang dirilis oleh maintainer tepercaya. Kami memeriksa kesesuaian firmware vendor base (misalnya MIUI/HyperOS vendor firmware) sebelum paket ROM diflash untuk mencegah kamera mati (camera dead), sensor sidik jari error, atau hilangnya konektivitas sinyal seluler.",
+        bullets: [
+          "Verifikasi ketersediaan Custom Recovery modern (TWRP / OrangeFox) yang mendukung dekripsi Android 13/14/15.",
+          "Prosedur Clean Flash terstandarisasi: Format Data (F2FS/ext4) untuk menghapus residu enkripsi lama.",
+          "Flashing paket Google Apps (NikGApps / MindTheGapps) dan modul modem radio yang kompatibel.",
+        ],
+      },
+      {
+        heading: "Penyesuaian Play Integrity & Sertifikasi Perangkat",
+        body:
+          "Banyak pengguna ragu beralih ke Custom ROM karena khawatir aplikasi m-banking atau e-wallet tidak bisa dibuka. Teknisi kami memandu langkah konfigurasi Play Integrity Fix sehingga perangkat Anda lulus pengujian Basic dan Device Integrity, memungkinkan aplikasi perbankan berjalan normal tanpa hambatan.",
+      },
+    ],
     seo: {
       title: "Jasa Pasang Custom ROM Android",
       description:
@@ -538,6 +765,39 @@ export const services: Service[] = [
     remoteAvailable: true,
     featured: false,
     badges: ["Remote support"],
+    supportedBrands: [
+      "Xiaomi / Poco / Redmi",
+      "Samsung Galaxy (TWRP Odin TAR)",
+      "Realme & Oppo",
+      "Google Pixel",
+      "OnePlus & Motorola",
+      "Infinix & Tecno (chipset MTK)",
+    ],
+    supportedChipsets: [
+      "Qualcomm Snapdragon",
+      "MediaTek Helio & Dimensity",
+      "Samsung Exynos",
+    ],
+    estimatedTime: "30 – 50 Menit via Remote AnyDesk",
+    causes: [
+      "Perangkat mengalami recovery boot loop (selalu restart kembali ke menu recovery bawaan).",
+      "Memori internal terenkripsi dengan tampilan 0 MB atau nama folder acak di menu recovery.",
+      "Kebutuhan memasang TWRP, OrangeFox, atau PBRP untuk mem-flash zip magisk atau rom.",
+      "Kegagalan mounting partisi partisi sistem (unable to mount /system, /vendor, atau /data).",
+    ],
+    technicalDeepDive: [
+      {
+        heading: "Penanganan Partisi A/B, Virtual A/B (VAB), & Dynamic Partitions",
+        body:
+          "Pada arsitektur Android modern (Android 10 ke atas), partisi recovery seringkali digabungkan ke dalam boot.img atau vendor_boot.img daripada memiliki partisi khusus /recovery terpisah. Kesalahan mem-flash file recovery ke partisi boot konvensional dapat menyebabkan bootloop total. Teknisi kami memastikan metode instalasi disesuaikan dengan skema partisi perangkat Anda.",
+        bullets: [
+          "Identifikasi skema partisi: Dedicated Recovery vs A/B Ramdisk Boot vs Vendor Boot Recovery.",
+          "Flashing recovery via Fastboot dengan sintaks yang tepat (fastboot flash recovery vs fastboot flash vendor_boot).",
+          "Konfigurasi kunci dekripsi FBE (File-Based Encryption) untuk mengembalikan akses penyimpanan internal.",
+          "Pencegahan recovery ter-overwrite kembali oleh stock recovery pabrikan melalui patching disable-dm-verity.",
+        ],
+      },
+    ],
     seo: {
       title: "Jasa Pasang Recovery TWRP Android",
       description:
@@ -604,6 +864,40 @@ export const services: Service[] = [
     remoteAvailable: true,
     featured: false,
     badges: ["Remote support", "Konsultasi"],
+    supportedBrands: [
+      "Semua merek Android: Xiaomi, Poco, Redmi",
+      "Samsung Galaxy (semua seri)",
+      "Oppo, Vivo, Realme, & iQOO",
+      "Infinix, Tecno, & Itel",
+      "Google Pixel, Asus, Motorola, Huawei, Sony",
+    ],
+    supportedChipsets: [
+      "Qualcomm Snapdragon",
+      "MediaTek Helio & Dimensity",
+      "Samsung Exynos",
+      "Unisoc Spreadtrum",
+      "Google Tensor",
+    ],
+    estimatedTime: "30 – 60 Menit via Remote AnyDesk",
+    causes: [
+      "Konflik berkas shared library (so file) atau dalvik-cache korup setelah pembaruan sistem tidak sempurna.",
+      "Layanan framework 'com.android.systemui' mengalami crash loop yang menyebabkan layar berkedip hitam.",
+      "Infeksi adware/malware tersembunyi yang berjalan sebagai Device Administrator.",
+      "Fragmentasi partisi memori internal yang memicu freeze ekstrem dan restart berkala.",
+    ],
+    technicalDeepDive: [
+      {
+        heading: "Diagnosis Logcat & Triage Kerusakan Sistemik",
+        body:
+          "Dalam penanganan software repair, teknisi kami tidak sekadar melakukan reset sembarangan. Kami memanfaatkan antarmuka ADB (Android Debug Bridge) untuk membaca stream 'logcat' secara real-time. Dengan menganalisis stack trace dari error Fatal Exception atau NullPointerException, kami dapat mengidentifikasi paket aplikasi atau dependensi sistem mana yang memicu ketidakstabilan perangkat.",
+        bullets: [
+          "Inspeksi status integritas partisi sistem dan beban proses CPU/RAM di background.",
+          "Pembersihan cache dalvik dan reinisialisasi permission paket tanpa menghapus data pribadi.",
+          "Penghapusan paksa (debloat) aplikasi berbahaya atau residu malware via adb shell pm uninstall.",
+          "Restorasi file konfigurasi sistem dan pengujian kestabilan perangkat.",
+        ],
+      },
+    ],
     seo: {
       title: "Jasa Service Software HP Android",
       description:

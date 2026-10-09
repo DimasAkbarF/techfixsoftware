@@ -41,6 +41,15 @@ export interface Service {
   remoteAvailable: boolean;
   featured: boolean;
   badges?: string[];
+  supportedBrands?: string[];
+  supportedChipsets?: string[];
+  estimatedTime?: string;
+  causes?: string[];
+  technicalDeepDive?: Array<{
+    heading: string;
+    body: string;
+    bullets?: string[];
+  }>;
   seo: ServiceSEO;
 }
 

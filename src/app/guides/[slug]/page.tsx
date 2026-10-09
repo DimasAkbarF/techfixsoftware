@@ -59,8 +59,8 @@ export default async function GuideDetailPage({ params }: PageProps) {
     },
     author: {
       "@type": "Organization",
-      name: siteConfig.name,
-      url: absoluteUrl("/"),
+      name: "Tim Teknisi Spesialis TechFix Software",
+      url: absoluteUrl("/about"),
     },
     publisher: {
       "@type": "Organization",
@@ -124,6 +124,20 @@ export default async function GuideDetailPage({ params }: PageProps) {
         <h1 className="mt-4 text-2xl font-bold tracking-tight text-foreground sm:text-3xl md:text-4xl leading-tight">
           {guide.title}
         </h1>
+
+        {/* E-E-A-T Author Byline */}
+        <div className="mt-3.5 flex items-center gap-2 text-xs text-muted-foreground">
+          <span>Ditulis &amp; Ditinjau oleh:</span>
+          <Link
+            href="/about"
+            className="inline-flex items-center gap-1 font-semibold text-foreground hover:text-accent transition-colors"
+          >
+            <span>Tim Teknisi Spesialis TechFix Software</span>
+            <span className="text-[10px] text-accent font-mono bg-accent-subtle px-1.5 py-0.5 rounded">
+              Spesialis Android
+            </span>
+          </Link>
+        </div>
 
         <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground">
           {guide.excerpt}

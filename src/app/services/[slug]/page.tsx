@@ -9,6 +9,8 @@ import {
   XCircle,
   BookOpen,
   ArrowRight,
+  Wrench,
+  Smartphone,
 } from "lucide-react";
 import { services, getServiceBySlug, getServicesByCategory } from "@/data/services";
 import { getCategoryById } from "@/data/categories";
@@ -154,6 +156,27 @@ export default async function ServiceDetailPage({ params }: PageProps) {
             </section>
           )}
 
+          {/* Root Causes Section */}
+          {service.causes && service.causes.length > 0 && (
+            <section aria-labelledby="causes-heading" className="max-w-3xl">
+              <h2 id="causes-heading" className="flex items-center gap-2 text-lg font-bold tracking-tight text-foreground md:text-xl">
+                <Wrench className="size-5 text-accent" aria-hidden="true" />
+                Akar Masalah &amp; Penyebab Teknis
+              </h2>
+              <p className="mt-1 text-xs sm:text-sm text-muted-foreground">
+                Kerusakan software pada kategori ini umumnya dipicu oleh faktor-faktor teknis berikut:
+              </p>
+              <ul className="mt-4 space-y-2.5">
+                {service.causes.map((cause, idx) => (
+                  <li key={idx} className="flex items-start gap-2.5 rounded-lg border border-border bg-card p-3.5">
+                    <span className="mt-1 size-1.5 rounded-full bg-accent shrink-0" />
+                    <span className="text-xs sm:text-sm leading-relaxed text-foreground">{cause}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
           {/* Service Overview */}
           <section aria-labelledby="overview-heading" className="max-w-3xl">
             <h2 id="overview-heading" className="text-lg font-bold tracking-tight text-foreground md:text-xl">
@@ -165,6 +188,51 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               ))}
             </div>
           </section>
+
+          {/* Supported Brands & Chipsets */}
+          {(service.supportedBrands || service.supportedChipsets) && (
+            <section aria-labelledby="compatibility-heading" className="max-w-3xl rounded-lg border border-border bg-card p-5 sm:p-6 shadow-xs">
+              <h2 id="compatibility-heading" className="flex items-center gap-2 text-lg font-bold tracking-tight text-foreground md:text-xl">
+                <Smartphone className="size-5 text-accent" aria-hidden="true" />
+                Dukungan Merek HP &amp; Platform Chipset
+              </h2>
+              <p className="mt-1 text-xs sm:text-sm text-muted-foreground">
+                Penanganan teknis disesuaikan dengan arsitektur vendor dan protokol flashing resmi:
+              </p>
+              <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                {service.supportedBrands && (
+                  <div className="rounded-md border border-border/80 bg-muted/30 p-4">
+                    <p className="text-xs font-mono font-semibold uppercase tracking-wider text-muted-foreground">
+                      Merek yang Didukung
+                    </p>
+                    <ul className="mt-2.5 space-y-1.5 text-xs sm:text-sm text-foreground">
+                      {service.supportedBrands.map((b, i) => (
+                        <li key={i} className="flex items-center gap-2">
+                          <span className="size-1.5 rounded-full bg-accent shrink-0" />
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {service.supportedChipsets && (
+                  <div className="rounded-md border border-border/80 bg-muted/30 p-4">
+                    <p className="text-xs font-mono font-semibold uppercase tracking-wider text-muted-foreground">
+                      Chipset &amp; Protokol Flash
+                    </p>
+                    <ul className="mt-2.5 space-y-1.5 text-xs sm:text-sm text-foreground">
+                      {service.supportedChipsets.map((c, i) => (
+                        <li key={i} className="flex items-center gap-2">
+                          <span className="size-1.5 rounded-full bg-accent shrink-0" />
+                          <span>{c}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </section>
+          )}
 
           {/* Who It's For & Who It's Not For */}
           {(service.whoIsItFor || service.whoIsItNotFor) && (
@@ -248,6 +316,40 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               <ProcessTimeline steps={service.processSteps} />
             </div>
           </section>
+
+          {/* Technical Deep Dive */}
+          {service.technicalDeepDive && service.technicalDeepDive.length > 0 && (
+            <section aria-labelledby="deepdive-heading" className="max-w-3xl space-y-6">
+              <div className="border-t border-border pt-6">
+                <h2 id="deepdive-heading" className="text-lg font-bold tracking-tight text-foreground md:text-xl">
+                  Prosedur Teknis &amp; Rekayasa Partisi
+                </h2>
+                <p className="mt-1 text-xs sm:text-sm text-muted-foreground">
+                  Penjelasan mendalam mengenai arsitektur sistem dan tahapan rekayasa software yang kami terapkan:
+                </p>
+              </div>
+              {service.technicalDeepDive.map((section, idx) => (
+                <div key={idx} className="space-y-3 rounded-lg border border-border bg-card p-5 sm:p-6 shadow-xs">
+                  <h3 className="text-base font-bold text-foreground">
+                    {section.heading}
+                  </h3>
+                  <p className="text-xs sm:text-sm leading-relaxed text-muted-foreground">
+                    {section.body}
+                  </p>
+                  {section.bullets && section.bullets.length > 0 && (
+                    <ul className="mt-2.5 space-y-1.5 border-t border-border/60 pt-3 text-xs text-foreground/80">
+                      {section.bullets.map((b, bIdx) => (
+                        <li key={bIdx} className="flex items-start gap-2">
+                          <span className="mt-1 size-1.5 rounded-full bg-accent shrink-0" />
+                          <span className="leading-relaxed">{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
+            </section>
+          )}
 
           {/* Risk Transparency Notice */}
           <section aria-labelledby="notice-heading" className="max-w-3xl">

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Clock } from "lucide-react";
 import type { Service } from "@/types";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { hasWhatsapp, whatsappLink } from "@/config/site";
@@ -30,7 +31,14 @@ export function ServiceConsultationAside({ service }: { service: Service }) {
           </h2>
         </div>
 
-        <p className="mt-2 text-xs sm:text-sm leading-relaxed text-muted-foreground">
+        {service.estimatedTime && (
+          <div className="mt-2.5 inline-flex items-center gap-1.5 rounded-md border border-accent/25 bg-accent-subtle/50 px-2.5 py-1 text-[11px] font-semibold text-accent">
+            <Clock className="size-3.5" aria-hidden="true" />
+            <span>Estimasi: {service.estimatedTime}</span>
+          </div>
+        )}
+
+        <p className="mt-2.5 text-xs sm:text-sm leading-relaxed text-muted-foreground">
           Ceritakan merek, tipe HP, dan kronologi kendala Anda. Kami periksa kompatibilitasnya sebelum Anda mengambil keputusan.
         </p>
 
