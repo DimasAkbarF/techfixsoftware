@@ -160,6 +160,7 @@ export const services: Service[] = [
         "jasa unroot android",
       ],
     },
+    updatedAt: "2026-10-10",
   },
   {
     id: "unlock-bootloader",
@@ -272,6 +273,7 @@ export const services: Service[] = [
         "buka bootloader android",
       ],
     },
+    updatedAt: "2026-10-10",
   },
   {
     id: "fix-bootloop",
@@ -390,6 +392,7 @@ export const services: Service[] = [
         "jasa flash xiaomi samsung",
       ],
     },
+    updatedAt: "2026-10-10",
   },
   {
     id: "unbrick",
@@ -496,6 +499,7 @@ export const services: Service[] = [
         "Jasa unbrick Android & perbaikan HP mati total atau soft brick akibat gagal flash. Deteksi port EDL 9008 & BROM remote online. Konsultasi teknisi sekarang!",
       keywords: ["unbrick", "soft brick", "hp brick", "pemulihan brick", "service software hp", "unbrick android"],
     },
+    updatedAt: "2026-10-10",
   },
   {
     id: "flash-firmware",
@@ -603,6 +607,7 @@ export const services: Service[] = [
         "Jasa flash firmware Android resmi: instal ulang stock ROM, atasi bootloop, downgrade & upgrade sistem semua merek via AnyDesk. Konsultasi gratis sekarang!",
       keywords: ["flash firmware", "firmware stock", "restore firmware", "reinstall android", "jasa flashing android"],
     },
+    updatedAt: "2026-10-10",
   },
   {
     id: "custom-rom",
@@ -716,6 +721,7 @@ export const services: Service[] = [
         "custom rom android indonesia",
       ],
     },
+    updatedAt: "2026-10-10",
   },
   {
     id: "recovery",
@@ -813,6 +819,7 @@ export const services: Service[] = [
         "Jasa pasang custom recovery TWRP & OrangeFox Android via remote. Atasi stuck recovery loop dan partisi internal terenkripsi. Hubungi teknisi kami sekarang!",
       keywords: ["recovery", "twrp", "custom recovery", "mode recovery", "stuck di recovery", "service hp"],
     },
+    updatedAt: "2026-10-10",
   },
   {
     id: "software-repair",
@@ -913,6 +920,7 @@ export const services: Service[] = [
         "Jasa perbaikan software Android online: atasi aplikasi force close, gagal update, system UI error & lemot parah secara remote AnyDesk. Chat WhatsApp teknisi!",
       keywords: ["perbaikan software", "error android", "update gagal", "force close", "software repair android"],
     },
+    updatedAt: "2026-10-10",
   },
 ];
 

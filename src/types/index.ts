@@ -51,6 +51,7 @@ export interface Service {
     bullets?: string[];
   }>;
   seo: ServiceSEO;
+  updatedAt?: string;
 }
 
 export interface FAQItem {
