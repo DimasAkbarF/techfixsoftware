@@ -591,7 +591,7 @@ export const newGuides: GuideArticle[] = [
   {
     id: "guide-magisk-kernelsu-apatch",
     slug: "magisk-vs-kernelsu-vs-apatch-perbandingan-root-modern",
-    title: "Magisk vs KernelSU vs APatch: Perbandingan Metode Root Android 2025",
+    title: "Magisk vs KernelSU vs APatch: Perbandingan Metode Root Android",
     excerpt:
       "Bingung memilih metode root terbaik? Simak perbandingan mendalam Magisk, KernelSU, dan APatch: arsitektur sistem, keamanan Play Integrity, dan stabilitas modul.",
     category: "root",
@@ -670,7 +670,7 @@ export const newGuides: GuideArticle[] = [
       },
     ],
     seo: {
-      title: "Magisk vs KernelSU vs APatch: Perbandingan Root 2025",
+      title: "Magisk vs KernelSU vs APatch: Perbandingan Root Modern",
       description:
         "Perbandingan mendalam Magisk, KernelSU, dan APatch untuk root Android 2025. Analisis keamanan m-banking, stabilitas modul, dan rekomendasi teknisi.",
       keywords: [
@@ -1281,7 +1281,7 @@ export const newGuides: GuideArticle[] = [
     relatedServiceSlugs: ["custom-rom", "recovery", "root-android"],
     sections: [
       {
-        heading: "Mengapa Beralih ke Custom ROM di Tahun 2025?",
+        heading: "Mengapa Beralih ke Custom ROM?",
         body:
           "Rekomendasi Custom ROM Android terbaik yang paling stabil untuk pemakaian harian adalah: 1) PixelOS / Pixel Experience (untuk pengalaman UI bersih Google Pixel), 2) LineageOS (ROM paling stabil dengan privasi tinggi dan konsumsi RAM sangat hemat), 3) crDroid (kustomisasi melimpah dan manajemen baterai superior), dan 4) Evolution X (performa gaming optimal). Beralih ke Custom ROM adalah cara paling efektif memperpanjang usia ponsel lama Anda, meningkatkan responsivitas layar, dan menghilangkan iklan bawaan pabrikan.",
       },

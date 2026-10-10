@@ -1,61 +1,35 @@
-"use client";
-
-import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import type { FAQItem } from "@/types";
-import { cn } from "@/lib/utils";
 
+/**
+ * Accordion FAQ berbasis elemen native <details>/<summary>.
+ *
+ * Alasannya: tidak butuh JavaScript sama sekali, jadi jawaban tetap bisa dibuka
+ * kalau JS gagal dimuat, dan mesin pencari selalu melihat teksnya di HTML awal.
+ * Atribut `name` yang sama membuat perilakunya eksklusif — membuka satu jawaban
+ * otomatis menutup yang lain — tanpa state di sisi klien.
+ */
 export function FAQAccordion({ items }: { items: FAQItem[] }) {
-  const [openId, setOpenId] = useState<string | null>(items[0]?.id ?? null);
+  if (items.length === 0) return null;
 
   return (
-    <div className="divide-y divide-border rounded-lg border border-border bg-card">
-      {items.map((item) => {
-        const isOpen = openId === item.id;
-        return (
-          <div key={item.id}>
-            <h3>
-              <button
-                type="button"
-                onClick={() => setOpenId(isOpen ? null : item.id)}
-                aria-expanded={isOpen}
-                aria-controls={`faq-panel-${item.id}`}
-                id={`faq-trigger-${item.id}`}
-                className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:bg-muted/50 cursor-pointer md:px-6"
-              >
-                <span className="text-sm font-semibold text-foreground md:text-base">
-                  {item.question}
-                </span>
-                <ChevronDown
-                  className={cn(
-                    "size-5 shrink-0 text-muted-foreground transition-transform duration-200",
-                    isOpen && "rotate-180",
-                  )}
-                  aria-hidden="true"
-                />
-              </button>
-            </h3>
-            {/* Answer is always rendered in initial HTML for search crawlers, zero hidden attribute */}
-            <div
-              id={`faq-panel-${item.id}`}
-              role="region"
-              aria-labelledby={`faq-trigger-${item.id}`}
-              className={cn(
-                "grid transition-all duration-200 ease-in-out px-5 md:px-6",
-                isOpen
-                  ? "grid-rows-[1fr] opacity-100 pb-4"
-                  : "grid-rows-[0fr] opacity-0 pb-0",
-              )}
-            >
-              <div className="overflow-hidden">
-                <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground md:text-base">
-                  {item.answer}
-                </p>
-              </div>
-            </div>
+    <div className="divide-y divide-border overflow-hidden rounded-lg border border-border bg-card">
+      {items.map((item, index) => (
+        <details key={item.id} name="faq-accordion" open={index === 0} className="group">
+          <summary className="flex w-full cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:bg-muted/50 md:px-6 [&::-webkit-details-marker]:hidden">
+            <h3 className="text-sm font-semibold text-foreground md:text-base">{item.question}</h3>
+            <ChevronDown
+              className="size-5 shrink-0 text-muted-foreground transition-transform duration-200 group-open:rotate-180"
+              aria-hidden="true"
+            />
+          </summary>
+          <div className="px-5 pb-4 md:px-6">
+            <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground md:text-base">
+              {item.answer}
+            </p>
           </div>
-        );
-      })}
+        </details>
+      ))}
     </div>
   );
 }
