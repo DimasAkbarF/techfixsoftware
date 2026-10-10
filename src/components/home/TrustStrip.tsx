@@ -10,8 +10,8 @@ const metrics = [
     subtext: "Analisis log error dan struktur partisi sebelum tindakan",
   },
   {
-    value: "100%",
-    label: "Official Signed Firmware",
+    value: "Hash",
+    label: "Verifikasi Firmware Resmi",
     subtext: "Integritas binary firmware resmi terverifikasi cryptographic hash",
   },
   {

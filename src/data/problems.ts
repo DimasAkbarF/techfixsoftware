@@ -36,7 +36,7 @@ export const problemsList: ProblemItem[] = [
   {
     id: "p-ingin-root",
     title: "Jasa Root Android & Magisk Online",
-    symptom: "Memerlukan akses superuser untuk kebutuhan ojol (mock location), bypass m-banking, hapus bloatware, atau backup partisi.",
+    symptom: "Memerlukan akses superuser untuk debloat, backup partisi, atau modul kustomisasi sistem.",
     href: "/services/root-android",
     serviceName: "Jasa Root Android",
     tag: "Modifikasi",

@@ -9,9 +9,9 @@ export const services: Service[] = [
     categoryId: "root-android",
     group: "modification",
     shortDescription:
-      "Layanan jasa root Android & HP online via remote AnyDesk untuk Xiaomi, Samsung, Pixel, Infinix, Realme. Rekayasa systemless Magisk & KernelSU aman, bypass m-banking, ojol, & anti-bootloop.",
+      "Layanan jasa root Android & HP online via remote AnyDesk untuk Xiaomi, Samsung, Pixel, Infinix, Realme. Rekayasa systemless Magisk & KernelSU untuk debloat, backup, dan modul kustomisasi. Hasil bergantung perangkat.",
     description:
-      "Layanan Jasa Root Android & HP Online di TechFix Software hadir sebagai solusi profesional bagi Anda yang membutuhkan hak akses superuser (su) penuh secara aman, terkontrol, dan tanpa resiko kerusakan sistem permanen. Berbeda dengan konter servis konvensional yang kerap menggunakan tool berbahaya atau mengharuskan Anda meninggalkan HP berhari-hari, seluruh proses di TechFix Software dikerjakan langsung secara online via remote AnyDesk di hadapan Anda.\n\nKami menerapkan rekayasa systemless root modern menggunakan Magisk v27+, KernelSU (GKI Linux kernel-level), atau APatch. Metode ini bekerja murni pada ramdisk boot.img atau init_boot.img tanpa pernah memodifikasi partisi sistem (/system atau /vendor) yang read-only. Hasilnya, integritas firmware bawaan pabrik tetap terjaga utuh, ponsel terhindar dari resiko hard brick, dan perangkat 100% bisa di-unroot kembali ke standar pabrik kapan saja jika diperlukan.\n\nLayanan ini dirancang untuk menjawab berbagai kebutuhan nyata pengguna Android di Indonesia:\n1. Driver Ojek Online & Kurir (Gojek, Grab, Maxim, ShopeeFood, Lalamove, inDrive): Setup modul mock location / fake GPS berbasis LSPosed yang stabil, akurat, dan aman dari deteksi fraud sistem aplikasi driver.\n2. Pengguna M-Banking & E-Wallet (BCA Mobile, Livin by Mandiri, BRImo, BNI Mobile, DANA, GoPay, ShopeePay): Konfigurasi Zygisk, Shamiko, dan Play Integrity Fix / TrickyStore agar lingkungan root terisolasi dan aplikasi keuangan tetap dapat bertransaksi lancar.\n3. Aplikasi Kehadiran & Absensi Kantor (GreatDay HR, Talenta by Mekari, Hadirr, Kerjoo): Mengatasi pemblokiran perangkat akibat deteksi modifikasi sistem.\n4. Pembersihan Bloatware & Iklan Bawaan: Hapus tuntas aplikasi sistem yang rakus penyimpanan dan memicu lag (seperti MSA dan GetApps pada MIUI/HyperOS, atau Palm Store pada Transsion Infinix/Tecno).\n5. Backup Menyeluruh Level Partisi: Mengamankan seluruh data game dan aplikasi kerja via Swift Backup atau Neo Backup tanpa kehilangan progres saat ganti perangkat.\n6. Tuning Audio & Performa Gaming: Instalasi modul audiophile Viper4Android FX / Dolby Atmos serta bypass thermal throttling untuk unlock framerate 90Hz/120Hz yang stabil.\n\nBiaya jasa root Android di TechFix Software sangat terjangkau, transparan, dan kompetitif sesuai dengan merek perangkat dan paket modul yang dipilih. Sebelum pengerjaan dimulai, teknisi kami selalu melakukan backup stock boot.img orisinal sebagai jaminan proteksi anti-bootloop. Konsultasi kelayakan dan verifikasi tipe chipset 100% GRATIS tanpa biaya di awal.",
+      "Layanan Jasa Root Android & HP Online di TechFix Software hadir sebagai solusi profesional bagi Anda yang membutuhkan hak akses superuser (su) penuh secara aman, terkontrol, dan tanpa resiko kerusakan sistem permanen. Berbeda dengan konter servis konvensional yang kerap menggunakan tool berbahaya atau mengharuskan Anda meninggalkan HP berhari-hari, seluruh proses di TechFix Software dikerjakan langsung secara online via remote AnyDesk di hadapan Anda.\n\nKami menerapkan rekayasa systemless root modern menggunakan Magisk v27+, KernelSU (GKI Linux kernel-level), atau APatch. Metode ini bekerja murni pada ramdisk boot.img atau init_boot.img tanpa pernah memodifikasi partisi sistem (/system atau /vendor) yang read-only. Hasilnya, integritas firmware bawaan pabrik tetap terjaga utuh, ponsel terhindar dari resiko hard brick, dan perangkat 100% bisa di-unroot kembali ke standar pabrik kapan saja jika diperlukan.\n\nLayanan ini dirancang untuk menjawab berbagai kebutuhan nyata pengguna Android di Indonesia:\n1. Pengguna dengan kebutuhan kustomisasi sistem yang sah pada perangkat yang kompatibel.\n2. Pengguna yang paham risiko: root dapat membuat sebagian aplikasi perbankan atau e-wallet menolak dibuka. Kami menjelaskan risikonya secara jujur dan menyarankan HP terpisah.\n3. Aplikasi kerja yang sensitif root: kompatibilitas bisa berubah sewaktu-waktu tanpa jaminan dari pengembang aplikasi.\n4. Pembersihan Bloatware & Iklan Bawaan: Hapus tuntas aplikasi sistem yang rakus penyimpanan dan memicu lag (seperti MSA dan GetApps pada MIUI/HyperOS, atau Palm Store pada Transsion Infinix/Tecno).\n5. Backup Menyeluruh Level Partisi: Mengamankan seluruh data game dan aplikasi kerja via Swift Backup atau Neo Backup tanpa kehilangan progres saat ganti perangkat.\n6. Tuning Audio & Performa Gaming: Instalasi modul audiophile Viper4Android FX / Dolby Atmos serta bypass thermal throttling untuk unlock framerate 90Hz/120Hz yang stabil.\n\nBiaya jasa root Android di TechFix Software sangat terjangkau, transparan, dan kompetitif sesuai dengan merek perangkat dan paket modul yang dipilih. Sebelum pengerjaan dimulai, teknisi kami selalu melakukan backup stock boot.img orisinal sebagai jaminan proteksi anti-bootloop. Konsultasi kelayakan dan verifikasi tipe chipset 100% GRATIS tanpa biaya di awal.",
     problemKeywords: [
       "jasa root",
       "jasa root android",
@@ -19,26 +19,20 @@ export const services: Service[] = [
       "jasa root online",
       "jasa root remote",
       "jasa root magisk",
-      "jasa root ojol",
-      "jasa root gojek grab",
-      "jasa root fake gps",
       "jasa root hp terdekat",
       "biaya jasa root android",
       "root android",
       "root magisk",
       "kernelsu",
       "apatch",
-      "bypass play integrity",
-      "bypass m-banking root",
-      "modul mock location ojol",
       "jasa root xiaomi poco",
       "jasa root samsung",
       "jasa root infinix",
       "jasa unroot android",
     ],
     symptoms: [
-      "Membutuhkan akses root untuk kebutuhan kerja driver ojol (mock location / fake GPS stabil & aman).",
-      "Aplikasi M-Banking (BCA, Livin, BRImo) atau absensi kantor menolak dibuka karena mendeteksi modifikasi perangkat.",
+      "Ingin memasang modul kustomisasi sistem yang sah dengan pendampingan teknisi.",
+      "Aplikasi tertentu menolak dibuka setelah HP di-root. Ini risiko umum, bukan sesuatu yang dijamin bisa dihindari.",
       "Ingin membersihkan aplikasi bawaan pabrik (bloatware) dan iklan sistem yang membuat HP lambat dan memori penuh.",
       "Membutuhkan backup penuh data aplikasi dan progres game secara offline menggunakan Swift Backup atau Neo Backup.",
       "Ingin meningkatkan kualitas suara dengan modul Viper4Android atau bypass thermal throttling untuk gaming.",
@@ -46,7 +40,7 @@ export const services: Service[] = [
       "Membutuhkan jasa root remote terpercaya yang dipandu langsung oleh teknisi berpengalaman tanpa harus keluar rumah.",
     ],
     whoIsItFor: [
-      "Driver ojol, kurir, dan pekerja lapangan yang membutuhkan modul mock location terpercaya dan anti-deteksi.",
+      "Pengguna yang memahami risiko root dan kompatibilitas aplikasi sensitif root.",
       "Pengguna yang ingin membersihkan bloatware, mengoptimalkan kinerja hardware, atau melakukan backup data menyeluruh.",
       "Pemilik HP Android yang bootloadernya sudah di-unlock (UBL) atau tipe perangkat yang mendukung proses unlock.",
       "Pengguna yang menginginkan root systemless bersih dengan kemampuan unroot kembali ke setelan pabrik sewaktu-waktu.",
@@ -57,8 +51,8 @@ export const services: Service[] = [
       "Pengguna yang menolak verifikasi kompatibilitas firmware sebelum proses eksekusi.",
     ],
     useCases: [
-      "Jasa root Android online remote untuk kebutuhan driver Gojek, Grab, Maxim, ShopeeFood, dan Lalamove.",
-      "Konfigurasi Zygisk, Shamiko, dan Play Integrity Fix agar aplikasi M-Banking (BCA, Livin, BRImo) tetap normal.",
+      "Jasa root Android online remote untuk perangkat yang didukung.",
+      "Pemasangan modul kustomisasi yang dipilih bersama pengguna, dengan penjelasan risiko kompatibilitas.",
       "Pembersihan total iklan dan bloatware bawaan pabrik (Xiaomi HyperOS, MIUI, Infinix XOS, Samsung One UI).",
       "Instalasi modul audio tingkat studio (Viper4Android FX, Dolby Atmos, JamesDSP).",
       "Tweak kernel dan pelepasan thermal limit untuk meningkatkan kestabilan FPS gaming Android.",
@@ -78,10 +72,10 @@ export const services: Service[] = [
       "Persiapan Alat & Koneksi Remote: Anda menyambungkan HP ke laptop via USB dan membuka AnyDesk.",
       "Pencadangan Stock Boot Image: Teknisi mencadangkan partisi boot original ke PC Anda sebagai proteksi anti-bootloop.",
       "Patching & Flashing Systemless: Eksekusi patching ramdisk via Magisk atau KernelSU dan flashing via Fastboot interface.",
-      "Setup Modul & Verifikasi: Pemasangan Zygisk, Shamiko, Play Integrity Fix, atau modul ojol sesuai kebutuhan hingga selesai teruji.",
+      "Setup Modul & Verifikasi: Pemasangan modul sesuai kebutuhan dan pengecekan hasil sebelum serah terima.",
     ],
     importantNotices: [
-      "Boot image bawaan pabrik selalu dicadangkan terlebih dahulu untuk menjamin nol resiko kerusakan permanen.",
+      "Boot image bawaan pabrik selalu dicadangkan terlebih dahulu untuk meminimalkan risiko kerusakan permanen. Tidak ada jaminan tanpa risiko.",
       "Jika bootloader belum di-unlock (UBL), prosedur unlock resmi OEM akan memicu factory reset data internal.",
       "Standar Google Play Integrity bersifat dinamis sehingga penyesuaian modul berkala mungkin diperlukan di masa mendatang.",
       "Status garansi software pabrikan berpotensi terpengaruh bergantung pada kebijakan masing-masing produsen.",
@@ -106,7 +100,7 @@ export const services: Service[] = [
     ],
     estimatedTime: "30 – 45 Menit via Remote AnyDesk",
     causes: [
-      "Kebutuhan hak akses superuser (su binary) untuk menjalankan modul kerja khusus, fake GPS, dan otomatisasi sistem.",
+      "Kebutuhan hak akses superuser (su binary) untuk menjalankan modul kustomisasi dan otomatisasi sistem.",
       "Beban penyimpanan internal dan RAM yang terkuras oleh tumpukan aplikasi bloatware dan adware bawaan vendor.",
       "Kegagalan instalasi modul root secara mandiri yang memicu bootloop atau status Play Integrity gagal (FAIL).",
       "Kebutuhan kustomisasi performa CPU/GPU dan profil audio yang tidak difasilitasi oleh firmware standar pabrik.",
@@ -115,33 +109,33 @@ export const services: Service[] = [
       {
         heading: "Arsitektur Root Modern: Magisk Systemless, KernelSU GKI, & APatch",
         body:
-          "Metode root di TechFix Software 100% meninggalkan cara usang yang merusak partisi /system. Kami memanfaatkan teknologi systemless modern yang bekerja di ramdisk boot.img atau kernel level. Dengan pendekatan ini, partisi sistem tetap dalam kondisi read-only asli, proteksi integritas Android Verified Boot (AVB) dikelola dengan benar, dan perangkat dapat di-unroot kembali ke kondisi pabrik tanpa jejak modifikasi kapan pun Anda inginkan.",
+          "Metode root di TechFix Software meninggalkan cara lama yang merusak partisi /system. Kami memanfaatkan teknologi systemless modern yang bekerja di ramdisk boot.img atau kernel level. Dengan pendekatan ini, partisi sistem tetap dalam kondisi read-only asli, proteksi integritas Android Verified Boot (AVB) dikelola dengan benar, dan perangkat dapat di-unroot kembali ke kondisi pabrik tanpa jejak modifikasi kapan pun Anda inginkan.",
         bullets: [
-          "Ekstraksi dan verifikasi SHA256 boot.img orisinal yang 100% presisi dengan nomor build firmware aktif.",
+          "Ekstraksi dan verifikasi SHA256 boot.img orisinal yang sesuai dengan nomor build firmware aktif.",
           "Injeksi Magisk v27+ systemless ramdisk atau integrasi KernelSU langsung pada Generic Kernel Image (GKI Linux 5.10+).",
           "Flashing partisi boot atau init_boot melalui protokol Android Fastboot interface dengan cadangan file tersimpan aman di PC Anda.",
         ],
       },
       {
-        heading: "Isolasi Lingkungan Root: Zygisk, Shamiko, & Google Play Integrity",
+        heading: "Kompatibilitas Aplikasi & Play Integrity",
         body:
-          "Tantangan terbesar setelah root adalah deteksi dari aplikasi perbankan (BCA Mobile, Livin by Mandiri, BRImo, DANA) dan aplikasi kerja. Kami mengonfigurasi arsitektur penyembunyian berlapis: Zygisk aktif dengan injektor modul Shamiko yang menyembunyikan proses hooking dari daftar DenyList, serta penerapan fingerprint terverifikasi melalui Play Integrity Fix / TrickyStore agar status MEETS_DEVICE_INTEGRITY lulus secara sah.",
+          "Sebagian aplikasi (termasuk perbankan dan aplikasi kerja) memeriksa integritas perangkat. Setelah root, perilaku aplikasi tersebut bisa berubah dan dapat berubah kapan saja mengikuti pembaruan aplikasi atau Google Play Integrity. Kami tidak menjamin kompatibilitas aplikasi tertentu, dan kami menjelaskan kondisi ini sebelum pengerjaan.",
         bullets: [
-          "Penyembunyian paket Magisk Manager menjadi nama acak (Random Package Rebranding).",
-          "Konfigurasi Zygisk DenyList tanpa memicu konflik isolasi proses.",
-          "Penyuntikan fingerprint keystore resmi untuk kelulusan verifikasi Play Integrity API.",
+          "Cek status Play Integrity sebelum dan sesudah root sebagai acuan.",
+          "Jelaskan kemungkinan aplikasi yang menolak dibuka sebelum eksekusi.",
+          "Sarankan HP terpisah untuk aplikasi keuangan yang wajib berjalan normal.",
         ],
       },
       {
         heading: "Standar Keamanan Anti-Bootloop: Protokol Cadangan Stock Image",
         body:
-          "Prinsip utama pengerjaan di TechFix Software adalah zero risk of permanent brick. Sebelum perintah flashing dieksekusi, teknisi kami selalu memverifikasi ketersediaan dan mencadangkan file boot.img stok asli. Jika terjadi ketidaksesuaian kernel yang menyebabkan perangkat gagal booting, teknisi dapat langsung memulihkan partisi stock boot dalam hitungan detik sehingga ponsel kembali menyala normal.",
+          "Prinsip utama pengerjaan di TechFix Software adalah meminimalkan risiko permanent brick. Sebelum perintah flashing dieksekusi, teknisi kami selalu memverifikasi ketersediaan dan mencadangkan file boot.img stok asli. Jika terjadi ketidaksesuaian kernel yang menyebabkan perangkat gagal booting, teknisi dapat langsung memulihkan partisi stock boot dalam hitungan detik sehingga ponsel kembali menyala normal.",
       },
     ],
     seo: {
       title: "Jasa Root Android & HP Online (Magisk)",
       description:
-        "Jasa root Android & HP online via remote AnyDesk: Xiaomi, Samsung, Pixel, Infinix. Magisk, KernelSU, bypass m-banking & ojol. Chat teknisi sekarang!",
+        "Jasa root Android & HP online via remote AnyDesk untuk Xiaomi, Samsung, Pixel, Infinix. Magisk & KernelSU. Tanya teknisi via WhatsApp.",
       keywords: [
         "jasa root",
         "jasa root android",
@@ -149,9 +143,6 @@ export const services: Service[] = [
         "jasa root online",
         "jasa root remote",
         "jasa root magisk",
-        "jasa root ojol",
-        "jasa root gojek grab",
-        "jasa root fake gps",
         "jasa root hp terdekat",
         "biaya jasa root android",
         "jasa root xiaomi poco",
@@ -269,7 +260,6 @@ export const services: Service[] = [
         "jasa ubl poco",
         "jasa ubl hyperos",
         "unlock bootloader android",
-        "jasa bypass ubl",
         "buka bootloader android",
       ],
     },

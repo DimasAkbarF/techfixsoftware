@@ -12,7 +12,6 @@ export const siteKeywords: string[] = [
   "flashing firmware resmi",
   "unbrick android remote",
   "root magisk zygisk",
-  "bypass play integrity",
   "techfix software",
 ];
 

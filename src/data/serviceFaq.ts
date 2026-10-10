@@ -23,23 +23,23 @@ const customServiceFaqs: Record<string, FAQItem[]> = {
     {
       id: "faq-mbanking-root",
       category: "root-android",
-      question: "Apakah HP yang di-root masih bisa memakai aplikasi M-Banking (BCA, Livin, BRImo)?",
+      question: "Apakah HP yang di-root masih bisa membuka aplikasi M-Banking?",
       answer:
-        "Ya, bisa. Teknisi kami memandu konfigurasi Zygisk, modul Shamiko, dan Play Integrity Fix / TrickyStore agar lingkungan root disembunyikan secara sempurna dari deteksi aplikasi perbankan (BCA Mobile, Livin by Mandiri, BRImo, DANA, GoPay) sehingga transaksi harian tetap berjalan normal.",
+        "Tidak ada jaminan. Aplikasi perbankan dan e-wallet dapat menolak dibuka di HP yang sudah di-root, dan perilakunya bisa berubah sewaktu-waktu mengikuti pembaruan aplikasi. Kami menjelaskan risiko ini sebelum pengerjaan dan menyarankan HP terpisah untuk aplikasi keuangan.",
     },
     {
       id: "faq-ojol-root",
       category: "root-android",
-      question: "Apakah melayani jasa root untuk driver ojek online (Gojek, Grab, Maxim) & aplikasi kerja?",
+      question: "Apakah root HP cocok untuk aplikasi kerja yang sensitif root?",
       answer:
-        "Ya, kami sangat berpengalaman menangani kebutuhan driver ojol dan kurir online. Kami menyediakan setup root stabil untuk modul mock location / fake GPS berbasis LSPosed dengan proteksi anti-deteksi fraud yang aman, tidak menyebabkan lag, dan akurat.",
+        "Kompatibilitas aplikasi kerja tergantung perangkat dan pembaruan aplikasinya, dan bisa berubah kapan saja tanpa jaminan. Sebelum root, kami menjelaskan kemungkinan dampaknya. Baca artikel risiko root untuk aplikasi kerja di panduan kami.",
     },
     {
       id: "faq-unroot-kembali",
       category: "root-android",
       question: "Apakah HP yang sudah di-root bisa di-unroot kembali ke kondisi standar pabrik?",
       answer:
-        "Sangat bisa. Karena kami menggunakan metode systemless root modern (Magisk atau KernelSU) tanpa merusak partisi sistem asli, perangkat dapat dikembalikan ke kondisi unroot 100% orisinal pabrik kapan saja cukup dengan me-restore file boot image asli atau melalui menu unroot di aplikasi manajer.",
+        "Umumnya bisa. Karena kami menggunakan metode systemless root modern (Magisk atau KernelSU) tanpa merusak partisi sistem asli, perangkat umumnya dapat dikembalikan ke kondisi unroot mendekati pabrik kapan saja cukup dengan me-restore file boot image asli atau melalui menu unroot di aplikasi manajer.",
     },
     {
       id: "faq-alur-remote-root",

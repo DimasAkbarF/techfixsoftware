@@ -104,7 +104,7 @@ function OrganizationJsonLd() {
             "Bootloop Repair",
             "Android Flashing",
             "Unlock Bootloader",
-            "Play Integrity Bypass",
+            "Play Integrity",
           ],
           hasOfferCatalog: {
             "@type": "OfferCatalog",

@@ -12,6 +12,7 @@ export function SiteFooter() {
     { label: "Flash Firmware Stock", href: "/services/flash-firmware" },
     { label: "Custom ROM", href: "/services/custom-rom" },
     { label: "Software Repair", href: "/services/software-repair" },
+    { label: "Recovery Mode", href: "/services/recovery" },
   ];
 
   const guideLinks = [

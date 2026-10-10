@@ -1010,85 +1010,69 @@ export const newGuides: GuideArticle[] = [
   },
   {
     id: "guide-mbanking-root-detection",
-    slug: "kenapa-aplikasi-m-banking-terdeteksi-root-dan-cara-atasinya",
-    title: "Kenapa M-Banking Terdeteksi Root? Cara Mengatasinya dengan Aman",
+    slug: "kenapa-aplikasi-m-banking-terdeteksi-root",
+    title: "Kenapa Aplikasi M-Banking Terdeteksi Root? Penjelasan Jujur",
     excerpt:
-      "Aplikasi perbankan, BCA, Livin Mandiri, atau BRImo memblokir akses karena mendeteksi root? Pahami metode deteksi keamanan perbankan dan solusinya.",
+      "Aplikasi perbankan bisa menolak dibuka di HP yang di-root. Artikel ini menjelaskan cara deteksinya, apa itu Play Integrity, risikonya, dan kapan HP terpisah lebih masuk akal.",
     category: "root",
     categoryName: "Bootloader & Root",
     readTime: "6 menit baca",
-    publishedAt: "2025-02-27",
-    updatedAt: "2025-02-28",
+    publishedAt: "2026-10-10",
+    updatedAt: "2026-10-10",
     keyTakeaways: [
-      "Aplikasi perbankan tidak hanya mendeteksi Magisk App, melainkan memindai su binary, status bootloader unlocked, dan sertifikasi Google Play Integrity.",
-      "Metode hide root kuno (MagiskHide) sudah tidak efektif di Android modern dan telah digantikan oleh Zygisk dan modul isolasi proses.",
-      "Kombinasi Zygisk + Shamiko + Play Integrity Fix adalah standar pertahanan modern yang paling andal.",
-      "Jangan pernah menggunakan modul bypass sembarangan dari sumber tidak tepercaya demi keamanan data finansial Anda.",
+      "Aplikasi perbankan memeriksa beberapa tanda modifikasi sistem, dan hasilnya bisa berubah seiring pembaruan aplikasi.",
+      "Play Integrity adalah penilaian integritas perangkat dari Google, bukan jaminan keamanan maupun izin bertransaksi.",
+      "Tidak ada jaminan aplikasi bank tertentu tetap berjalan di HP yang di-root. HP terpisah adalah pilihan paling aman.",
     ],
     symptoms: [
-      "Aplikasi m-banking (BCA Mobile, myBCA, Livin by Mandiri, BRImo, BNI Mobile, DANA, GoPay) mendadak force close atau menampilkan pesan 'Perangkat Anda telah di-root demi keamanan transaksi'.",
-      "Google Play Store menampilkan status 'Device is not certified'.",
+      "Aplikasi bank menampilkan pesan perangkat sudah dimodifikasi atau tidak didukung.",
+      "Aplikasi langsung tertutup sendiri setelah root atau setelah modul terpasang.",
     ],
     whatUserCanCheck: [
-      "Buka aplikasi Magisk -> Masuk ke Pengaturan -> Pastikan fitur 'Sembunyikan Aplikasi Magisk' (Hide Magisk App) telah aktif.",
-      "Unduh aplikasi 'Play Integrity API Checker' di Play Store untuk melihat apakah status MEETS_BASIC_INTEGRITY dan MEETS_DEVICE_INTEGRITY Anda bernilai PASS atau FAIL.",
+      "Cek status Play Integrity di aplikasi pemeriksa resmi sebelum dan sesudah perubahan.",
+      "Baca kebijakan perangkat di situs resmi bank Anda.",
+      "Pastikan ada cadangan data sebelum mengubah apa pun pada bootloader atau boot image.",
     ],
     whenToConsult: [
-      "Aplikasi m-banking tetap menolak login meskipun Magisk sudah disembunyikan dan Zygisk aktif.",
-      "Status Play Integrity Anda gagal (FAIL) di semua parameter.",
-      "Anda membutuhkan setup konfigurasi root aman yang stabil untuk kebutuhan kerja harian.",
+      "Anda ingin root tetapi HP itu juga dipakai untuk mobile banking harian.",
+      "Aplikasi bank sudah menolak dibuka dan Anda ingin mengetahui pilihan yang aman.",
     ],
-    relatedServiceSlugs: ["root-android", "unlock-bootloader", "software-repair"],
+    relatedServiceSlugs: ["root-android", "unlock-bootloader"],
     sections: [
       {
-        heading: "Bagaimana Cara Kerja Deteksi Root pada Aplikasi Perbankan Modern?",
+        heading: "Bagaimana aplikasi bank mendeteksi root",
         body:
-          "Aplikasi m-banking mendeteksi root bukan hanya dari keberadaan aplikasi Magisk, melainkan melalui pemindaian direktori sistem (/system/bin/su), status bootloader unlocked, verifikasi Google Play Integrity (BASIC dan DEVICE integrity), serta keberadaan hook framework Zygote. Cara mengatasinya adalah menyembunyikan Magisk App, mengaktifkan Zygisk dengan modul Shamiko/Hide My Applist, dan menerapkan Play Integrity Fix agar fingerprint sistem terverifikasi sah oleh server Google.",
+          "Aplikasi perbankan biasanya memeriksa beberapa tanda, misalnya keberadaan file biner su, paket aplikasi pengelola root yang dikenal, status bootloader, dan integritas sistem melalui Play Integrity. Setiap bank memilih kombinasi pemeriksaannya sendiri, dan daftarnya berubah dari waktu ke waktu.",
       },
       {
-        heading: "4 Lapisan Deteksi Keamanan yang Digunakan Perbankan",
+        heading: "Apa itu Play Integrity",
         body:
-          "Sistem keamanan modern menerapkan pengujian berlapis:",
+          "Play Integrity adalah layanan Google yang memberi penilaian apakah perangkat terlihat asli dan tidak dimodifikasi. Penilaian ini hanya salah satu sinyal yang dipakai aplikasi. Lulus pemeriksaan tidak selalu berarti aplikasi bank akan mengizinkan akses, dan kegagalan juga bisa terjadi tanpa sebab yang jelas dari sisi pengguna.",
+      },
+      {
+        heading: "Risiko yang perlu dipahami",
+        body:
+          "Mengakali pemeriksaan keamanan aplikasi bank dapat melanggar ketentuan layanan bank dan berisiko membuat akun dibatasi. Kompatibilitas juga tidak bisa dijamin, karena pembaruan aplikasi atau kebijakan Google bisa mengubah hasilnya kapan saja. Kami tidak membantu konfigurasi untuk menghindari deteksi keamanan aplikasi keuangan.",
+      },
+      {
+        heading: "Saran praktis",
+        body:
+          "Jika HP utama dipakai untuk transaksi, cara paling aman adalah tidak me-root HP tersebut. Untuk eksperimen atau kebutuhan kustomisasi, gunakan HP kedua yang memang disiapkan untuk itu, lalu simpan aplikasi keuangan hanya di HP utama.",
         bullets: [
-          "1. File System Scanning: Memeriksa keberadaan file su, busybox, magisk, daemonsu di direktori /system, /vendor, /data/adb.",
-          "2. Package Manager Inspection: Memindai daftar aplikasi terinstal untuk mencari package name manajer root atau modul LSPosed.",
-          "3. Mount Namespace & Zygote Hook: Memeriksa apakah proses aplikasi berjalan di bawah lingkungan yang telah di-inject modul Zygisk.",
-          "4. Google Play Integrity API: Meminta sertifikat hardware attestation dari server Google untuk membuktikan apakah bootloader terkunci rapat dan OS belum dimodifikasi.",
+          "Jangan memasang modul dari sumber yang tidak jelas di HP yang dipakai bertransaksi.",
+          "Hubungi bank jika aplikasi menolak dibuka dan minta panduan resmi.",
+          "Buat cadangan data sebelum mengubah sistem apa pun.",
         ],
-      },
-      {
-        heading: "Langkah Penanganan Terstandarisasi 2025",
-        body:
-          "Untuk mengatasi deteksi ini secara komprehensif, terapkan urutan setup berikut:",
-        bullets: [
-          "Sembunyikan Magisk Manager: Masuk ke pengaturan Magisk -> pilih 'Sembunyikan aplikasi Magisk' untuk mengganti nama package menjadi acak (misal: Settings).",
-          "Aktifkan Zygisk & Pasang Shamiko: Pasang modul Shamiko untuk menyembunyikan modifikasi Zygote dari aplikasi yang masuk ke daftar DenyList.",
-          "Konfigurasi DenyList: Masukkan aplikasi perbankan Anda ke dalam Configure DenyList (namun pastikan opsi Enforce DenyList di Magisk dalam posisi OFF jika menggunakan Shamiko).",
-          "Pasang Play Integrity Fix (PIF): Modul ini menyuntikkan fingerprint OEM terverifikasi yang membuat status DEVICE_INTEGRITY kembali lulus (PASS).",
-        ],
-      },
-      {
-        heading: "Keamanan Finansial: Apakah Bypass Root Ini Aman?",
-        body:
-          "Di TechFix Software, kami memprioritaskan keamanan aset digital Anda. Modul yang kami gunakan adalah modul open-source resmi terverifikasi tanpa backdoor atau perekam keystroke. Kami tidak pernah meminta kredensial akun bank, nomor kartu ATM, maupun kode OTP transaksi Anda.",
-      },
-      {
-        heading: "Jasa Root & Konfigurasi Bypass Perbankan TechFix",
-        body:
-          "Mengalami kendala m-banking tetap mendeteksi root setelah update aplikasi terbaru? Gunakan layanan jasa root Android online dan konfigurasi bypass perbankan dari TechFix Software. Teknisi kami membantu mengevaluasi celah deteksi di perangkat Anda dan melakukan penyetelan modul via AnyDesk secara profesional.",
       },
     ],
     seo: {
-      title: "Kenapa M-Banking Terdeteksi Root & Cara Mengatasinya",
+      title: "Kenapa Aplikasi M-Banking Terdeteksi Root",
       description:
-        "Solusi aplikasi m-banking terdeteksi root di Android 2025. Panduan Zygisk, Shamiko, Play Integrity Fix agar BCA, Mandiri, BRImo normal kembali.",
+        "Penjelasan jujur kenapa aplikasi bank bisa menolak HP yang di-root, apa itu Play Integrity, risikonya, dan saran HP terpisah.",
       keywords: [
         "m-banking terdeteksi root",
-        "bypass root m banking",
-        "bca livin brinimo root detection",
-        "play integrity fix zygisk",
-        "shamiko magisk hide",
-        "jasa root android remote aman",
+        "play integrity",
+        "aplikasi bank root",
       ],
     },
   },
@@ -1696,89 +1680,76 @@ export const newGuides: GuideArticle[] = [
     },
   },
   {
-    id: "guide-root-ojol-kerja",
-    slug: "panduan-root-hp-untuk-ojol-dan-aplikasi-kerja",
-    title: "Panduan Root HP untuk Ojol & Aplikasi Kerja: Modul Aman, Mock Location, dan Anti-Deteksi",
+    id: "guide-risiko-root-aplikasi-kerja",
+    slug: "risiko-root-hp-untuk-aplikasi-kerja-dan-ojol",
+    title: "Risiko Root HP untuk Aplikasi Kerja dan Ojol: Yang Perlu Anda Tahu",
     excerpt:
-      "Ingin root HP Android untuk kebutuhan ojol (Gojek, Grab, Maxim) atau absensi kerja? Simak panduan modul mock location stabil, anti-deteksi fraud, dan keamanan akun.",
+      "Root HP bisa membuat sebagian aplikasi kerja atau driver menolak dibuka, dan tidak ada jaminan kompatibilitasnya. Artikel ini menjelaskan risikonya secara jujur, termasuk kebijakan platform dan Play Integrity.",
     category: "root",
     categoryName: "Bootloader & Root",
-    readTime: "7 menit baca",
-    publishedAt: "2025-02-28",
-    updatedAt: "2025-03-01",
+    readTime: "6 menit baca",
+    publishedAt: "2026-10-10",
+    updatedAt: "2026-10-10",
     keyTakeaways: [
-      "Kebutuhan root untuk driver ojol umumnya berfokus pada akurasi GPS, bypass mock location (Smali Patcher / LSPosed), dan optimasi responsivitas jaringan.",
-      "Menggunakan aplikasi fake GPS konvensional tanpa modul root tingkat sistem sangat mudah terdeteksi oleh sistem deteksi fraud server ojol.",
-      "Root modern via Magisk / KernelSU memungkinkan penyembunyian status root secara sempurna sehingga akun ojol tetap aman dari sanksi suspend.",
-      "HP yang di-root untuk kerja tetap bisa menjalankan aplikasi M-Banking harian jika dikonfigurasi dengan Zygisk, Shamiko, dan Play Integrity Fix.",
+      "Aplikasi driver dan aplikasi kerja bisa melarang perangkat yang di-root, sesuai kebijakan masing-masing platform.",
+      "Google Play Integrity dan deteksi aplikasi berubah sewaktu-waktu, sehingga kompatibilitas tidak bisa dijamin.",
+      "Kalau pekerjaan Anda bergantung pada aplikasi tersebut, HP terpisah yang tidak di-root adalah pilihan paling aman.",
     ],
     symptoms: [
-      "Akun driver ojol sering terkena peringatan 'Terdeteksi Menggunakan Mock Location' atau aplikasi tidak bisa menerima order.",
-      "Aplikasi absensi kantor (GreatDay, Talenta, Hadirr) mendeteksi lokasi palsu atau perangkat tidak memenuhi syarat keamanan.",
-      "GPS bawaan HP sering melompat-lompat (jumping) atau lambat mengunci satelit di area padat.",
-      "Membutuhkan setup modul root khusus kerja yang stabil tanpa risiko HP mati total atau bootloop.",
+      "Aplikasi kerja menampilkan peringatan perangkat tidak terverifikasi setelah root.",
+      "Akun ditangguhkan atau dibatasi oleh platform karena dianggap melanggar ketentuan layanan.",
     ],
     whatUserCanCheck: [
-      "Periksa status bootloader HP Anda (apakah sudah UBL atau masih terkunci pabrik).",
-      "Pastikan aplikasi driver ojol Anda (Gojek Driver, Grab Driver, Maxim Driver, ShopeeFood Driver) diperbarui ke versi resmi dari Google Play Store.",
-      "Hindari menginstal aplikasi tuyul / fake GPS modifikasi APK yang tidak jelas sumbernya karena rentan disusupi malware dan terdeteksi server.",
+      "Baca ketentuan layanan aplikasi kerja atau platform Anda sebelum mengubah sistem HP.",
+      "Cek status Play Integrity di HP sebelum dan sesudah perubahan.",
+      "Pastikan ada cadangan data penting sebelum melakukan apa pun pada bootloader.",
     ],
     whenToConsult: [
-      "Anda membutuhkan setup modul mock location dan LSPosed yang bersih, stabil, dan teruji anti-deteksi.",
-      "Perangkat mengalami bootloop atau gagal masuk sistem setelah mencoba memasang modul root sendiri.",
-      "Anda ingin HP kerja tetap bisa dipakai transaksi perbankan dan e-wallet secara normal tanpa konflik sistem.",
+      "Anda ingin root tetapi HP itu juga dipakai untuk pekerjaan yang bergantung pada aplikasi platform.",
+      "Aplikasi sudah menolak dibuka dan Anda ingin tahu opsi yang aman.",
     ],
-    relatedServiceSlugs: ["root-android", "unlock-bootloader", "software-repair"],
+    relatedServiceSlugs: ["root-android", "unlock-bootloader"],
     sections: [
       {
-        heading: "Mengapa Driver Ojol & Pekerja Lapangan Membutuhkan Akses Root?",
+        heading: "Mengapa aplikasi kerja bisa menolak HP yang di-root",
         body:
-          "Dalam ekosistem kerja transportasi online dan logistik modern (Gojek, Grab, Maxim, ShopeeFood, inDrive, Lalamove), kecepatan respon penjemputan dan kestabilan titik koordinat GPS sangat menentukan produktivitas harian. Sayangnya, fitur bawaan 'Mock Location' di Developer Options Android mudah dibaca oleh algoritma fraud detection server penyedia layanan. Akses root memungkinkan integrasi modul tingkat rendah (system-level hook) yang membuat koordinat terbaca sebagai sinyal hardware GPS murni oleh sistem operasi.",
+          "Platform transportasi online dan aplikasi kerja punya kebijakan sendiri tentang perangkat yang dianggap dimodifikasi. Root mengubah cara sistem bekerja, sehingga aplikasi bisa mendeteksi perubahan itu dan membatasi akses. Ini bukan keputusan yang bisa kami ubah dari sisi teknisi.",
       },
       {
-        heading: "Arsitektur Root Ojol Modern: Magisk / KernelSU + LSPosed",
+        heading: "Play Integrity bisa berubah kapan saja",
         body:
-          "Zaman penggunaan SuperSU atau KingoRoot lawas sudah berakhir. Setup root ojol profesional di tahun 2025 memanfaatkan arsitektur modern:",
+          "Google Play Integrity dipakai aplikasi untuk memeriksa integritas perangkat. Aturan pemeriksaannya dapat diperbarui tanpa pemberitahuan. Karena itu, status yang lolos hari ini belum tentu lolos besok, dan tidak ada jaminan dari kami bahwa aplikasi tertentu akan terus berjalan normal.",
+      },
+      {
+        heading: "Risiko akun dan ketentuan layanan",
+        body:
+          "Mengubah perilaku aplikasi atau lokasi perangkat untuk mengakali sistem platform dapat melanggar ketentuan layanan dan berisiko membuat akun dibatasi atau ditangguhkan. Kami tidak membantu konfigurasi semacam itu. Jika Anda ragu, baca ketentuan platform terlebih dahulu.",
+      },
+      {
+        heading: "Kegunaan sah root yang tetap bisa dibahas",
+        body:
+          "Root masih punya kegunaan yang sah: membersihkan aplikasi bawaan, membuat cadangan data, memakai modul kustomisasi, dan otomasi sistem pada perangkat milik sendiri. Teknisi kami bisa menjelaskan apakah perangkat Anda cocok untuk kegunaan tersebut.",
         bullets: [
-          "Systemless Magisk atau KernelSU: Fondasi superuser yang tidak merusak partisi /system sehingga ponsel tetap stabil dan hemat daya baterai.",
-          "LSPosed Framework (Zygisk): Kerangka kerja hooking memori yang memungkinkan injeksi modul hanya pada aplikasi target secara terisolasi tanpa mempengaruhi aplikasi lain.",
-          "Modul Mock Location Hooking: Meneruskan data koordinat langsung ke API Location Manager sistem Android tanpa mengaktifkan flag 'Allow Mock Locations' yang mencurigakan.",
+          "Debloat aplikasi bawaan yang memakan memori.",
+          "Backup partisi dan data aplikasi.",
+          "Modul kustomisasi tampilan dan audio.",
         ],
       },
       {
-        heading: "Bagaimana Mencegah Akun Ojol Terkena Suspend / Putus Mitra?",
+        heading: "Opsi yang lebih aman untuk pekerjaan",
         body:
-          "Keamanan akun mitra adalah prioritas tertinggi. Server ojol memantau integritas perangkat melalui beberapa mekanisme deteksi:",
-        bullets: [
-          "1. Pemindaian Direktori & File Binari: Mencari berkas su, busybox, atau package name modul fake GPS yang populer.",
-          "2. Pengecekan Google Play Integrity: Memastikan status perangkat memenuhi sertifikasi dasar Google Play Protect.",
-          "3. Analisis Pola Pergerakan Satelit: Membaca kecepatan perpindahan titik yang tidak logis (teleportasi instan).",
-        ],
-      },
-      {
-        heading: "Tetap Aman Menggunakan M-Banking & E-Wallet di HP yang Sama",
-        body:
-          "Banyak driver mengira HP yang di-root untuk ojol tidak akan bisa lagi dipakai untuk BCA Mobile, Livin by Mandiri, BRImo, DANA, atau GoPay pelanggan. Hal ini tidak benar jika konfigurasi Zygisk dan Shamiko disetel dengan tepat. Dengan memisahkan proses aplikasi perbankan ke dalam DenyList terisolasi, aplikasi keuangan Anda tidak akan pernah mendeteksi keberadaan lingkungan root.",
-      },
-      {
-        heading: "Jasa Root Ojol & Setup Modul Profesional TechFix Software",
-        body:
-          "Menyetel modul root kerja secara mandiri memiliki resiko tinggi soft brick atau mismatch kernel jika salah langkah. Teknisi TechFix Software melayani jasa root Android online khusus kebutuhan driver ojol dan aplikasi kerja via remote AnyDesk. Kami menyiapkan konfigurasi modul yang teruji, backup boot image original, dan memastikan seluruh aplikasi kerja serta m-banking Anda berjalan sempurna sebelum sesi selesai.",
+          "Jika HP utama dipakai untuk aplikasi kerja atau keuangan, pertimbangkan HP kedua yang tidak di-root. Dengan begitu aplikasi penting tetap berjalan normal dan eksperimen root dilakukan di perangkat terpisah.",
       },
     ],
     seo: {
-      title: "Panduan Root HP Ojol & Aplikasi Kerja 2025",
+      title: "Risiko Root HP untuk Aplikasi Kerja dan Ojol",
       description:
-        "Panduan root HP Android untuk ojol (Gojek, Grab, Maxim) & aplikasi kerja 2025. Setup modul mock location aman, anti-deteksi fraud, dan m-banking lancar.",
+        "Root HP bisa membuat aplikasi kerja menolak dibuka. Baca risiko akun, ketentuan platform, dan Play Integrity sebelum memutuskan.",
       keywords: [
-        "jasa root ojol",
-        "root hp untuk ojol",
-        "root gojek grab maxim",
-        "modul root ojol anti deteksi",
-        "jasa root fake gps",
-        "lsposed mock location ojol",
-        "jasa root android online",
-        "jasa root hp terdekat",
+        "risiko root hp",
+        "root hp aplikasi kerja",
+        "play integrity root",
+        "root dan ketentuan layanan",
       ],
     },
   },

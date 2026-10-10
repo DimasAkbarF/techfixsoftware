@@ -32,6 +32,12 @@ const nextConfig: NextConfig = {
         destination: "/services/root-android",
         permanent: true,
       },
+      // Ojol/absensi article rewritten as a risk article with a new slug.
+      {
+        source: "/guides/panduan-root-hp-untuk-ojol-dan-aplikasi-kerja",
+        destination: "/guides/risiko-root-hp-untuk-aplikasi-kerja-dan-ojol",
+        permanent: true,
+      },
       {
         source: "/:path*",
         has: [{ type: "header", key: "host", value: NON_CANONICAL_HOST }],

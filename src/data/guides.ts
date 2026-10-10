@@ -263,7 +263,7 @@ const baseGuides: GuideArticle[] = [
       {
         heading: "Jasa Root Android Profesional & Aman TechFix Software",
         body:
-          "Bagi Anda yang membutuhkan hak akses superuser untuk kebutuhan ojol, bypass m-banking, atau otomasi tanpa resiko bootloop, TechFix Software menyediakan layanan jasa root Android online via remote AnyDesk. Teknisi kami selalu mem-backup partisi boot orisinal sebelum eksekusi untuk menjamin keamanan perangkat Anda 100%.",
+          "Bagi Anda yang membutuhkan hak akses superuser untuk kustomisasi atau otomasi sistem, TechFix Software menyediakan pendampingan teknis dengan penjelasan risiko yang jujur.",
       },
     ],
     seo: {

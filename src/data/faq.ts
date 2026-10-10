@@ -12,7 +12,7 @@ export const faqItems: FAQItem[] = [
     category: "umum",
     question: "Apakah konsultasi awal benar-benar gratis dan tidak mengikat?",
     answer:
-      "Ya, 100% gratis. Anda bebas menanyakan kondisi perangkat, berkonsultasi mengenai kelayakan penanganan, dan mengetahui estimasi tanpa kewajiban apapun untuk menggunakan jasa. Kami mengutamakan pemahaman masalah Anda terlebih dahulu sebelum Anda mengambil keputusan.",
+      "Ya, konsultasi awal gratis. Biaya pengerjaan dikonfirmasi sebelum mulai. Anda bebas menanyakan kondisi perangkat, berkonsultasi mengenai kelayakan penanganan, dan mengetahui estimasi tanpa kewajiban apapun untuk menggunakan jasa. Kami mengutamakan pemahaman masalah Anda terlebih dahulu sebelum Anda mengambil keputusan.",
   },
   {
     id: "data-terpengaruh",
