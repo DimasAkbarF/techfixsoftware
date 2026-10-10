@@ -80,7 +80,7 @@ const baseGuides: GuideArticle[] = [
     categoryName: "Bootloader & Root",
     readTime: "3 menit baca",
     publishedAt: "2025-01-20",
-    updatedAt: "2025-02-12",
+    updatedAt: "2026-03-30",
     keyTakeaways: [
       "Hampir pada semua merek modern (Xiaomi, Pixel, Motorola, OnePlus), membuka bootloader otomatis memicu factory reset penuh.",
       "Penghapusan data ini merupakan protokol keamanan Android dari Google untuk mencegah akses tidak sah ke data terenkripsi.",
@@ -100,30 +100,40 @@ const baseGuides: GuideArticle[] = [
     relatedServiceSlugs: ["unlock-bootloader", "root-android", "custom-rom"],
     sections: [
       {
-        heading: "Aturan Dasar: Keamanan OEM Android",
+        heading: "Aturan Dasar: Keamanan OEM Android & Wiping",
         body:
-          "Jawabannya singkat: Ya, pada hampir semua perangkat modern, Unlock Bootloader (UBL) akan menghapus seluruh data di memori internal perangkat. Ini bukan kesalahan sistem, melainkan mekanisme keamanan bawaan Android untuk melindungi kunci enkripsi (FBE - File Based Encryption).",
+          "Jawabannya singkat: Ya, pada hampir semua perangkat Android modern, proses Unlock Bootloader (UBL) akan mengeksekusi format penuh (factory reset) pada partisi userdata. Hal ini dirancang bukan karena bug, melainkan protokol keamanan File-Based Encryption (FBE) Google agar kunci kriptografi tidak dibaca pihak luar setelah status bootloader berubah dari locked ke unlocked.",
       },
       {
-        heading: "Mengapa Android Menghapus Data Saat UBL?",
+        heading: "Analisis Error Fastboot yang Sering Terjadi Saat UBL",
         body:
-          "Saat bootloader masih terkunci (locked), perangkat memverifikasi bahwa kernel dan sistem belum diubah oleh pihak luar. Ketika bootloader dibuka, sistem tidak bisa lagi menjamin integritas tersebut. Untuk mencegah seseorang mencuri ponsel lalu membongkar datanya melalui custom recovery, sistem secara otomatis menghapus partisi userdata.",
-      },
-      {
-        heading: "Daftar Persiapan Wajib Sebelum UBL",
-        body:
-          "Sebelum melanjutkan proses pembukaan bootloader, pastikan hal-hal berikut sudah terpenuhi:",
+          "Saat mengeksekusi perintah pembukaan bootloader melalui terminal komputer, beberapa kode galat (error codes) kerap muncul akibat konfigurasi OEM atau driver:",
         bullets: [
-          "Cadangkan chat WhatsApp dan media ke Google Drive atau salin folder WhatsApp ke komputer.",
-          "Pindahkan foto, video, dan dokumen pribadi ke perangkat penyimpanan eksternal.",
-          "Pastikan akun Google dan akun vendor (misalnya Mi Account) sudah dicatat kredensialnya agar tidak terkena FRP lock.",
-          "Pastikan daya baterai minimal 60% sebelum menghubungkan perangkat ke komputer.",
+          "FAILED (remote: 'Flashing is not allowed'): Toggle OEM Unlocking atau USB Debugging belum aktif secara sempurna di Developer Options, atau perangkat belum terikat dengan akun resmi vendor.",
+          "FAILED (remote: 'Command not supported'): Perangkat menggunakan protokol fastboot lama atau vendor menutup akses UBL lewat jalur fastboot standar (membutuhkan EDL / Auth tool resmi).",
+          "Waiting for any device: Driver ADB/Fastboot di Windows belum terinstal benar atau kabel data USB bermasalah (gunakan port USB 2.0 atau kabel original).",
         ],
       },
       {
-        heading: "Kebijakan Khusus Berdasarkan Merek",
+        heading: "Protokol Backup Wajib Sebelum Eksekusi UBL",
         body:
-          "Setiap produsen memiliki aturan berbeda: ada yang mewajibkan kode token khusus, ada yang membutuhkan antrean akun selama 168 jam (7 hari), dan ada pula merek yang sama sekali tidak menyediakan pembukaan bootloader resmi. Diskusikan tipe perangkat Anda bersama teknisi kami untuk memastikan kemungkinannya.",
+          "Karena data dipastikan terhapus total, ikuti standar mitigasi berikut:",
+        bullets: [
+          "Cadangkan database chat WhatsApp ke Google Drive dan unduh media penting ke penyimpanan PC.",
+          "Pindahkan seluruh foto, video, dan dokumen ke harddisk eksternal atau cloud storage.",
+          "Catat email akun Google yang aktif di perangkat untuk menghindari Factory Reset Protection (FRP Lock).",
+          "Pastikan baterai perangkat di atas [ISI_DATA_NYATA: 60%] dan gunakan kabel data berkualitas.",
+        ],
+      },
+      {
+        heading: "Perbandingan Kebijakan Merek",
+        body:
+          "Tabel ringkas regulasi UBL per merek utama:",
+        bullets: [
+          "Xiaomi / POCO: Membutuhkan Mi Account, aplikasi Mi Unlock, dan antrean waktu tunggu [ISI_DATA_NYATA: 168 jam / 7 hari].",
+          "Google Pixel: Cukup aktifkan OEM Unlocking dan jalankan perintah fastboot flashing unlock langsung.",
+          "MediaTek / Vivo / Oppo: Sebagian besar memerlukan otorisasi server pabrik atau test point khusus jika jalur standar dikunci rapat.",
+        ],
       },
     ],
     seo: {
@@ -143,7 +153,7 @@ const baseGuides: GuideArticle[] = [
     categoryName: "Root & Modifikasi",
     readTime: "5 menit baca",
     publishedAt: "2025-01-28",
-    updatedAt: "2025-02-15",
+    updatedAt: "2026-03-30",
     keyTakeaways: [
       "Root memberi hak akses superuser (administrator tertinggi) ke seluruh partisi sistem Android.",
       "Manfaat: otomatisasi tingkat lanjut, backup komprehensif, penghapusan bloatware, kustomisasi kernel.",
@@ -163,40 +173,33 @@ const baseGuides: GuideArticle[] = [
     relatedServiceSlugs: ["root-android", "unlock-bootloader"],
     sections: [
       {
-        heading: "Memahami Filosofi Root Android",
+        heading: "Memahami Filosofi Root & Akses Superuser",
         body:
-          "Secara teknis, root adalah proses membuka hak akses istimewa (superuser/root user) pada sistem operasi berbasis Linux yang menjadi dasar Android. Secara bawaan, produsen membatasi pengguna biasa agar tidak bisa memodifikasi atau menghapus file sistem inti demi stabilitas dan keamanan.",
+          "Secara arsitektural, root adalah proses memberikan akses administrator tertinggi (UID 0) pada kernel Linux Android. Secara default, produsen mengunci akses ini untuk melindungi integritas partisi sistem, keamanan data pengguna, dan stabilitas perangkat dari kesalahan modifikasi aplikasi pihak ketiga.",
       },
       {
-        heading: "Manfaat Riil Melakukan Root",
+        heading: "Tabel Perbandingan Metode: Root Tradisional vs Systemless Modern",
         body:
-          "Bagi pengguna yang membutuhkan kontrol penuh, root memberikan kapabilitas yang tidak bisa didapatkan pada kondisi standar:",
+          "Ringkasan teknis perbedaan metode root:",
         bullets: [
-          "Menghapus aplikasi bawaan (bloatware) yang menghabiskan memori dan ruang penyimpanan internal.",
-          "Melakukan pencadangan (backup) seluruh data aplikasi secara penuh hingga level partisi data.",
-          "Menjalankan alat otomasi teknis dan modul adblocker tingkat host/sistem.",
-          "Meningkatkan atau mengatur alokasi performa hardware untuk kebutuhan komputasi spesifik.",
+          "Root Tradisional (SuperSU / Direct System Write): Menulis file biner su langsung ke partisi /system. Konsekuensi: OTA update gagal total, partisi read-only terkunci permanen, risiko bootloop tinggi jika terjadi korupsi.",
+          "Root Modern Systemless (Magisk / KernelSU): Memodifikasi partisi boot (boot.img / ramdisk) tanpa menyentuh /system. Konsekuensi: Sistem file bersih, update OTA bisa diakali dengan unroot sementara, kompatibilitas jauh lebih tinggi.",
         ],
       },
       {
-        heading: "Risiko dan Konsekuensi yang Wajib Diketahui",
+        heading: "Analisis Risiko dan Dampak Play Integrity",
         body:
-          "Sebagai platform teknis yang transparan, TechFix selalu menjelaskan konsekuensi sebelum proses dilakukan:",
+          "Modifikasi sistem memicu perubahan pada status verifikasi perangkat:",
         bullets: [
-          "Status Garansi: Sebagian besar produsen menyatakan garansi software tidak berlaku setelah perangkat di-root.",
-          "Aplikasi Perbankan: Google menerapkan Play Integrity API yang mendeteksi modifikasi bootloader dan root, sehingga aplikasi tertentu memerlukan konfigurasi modul khusus.",
-          "Pembaruan Otomatis (OTA): Pembaruan sistem pabrik tidak dapat dipasang sembarangan dan membutuhkan prosedur unroot atau flash ulang.",
+          "Play Integrity API: Google mengevaluasi integritas hardware dan software. Perangkat root umumnya gagal pada level STRONG_INTEGRITY dan berpotensi pada DEVICE_INTEGRITY jika tidak dikelola dengan benar.",
+          "Aplikasi Sensitif: Aplikasi perbankan dan dompet digital mendeteksi perubahan hak akses su; memerlukan pemahaman konfigurasi tambahan tanpa jaminan permanen.",
+          "Stabilitas & Garansi: Kegagalan patch boot image dapat memicu bootloop yang memerlukan flashing stock firmware.",
         ],
       },
       {
-        heading: "Pendekatan Modern: Magisk Systemless",
+        heading: "Prosedur Mitigasi di TechFix Software",
         body:
-          "Berbeda dengan metode root bertahun-tahun lalu yang memodifikasi langsung partisi sistem, saat ini root dilakukan secara 'systemless' melalui Magisk dengan memodifikasi ramdisk boot image. Ini membuat proses jauh lebih bersih, stabil, dan dapat dikembalikan (revert) ke kondisi semula jika diperlukan.",
-      },
-      {
-        heading: "Jasa Root Android Profesional & Aman TechFix Software",
-        body:
-          "Bagi Anda yang membutuhkan hak akses superuser untuk kustomisasi atau otomasi sistem, TechFix Software menyediakan pendampingan teknis dengan penjelasan risiko yang jujur.",
+          "Setiap pengerjaan root dilakukan dengan tahapan verifikasi ketat: pengecekan tipe chipset, pencadangan boot.img asli (stock image) untuk skenario darurat, dan konsultasi terbuka mengenai batasan kompatibilitas aplikasi Anda.",
       },
     ],
     seo: {
