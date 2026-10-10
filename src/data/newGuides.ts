@@ -65,7 +65,7 @@ export const newGuides: GuideArticle[] = [
       {
         heading: "Kapan Anda Memerlukan Bantuan Remote Specialist TechFix?",
         body:
-          "Jika bootloader Xiaomi Anda masih terkunci (locked) dan HP mengalami bootloop parah atau masuk recovery loop, flashing konvensional akan ditolak oleh sistem keamanan Xiaomi. Teknisi TechFix Software dapat membantu mengevaluasi metode flashing via Mi Assistant mode, EDL authorization, atau restorasi partisi secara remote via AnyDesk tanpa risiko salah pasang firmware yang berujung mati total.",
+          "Jika bootloader Xiaomi Anda masih terkunci (locked) dan HP mengalami bootloop parah atau masuk recovery loop, flashing konvensional akan ditolak oleh sistem keamanan Xiaomi. Teknisi TechFix Software dapat membantu mengevaluasi metode flashing via Mi Assistant mode, EDL authorization, atau restorasi partisi secara remote via AnyDesk dengan upaya mengurangi risiko salah pasang firmware yang berujung mati total.",
       },
     ],
     seo: {
@@ -132,7 +132,7 @@ export const newGuides: GuideArticle[] = [
         body:
           "Setelah berhasil masuk ke menu Android Recovery, gunakan tombol Volume untuk navigasi dan tombol Power untuk memilih:",
         bullets: [
-          "Wipe Cache Partition: Opsi ini menghapus berkas temporary dalvik cache dan sisa instalasi sistem lama. Tindakan ini 100% AMAN bagi data pribadi Anda.",
+          "Wipe Cache Partition: Opsi ini menghapus berkas temporary dalvik cache dan sisa instalasi sistem lama. Opsi ini umumnya tidak menghapus data pribadi, tetapi tetap cadangkan data sebelum melakukan tindakan apa pun.",
           "Repair Apps: Opsi bawaan One UI di menu recovery untuk mengompilasi ulang seluruh aplikasi sistem (pre-dexopt) jika ada package yang mengalami crash.",
           "Wipe Data / Factory Reset: HANYA pilih opsi ini jika Anda telah pasrah merelakan data terhapus dan yakin mengingat akun Google (Gmail) yang tertaut guna menghindari FRP lock.",
         ],
@@ -201,7 +201,7 @@ export const newGuides: GuideArticle[] = [
       {
         heading: "Definisi & Perbedaan Utama: Soft Brick vs Hard Brick",
         body:
-          "Perbedaan mendasar antara soft brick dan hard brick terletak pada integritas komponen hardware: Soft Brick adalah kerusakan software di mana perangkat masih memiliki tanda-tanda kehidupan (getar, respon lampu, atau terdeteksi di Device Manager PC sebagai port USB darurat), sehingga dapat dipulihkan 100% melalui flashing firmware. Sebaliknya, Hard Brick adalah kerusakan fisik pada komponen hardware seperti konsleting IC power, chip memori eMMC/UFS yang terbakar, atau jalur motherboard putus, yang tidak akan pernah bisa diselesaikan hanya dengan kabel USB dan software.",
+          "Perbedaan mendasar antara soft brick dan hard brick terletak pada integritas komponen hardware: Soft Brick adalah kerusakan software di mana perangkat masih memiliki tanda-tanda kehidupan (getar, respon lampu, atau terdeteksi di Device Manager PC sebagai port USB darurat), sehingga umumnya dapat dipulihkan lewat flashing firmware. Sebaliknya, Hard Brick adalah kerusakan fisik pada komponen hardware seperti konsleting IC power, chip memori eMMC/UFS yang terbakar, atau jalur motherboard putus, yang tidak akan pernah bisa diselesaikan hanya dengan kabel USB dan software.",
       },
       {
         heading: "Tabel Perbandingan Karakteristik Soft Brick vs Hard Brick",
@@ -423,7 +423,7 @@ export const newGuides: GuideArticle[] = [
     keyTakeaways: [
       "Tanda visual paling jelas adalah ikon gembok terbuka di bagian atas atau bawah layar saat HP pertama kali dinyalakan.",
       "Menu Opsi Pengembang (Developer Options) menyediakan informasi status 'OEM Unlocking' dan 'Status Mi Unlock'.",
-      "Perintah 'fastboot getvar unlocked' di terminal PC memberikan kepastian status 100% akurat tanpa keraguan.",
+      "Perintah 'fastboot getvar unlocked' di terminal PC membantu memeriksa status bootloader. Hasilnya bergantung pada kondisi perangkat dan sebaiknya dibaca bersama status lain.",
       "Perangkat dengan bootloader terkunci akan menolak instalasi custom recovery, root image, atau custom ROM.",
     ],
     symptoms: [
@@ -469,7 +469,7 @@ export const newGuides: GuideArticle[] = [
         ],
       },
       {
-        heading: "Metode 3: Pengecekan 100% Akurat via Fastboot Terminal PC",
+        heading: "Metode 3: Pengecekan Status Bootloader via Fastboot Terminal PC",
         body:
           "Jika HP dalam kondisi bootloop dan tidak bisa masuk ke menu Android, hubungkan HP dalam mode fastboot ke komputer, lalu buka CMD dan ketikkan perintah berikut:",
         bullets: [
@@ -554,7 +554,7 @@ export const newGuides: GuideArticle[] = [
         bullets: [
           "Buka Device Manager di Windows (tekan Win + X -> pilih Device Manager).",
           "Colokkan HP ke port USB belakang PC (bukan hub USB).",
-          "Jika muncul baris 'Qualcomm HS-USB QDLoader 9008' atau 'MediaTek USB Port / Preloader', artinya CHIPSET PROSESOR MASIH HIDUP 100%. Kerusakan murni berada pada partisi software yang terhapus atau korup.",
+          "Jika muncul baris 'Qualcomm HS-USB QDLoader 9008' atau 'MediaTek USB Port / Preloader', artinya chipset prosesor masih terdeteksi. Kerusakan murni berada pada partisi software yang terhapus atau korup.",
         ],
       },
       {
@@ -1111,7 +1111,7 @@ export const newGuides: GuideArticle[] = [
       {
         heading: "Pentingnya Custom Recovery: TWRP & OrangeFox",
         body:
-          "Kunci utama memasang TWRP atau OrangeFox tanpa mengalami bootloop adalah memastikan file image cocok 100% dengan kode perangkat (Codename), memeriksa apakah HP menggunakan skema partisi konvensional (fastboot flash recovery) atau partisi boot (fastboot flash boot / vendor_boot), serta langsung mem-flash patch AVB (disable-dm-verity) sebelum reboot ke sistem. Custom recovery adalah fondasi utama bagi setiap penggemar modifikasi Android untuk melakukan instalasi ROM, flashing zip, dan pencadangan partisi tingkat rendah.",
+          "Kunci utama memasang TWRP atau OrangeFox tanpa mengalami bootloop adalah memastikan file image sesuai dengan kode perangkat (codename), memeriksa apakah HP menggunakan skema partisi konvensional (fastboot flash recovery) atau partisi boot (fastboot flash boot / vendor_boot), serta langsung mem-flash patch AVB (disable-dm-verity) sebelum reboot ke sistem. Custom recovery adalah fondasi utama bagi setiap penggemar modifikasi Android untuk melakukan instalasi ROM, flashing zip, dan pencadangan partisi tingkat rendah.",
       },
       {
         heading: "3 Skema Partisi Recovery pada Android Modern",
@@ -1293,7 +1293,7 @@ export const newGuides: GuideArticle[] = [
         body:
           "Penerus CyanogenMod ini merupakan proyek Custom ROM paling tua dan paling dihormati di dunia:",
         bullets: [
-          "Kelebihan: Kode sumber 100% murni dan diaudit secara ketat, tanpa bloatware Google bawaan (Vanilla build), konsumsi daya baterai sangat hemat, dan umur dukungan terpanjang untuk HP lawas.",
+          "Kelebihan: Kode sumber terbuka sehingga bisa ditinjau publik, tanpa bloatware Google bawaan (Vanilla build), konsumsi daya baterai sangat hemat, dan umur dukungan terpanjang untuk HP lawas.",
           "Cocok Untuk: Pengguna yang mengutamakan privasi, stabilitas tanpa kompromi, dan performa multitasking ringan.",
         ],
       },
@@ -1465,7 +1465,7 @@ export const newGuides: GuideArticle[] = [
           "Pada arsitektur Realme dan Oppo, menahan tombol Volume Bawah saat menyalakan HP adalah kombinasi resmi untuk masuk ke Recovery Mode. Jika tombol volume bawah tersangkut kotoran atau mengalami konsleting jalur fleksibel:",
         bullets: [
           "Ponsel akan mengira Anda sedang menekan tombol volume setiap kali dinyalakan.",
-          "Uji sederhana: Saat berada di menu recovery bahasa (English), perhatikan apakah kursor pilihan bergerak sendiri ke bawah tanpa disentuh. Jika bergerak sendiri, 100% tombol volume Anda mengalami kerusakan fisik hardware.",
+          "Uji sederhana: Saat berada di menu recovery bahasa (English), perhatikan apakah kursor pilihan bergerak sendiri ke bawah tanpa disentuh. Jika bergerak sendiri, kemungkinan besar tombol volume Anda bermasalah secara fisik.",
         ],
       },
       {

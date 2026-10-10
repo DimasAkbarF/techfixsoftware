@@ -1,13 +1,13 @@
 const metrics = [
   {
-    value: "1.500+",
-    label: "Perangkat Tertangani",
-    subtext: "Kasus bootloop, flashing & partisi sukses di berbagai brand",
+    value: "Remote",
+    label: "Dikerjakan Online",
+    subtext: "Pengerjaan lewat AnyDesk, Anda bisa memantau langsung",
   },
   {
-    value: "99.2%",
-    label: "Akurasi Diagnostik",
-    subtext: "Analisis log error dan struktur partisi sebelum tindakan",
+    value: "Log",
+    label: "Diagnosis Dulu",
+    subtext: "Cek log error dan struktur partisi sebelum tindakan",
   },
   {
     value: "Hash",

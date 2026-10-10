@@ -11,7 +11,7 @@ export const services: Service[] = [
     shortDescription:
       "Layanan jasa root Android & HP online via remote AnyDesk untuk Xiaomi, Samsung, Pixel, Infinix, Realme. Rekayasa systemless Magisk & KernelSU untuk debloat, backup, dan modul kustomisasi. Hasil bergantung perangkat.",
     description:
-      "Layanan Jasa Root Android & HP Online di TechFix Software hadir sebagai solusi profesional bagi Anda yang membutuhkan hak akses superuser (su) penuh secara aman, terkontrol, dan tanpa resiko kerusakan sistem permanen. Berbeda dengan konter servis konvensional yang kerap menggunakan tool berbahaya atau mengharuskan Anda meninggalkan HP berhari-hari, seluruh proses di TechFix Software dikerjakan langsung secara online via remote AnyDesk di hadapan Anda.\n\nKami menerapkan rekayasa systemless root modern menggunakan Magisk v27+, KernelSU (GKI Linux kernel-level), atau APatch. Metode ini bekerja murni pada ramdisk boot.img atau init_boot.img tanpa pernah memodifikasi partisi sistem (/system atau /vendor) yang read-only. Hasilnya, integritas firmware bawaan pabrik tetap terjaga utuh, ponsel terhindar dari resiko hard brick, dan perangkat 100% bisa di-unroot kembali ke standar pabrik kapan saja jika diperlukan.\n\nLayanan ini dirancang untuk menjawab berbagai kebutuhan nyata pengguna Android di Indonesia:\n1. Pengguna dengan kebutuhan kustomisasi sistem yang sah pada perangkat yang kompatibel.\n2. Pengguna yang paham risiko: root dapat membuat sebagian aplikasi perbankan atau e-wallet menolak dibuka. Kami menjelaskan risikonya secara jujur dan menyarankan HP terpisah.\n3. Aplikasi kerja yang sensitif root: kompatibilitas bisa berubah sewaktu-waktu tanpa jaminan dari pengembang aplikasi.\n4. Pembersihan Bloatware & Iklan Bawaan: Hapus tuntas aplikasi sistem yang rakus penyimpanan dan memicu lag (seperti MSA dan GetApps pada MIUI/HyperOS, atau Palm Store pada Transsion Infinix/Tecno).\n5. Backup Menyeluruh Level Partisi: Mengamankan seluruh data game dan aplikasi kerja via Swift Backup atau Neo Backup tanpa kehilangan progres saat ganti perangkat.\n6. Tuning Audio & Performa Gaming: Instalasi modul audiophile Viper4Android FX / Dolby Atmos serta bypass thermal throttling untuk unlock framerate 90Hz/120Hz yang stabil.\n\nBiaya jasa root Android di TechFix Software sangat terjangkau, transparan, dan kompetitif sesuai dengan merek perangkat dan paket modul yang dipilih. Sebelum pengerjaan dimulai, teknisi kami selalu melakukan backup stock boot.img orisinal sebagai jaminan proteksi anti-bootloop. Konsultasi kelayakan dan verifikasi tipe chipset 100% GRATIS tanpa biaya di awal.",
+      "Layanan Jasa Root Android & HP Online di TechFix Software hadir sebagai solusi profesional bagi Anda yang membutuhkan hak akses superuser (su) penuh secara aman, terkontrol, dan dengan upaya memperkecil risiko kerusakan sistem permanen. Berbeda dengan konter servis konvensional yang kerap menggunakan tool berbahaya atau mengharuskan Anda meninggalkan HP berhari-hari, seluruh proses di TechFix Software dikerjakan langsung secara online via remote AnyDesk di hadapan Anda.\n\nKami menerapkan rekayasa systemless root modern menggunakan Magisk v27+, KernelSU (GKI Linux kernel-level), atau APatch. Metode ini bekerja murni pada ramdisk boot.img atau init_boot.img tanpa pernah memodifikasi partisi sistem (/system atau /vendor) yang read-only. Hasilnya, integritas firmware bawaan pabrik tetap terjaga utuh, ponsel terhindar dari resiko hard brick, dan perangkat umumnya bisa di-unroot kembali ke standar pabrik kapan saja jika diperlukan.\n\nLayanan ini dirancang untuk menjawab berbagai kebutuhan nyata pengguna Android di Indonesia:\n1. Pengguna dengan kebutuhan kustomisasi sistem yang sah pada perangkat yang kompatibel.\n2. Pengguna yang paham risiko: root dapat membuat sebagian aplikasi perbankan atau e-wallet menolak dibuka. Kami menjelaskan risikonya secara jujur dan menyarankan HP terpisah.\n3. Aplikasi kerja yang sensitif root: kompatibilitas bisa berubah sewaktu-waktu tanpa jaminan dari pengembang aplikasi.\n4. Pembersihan Bloatware & Iklan Bawaan: Hapus tuntas aplikasi sistem yang rakus penyimpanan dan memicu lag (seperti MSA dan GetApps pada MIUI/HyperOS, atau Palm Store pada Transsion Infinix/Tecno).\n5. Backup Menyeluruh Level Partisi: Mengamankan seluruh data game dan aplikasi kerja via Swift Backup atau Neo Backup tanpa kehilangan progres saat ganti perangkat.\n6. Tuning Audio & Performa Gaming: Instalasi modul audiophile Viper4Android FX / Dolby Atmos serta bypass thermal throttling untuk unlock framerate 90Hz/120Hz yang stabil.\n\nBiaya jasa root Android di TechFix Software sangat terjangkau, transparan, dan kompetitif sesuai dengan merek perangkat dan paket modul yang dipilih. Sebelum pengerjaan dimulai, teknisi kami selalu melakukan backup stock boot.img orisinal sebagai jaminan proteksi anti-bootloop. Konsultasi kelayakan dan verifikasi tipe chipset gratis di awal.",
     problemKeywords: [
       "jasa root",
       "jasa root android",
@@ -75,7 +75,7 @@ export const services: Service[] = [
       "Setup Modul & Verifikasi: Pemasangan modul sesuai kebutuhan dan pengecekan hasil sebelum serah terima.",
     ],
     importantNotices: [
-      "Boot image bawaan pabrik selalu dicadangkan terlebih dahulu untuk meminimalkan risiko kerusakan permanen. Tidak ada jaminan tanpa risiko.",
+      "Boot image bawaan pabrik dicadangkan terlebih dahulu untuk memperkecil risiko kerusakan permanen. Risiko tidak bisa dihilangkan sepenuhnya dan hasilnya bergantung pada kondisi perangkat.",
       "Jika bootloader belum di-unlock (UBL), prosedur unlock resmi OEM akan memicu factory reset data internal.",
       "Standar Google Play Integrity bersifat dinamis sehingga penyesuaian modul berkala mungkin diperlukan di masa mendatang.",
       "Status garansi software pabrikan berpotensi terpengaruh bergantung pada kebijakan masing-masing produsen.",
@@ -241,7 +241,7 @@ export const services: Service[] = [
         bullets: [
           "Verifikasi status OEM Unlocking di Developer Options dan driver Android Bootloader Interface pada Windows.",
           "Asistensi mengatasi kendala 'Error 20091 / Account not bound' dan antrean akun Xiaomi HyperOS.",
-          "Pengecekan device identifier token dan eksekusi unlock aman via fastboot tanpa risiko soft brick.",
+          "Pengecekan device identifier token dan eksekusi unlock via fastboot dengan upaya memperkecil risiko soft brick.",
         ],
       },
       {
@@ -347,7 +347,7 @@ export const services: Service[] = [
     estimatedTime: "30 – 60 Menit via Remote AnyDesk",
     causes: [
       "Pembaruan sistem OTA (Over The Air) yang terinterupsi atau korup saat proses instalasi partisi.",
-      "Kapasitas penyimpanan memori internal (userdata) yang terisi penuh 100% sehingga sistem gagal membuat cache boot.",
+      "Kapasitas penyimpanan memori internal (userdata) yang penuh sehingga sistem gagal membuat cache boot.",
       "Konflik modul Magisk, Xposed/LSPosed, atau patch kernel yang tidak kompatibel dengan versi Android terpasang.",
       "Kerusakan partisi super (system, vendor, product, odm) akibat salah mengeksekusi file update atau flashing mandiri.",
     ],
@@ -501,7 +501,7 @@ export const services: Service[] = [
     shortDescription:
       "Instalasi firmware stock, restore firmware, dan asistensi upgrade atau downgrade versi yang didukung.",
     description:
-      "Layanan Flash Firmware membantu Anda menginstal ulang atau mengembalikan firmware resmi (stock ROM) pabrikan pada perangkat Android. Layanan ini sangat berguna ketika sistem operasi rusak, ingin membersihkan bug setelah update, mengatasi malware/adware bandel, atau ingin restore ponsel ke kondisi awal pabrik. Tim kami memastikan file firmware yang digunakan 100% cocok dengan kode model dan region perangkat Anda.",
+      "Layanan Flash Firmware membantu Anda menginstal ulang atau mengembalikan firmware resmi (stock ROM) pabrikan pada perangkat Android. Layanan ini sangat berguna ketika sistem operasi rusak, ingin membersihkan bug setelah update, mengatasi malware/adware bandel, atau ingin restore ponsel ke kondisi awal pabrik. Tim kami memastikan file firmware yang digunakan dicocokkan dengan kode model dan region perangkat Anda.",
     problemKeywords: [
       "flash firmware",
       "install firmware",
@@ -542,7 +542,7 @@ export const services: Service[] = [
       "Konfirmasi tujuan: instal ulang bersih, upgrade, atau downgrade.",
       "Pemeriksaan kompatibilitas firmware dan konfirmasi risiko data.",
       "Persiapan file official dan driver pada komputer Anda.",
-      "Proses flashing dijalankan dan dipantau hingga selesai 100%.",
+      "Proses flashing dijalankan dan dipantau hingga proses selesai.",
     ],
     importantNotices: [
       "Penggunaan file firmware yang salah varian berisiko menimbulkan masalah baru.",

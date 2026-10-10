@@ -11,7 +11,7 @@ const customServiceFaqs: Record<string, FAQItem[]> = {
       category: "root-android",
       question: "Berapa biaya jasa root Android di TechFix Software?",
       answer:
-        "Biaya jasa root Android di TechFix Software sangat terjangkau mulai dari puluhan ribu rupiah, disesuaikan dengan merek HP, versi Android, dan paket kebutuhan Anda (Root Standar vs Paket Lengkap Ojol / M-Banking / Bypass Absensi). Konsultasi awal, verifikasi status bootloader, dan pengecekan kelayakan perangkat 100% GRATIS tanpa biaya di muka.",
+        "Biaya jasa root Android di TechFix Software sangat terjangkau mulai dari [ISI_DATA_NYATA: harga per merek/paket], disesuaikan dengan merek HP, versi Android, dan paket kebutuhan Anda (Root Standar vs Paket Lengkap Ojol / M-Banking / Bypass Absensi). Konsultasi awal, verifikasi status bootloader, dan pengecekan kelayakan perangkat gratis. Biaya pengerjaan dikonfirmasi sebelum mulai.",
     },
     {
       id: "faq-data-hilang-root",
