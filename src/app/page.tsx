@@ -15,9 +15,9 @@ import { buildMetadata, absoluteUrl } from "@/lib/seo";
 import { services } from "@/data/services";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Jasa Fix Bootloop, Unbrick & Flash Android Remote | TechFix Software",
+  title: "Jasa Root, Bootloop & Flash Android Remote | TechFix",
   description:
-    "Jasa perbaikan software Android profesional & bergaransi: fix bootloop, unbrick, root Magisk, flash firmware, dan UBL via remote AnyDesk. Konsultasi gratis!",
+    "Jasa software Android via remote AnyDesk: root Magisk, fix bootloop, unbrick, flash firmware, dan UBL. Konsultasi awal gratis.",
   path: "/",
   absoluteTitle: true,
 });
