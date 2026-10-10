@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import {
   Clock,
+  MapPin,
   Smartphone,
   Cpu,
   Info,
@@ -124,13 +125,26 @@ export default function ContactPage() {
             </div>
           </div>
 
+          {/* Service Area */}
+          <div className="rounded-lg border border-border bg-card p-5 text-xs leading-relaxed text-foreground shadow-xs">
+            <h3 className="text-sm font-bold text-foreground flex items-center gap-2">
+              <MapPin className="size-4 text-accent" />
+              Area Layanan
+            </h3>
+            <ul className="mt-2.5 space-y-1.5 text-muted-foreground">
+              <li>Pengerjaan utama dilakukan secara remote (online) ke seluruh Indonesia.</li>
+              <li>Lokasi fisik kami berada di Rangkasbitung, Kabupaten Lebak, Banten.</li>
+              <li>Untuk penanganan tatap muka di sekitar Rangkasbitung, konfirmasi ketersediaan jadwal lewat WhatsApp terlebih dahulu.</li>
+            </ul>
+          </div>
+
           {/* Security & Official Channels Notice */}
           <div className="rounded-lg border border-border bg-card p-5 text-xs leading-relaxed text-foreground shadow-xs">
             <h3 className="font-bold text-foreground text-xs uppercase tracking-wider">
               Protokol Keamanan &amp; Integritas Akses
             </h3>
             <p className="mt-1.5 text-muted-foreground text-xs leading-relaxed">
-              Seluruh konsultasi diproses via kanal resmi terverifikasi di <strong>techfixsoftware.my.id</strong>. Kami menjamin kerahasiaan data pengguna dan menerapkan prinsip zero-knowledge credential tanpa meminta kata sandi akun atau kode otentikasi pribadi Anda.
+              Seluruh konsultasi diproses via kanal resmi terverifikasi di <strong>techfixsoftware.my.id</strong>. Kami berkomitmen menjaga kerahasiaan data pengguna dan menerapkan prinsip zero-knowledge credential tanpa meminta kata sandi akun atau kode otentikasi pribadi Anda.
             </p>
           </div>
         </div>

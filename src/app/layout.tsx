@@ -86,12 +86,20 @@ function OrganizationJsonLd() {
           description: siteConfig.description,
           priceRange: "$$",
           telephone: siteConfig.whatsappNumber || undefined,
-          areaServed: {
-            "@type": "Country",
-            name: "Indonesia",
-          },
+          areaServed: [
+            {
+              "@type": "Country",
+              name: "Indonesia",
+            },
+            {
+              "@type": "City",
+              name: "Rangkasbitung",
+            },
+          ],
           address: {
             "@type": "PostalAddress",
+            addressLocality: "Rangkasbitung",
+            addressRegion: "Banten",
             addressCountry: "ID",
           },
           foundingDate: "2025",
