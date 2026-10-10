@@ -9,7 +9,7 @@ import {
   ArrowRight,
   Check,
 } from "lucide-react";
-import { guides, getGuideBySlug } from "@/data/guides";
+import { guides, getGuideBySlug, getRelatedGuidesForArticle } from "@/data/guides";
 import { services } from "@/data/services";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
@@ -44,7 +44,7 @@ export default async function GuideDetailPage({ params }: PageProps) {
   if (!guide) notFound();
 
   const relatedServices = services.filter((s) => guide.relatedServiceSlugs.includes(s.slug));
-  const otherGuides = guides.filter((g) => g.id !== guide.id).slice(0, 3);
+  const otherGuides = getRelatedGuidesForArticle(guide, 3);
 
   const articleJsonLd = {
     "@context": "https://schema.org",
@@ -273,17 +273,16 @@ export default async function GuideDetailPage({ params }: PageProps) {
                 </Link>
               )}
 
-              {relatedServices[0] && (
+              {relatedServices.slice(0, 3).map((s) => (
                 <Link
-                  href={`/services/${relatedServices[0].slug}`}
+                  key={s.id}
+                  href={`/services/${s.slug}`}
                   className="inline-flex h-11 items-center gap-1.5 rounded-md border border-white/20 px-4 text-xs sm:text-sm font-medium text-white hover:bg-white/10 transition-colors"
                 >
-                  <span>
-                    Lihat {relatedServices[0].id === "root-android" ? "Jasa Root Android" : `Layanan ${relatedServices[0].name}`}
-                  </span>
+                  <span>{s.name}</span>
                   <ArrowRight className="size-3.5" />
                 </Link>
-              )}
+              ))}
             </div>
 
             <p className="mt-3 text-[11px] text-white/60">

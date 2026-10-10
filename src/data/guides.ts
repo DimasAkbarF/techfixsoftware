@@ -454,3 +454,56 @@ export function getGuidesByCategory(category: string): GuideArticle[] {
 export function getRelatedGuides(serviceSlug: string): GuideArticle[] {
   return guides.filter((g) => g.relatedServiceSlugs.includes(serviceSlug));
 }
+
+/** Hash deterministik untuk tie-break stabil antar build. */
+function stableHash(a: string, b: string): number {
+  const key = `${a}|${b}`;
+  let x = 0;
+  for (let i = 0; i < key.length; i++) {
+    x = (x * 31 + key.charCodeAt(i)) % 100003;
+  }
+  return x;
+}
+
+/**
+ * Artikel saudara dipilih berdasarkan kedekatan topik (kategori dan layanan yang
+ * sama), lalu memprioritaskan artikel yang paling jarang mendapat link masuk.
+ * Hasilnya deterministik, sehingga setiap artikel punya jalur internal link dan
+ * tidak ada halaman yatim.
+ */
+export function getRelatedGuidesForArticle(current: GuideArticle, limit = 3): GuideArticle[] {
+  const relevance = new Map<string, number>();
+  for (const g of guides) {
+    if (g.id === current.id) continue;
+    const sameCategory = g.category === current.category ? 2 : 0;
+    const sharedServices = g.relatedServiceSlugs.filter((s) =>
+      current.relatedServiceSlugs.includes(s),
+    ).length;
+    relevance.set(g.id, sameCategory + sharedServices);
+  }
+
+  const inbound = new Map<string, number>();
+  for (const g of guides) inbound.set(g.id, 0);
+
+  const chosen = new Map<string, string[]>();
+  for (const source of guides) {
+    const candidates = guides
+      .filter((g) => g.id !== source.id)
+      .sort((a, b) => {
+        const diff = (relevance.get(b.id) ?? 0) - (relevance.get(a.id) ?? 0);
+        if (diff !== 0) return diff;
+        const inboundDiff = (inbound.get(a.id) ?? 0) - (inbound.get(b.id) ?? 0);
+        if (inboundDiff !== 0) return inboundDiff;
+        return stableHash(source.id, a.id) - stableHash(source.id, b.id);
+      })
+      .slice(0, limit)
+      .map((g) => g.id);
+
+    chosen.set(source.id, candidates);
+    for (const id of candidates) inbound.set(id, (inbound.get(id) ?? 0) + 1);
+  }
+
+  const ids = chosen.get(current.id) ?? [];
+  const byId = new Map(guides.map((g) => [g.id, g]));
+  return ids.map((id) => byId.get(id)).filter((g): g is GuideArticle => Boolean(g));
+}
