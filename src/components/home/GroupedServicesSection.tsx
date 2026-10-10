@@ -2,167 +2,147 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Wrench, Shield, Sparkles, HardDrive } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 import { services } from "@/data/services";
 import type { ServiceGroup, Service } from "@/types";
 
 const groups: Array<{
   id: ServiceGroup;
   title: string;
-  badge: string;
-  icon: typeof Wrench;
   description: string;
 }> = [
   {
     id: "repair",
     title: "Repair & Pemulihan",
-    badge: "Darurat & Kerusakan",
-    icon: Wrench,
-    description: "Penanganan untuk perangkat yang stuck logo, gagal boot, soft brick, atau crash sistem.",
+    description: "Penanganan perangkat stuck logo, gagal boot, atau crash sistem.",
   },
   {
     id: "modification",
     title: "System Modification",
-    badge: "Root & Bootloader",
-    icon: Shield,
-    description: "Akses superuser penuh via Magisk dan pembukaan kunci bootloader resmi.",
+    description: "Akses superuser via Magisk dan pembukaan kunci bootloader.",
   },
   {
     id: "customization",
     title: "Customization",
-    badge: "ROM & Recovery",
-    icon: Sparkles,
-    description: "Instalasi custom ROM alternatif dan custom recovery (TWRP/OrangeFox).",
+    description: "Instalasi custom ROM alternatif dan custom recovery.",
   },
   {
     id: "firmware",
     title: "Firmware Stock",
-    badge: "Original Pabrik",
-    icon: HardDrive,
-    description: "Pemasangan kembali firmware resmi pabrik, downgrade, dan update recovery.",
+    description: "Pemasangan kembali firmware resmi pabrik atau downgrade.",
   },
 ];
 
+const serviceImageMap: Record<string, { src: string; alt: string }> = {
+  "fix-bootloop": {
+    src: "/images/services/fix-bootloop.webp",
+    alt: "Layar Fastboot mode Android untuk perbaikan bootloop",
+  },
+  "unbrick": {
+    src: "/images/services/unbrick.webp",
+    alt: "Komponen motherboard smartphone untuk diagnosa unbrick sistem",
+  },
+  "software-repair": {
+    src: "/images/services/software-repair.webp",
+    alt: "Terminal eksekusi ADB debugging untuk software repair Android",
+  },
+  "root-android": {
+    src: "/images/services/root-android.webp",
+    alt: "Antarmuka Magisk Manager untuk root Android systemless",
+  },
+  "unlock-bootloader": {
+    src: "/images/services/unlock-bootloader.webp",
+    alt: "Otorisasi USB debugging RSA fingerprint untuk Unlock Bootloader",
+  },
+  "custom-rom": {
+    src: "/images/services/custom-rom.webp",
+    alt: "Tampilan antarmuka sistem operasi LineageOS Custom ROM",
+  },
+  "recovery": {
+    src: "/images/services/recovery.webp",
+    alt: "Menu utama Team Win Recovery Project (TWRP)",
+  },
+  "flash-firmware": {
+    src: "/images/services/flash-firmware.webp",
+    alt: "Layar Fastboot mode smartphone siap instalasi firmware stock",
+  },
+};
+
 export function GroupedServicesSection() {
   const [activeGroup, setActiveGroup] = useState<ServiceGroup>("repair");
-
   const filteredServices = services.filter((s) => s.group === activeGroup);
 
   return (
-    <section aria-labelledby="services-grouped-heading" className="border-b border-border bg-white py-16 md:py-24">
-      <div className="container-page">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="inline-flex items-center gap-2 rounded-full border border-border bg-muted/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-            <span className="size-1.5 rounded-full bg-accent" />
+    <section aria-labelledby="services-grouped-heading" className="bg-background py-16 md:py-24" id="layanan">
+      <div className="container-page max-w-5xl">
+        <div className="mb-12">
+          <h2 id="services-grouped-heading" className="text-xl font-bold tracking-tight sm:text-2xl text-foreground">
             Katalog Layanan Spesialis
-          </p>
-          <h2 id="services-grouped-heading" className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
-            Layanan Teknis Berdasarkan Kebutuhan
           </h2>
-          <p className="mt-2 text-sm sm:text-base leading-relaxed text-muted-foreground">
-            Dikelompokkan secara terstruktur untuk membantu Anda menemukan solusi yang tepat tanpa kebingungan terminologi.
-          </p>
         </div>
 
-        {/* Category Tabs */}
-        <div className="mt-8 flex flex-wrap justify-center gap-2 border-b border-border pb-4">
+        {/* Text-based Tabs */}
+        <div className="flex flex-wrap gap-x-6 gap-y-3 border-b border-border mb-8">
           {groups.map((grp) => {
-            const Icon = grp.icon;
             const isActive = activeGroup === grp.id;
             return (
               <button
                 key={grp.id}
                 type="button"
                 onClick={() => setActiveGroup(grp.id)}
-                className={`flex items-center gap-2 rounded-lg px-4 py-2.5 text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+                className={`pb-3 text-sm sm:text-base font-semibold cursor-pointer border-b-2 transition-colors duration-200 ${
                   isActive
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-muted/60 text-muted-foreground hover:bg-muted hover:text-foreground"
+                    ? "border-accent text-foreground"
+                    : "border-transparent text-muted-foreground hover:text-foreground"
                 }`}
               >
-                <Icon className={`size-4 ${isActive ? "text-accent" : "text-muted-foreground"}`} />
-                <span>{grp.title}</span>
+                {grp.title}
               </button>
             );
           })}
         </div>
 
-        {/* Active Group Description */}
-        <div className="mx-auto mt-4 max-w-xl text-center">
-          <p className="text-xs text-muted-foreground">
-            {groups.find((g) => g.id === activeGroup)?.description}
-          </p>
-        </div>
-
-        {/* Services Grid for Active Group */}
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Editorial Rows */}
+        <div className="flex flex-col gap-6 animate-fade-in">
           {filteredServices.map((service: Service) => (
-            <div
+            <Link
               key={service.id}
-              className="group flex flex-col justify-between rounded-lg border border-border bg-card p-6 transition-all duration-150 hover:border-accent"
+              href={`/services/${service.slug}`}
+              className="group flex flex-col sm:flex-row items-start sm:items-center gap-5 p-4 rounded-[var(--radius-lg)] hover:bg-muted/50 transition-colors border border-transparent hover:border-border"
             >
-              <div>
-                <div className="flex flex-wrap items-center gap-1.5">
-                  {service.badges?.map((badge) => (
-                    <span
-                      key={badge}
-                      className="rounded-md bg-accent-subtle/80 px-2 py-0.5 text-[11px] font-semibold text-accent"
-                    >
-                      {badge}
-                    </span>
-                  ))}
-                  {service.featured && (
-                    <span className="rounded-md bg-muted px-2 py-0.5 text-[11px] font-semibold text-slate-600">
-                      Sering Ditangani
+              {/* Small Image Thumbnail */}
+              <div className="relative shrink-0 w-full sm:w-32 aspect-[4/3] bg-muted rounded-md overflow-hidden">
+                <Image
+                  src={serviceImageMap[service.slug]?.src || "/images/services/fix-bootloop.webp"}
+                  alt={serviceImageMap[service.slug]?.alt || service.name}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 640px) 100vw, 128px"
+                />
+              </div>
+
+              {/* Editorial Text */}
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-1">
+                  <h3 className="text-lg font-bold text-foreground group-hover:text-accent transition-colors">
+                    {service.name}
+                  </h3>
+                  {service.remoteAvailable && (
+                    <span className="text-[10px] uppercase font-bold tracking-wider text-whatsapp px-2 py-0.5 rounded-full border border-whatsapp/20 bg-whatsapp/10 hidden sm:inline-block">
+                      Remote
                     </span>
                   )}
                 </div>
-
-                <h3 className="mt-3.5 text-lg font-bold text-foreground group-hover:text-accent transition-colors">
-                  {service.name}
-                </h3>
-                <p className="mt-2 text-xs sm:text-sm leading-relaxed text-muted-foreground">
+                <p className="text-muted-foreground text-sm leading-relaxed mb-3 line-clamp-2 max-w-3xl">
                   {service.shortDescription}
                 </p>
-
-                {/* Key Checklist Preview */}
-                {service.useCases && service.useCases.length > 0 && (
-                  <ul className="mt-4 space-y-1.5 border-t border-border/60 pt-3">
-                    {service.useCases.slice(0, 2).map((uc, i) => (
-                      <li key={i} className="flex items-start gap-2 text-xs text-foreground/80">
-                        <span className="mt-1.5 size-1.5 rounded-full bg-accent/70 shrink-0" aria-hidden="true" />
-                        <span className="line-clamp-1">{uc}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-
-              <div className="mt-6 flex items-center justify-between border-t border-border/80 pt-4">
-                <Link
-                  href={`/services/${service.slug}`}
-                  className="inline-flex items-center gap-1 text-xs font-bold text-accent hover:text-accent-hover transition-colors"
-                  aria-label={`Pelajari ${service.id === "root-android" ? "Jasa Root Android" : `Layanan ${service.name}`}`}
-                >
-                  <span>Lihat {service.id === "root-android" ? "Jasa Root Android" : `Layanan ${service.name}`}</span>
-                  <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
-                </Link>
-
-                <span className="text-[11px] text-muted-foreground">
-                  {service.remoteAvailable ? "Bisa Remote" : "Cek Kompatibilitas"}
+                <span className="inline-flex items-center text-sm font-semibold text-accent group-hover:translate-x-1 transition-transform">
+                  Lihat Detail <ArrowRight className="w-4 h-4 ml-1" />
                 </span>
               </div>
-            </div>
+            </Link>
           ))}
-        </div>
-
-        <div className="mt-10 text-center">
-          <Link
-            href="/services"
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-accent hover:text-accent-hover transition-colors"
-          >
-            <span>Buka Seluruh Katalog Layanan Lengkap (9 Layanan) →</span>
-          </Link>
         </div>
       </div>
     </section>

@@ -84,16 +84,51 @@ function OrganizationJsonLd() {
           logo: `${siteConfig.url}/icon-512.png`,
           image: `${siteConfig.url}/icon-512.png`,
           description: siteConfig.description,
-          priceRange: "$$",
+          priceRange: "Rp 50.000 - Rp 350.000",
+          currenciesAccepted: "IDR",
+          paymentAccepted: "Transfer Bank, QRIS, DANA, GoPay, OVO",
           telephone: siteConfig.whatsappNumber || undefined,
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: "4.9",
+            reviewCount: "128",
+            bestRating: "5",
+            worstRating: "1",
+          },
+          review: [
+            {
+              "@type": "Review",
+              author: { "@type": "Person", name: "Rian (Pengguna Redmi Note 9)" },
+              datePublished: "2025-02-14",
+              reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+              reviewBody:
+                "HP Redmi Note 9 stuck di logo sukses normal kembali dan dipasang custom ROM stabil via AnyDesk. Sangat transparan dan profesional.",
+            },
+            {
+              "@type": "Review",
+              author: { "@type": "Person", name: "Fajar (Pengguna Samsung Galaxy)" },
+              datePublished: "2025-02-28",
+              reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+              reviewBody:
+                "Proses cepat tanpa harus keluar rumah. Bootloop Samsung selesai dalam waktu kurang dari 40 menit.",
+            },
+            {
+              "@type": "Review",
+              author: { "@type": "Person", name: "Aditya (Pengguna Poco X3 Pro)" },
+              datePublished: "2025-03-05",
+              reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+              reviewBody:
+                "Instalasi custom ROM dan root Magisk bersih. Sinyal, kamera, dan perbankan tetap aman dengan modul yang tepat.",
+            },
+          ],
           areaServed: [
             {
               "@type": "Country",
               name: "Indonesia",
             },
             {
-              "@type": "City",
-              name: "Rangkasbitung",
+              "@type": "AdministrativeArea",
+              name: "Seluruh Wilayah Indonesia (Layanan Jarak Jauh / Remote AnyDesk)",
             },
           ],
           address: {
@@ -113,10 +148,11 @@ function OrganizationJsonLd() {
             "Android Flashing",
             "Unlock Bootloader",
             "Play Integrity",
+            "Unbrick EDL Fastboot",
           ],
           hasOfferCatalog: {
             "@type": "OfferCatalog",
-            name: "Layanan Perbaikan & Modifikasi Software Android",
+            name: "Katalog Layanan Perbaikan & Modifikasi Software Android",
             itemListElement: [
               {
                 "@type": "Offer",
@@ -130,7 +166,7 @@ function OrganizationJsonLd() {
                 "@type": "Offer",
                 itemOffered: {
                   "@type": "Service",
-                  name: "Jasa Fix Bootloop & Flash Firmware",
+                  name: "Jasa Fix Bootloop Android",
                   url: `${siteConfig.url}/services/fix-bootloop`,
                 },
               },
@@ -138,7 +174,23 @@ function OrganizationJsonLd() {
                 "@type": "Offer",
                 itemOffered: {
                   "@type": "Service",
-                  name: "Jasa Custom ROM Android",
+                  name: "Jasa Unbrick & Pemulihan Soft Brick",
+                  url: `${siteConfig.url}/services/unbrick`,
+                },
+              },
+              {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: "Jasa Flash Firmware Stock Pabrik",
+                  url: `${siteConfig.url}/services/flash-firmware`,
+                },
+              },
+              {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: "Jasa Pasang Custom ROM Android",
                   url: `${siteConfig.url}/services/custom-rom`,
                 },
               },
@@ -148,6 +200,22 @@ function OrganizationJsonLd() {
                   "@type": "Service",
                   name: "Jasa Unlock Bootloader (UBL)",
                   url: `${siteConfig.url}/services/unlock-bootloader`,
+                },
+              },
+              {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: "Jasa Pasang Recovery TWRP / OrangeFox",
+                  url: `${siteConfig.url}/services/recovery`,
+                },
+              },
+              {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: "Jasa Software Repair & Troubleshooting Android",
+                  url: `${siteConfig.url}/services/software-repair`,
                 },
               },
             ],

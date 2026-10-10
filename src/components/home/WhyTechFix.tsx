@@ -1,78 +1,94 @@
-import { CheckCircle2, XCircle } from "lucide-react";
+import { Check, X } from "lucide-react";
 
-const differentiators = [
+const points = [
   {
-    principle: "Diagnosis Awal Sebelum Eksekusi",
-    us: "Kami mengidentifikasi penyebab masalah sistemik dan memastikan kondisi unit masuk akal untuk ditangani sebelum meminta persetujuan.",
-    others: "Flashing langsung tanpa memeriksa riwayat status partisi atau log kegagalan sistem sebelumnya.",
+    feature: "Transparansi Risiko",
+    techfix: "Risiko data hilang & probabilitas gagal dijelaskan di awal",
+    others: "Sering diabaikan atau ditutupi demi closing",
   },
   {
-    principle: "Validasi Integritas Firmware & Anti-Rollback",
-    us: "Varian chipset (Snapdragon/MediaTek), regional SKU, dan proteksi anti-rollback diverifikasi presisi dengan checksum resmi pabrik.",
-    others: "Penggunaan package firmware beda region atau varian tidak resmi yang berisiko memicu kerusakan permanen (hard brick).",
+    feature: "Keamanan Data Pribadi",
+    techfix: "Tidak meminta password/PIN kecuali sangat terpaksa, data diproteksi",
+    others: "Meminta PIN sebagai syarat wajib tanpa alasan jelas",
   },
   {
-    principle: "Transparansi Partisi & Keamanan Data",
-    us: "Penilaian dampak terhadap partisi internal, status enkripsi, dan garansi dijelaskan secara terbuka sebelum tindakan diambil.",
-    others: "Klaim tanpa dasar teknis yang mengabaikan proteksi partisi dan risiko kehilangan data penting.",
+    feature: "File Firmware / Custom ROM",
+    techfix: "Menggunakan file bersih, bebas malware, sumber official/XDA",
+    others: "Asal comot dari Google, rawan malware / iklan menyusup",
   },
   {
-    principle: "Komunikasi Teknis & Dokumentasi Runtut",
-    us: "Setiap langkah dijelaskan secara terstruktur dengan terminologi yang jelas dan transparan kepada pemilik perangkat.",
-    others: "Minimnya transparansi alur kerja atau komunikasi sepihak tanpa penjelasan prosedur teknis.",
+    feature: "Bantuan Jarak Jauh (Remote)",
+    techfix: "Tersedia via TeamViewer/AnyDesk untuk hemat waktu & ongkos",
+    others: "Wajib datang ke lokasi / konter fisik",
+  },
+  {
+    feature: "Edukasi Pengguna",
+    techfix: "Diberi panduan cara merawat dan menghindari masalah serupa",
+    others: "Selesai servis langsung putus kontak",
   },
 ];
 
 export function WhyTechFix() {
   return (
-    <section aria-labelledby="why-heading" className="border-b border-border bg-white py-16 md:py-24">
-      <div className="container-page">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="inline-flex items-center gap-2 rounded-full border border-border bg-muted/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-            <span className="size-1.5 rounded-full bg-accent" />
-            Metodologi &amp; Kualitas Rekayasa
-          </p>
-          <h2 id="why-heading" className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
-            Standar Penanganan Terstruktur vs. Penanganan Konvensional
+    <section className="py-16 md:py-24 bg-card" id="kenapa-kami">
+      <div className="container-page max-w-4xl">
+        <div className="text-center mb-12">
+          <h2 className="text-xl font-bold tracking-tight sm:text-2xl text-foreground mb-3">
+            Kenapa Bukan Jasa Servis Biasa?
           </h2>
-          <p className="mt-2 text-sm sm:text-base leading-relaxed text-muted-foreground">
-            Pemulihan sistem operasi Android menuntut verifikasi arsitektur partisi dan validasi checksum resmi pabrikan, bukan sekadar flashing tanpa verifikasi sistematis.
+          <p className="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto text-balance">
+            Modifikasi dan perbaikan software membutuhkan ketelitian ekstra. Kami mengutamakan keamanan data dan keandalan sistem Anda.
           </p>
         </div>
 
-        <div className="mt-10 grid gap-5 sm:grid-cols-2">
-          {differentiators.map((item) => (
-            <div
-              key={item.principle}
-              className="rounded-lg border border-border bg-card p-6"
-            >
-              <h3 className="text-base font-bold text-foreground">
-                {item.principle}
-              </h3>
-
-              <div className="mt-4 space-y-3 text-xs sm:text-sm">
-                <div className="flex items-start gap-2.5 rounded-lg bg-success/5 border border-success/20 p-3">
-                  <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" aria-hidden="true" />
-                  <div>
-                    <span className="font-semibold text-success block text-[11px] uppercase tracking-wider">
-                      Standar Prosedur TechFix
-                    </span>
-                    <span className="text-foreground leading-relaxed">{item.us}</span>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-2.5 rounded-lg bg-slate-50 border border-slate-200 p-3">
-                  <XCircle className="mt-0.5 size-4 shrink-0 text-slate-400" aria-hidden="true" />
-                  <div>
-                    <span className="font-semibold text-slate-500 block text-[11px] uppercase tracking-wider">
-                      Penanganan Tanpa Standarisasi
-                    </span>
-                    <span className="text-muted-foreground leading-relaxed">{item.others}</span>
-                  </div>
-                </div>
-              </div>
+        <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
+          {/* TechFix Column */}
+          <div className="bg-accent/5 border border-accent/20 rounded-[var(--radius-xl)] p-6 sm:p-8 relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-4 opacity-5">
+              <Check className="w-32 h-32" />
             </div>
-          ))}
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-10 h-10 rounded-full bg-accent text-accent-foreground flex items-center justify-center">
+                <Check className="w-5 h-5" />
+              </div>
+              <h3 className="text-xl font-bold text-foreground">Di TechFix Software</h3>
+            </div>
+            <ul className="space-y-6">
+              {points.map((p, i) => (
+                <li key={i} className="relative z-10">
+                  <span className="block text-xs font-bold text-accent uppercase tracking-wider mb-1">{p.feature}</span>
+                  <p className="text-sm text-foreground font-medium flex items-start gap-2">
+                    <Check className="w-4 h-4 text-whatsapp mt-0.5 shrink-0" />
+                    {p.techfix}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Others Column */}
+          <div className="bg-muted/30 border border-border rounded-[var(--radius-xl)] p-6 sm:p-8 relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-4 opacity-5">
+              <X className="w-32 h-32" />
+            </div>
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-10 h-10 rounded-full bg-muted-foreground/20 text-muted-foreground flex items-center justify-center">
+                <X className="w-5 h-5" />
+              </div>
+              <h3 className="text-xl font-bold text-muted-foreground">Servis Sembarangan</h3>
+            </div>
+            <ul className="space-y-6">
+              {points.map((p, i) => (
+                <li key={i} className="relative z-10">
+                  <span className="block text-xs font-bold text-muted-foreground uppercase tracking-wider mb-1">{p.feature}</span>
+                  <p className="text-sm text-muted-foreground flex items-start gap-2">
+                    <X className="w-4 h-4 text-destructive mt-0.5 shrink-0" />
+                    {p.others}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>

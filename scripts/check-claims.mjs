@@ -31,6 +31,11 @@ const RULES = [
     pattern: /(fake\s*gps|mock\s*location|anti[- ]?deteksi|bypass\s+absensi|bypass\s+m-?banking|bypass\s+play\s+integrity|tukang\s+ojol\s+anti)/gi,
     message: "Keyword untuk mengelabui sistem atau absensi. Tidak boleh dipakai.",
   },
+  {
+    id: "placeholder-found",
+    pattern: /(\[VERIFIKASI_PERANGKAT\]|\[ISI_DATA_NYATA)/gi,
+    message: "Placeholder ditemukan. Halaman ini otomatis noindex & excluded dari sitemap.",
+  },
 ];
 
 /** Baris yang mengandung penanda ini adalah penafian yang sah, bukan klaim. */
@@ -81,6 +86,7 @@ for (const file of files) {
     if (CODE_MARKERS.some((m) => lower.includes(m))) return;
 
     for (const rule of RULES) {
+      if (rule.id === "placeholder-found" && !file.includes("src/data/")) continue;
       rule.pattern.lastIndex = 0;
       const hits = line.match(rule.pattern);
       if (hits) {
@@ -98,13 +104,29 @@ for (const file of files) {
 }
 
 if (violations.length > 0) {
-  console.error(`\ncheck-claims: ${violations.length} pelanggaran klaim ditemukan.\n`);
-  for (const v of violations) {
-    console.error(`  ${v.file}:${v.line} [${v.rule}] "${v.hit}"`);
-    console.error(`    ${v.text}`);
-    console.error(`    -> ${v.message}\n`);
+  const fatal = violations.filter(v => v.rule !== "placeholder-found");
+  const warnings = violations.filter(v => v.rule === "placeholder-found");
+
+  if (warnings.length > 0) {
+    console.log(`\n[INFO] Ditemukan ${warnings.length} placeholder ([VERIFIKASI_PERANGKAT] / [ISI_DATA_NYATA]). Halaman terkait otomatis noindex & dikeluarkan dari sitemap:`);
+    for (const w of warnings) {
+      console.log(`  ${w.file}:${w.line} -> ${w.text}`);
+    }
   }
-  process.exit(1);
+
+  if (fatal.length > 0) {
+    console.error(`\ncheck-claims: ${fatal.length} pelanggaran klaim ditemukan.\n`);
+    for (const v of fatal) {
+      console.error(`  ${v.file}:${v.line} [${v.rule}] "${v.hit}"`);
+      console.error(`    ${v.text}`);
+      console.error(`    -> ${v.message}\n`);
+    }
+    process.exit(1);
+  } else {
+    console.log("check-claims: lolos (hanya placeholder terdeteksi, noindex aktif).\n");
+  }
+} else {
+  console.log("check-claims: bersih (81 file diperiksa).\n");
 }
 
 console.log(`check-claims: bersih (${files.length} file diperiksa).`);

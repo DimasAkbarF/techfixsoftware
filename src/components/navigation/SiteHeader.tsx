@@ -1,16 +1,17 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import { Search, X, ArrowRight } from "lucide-react";
+import { Search, Menu, X, ArrowRight } from "lucide-react";
 import { mainNav } from "@/components/navigation/navItems";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
-import { hasWhatsapp, whatsappLink, hasTelegram, telegramLink } from "@/config/site";
+import { hasWhatsapp, whatsappLink } from "@/config/site";
 import { buildConsultationMessage } from "@/lib/contact";
 import { trackEvent } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
+import { ButtonLink } from "@/components/ui/Button";
 
 function HeaderConsultationCTA({ mobile = false, onClick }: { mobile?: boolean; onClick?: () => void }) {
   const isWa = hasWhatsapp();
@@ -26,120 +27,87 @@ function HeaderConsultationCTA({ mobile = false, onClick }: { mobile?: boolean; 
 
   if (waHref) {
     return (
-      <a
+      <ButtonLink
         href={waHref}
         target="_blank"
-        rel="noopener noreferrer nofollow"
+        rel="noopener noreferrer"
         onClick={handleClick}
-        className={cn(
-          "inline-flex items-center justify-center gap-2 rounded-md font-semibold transition-all cursor-pointer",
-          mobile
-            ? "h-11 w-full bg-whatsapp text-whatsapp-foreground text-sm hover:brightness-95 shadow-sm"
-            : "hidden sm:inline-flex h-9 px-3.5 text-xs bg-whatsapp text-whatsapp-foreground hover:brightness-95",
-        )}
+        variant="whatsapp"
+        size={mobile ? "large" : "small"}
+        className={cn(mobile && "w-full")}
       >
-        <WhatsAppIcon className="size-4 shrink-0" />
-        <span>Konsultasi Gratis</span>
-      </a>
+        <WhatsAppIcon className="w-4 h-4 mr-1.5" />
+        Konsultasi Gratis
+      </ButtonLink>
     );
   }
 
   return (
-    <Link
+    <ButtonLink
       href="/contact"
       onClick={handleClick}
-      className={cn(
-        "inline-flex items-center justify-center gap-1.5 rounded-md font-semibold transition-colors cursor-pointer",
-        mobile
-          ? "h-11 w-full bg-primary text-primary-foreground text-sm hover:bg-primary-hover shadow-sm"
-          : "hidden sm:inline-flex h-9 px-3.5 text-xs bg-primary text-primary-foreground hover:bg-primary-hover",
-      )}
+      variant="primary"
+      size={mobile ? "large" : "small"}
+      className={cn(mobile && "w-full")}
     >
-      <span>Konsultasi Gratis</span>
-      <ArrowRight className="size-3.5" aria-hidden="true" />
-    </Link>
-  );
-}
-
-
-function Logo({ compact = false, onClick }: { compact?: boolean; onClick?: () => void }) {
-  return (
-    <Link
-      href="/"
-      onClick={onClick}
-      className="flex shrink-0 items-center gap-2 cursor-pointer"
-      aria-label="TechFix Software — beranda"
-    >
-      <Image
-        src="/techfix-software-logo.png"
-        alt="TechFix Software"
-        width={44}
-        height={33}
-        className={compact ? "h-8 w-auto" : "h-9 w-auto sm:h-10"}
-        priority
-      />
-      <span className="text-base font-semibold tracking-tight text-primary">TechFix Software</span>
-    </Link>
+      Konsultasi Gratis <ArrowRight className="w-3.5 h-3.5 ml-1" />
+    </ButtonLink>
   );
 }
 
 export function SiteHeader() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
-  const closeRef = useRef<HTMLButtonElement>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  const closeMenu = useCallback(() => {
-    setMenuOpen(false);
-    requestAnimationFrame(() => closeRef.current?.focus());
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
+
   useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = "hidden";
-      closeRef.current?.focus();
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
+    if (menuOpen) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "auto";
+    return () => { document.body.style.overflow = "auto"; };
   }, [menuOpen]);
-
-  useEffect(() => {
-    if (!menuOpen) return;
-    function onKey(e: KeyboardEvent) {
-      if (e.key === "Escape") closeMenu();
-    }
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [menuOpen, closeMenu]);
-
-  function isActive(href: string) {
-    if (href === "/") return pathname === "/";
-    return pathname.startsWith(href);
-  }
 
   return (
     <>
-      <header className="sticky top-0 z-40 border-b border-border bg-white">
-        <div className="container-page flex h-14 items-center justify-between gap-4 sm:h-16">
+      <header
+        className={cn(
+          "sticky top-0 z-40 w-full transition-all duration-200 border-b",
+          isScrolled
+            ? "bg-background/80 backdrop-blur-md border-border shadow-sm"
+            : "bg-background border-transparent"
+        )}
+      >
+        <div className="container-page flex h-16 items-center justify-between gap-4">
           {/* Logo */}
-          <Logo />
+          <Link href="/" className="flex items-center gap-2 group cursor-pointer" aria-label="Beranda" onClick={closeMenu}>
+            <div className="relative w-8 h-8 sm:w-10 sm:h-10 overflow-hidden">
+              <Image src="/techfix-software-logo.png" alt="Logo" fill className="object-contain" priority />
+            </div>
+            <span className="font-bold tracking-tight text-foreground sm:text-lg group-hover:text-accent transition-colors">
+              TechFix Software
+            </span>
+          </Link>
 
-          {/* Desktop nav */}
-          <nav aria-label="Navigasi utama" className="hidden lg:flex items-center gap-0.5">
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center gap-6">
             {mainNav.map((item) => {
-              const active = isActive(item.href);
+              const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  aria-current={active ? "page" : undefined}
                   className={cn(
-                    "rounded-md px-3 py-2 text-[13px] font-medium transition-colors cursor-pointer",
-                    active
-                      ? "bg-accent-subtle text-accent font-semibold"
-                      : "text-muted-foreground hover:bg-muted hover:text-foreground",
+                    "text-sm font-semibold transition-colors cursor-pointer",
+                    isActive ? "text-accent" : "text-muted-foreground hover:text-foreground"
                   )}
                 >
                   {item.label}
@@ -148,153 +116,69 @@ export function SiteHeader() {
             })}
           </nav>
 
-          {/* Right actions */}
-          <div className="flex items-center gap-2">
-            {/* Search trigger */}
+          {/* Right Actions */}
+          <div className="flex items-center gap-3">
             <Link
               href="/search"
-              className="flex size-10 items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground transition-colors cursor-pointer"
-              aria-label="Buka pencarian"
+              aria-label="Cari layanan atau panduan"
+              className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-full transition-colors hidden sm:block"
             >
-              <Search className="size-[18px]" aria-hidden="true" />
+              <Search className="w-5 h-5" />
             </Link>
+            
+            <div className="hidden sm:block">
+              <HeaderConsultationCTA />
+            </div>
 
-            {/* Mobile menu trigger */}
             <button
-              ref={closeRef}
               type="button"
-              onClick={() => setMenuOpen((v) => !v)}
-              aria-label={menuOpen ? "Tutup menu" : "Buka menu navigasi"}
+              className="p-2 -mr-2 text-muted-foreground hover:text-foreground md:hidden"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle menu"
               aria-expanded={menuOpen}
-              aria-controls="mobile-menu"
-              className="lg:hidden flex size-10 items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground transition-colors cursor-pointer"
             >
-              {menuOpen ? (
-                <X className="size-5" aria-hidden="true" />
-              ) : (
-                <svg viewBox="0 0 24 24" fill="none" className="size-5" aria-hidden="true">
-                  <line x1="4" y1="7" x2="20" y2="7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                  <line x1="4" y1="12" x2="20" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                  <line x1="4" y1="17" x2="20" y2="17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                </svg>
-              )}
+              {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
-
         </div>
       </header>
 
-      {/* Mobile menu overlay */}
-      {menuOpen && <MobileMenuOverlay onClose={closeMenu} pathname={pathname} />}
+      {/* Mobile Menu Overlay */}
+      {menuOpen && (
+        <div className="fixed inset-0 top-16 z-30 bg-background md:hidden animate-fade-in flex flex-col">
+          <nav className="flex-1 overflow-y-auto py-6 px-4">
+            <div className="flex flex-col gap-4">
+              {mainNav.map((item) => {
+                const isActive = pathname === item.href;
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={closeMenu}
+                    className={cn(
+                      "px-4 py-3 rounded-lg text-lg font-semibold transition-colors",
+                      isActive ? "bg-accent/10 text-accent" : "text-foreground hover:bg-muted"
+                    )}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+            </div>
+            
+            <div className="mt-8 border-t border-border pt-8 px-4">
+              <Link
+                href="/search"
+                onClick={closeMenu}
+                className="flex items-center gap-3 text-muted-foreground hover:text-foreground py-3 mb-6 font-medium"
+              >
+                <Search className="w-5 h-5" /> Cari layanan / panduan
+              </Link>
+              <HeaderConsultationCTA mobile onClick={closeMenu} />
+            </div>
+          </nav>
+        </div>
+      )}
     </>
-  );
-}
-
-function MobileMenuOverlay({
-  onClose,
-  pathname,
-}: {
-  onClose: () => void;
-  pathname: string;
-}) {
-  const firstLinkRef = useRef<HTMLAnchorElement>(null);
-  const tgUrl = hasTelegram() ? telegramLink() : null;
-
-  useEffect(() => {
-    firstLinkRef.current?.focus();
-  }, []);
-
-  function isActive(href: string) {
-    if (href === "/") return pathname === "/";
-    return pathname.startsWith(href);
-  }
-
-  return (
-    <div
-      id="mobile-menu"
-      role="dialog"
-      aria-modal="true"
-      aria-label="Menu navigasi"
-      className="fixed inset-0 z-50 lg:hidden"
-    >
-      {/* Backdrop */}
-      <div
-        className="absolute inset-0 bg-black/30 animate-fade-in"
-        onClick={onClose}
-        aria-hidden="true"
-      />
-
-      {/* Menu panel */}
-      <div className="absolute inset-x-0 top-0 bottom-0 bg-card shadow-lg flex flex-col animate-slide-in">
-        {/* Menu header */}
-        <div className="flex h-14 items-center justify-between border-b border-border px-4 sm:h-16">
-          <Logo compact onClick={onClose} />
-          <button
-            type="button"
-            onClick={onClose}
-            aria-label="Tutup menu"
-            className="flex size-10 items-center justify-center rounded-md text-muted-foreground hover:bg-muted transition-colors cursor-pointer"
-          >
-            <X className="size-5" aria-hidden="true" />
-          </button>
-        </div>
-
-        {/* Nav links */}
-        <nav aria-label="Navigasi mobile" className="flex-1 overflow-y-auto px-4 py-4">
-          <div className="flex flex-col gap-0.5">
-            {mainNav.map((item, index) => {
-              const active = isActive(item.href);
-              return (
-                <Link
-                  key={item.href}
-                  ref={index === 0 ? firstLinkRef : undefined}
-                  href={item.href}
-                  onClick={onClose}
-                  aria-current={active ? "page" : undefined}
-                  className={cn(
-                    "flex items-center rounded-md px-4 py-3 text-[15px] font-medium transition-colors cursor-pointer",
-                    active
-                      ? "bg-accent-subtle text-accent font-semibold"
-                      : "text-foreground hover:bg-muted",
-                  )}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
-          </div>
-        </nav>
-
-        {/* Menu footer — consultation CTAs */}
-        <div className="border-t border-border px-4 py-4 bg-muted/40">
-          <div className="flex flex-col gap-2.5">
-            <HeaderConsultationCTA mobile onClick={onClose} />
-            <Link
-              href="/search"
-              onClick={onClose}
-              className="flex h-11 items-center justify-center gap-2 rounded-md border border-border bg-card px-4 text-sm font-medium text-foreground hover:border-accent hover:text-accent transition-colors cursor-pointer"
-            >
-              <Search className="size-4" aria-hidden="true" />
-              Cari Masalah atau Layanan
-            </Link>
-            {tgUrl && (
-              <div className="flex items-center justify-center gap-1.5 pt-1 text-[11px] text-muted-foreground">
-                <span>Atau hubungi via</span>
-                <a
-                  href={tgUrl}
-                  target="_blank"
-                  rel="noopener noreferrer nofollow"
-                  onClick={onClose}
-                  className="font-semibold text-telegram hover:underline cursor-pointer"
-                >
-                  Telegram Support
-                </a>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
-
   );
 }

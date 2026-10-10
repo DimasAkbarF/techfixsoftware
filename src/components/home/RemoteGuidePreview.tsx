@@ -1,51 +1,53 @@
-import Link from "next/link";
-import { ArrowRight, MonitorSmartphone, Download, ShieldAlert } from "lucide-react";
-import { siteConfig } from "@/config/site";
+import Image from "next/image";
+import { ArrowRight, MonitorSmartphone, Wifi, Cable } from "lucide-react";
+import { ButtonLink } from "@/components/ui/Button";
 
 export function RemoteGuidePreview() {
   return (
-    <section className="container-page py-16 md:py-24" aria-labelledby="remote-preview-heading">
-      <div className="rounded-lg border border-border bg-background p-6 md:p-8 lg:grid lg:grid-cols-[1.3fr_1fr] lg:items-start lg:gap-10">
-        <div>
-          <h2 id="remote-preview-heading" className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">
-            Butuh bantuan langsung?
-          </h2>
-          <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Kami dapat membantu memandu proses secara remote sesuai kebutuhan perangkat Anda.
-          </p>
+    <section className="py-16 md:py-24 bg-card" id="remote-support">
+      <div className="container-page max-w-5xl">
+        <div className="bg-muted/30 border border-border rounded-[var(--radius-xl)] overflow-hidden flex flex-col md:flex-row">
+          {/* Image Side */}
+          <div className="w-full md:w-1/2 relative aspect-video md:aspect-auto">
+            <Image
+              src="/images/home/remote-support-setup.webp"
+              alt="Setup PC dan HP untuk pengerjaan remote software Android via USB"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-card/80 to-transparent flex items-end md:items-center p-6">
+              <span className="inline-flex items-center gap-2 bg-foreground/90 backdrop-blur-sm text-background px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
+                <MonitorSmartphone className="w-4 h-4" /> Bantuan Jarak Jauh
+              </span>
+            </div>
+          </div>
 
-          <ul className="mt-10 space-y-3">
-            <li className="flex items-start gap-3 text-sm text-foreground">
-              <MonitorSmartphone className="mt-0.5 size-4 shrink-0 text-muted-foreground" aria-hidden="true" />
-              PC/laptop dengan koneksi internet stabil.
-            </li>
-            <li className="flex items-start gap-3 text-sm text-foreground">
-              <Download className="mt-0.5 size-4 shrink-0 text-muted-foreground" aria-hidden="true" />
-              AnyDesk resmi dari anydesk.com — jangan dari sumber lain.
-            </li>
-            <li className="flex items-start gap-3 text-sm text-foreground">
-              <ShieldAlert className="mt-0.5 size-4 shrink-0 text-muted-foreground" aria-hidden="true" />
-              Jangan pernah berikan akses remote ke pihak yang tidak dikenal.
-            </li>
-          </ul>
+          {/* Text Side */}
+          <div className="w-full md:w-1/2 p-8 sm:p-12 flex flex-col justify-center">
+            <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4">
+              Servis HP Tanpa Harus Keluar Rumah
+            </h2>
+            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed mb-8">
+              Banyak masalah software (seperti bootloop ringan, root, pasang custom ROM) bisa kami selesaikan secara remote via TeamViewer atau AnyDesk. Anda cukup colok kabel di rumah, kami yang kerjakan sistemnya.
+            </p>
 
-          <div className="mt-6 flex flex-wrap gap-2.5">
-            <Link
-              href="/remote-guide"
-              className="inline-flex h-10 items-center gap-2 rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground hover:bg-primary-hover transition-colors cursor-pointer"
-            >
-              Mulai konsultasi
-              <ArrowRight className="size-4" aria-hidden="true" />
-            </Link>
-            <a
-              href={siteConfig.remoteSoftware.anydeskHome}
-              target="_blank"
-              rel="noopener noreferrer nofollow"
-              className="inline-flex h-10 items-center gap-2 rounded-md border border-border px-4 text-sm font-medium text-foreground hover:border-accent hover:text-accent transition-colors cursor-pointer"
-            >
-              <Download className="size-4" aria-hidden="true" />
-              Download AnyDesk
-            </a>
+            <div className="grid grid-cols-2 gap-4 mb-8">
+              <div className="flex flex-col gap-2">
+                <Wifi className="w-6 h-6 text-accent" />
+                <span className="text-sm font-semibold text-foreground">Internet Stabil</span>
+                <span className="text-xs text-muted-foreground">Minimal 10 Mbps via WiFi / Tethering stabil</span>
+              </div>
+              <div className="flex flex-col gap-2">
+                <Cable className="w-6 h-6 text-accent" />
+                <span className="text-sm font-semibold text-foreground">PC & Kabel Asli</span>
+                <span className="text-xs text-muted-foreground">Laptop Windows dan kabel data bawaan/berkualitas</span>
+              </div>
+            </div>
+
+            <ButtonLink href="/guides/persiapan-remote-support" variant="secondary" className="self-start">
+              Baca Panduan Remote <ArrowRight className="w-4 h-4 ml-1" />
+            </ButtonLink>
           </div>
         </div>
       </div>

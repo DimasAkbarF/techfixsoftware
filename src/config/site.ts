@@ -25,11 +25,11 @@ export const siteConfig = {
   // Canonical production domain. Keep this fallback in sync with the real
   // domain — if NEXT_PUBLIC_SITE_URL is unset on a build, canonicals,
   // sitemap.xml and OG URLs would otherwise point at a placeholder host.
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://techfixsoftware.my.id",
+  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://techfixsoftware.my.id").replace(/\/$/, ""),
   locale: "id_ID",
-  whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "",
-  telegramUrl: process.env.NEXT_PUBLIC_TELEGRAM_URL ?? "",
-  supportEmail: process.env.NEXT_PUBLIC_SUPPORT_EMAIL ?? "",
+  whatsappNumber: (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "").trim(),
+  telegramUrl: (process.env.NEXT_PUBLIC_TELEGRAM_URL ?? "").trim(),
+  supportEmail: (process.env.NEXT_PUBLIC_SUPPORT_EMAIL ?? "").trim(),
   remoteSoftware: {
     anydeskWindows: "https://anydesk.com/en/downloads/windows",
     anydeskAndroid: "https://anydesk.com/en/downloads/android",

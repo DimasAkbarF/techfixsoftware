@@ -122,7 +122,7 @@ const baseGuides: GuideArticle[] = [
           "Cadangkan database chat WhatsApp ke Google Drive dan unduh media penting ke penyimpanan PC.",
           "Pindahkan seluruh foto, video, dan dokumen ke harddisk eksternal atau cloud storage.",
           "Catat email akun Google yang aktif di perangkat untuk menghindari Factory Reset Protection (FRP Lock).",
-          "Pastikan baterai perangkat di atas [ISI_DATA_NYATA: 60%] dan gunakan kabel data berkualitas.",
+          "Pastikan baterai perangkat di atas 60% (minimal) sesuai standar keamanan baterai dan gunakan kabel data berkualitas.",
         ],
       },
       {
@@ -130,7 +130,7 @@ const baseGuides: GuideArticle[] = [
         body:
           "Tabel ringkas regulasi UBL per merek utama:",
         bullets: [
-          "Xiaomi / POCO: Membutuhkan Mi Account, aplikasi Mi Unlock, dan antrean waktu tunggu [ISI_DATA_NYATA: 168 jam / 7 hari].",
+          "Xiaomi / POCO: Membutuhkan Mi Account, aplikasi Mi Unlock, dan antrean waktu tunggu yang bervariasi per perangkat dan kebijakan Xiaomi, cek langsung di aplikasi Mi Unlock.",
           "Google Pixel: Cukup aktifkan OEM Unlocking dan jalankan perintah fastboot flashing unlock langsung.",
           "MediaTek / Vivo / Oppo: Sebagian besar memerlukan otorisasi server pabrik atau test point khusus jika jalur standar dikunci rapat.",
         ],

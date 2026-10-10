@@ -36,8 +36,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(service.updatedAt || "2026-10-10"),
   }));
 
-  // Guide routes (with deterministic static updatedAt from guide data)
-  const guideRoutes: MetadataRoute.Sitemap = guides.map((guide) => ({
+  // Guide routes (exclude placeholders)
+  const validGuides = guides.filter((g) => {
+    const raw = JSON.stringify(g);
+    return !raw.includes("[VERIFIKASI_PERANGKAT]") && !raw.includes("[ISI_DATA_NYATA");
+  });
+  const guideRoutes: MetadataRoute.Sitemap = validGuides.map((guide) => ({
     url: `${baseUrl}/guides/${guide.slug}`,
     lastModified: new Date(guide.updatedAt || guide.publishedAt),
   }));

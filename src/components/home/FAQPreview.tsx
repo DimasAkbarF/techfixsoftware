@@ -1,45 +1,43 @@
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MessageCircleQuestion } from "lucide-react";
 import { faqItems } from "@/data/faq";
 import { FAQAccordion } from "@/components/faq/FAQAccordion";
+import { ButtonLink } from "@/components/ui/Button";
 
 export function FAQPreview() {
   const preview = faqItems.slice(0, 5);
+  
   return (
-    <section className="container-page py-16 md:py-24" aria-labelledby="faq-preview-heading">
-      <div className="flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <h2 id="faq-preview-heading" className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">
-            Pertanyaan umum
+    <section className="py-16 md:py-24 bg-background" id="faq" aria-labelledby="faq-preview-heading">
+      <div className="container-page max-w-4xl">
+        <div className="text-center mb-12">
+          <h2 id="faq-preview-heading" className="text-xl font-bold tracking-tight sm:text-2xl text-foreground mb-3">
+            Pertanyaan Umum (FAQ)
           </h2>
-          <p className="mt-3 text-sm text-muted-foreground">
-            Jawaban singkat untuk pertanyaan yang sering diajukan.
+          <p className="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto">
+            Jawaban cepat untuk kekhawatiran yang paling sering ditanyakan pelanggan.
           </p>
         </div>
-        <Link
-          href="/faq"
-          className="inline-flex items-center gap-1 text-xs font-semibold text-accent hover:text-accent-hover transition-colors cursor-pointer"
-        >
-          Semua FAQ
-          <ArrowRight className="size-3.5" aria-hidden="true" />
-        </Link>
-      </div>
-      <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_260px]">
-        <FAQAccordion items={preview} />
-        <div className="lg:pt-2">
-          <div className="rounded-lg border border-border bg-background p-5">
-            <p className="text-sm font-semibold text-foreground">Masih ada pertanyaan?</p>
-            <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-              Bila kondisi perangkat Anda tidak terwakili di sini, langsung tanyakan ke CS.
-            </p>
-            <Link
-              href="/contact"
-              className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-accent hover:text-accent-hover transition-colors cursor-pointer"
-            >
-              Hubungi kami
-              <ArrowRight className="size-3.5" aria-hidden="true" />
-            </Link>
+
+        <div className="mb-8">
+          <FAQAccordion items={preview} />
+        </div>
+
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 bg-muted/30 border border-border rounded-[var(--radius-lg)] p-5 sm:p-6">
+          <div className="flex items-center gap-4">
+            <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
+              <MessageCircleQuestion className="w-5 h-5 text-accent" />
+            </div>
+            <div>
+              <p className="font-semibold text-foreground text-sm">Masih ada pertanyaan?</p>
+              <p className="text-xs text-muted-foreground mt-0.5">
+                Jangan ragu untuk bertanya langsung ke tim kami.
+              </p>
+            </div>
           </div>
+          
+          <ButtonLink href="/faq" variant="secondary" className="w-full sm:w-auto shrink-0">
+            Lihat Semua FAQ <ArrowRight className="w-4 h-4 ml-1" />
+          </ButtonLink>
         </div>
       </div>
     </section>

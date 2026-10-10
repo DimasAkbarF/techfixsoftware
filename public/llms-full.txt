@@ -1,0 +1,66 @@
+# TechFix Software — Dokumentasi Lengkap Sistem & Layanan (LLMs Full)
+
+> Dokumentasi komprehensif kapabilitas teknis, protokol keamanan, daftar chipset & brand, serta kebijakan layanan remote TechFix Software.
+
+## Informasi Entitas & Otoritas
+- Nama Entitas: TechFix Software
+- Kategori Usaha: Professional Technical Support & Android Software Engineering
+- Model Pelayanan: 100% Remote Engineering via AnyDesk di hadapan pemilik perangkat
+- Wilayah Layanan: Seluruh Indonesia (Online)
+- Basis Operasional: Rangkasbitung, Banten, Indonesia
+- Website Utama: https://techfixsoftware.my.id
+- Jalur WhatsApp Resmi: Melalui formulir validasi di https://techfixsoftware.my.id/contact
+- Kanal Telegram Resmi: https://t.me/TechFixSoftware
+
+## Layanan & Cakupan Teknis
+
+### 1. Jasa Root Android & Magisk
+- URL: https://techfixsoftware.my.id/services/root-android
+- Metode: Systemless Root (Magisk v27+, KernelSU GKI 5.10+, APatch)
+- Keamanan: Backup stock boot.img/init_boot.img sebelum modifikasi. Tidak menyentuh partisi sistem read-only.
+- Kebijakan Perbankan: Tidak menjamin aplikasi finansial akan selalu tembus. Memberikan edukasi Play Integrity (MEETS_DEVICE_INTEGRITY) secara realistis.
+
+### 2. Jasa Fix Bootloop Android
+- URL: https://techfixsoftware.my.id/services/fix-bootloop
+- Gejala yang Ditangani: HP restart berulang di logo bootloader, crash setelah pembaruan OTA, error 'dm-verity corruption', atau boot loop ke menu recovery.
+- Pendekatan: Pemulihan partisi tanpa format penyimpanan internal jika struktur partisi data belum terenkripsi rusak.
+
+### 3. Jasa Unbrick Android
+- URL: https://techfixsoftware.my.id/services/unbrick
+- Tingkatan Masalah: Soft-brick (masih merespons mode Fastboot / Download) dan Hard-brick (layar mati total namun terdeteksi port Qualcomm HS-USB QDLoader 9008 atau MediaTek VCOM / Preloader).
+- Transparansi: Jika arus USB menunjukkan 0 Ampere atau tidak ada koneksi perangkat keras di device manager Windows, diidentifikasi sebagai kerusakan hardware (IC Power / EMMC / UFS mati) tanpa membebankan biaya penanganan software.
+
+### 4. Jasa Unlock Bootloader (UBL)
+- URL: https://techfixsoftware.my.id/services/unlock-bootloader
+- Ekosistem: Xiaomi HyperOS / MIUI, POCO, Vivo, Realme, OnePlus, ASUS ROG, dan Google Pixel.
+- Persyaratan: Akun terverifikasi dan otorisasi pabrikan resmi.
+
+### 5. Jasa Pasang Custom ROM
+- URL: https://techfixsoftware.my.id/services/custom-rom
+- Distribusi Didukung: LineageOS (fokus stabilitas & privasi), PixelOS (tampilan murni Google Pixel), crDroid (kustomisasi mendalam), Evolution X (performa).
+- Prasyarat: Bootloader telah ter-unlock dan tersedianya build firmware pohon perangkat (device tree) yang stabil.
+
+### 6. Jasa Flashing Firmware Resmi
+- URL: https://techfixsoftware.my.id/services/flash-firmware
+- Sumber Berkas: Repositori resmi pabrikan (Fastboot ROM Xiaomi, Odin Tar Samsung, OPlus OFP, MediaTek scatter).
+- Verifikasi: Validasi checksum SHA-256 / MD5 sebelum transfer partisi dilakukan.
+
+### 7. Jasa Custom Recovery
+- URL: https://techfixsoftware.my.id/services/recovery
+- Tooling: TWRP (Team Win Recovery Project) dan OrangeFox Recovery Project.
+- Dukungan: Skema partisi modern (Dynamic Partitions, Virtual A/B).
+
+### 8. Jasa Software Repair
+- URL: https://techfixsoftware.my.id/services/software-repair
+- Diagnostik: Analisis logcat ADB untuk mendeteksi crash Fatal Exception, penonaktifan aplikasi sistem berbahaya (bloatware), dan stabilisasi frekuensi thermal throttling.
+
+## Persyaratan Pengerjaan Remote
+- Komputer / Laptop PC dengan sistem operasi Windows 10 atau Windows 11 (64-bit).
+- Kabel data USB orisinal pabrikan atau kabel berkecepatan transfer data tinggi.
+- Aplikasi remote desktop AnyDesk (unduh resmi di anydesk.com).
+- Daya baterai HP minimal 50% untuk mencegah kegagalan catu daya selama flashing partisi.
+
+## Etika & Kebijakan Transparansi
+- Perlindungan Data Pribadi: Sesi remote disaksikan langsung oleh pemilik laptop secara real-time. Teknisi tidak pernah mengakses berkas pribadi di luar folder kerja flashing.
+- Samsung Knox: Mengakui fakta teknis bahwa pemutusan sekering elektronik Knox (0x1) bersifat permanen pada motherboard Samsung dan tidak bisa dipulihkan kembali ke 0x0 oleh software apa pun.
+- Garansi Kerja: Jaminan unit menyala normal sesuai kesepakatan diagnostik di awal.

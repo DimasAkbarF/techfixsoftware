@@ -38,11 +38,20 @@ export function buildMetadata({
       siteName: siteConfig.name,
       locale: "id_ID",
       type: "website",
+      images: [
+        {
+          url: `${siteConfig.url}/opengraph-image`,
+          width: 1200,
+          height: 630,
+          alt: fullTitle,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: fullTitle,
       description,
+      images: [`${siteConfig.url}/opengraph-image`],
     },
     robots: noindex
       ? { index: false, follow: false }

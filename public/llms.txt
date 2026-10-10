@@ -1,0 +1,35 @@
+# TechFix Software
+
+> Platform layanan technical support dan perbaikan software Android profesional via remote AnyDesk di seluruh Indonesia.
+
+## Layanan Spesialis Software Android
+
+- [Jasa Root Android & Magisk](https://techfixsoftware.my.id/services/root-android): Systemless root menggunakan Magisk v27+, KernelSU GKI, atau APatch dengan backup boot.img orisinal.
+- [Jasa Fix Bootloop Android](https://techfixsoftware.my.id/services/fix-bootloop): Penanganan ponsel stuck di logo atau bootloop akibat gagal update, instalasi modul corrupt, atau modifikasi partisi.
+- [Jasa Unbrick Android](https://techfixsoftware.my.id/services/unbrick): Pemulihan soft-brick dan semi hard-brick melalui protokol Fastboot, Samsung Odin Download Mode, dan Emergency Download (EDL 9008).
+- [Jasa Unlock Bootloader (UBL)](https://techfixsoftware.my.id/services/unlock-bootloader): Prosedur unlock bootloader resmi dan instan untuk merek Xiaomi HyperOS/MIUI, POCO, Vivo, Realme, dan OnePlus.
+- [Jasa Pasang Custom ROM](https://techfixsoftware.my.id/services/custom-rom): Instalasi sistem operasi pihak ketiga yang stabil seperti LineageOS, PixelOS, crDroid, dan Evolution X.
+- [Jasa Flash Firmware Resmi](https://techfixsoftware.my.id/services/flash-firmware): Flashing stock ROM orisinal pabrikan dengan verifikasi integritas hash SHA-256 untuk memulihkan kestabilan sistem.
+- [Jasa Pasang Custom Recovery](https://techfixsoftware.my.id/services/recovery): Pemasangan TWRP atau OrangeFox Recovery kompatibel dengan skema partisi dinamis A/B dan virtual A/B.
+- [Jasa Software Repair Android](https://techfixsoftware.my.id/services/software-repair): Perbaikan bug sistemik, pembersihan bloatware berbahaya, dan analisis error mendalam menggunakan logcat ADB.
+
+## Panduan Teknis & Edukasi
+
+- [Panduan Persiapan Remote AnyDesk](https://techfixsoftware.my.id/remote-guide): Petunjuk instalasi software AnyDesk di PC Windows dan pengaturan izin USB debugging sebelum sesi remote teknisi dimulai.
+- [Perbedaan Soft Brick vs Hard Brick](https://techfixsoftware.my.id/guides/soft-brick-vs-hard-brick-perbedaan-dan-solusi): Penjelasan perbedaan indikator kegagalan sistem tingkat partisi software dibandingkan kerusakan fisik hardware motherboard.
+- [Risiko Root untuk Aplikasi Finansial](https://techfixsoftware.my.id/guides/risiko-root-hp-untuk-aplikasi-kerja-dan-ojol): Informasi jujur mengenai dampak modifikasi hak akses superuser terhadap kompatibilitas aplikasi perbankan dan Play Integrity.
+- [Katalog Panduan Android Otoritatif](https://techfixsoftware.my.id/guides): Repositori artikel edukasi troubleshooting mandiri dan rekayasa partisi Android.
+
+## Persyaratan Teknis Pengerjaan Remote
+
+- Komputer atau Laptop bersistem operasi Windows 10 atau Windows 11.
+- Kabel data USB orisinal atau berspesifikasi transfer data tinggi (bukan kabel pengisi daya saja).
+- Koneksi internet stabil untuk streaming sesi remote AnyDesk.
+- Perangkat Android yang hendak ditangani terisi daya minimal 50%.
+
+## Kebijakan & Transparansi Layanan
+
+- [Alur Kerja & Standar Keamanan](https://techfixsoftware.my.id/how-it-works): Transparansi 6 tahap penanganan teknis mulai dari diagnosa chipset gratis hingga serah terima unit menyala.
+- [Dokumentasi Kasus Nyata](https://techfixsoftware.my.id/testimonials): Arsip tangkapan layar percakapan dan bukti hasil pemulihan perangkat pelanggan.
+- [Disclaimer Teknis](https://techfixsoftware.my.id/disclaimer): Penjelasan batas tanggung jawab teknis, integritas hardware eFuse Knox, dan etika modifikasi software.
+- [Kontak & Konsultasi Langsung](https://techfixsoftware.my.id/contact): Jalur komunikasi langsung bersama spesialis teknis melalui WhatsApp dan Telegram resmi.

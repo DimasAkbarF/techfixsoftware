@@ -1,39 +1,51 @@
+import Image from "next/image";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
-import { siteConfig, hasWhatsapp } from "@/config/site";
-import { getContactMessage } from "@/lib/contact";
+import { hasWhatsapp, whatsappLink } from "@/config/site";
+import { ButtonLink } from "@/components/ui/Button";
 
 export function FinalCTA() {
-  const wa = hasWhatsapp();
-  const waHref = wa
-    ? `https://wa.me/${siteConfig.whatsappNumber.replace(/\D/g, "")}?text=${encodeURIComponent(getContactMessage())}`
-    : null;
+  const isWa = hasWhatsapp();
+  if (!isWa) return null;
 
   return (
-    <section aria-labelledby="final-cta-heading" className="container-page py-16 md:py-24">
-      <div className="rounded-lg bg-primary p-8 text-center text-primary-foreground md:p-12">
-        <h2 id="final-cta-heading" className="mx-auto max-w-2xl text-xl font-bold tracking-tight text-white md:text-2xl">
-          Tidak yakin layanan apa yang Anda butuhkan?
-        </h2>
-        <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-white/80 md:text-base">
-          Ceritakan gejala perangkat Anda ke CS kami. Kami bantu arahkan tanpa biaya
-          konsultasi dan tanpa tekanan untuk melanjutkan.
-        </p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-2.5">
-          {waHref ? (
-            <a
-              href={waHref}
+    <section className="py-16 md:py-24 bg-card" aria-label="Konsultasi Sekarang">
+      <div className="container-page max-w-5xl">
+        <div className="relative rounded-[var(--radius-xl)] overflow-hidden">
+          {/* Background Image with Overlay */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/images/home/cta-banner-bg.webp"
+              alt="Meja kerja teknisi perbaikan software dan perangkat Android"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 1024px"
+            />
+            <div className="absolute inset-0 bg-foreground/80 mix-blend-multiply" />
+            {/* Gradient Overlay for extra readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/50 to-transparent" />
+          </div>
+
+          <div className="relative z-10 px-6 py-16 md:py-20 text-center flex flex-col items-center justify-center">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white mb-4 max-w-2xl text-balance">
+              Jangan Biarkan HP Rusak Mengganggu Aktivitas Anda
+            </h2>
+            <p className="text-white/80 text-sm sm:text-base mb-8 max-w-xl text-balance">
+              Konsultasikan kendala Anda sekarang. Kami berikan diagnosa awal dan estimasi biaya tanpa komitmen apapun.
+            </p>
+            
+            <ButtonLink
+              href={whatsappLink("Halo, saya ingin konsultasi mengenai perbaikan HP saya.") || "#"}
               target="_blank"
-              rel="noopener noreferrer nofollow"
-              className="inline-flex h-11 items-center gap-2 rounded-md bg-whatsapp px-5 text-sm font-semibold text-whatsapp-foreground shadow-lg shadow-black/10 transition-all hover:brightness-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
+              rel="noopener noreferrer"
+              variant="whatsapp"
+              size="large"
+              className="w-full sm:w-auto shadow-lg shadow-whatsapp/20"
             >
-              <WhatsAppIcon className="size-4" />
+              <WhatsAppIcon className="w-5 h-5 mr-2" />
               Konsultasi via WhatsApp
-            </a>
-          ) : null}
+            </ButtonLink>
+          </div>
         </div>
-        <p className="mt-4 text-xs text-white/60">
-          Respon CS bergantung jam operasional. Informasikan kondisi perangkat Anda untuk respons yang lebih cepat.
-        </p>
       </div>
     </section>
   );

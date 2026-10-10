@@ -1,3 +1,4 @@
+import { author } from "@/data/author";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -30,11 +31,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const guide = getGuideBySlug(slug);
   if (!guide) return {};
 
+  const raw = JSON.stringify(guide);
+  const hasPlaceholder = raw.includes("[VERIFIKASI_PERANGKAT]") || raw.includes("[ISI_DATA_NYATA");
+
   return buildMetadata({
     title: guide.seo.title,
     description: guide.seo.description,
     path: `/guides/${guide.slug}`,
     keywords: guide.seo.keywords,
+    noindex: hasPlaceholder,
   });
 }
 
@@ -59,9 +64,13 @@ export default async function GuideDetailPage({ params }: PageProps) {
     },
     author: {
       "@type": "Organization",
-      name: "Tim Teknisi Spesialis TechFix Software",
+      name: author.name,
       url: absoluteUrl("/about"),
     },
+    image: [
+      absoluteUrl("/images/guides/guide-bootloop.webp"),
+      absoluteUrl("/icon-512.png"),
+    ],
     publisher: {
       "@type": "Organization",
       name: siteConfig.name,
@@ -132,7 +141,7 @@ export default async function GuideDetailPage({ params }: PageProps) {
             href="/about"
             className="inline-flex items-center gap-1 font-semibold text-foreground hover:text-accent transition-colors"
           >
-            <span>Tim Teknisi Spesialis TechFix Software</span>
+            <span>{author.name}</span>
             <span className="text-[10px] text-accent font-mono bg-accent-subtle px-1.5 py-0.5 rounded">
               Spesialis Android
             </span>

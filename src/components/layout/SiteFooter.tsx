@@ -1,121 +1,111 @@
 import Link from "next/link";
-import { siteConfig } from "@/config/site";
+import Image from "next/image";
+import { ShieldAlert, MapPin, Clock } from "lucide-react";
+import { author } from "@/data/author";
+
+const serviceLinks = [
+  { label: "Fix Bootloop & Soft Brick", href: "/services/fix-bootloop" },
+  { label: "Root Android & Magisk", href: "/services/root-android" },
+  { label: "Pasang Custom ROM", href: "/services/custom-rom" },
+  { label: "Flash Firmware Stock", href: "/services/flash-firmware" },
+];
+
+const resourceLinks = [
+  { label: "Panduan Teknis", href: "/guides" },
+  { label: "Tanya Jawab (FAQ)", href: "/faq" },
+  { label: "Kontak & Konsultasi", href: "/contact" },
+  { label: "Persiapan Remote", href: "/guides/persiapan-remote-support" },
+];
 
 export function SiteFooter() {
-  const year = new Date().getFullYear();
-
-  const serviceLinks = [
-    { label: "Fix Bootloop", href: "/services/fix-bootloop" },
-    { label: "Unbrick / Soft Brick", href: "/services/unbrick" },
-    { label: "Root Android & Magisk", href: "/services/root-android" },
-    { label: "Unlock Bootloader", href: "/services/unlock-bootloader" },
-    { label: "Flash Firmware Stock", href: "/services/flash-firmware" },
-    { label: "Custom ROM", href: "/services/custom-rom" },
-    { label: "Software Repair", href: "/services/software-repair" },
-    { label: "Recovery Mode", href: "/services/recovery" },
-  ];
-
-  const guideLinks = [
-    { label: "Semua Panduan & Edukasi", href: "/guides" },
-    { label: "Penyebab HP Stuck Logo", href: "/guides/apa-penyebab-hp-android-stuck-di-logo" },
-    { label: "Soft Brick vs Hard Brick", href: "/guides/soft-brick-vs-hard-brick-perbedaan-dan-solusi" },
-    { label: "Apakah UBL Hapus Data?", href: "/guides/apakah-unlock-bootloader-menghapus-data" },
-    { label: "Panduan Remote AnyDesk", href: "/remote-guide" },
-    { label: "Cara Kerja Layanan", href: "/how-it-works" },
-    { label: "FAQ & Tanya Jawab", href: "/faq" },
-  ];
-
-  const trustLinks = [
-    { label: "Testimoni Percakapan", href: "/testimonials" },
-    { label: "Tentang TechFix", href: "/about" },
-    { label: "Konsultasi & Kontak", href: "/contact" },
-    { label: "Ketentuan Layanan", href: "/terms" },
-    { label: "Kebijakan Privasi", href: "/privacy" },
-    { label: "Disclaimer Teknis", href: "/disclaimer" },
-  ];
+  const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border bg-primary text-primary-foreground">
-      <div className="container-page py-12 md:py-16">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
-          {/* Col 1: Brand & Positioning */}
-          <div className="sm:col-span-2 lg:col-span-1">
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 cursor-pointer"
-              aria-label="TechFix Software — Beranda"
-            >
-              <span className="text-lg font-bold tracking-tight text-white">
+    <footer className="bg-card border-t border-border pt-16 pb-8">
+      <div className="container-page max-w-7xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 mb-16">
+          {/* Brand Col */}
+          <div>
+            <Link href="/" className="flex items-center gap-2 mb-6 group inline-flex">
+              <div className="relative w-8 h-8 overflow-hidden">
+                <Image src="/techfix-software-logo.png" alt="Logo" fill className="object-contain" />
+              </div>
+              <span className="font-bold text-foreground text-lg group-hover:text-accent transition-colors">
                 TechFix Software
               </span>
             </Link>
-            <p className="mt-3 text-xs leading-relaxed text-white/70">
-              Penyedia layanan technical support software Android dengan spesialisasi pemulihan sistem, flashing firmware resmi, dan optimasi partisi di bawah standar rekayasa terverifikasi.
+            <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+              Layanan perbaikan software Android spesialis bootloop, root, custom ROM, dan pemulihan sistem. Profesional, transparan, dan aman.
             </p>
-
-            <div className="mt-4 border-l-2 border-accent pl-3 text-xs leading-relaxed text-white/70">
-              <span>Layanan remote engineering terarah untuk seluruh wilayah Indonesia.</span>
+            <div className="flex flex-col gap-2 text-sm text-muted-foreground">
+              <span className="flex items-center gap-2">
+                <MapPin className="w-4 h-4 shrink-0" /> Jawa Timur, Indonesia
+              </span>
+              <span className="flex items-center gap-2">
+                <Clock className="w-4 h-4 shrink-0" /> Senin - Sabtu (09:00 - 20:00)
+              </span>
             </div>
           </div>
 
-          {/* Col 2: Layanan */}
-          <nav aria-label="Navigasi footer — Layanan">
-            <p className="mb-3 text-xs font-bold uppercase tracking-wider text-white/50">Layanan Teknis</p>
-            <ul className="space-y-2">
-              {serviceLinks.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-xs text-white/70 hover:text-white transition-colors cursor-pointer"
-                  >
-                    {item.label}
+          {/* Services Col */}
+          <div>
+            <h4 className="font-bold text-foreground mb-5 uppercase tracking-wider text-xs">Layanan Utama</h4>
+            <ul className="space-y-3 text-sm">
+              {serviceLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-muted-foreground hover:text-accent transition-colors">
+                    {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
-          </nav>
+          </div>
 
-          {/* Col 3: Panduan & Edukasi */}
-          <nav aria-label="Navigasi footer — Panduan">
-            <p className="mb-3 text-xs font-bold uppercase tracking-wider text-white/50">Panduan &amp; Solusi</p>
-            <ul className="space-y-2">
-              {guideLinks.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-xs text-white/70 hover:text-white transition-colors cursor-pointer"
-                  >
-                    {item.label}
+          {/* Resources Col */}
+          <div>
+            <h4 className="font-bold text-foreground mb-5 uppercase tracking-wider text-xs">Informasi</h4>
+            <ul className="space-y-3 text-sm">
+              {resourceLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-muted-foreground hover:text-accent transition-colors">
+                    {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
-          </nav>
+          </div>
 
-          {/* Col 4: Trust, Saluran Resmi & Legal */}
-          <nav aria-label="Navigasi footer — Informasi & Legal">
-            <p className="mb-3 text-xs font-bold uppercase tracking-wider text-white/50">Keamanan &amp; Legal</p>
-            <ul className="space-y-2">
-              {trustLinks.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-xs text-white/70 hover:text-white transition-colors cursor-pointer"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          {/* Security Alert Col */}
+          <div>
+            <h4 className="font-bold text-foreground mb-5 uppercase tracking-wider text-xs">Peringatan Keamanan</h4>
+            <div className="bg-destructive/10 border border-destructive/20 rounded-lg p-4">
+              <div className="flex items-start gap-3">
+                <ShieldAlert className="w-5 h-5 text-destructive shrink-0 mt-0.5" />
+                <div>
+                  <strong className="block text-destructive text-sm mb-1 font-bold">
+                    Kami TIDAK PERNAH meminta:
+                  </strong>
+                  <ul className="text-xs text-destructive/80 space-y-1 list-disc list-inside">
+                    <li>Kode OTP / Verifikasi</li>
+                    <li>Password M-Banking</li>
+                    <li>Login Sosial Media</li>
+                  </ul>
+                  <p className="text-xs text-destructive/80 mt-2 font-medium">
+                    Jaga kerahasiaan data pribadi Anda.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
 
-      {/* Bottom bar */}
-      <div className="border-t border-white/10 bg-black/20">
-        <div className="container-page flex flex-col gap-2 py-4 pb-[max(1rem,env(safe-area-inset-bottom))] text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between">
-          <p>&copy; {year} {siteConfig.name}. Beroperasi sejak 2025.</p>
-          <p>Domain resmi: <span className="text-white/80 font-mono">techfixsoftware.my.id</span></p>
+        <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-muted-foreground text-center md:text-left">
+            &copy; {currentYear} TechFix Software. All rights reserved.
+          </p>
+          <div className="flex items-center gap-4 text-xs font-medium text-muted-foreground">
+            Dikembangkan oleh {author.name}
+          </div>
         </div>
       </div>
     </footer>

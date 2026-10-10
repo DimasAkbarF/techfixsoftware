@@ -1,94 +1,99 @@
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 const steps = [
   {
-    step: "01",
-    title: "Registrasi & Riwayat Gejala",
-    description: "Penyampaian informasi merek, tipe model, gejala sistem yang muncul, dan kronologi awal kejadian kepada teknisi.",
+    num: "01",
+    title: "Konsultasi & Diagnosa Awal",
+    desc: "Ceritakan kendala Anda via WhatsApp. Kami akan mendiagnosa kemungkinan penyebab dan menentukan apakah bisa dikerjakan secara remote atau harus fisik.",
+    hasImage: false,
   },
   {
-    step: "02",
-    title: "Verifikasi Kelayakan Sistem",
-    description: "Pemeriksaan arsitektur SoC, ketersediaan firmware resmi yang cocok, dan status partisi sistem perangkat.",
+    num: "02",
+    title: "Estimasi Biaya & Waktu",
+    desc: "Kami berikan transparansi total terkait biaya, estimasi waktu pengerjaan, dan risiko yang mungkin terjadi (seperti hilang data).",
+    hasImage: true,
+    imageSrc: "/images/home/workflow-step-2.webp",
+    imageAlt: "Teknisi melakukan diagnosa dan estimasi perbaikan pada smartphone",
   },
   {
-    step: "03",
-    title: "Evaluasi Opsi & Analisis Risiko",
-    description: "Pemaparan metode yang paling rasional, estimasi durasi, biaya, serta potensi dampaknya terhadap partisi data.",
+    num: "03",
+    title: "Persiapan Perangkat",
+    desc: "Jika remote: Anda siapkan PC/Laptop, kabel data, dan internet stabil. Jika fisik: Anda bisa drop-off atau kirim via ekspedisi.",
+    hasImage: false,
   },
   {
-    step: "04",
-    title: "Persetujuan Prosedur (Consent)",
-    description: "Anda memiliki kendali penuh untuk menyetujui atau menunda tindakan sebelum proses pengerjaan dimulai.",
+    num: "04",
+    title: "Eksekusi Sistem",
+    desc: "Proses flashing, rooting, atau perbaikan sistem dilakukan. Anda bisa memantau prosesnya secara langsung jika via remote.",
+    hasImage: true,
+    imageSrc: "/images/home/workflow-step-4.webp",
+    imageAlt: "Terminal Linux mengeksekusi perintah Android Debug Bridge (ADB) untuk flashing sistem",
   },
   {
-    step: "05",
-    title: "Eksekusi Prosedur Terarah",
-    description: "Pelaksanaan penanganan secara sistematis (remote asistensi via AnyDesk terenkripsi jika memenuhi kualifikasi).",
+    num: "05",
+    title: "Testing & Quality Control",
+    desc: "Setelah selesai, perangkat akan dites untuk memastikan semua fungsi (sinyal, kamera, sensor) berjalan normal tanpa bug kritis.",
+    hasImage: false,
   },
   {
-    step: "06",
-    title: "Validasi Hasil & Uji Fungsi",
-    description: "Pemeriksaan stabilitas pasca-penanganan untuk memastikan sistem perangkat kembali beroperasi secara normal.",
+    num: "06",
+    title: "Serah Terima & Pembayaran",
+    desc: "Pembayaran dilakukan setelah perangkat dipastikan menyala dan berfungsi sesuai kesepakatan awal (No Fix, No Fee).",
+    hasImage: false,
   },
 ];
 
 export function HowItWorksSixSteps() {
   return (
-    <section aria-labelledby="how-it-works-heading" className="border-b border-border bg-background py-16 md:py-24">
-      <div className="container-page">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="inline-flex items-center gap-2 rounded-full border border-border bg-muted/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-            <span className="size-1.5 rounded-full bg-accent" />
-            Standar Operasional Prosedur (SOP)
-          </p>
-          <h2 id="how-it-works-heading" className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
-            Alur Penanganan Teknis Terstruktur
+    <section className="py-16 md:py-24 bg-background border-b border-border" id="alur-kerja">
+      <div className="container-page max-w-4xl">
+        <div className="text-center mb-16">
+          <h2 className="text-xl font-bold tracking-tight sm:text-2xl text-foreground mb-3">
+            Alur Kerja Transparan
           </h2>
-          <p className="mt-2 text-sm sm:text-base leading-relaxed text-muted-foreground">
-            Enam tahapan kerja terstandarisasi untuk menjamin keamanan perangkat, kepastian prosedur, dan transparansi proses dari awal hingga akhir.
+          <p className="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto">
+            6 langkah jelas dari awal konsultasi hingga perangkat Anda kembali normal.
           </p>
         </div>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {steps.map((item) => (
-            <div
-              key={item.step}
-              className="relative flex flex-col justify-between rounded-lg border border-border bg-card p-6 transition-all duration-150 hover:border-accent"
-            >
-              <div>
-                <span className="inline-block text-xl font-bold font-mono tracking-tight text-accent">
-                  {item.step}
-                </span>
-                <h3 className="mt-2 text-base font-bold text-foreground">
-                  {item.title}
-                </h3>
-                <p className="mt-2 text-xs sm:text-sm leading-relaxed text-muted-foreground">
-                  {item.description}
-                </p>
+        <div className="relative">
+          {/* Vertical Timeline Line */}
+          <div className="absolute left-6 md:left-12 top-0 bottom-0 w-px bg-border hidden sm:block" />
+
+          <div className="space-y-12 sm:space-y-16">
+            {steps.map((step) => (
+              <div key={step.num} className="relative flex flex-col sm:flex-row gap-6 sm:gap-12 group">
+                {/* Number / Indicator */}
+                <div className="shrink-0 flex items-start z-10">
+                  <div className="w-12 h-12 md:w-24 md:h-24 bg-background border-2 border-muted group-hover:border-accent rounded-xl sm:rounded-2xl flex items-center justify-center transition-colors">
+                    <span className="text-2xl md:text-5xl font-bold text-muted-foreground group-hover:text-accent font-mono tracking-tighter transition-colors">
+                      {step.num}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="flex-1 pt-2 sm:pt-4">
+                  <h3 className="text-lg sm:text-xl font-bold text-foreground mb-3">{step.title}</h3>
+                  <p className="text-muted-foreground text-sm sm:text-base leading-relaxed mb-4">
+                    {step.desc}
+                  </p>
+
+                  {step.hasImage && step.imageSrc && (
+                    <div className="relative w-full max-w-sm aspect-video rounded-[var(--radius-lg)] overflow-hidden border border-border shadow-sm mt-4 group-hover:shadow-md transition-shadow">
+                      <Image
+                        src={step.imageSrc}
+                        alt={step.imageAlt || step.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 100vw, 384px"
+                      />
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-lg border border-border bg-card p-5 sm:p-6">
-          <div className="border-l-2 border-accent pl-3 sm:pl-4">
-            <h3 className="text-sm font-bold text-foreground">
-              Ingin tahu persiapan sesi remote AnyDesk?
-            </h3>
-            <p className="mt-0.5 text-xs text-muted-foreground">
-              Pelajari apa saja yang perlu disiapkan pada PC dan HP Anda sebelum proses pengerjaan jarak jauh dimulai.
-            </p>
+            ))}
           </div>
-
-          <Link
-            href="/remote-guide"
-            className="inline-flex shrink-0 items-center gap-1.5 rounded-md border border-border bg-muted/40 px-4 py-2 text-xs font-semibold text-foreground hover:border-accent hover:text-accent transition-colors cursor-pointer"
-          >
-            <span>Buka Panduan Remote</span>
-            <ArrowRight className="size-3.5" />
-          </Link>
         </div>
       </div>
     </section>

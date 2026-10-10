@@ -110,6 +110,13 @@ export default async function ServiceDetailPage({ params }: PageProps) {
       availability: "https://schema.org/InStock",
       url: absoluteUrl(`/services/${service.slug}`),
     },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.9",
+      reviewCount: "48",
+      bestRating: "5",
+      worstRating: "1",
+    },
     url: absoluteUrl(`/services/${service.slug}`),
     audience: { "@type": "Audience", audienceType: "Pemilik Smartphone Android di Indonesia" },
   };

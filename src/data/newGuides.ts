@@ -1759,4 +1759,65 @@ export const newGuides: GuideArticle[] = [
       ],
     },
   },
+  {
+    id: "guide-unroot-stock",
+    slug: "panduan-mengembalikan-hp-root-ke-stock-rom-unroot",
+    title: "Panduan Lengkap Mengembalikan HP Root ke Stock ROM (Unroot Total)",
+    excerpt: "Cara teknis mengembalikan perangkat Android yang sudah di-root ke kondisi pabrik (Stock ROM / unroot total) secara aman untuk berbagai merek (Samsung, Xiaomi, Pixel, OPPO/Realme), penanganan Magisk, OTA update, serta status UBL dan Knox.",
+    category: "root",
+    categoryName: "Firmware & Flashing",
+    readTime: "12 menit baca",
+    publishedAt: "2026-10-10",
+    updatedAt: "2026-10-10",
+    keyTakeaways: [
+      "Unroot total memerlukan file firmware resmi (Stock ROM / Fastboot ROM / Odin package) sesuai model perangkat.",
+      "Sumber prosedur mengacu pada dokumentasi flashing resmi masing-masing vendor (Xiaomi Mi Flash, Samsung Odin, AOSP Fastboot).",
+      "Prasyarat wajib: baterai minimal 60% dan pencadangan data penuh karena proses flashing akan menghapus seluruh data pengguna.",
+      "Contoh pesan error (dapat berbeda per perangkat dan versi bootloader): FAILED (remote: 'Critical partition flashing is not allowed')."
+    ],
+    symptoms: [
+      "Perangkat ingin dijual atau diklaim garansinya sehingga harus dikembalikan ke status unroot original.",
+      "Gagal menerima pembaruan sistem OTA resmi akibat modifikasi partisi sebelumnya."
+    ],
+    whatUserCanCheck: [
+      "Pastikan tipe model (Model Number) dan versi region perangkat Anda sudah sesuai dengan firmware resmi yang diunduh.",
+      "Siapkan kabel USB original dan komputer yang stabil."
+    ],
+    whenToConsult: [
+      "Jika Anda ragu memilih file firmware yang tepat atau khawatir mengalami hard brick saat proses flashing."
+    ],
+    relatedServiceSlugs: ["root-android", "fix-bootloop"],
+    sections: [
+      {
+        heading: "Prasyarat Penting Sebelum Melakukan Unroot & Flash Stock ROM",
+        body: "Sebelum memulai proses pengembalian perangkat ke Stock ROM (unroot total), Anda wajib memahami bahwa tindakan ini akan menulis ulang partisi sistem secara menyeluruh dan menghapus seluruh data pengguna di memori internal. Pastikan Anda memenuhi prasyarat keselamatan berikut:\n\n1. **Cadangan Data (Backup):** Seluruh foto, kontak, chat WhatsApp, dan file penting harus diamankan ke cloud atau PC eksternal. Proses flash stock firmware (terutama via Odin atau Fastboot) berformat bersih (clean flash).\n2. **Baterai Minimal 60%:** Sesuai standar operasional TechFix Software (MIN_BATTERY_PERCENT = 60), perangkat tidak boleh kehabisan daya di tengah proses flashing untuk menghindari hard brick [VERIFIKASI_PERANGKAT].\n3. **Kabel Data Asli / Berkualitas Tinggi:** Gunakan kabel original yang terhubung langsung ke port USB komputer di motherboard belakang, bukan lewat USB hub pasif.\n4. **Driver & Tools Resmi:** Pastikan driver OEM (Samsung USB Driver, Google USB Driver, Mediatek VCOM / Qualcomm QDLoader) terinstal sempurna di PC Windows [VERIFIKASI_PERANGKAT]."
+      },
+      {
+        heading: "1. Pencopotan Root via Magisk / KernelSU (Langkah Awal)",
+        body: "Jika perangkat masih bisa booting normal ke sistem Android dan Anda hanya ingin mencopot akses root tanpa flash ulang total, langkah pertama adalah menggunakan aplikasi manajemen root bawaan:\n\n- **Magisk Manager / App:** Buka aplikasi Magisk, pilih menu pengaturan (ikon gear), lalu ketuk Uninstall Magisk dan pilih Complete Uninstall. Magisk akan otomatis memulihkan partisi boot.img / init_boot.img asli dari cadangan yang tersimpan saat instalasi awal [Sumber: Dokumentasi Resmi Magisk / topjohnwu].\n- **KernelSU / APatch:** Untuk perangkat berbasis LKM/GKI kernel patching, pencopotan root dilakukan dengan melakukan flash ulang file boot.img stock bawaan firmware original melalui recovery atau fastboot [Sumber: Dokumentasi KernelSU]."
+      },
+      {
+        heading: "2. Flashing Stock ROM Berdasarkan Merek Perangkat (Samsung, Xiaomi, Pixel, OPPO)",
+        body: "Jika pencopotan root via aplikasi gagal atau perangkat mengalami bootloop setelah modifikasi mendalam, Anda wajib melakukan flashing firmware original (Stock ROM) secara penuh sesuai arsitektur masing-masing pabrikan:\n\n- **Samsung (via Odin Flash Tool):**\n  1. Unduh firmware resmi Samsung (kumpulan file BL, AP, CP, CSC / HOME_CSC) sesuai nomor model (CSC-specific) [Sumber: Dokumentasi Vendor Samsung / SamMobile].\n  2. Masuk ke Download Mode (matikan HP, tekan Volume Bawah + Volume Atas sambil colok kabel USB dari PC).\n  3. Buka Odin di PC, masukkan file ke kolom masing-masing (AP masukkan file terbesar, gunakan HOME_CSC jika ingin mencoba mempertahankan data, atau CSC untuk clean flash total) [VERIFIKASI_PERANGKAT].\n  4. Klik Start dan tunggu hingga muncul tulisan hijau PASS! [Sumber: Odin Flashing Protocol].\n\n- **Xiaomi / POCO / Redmi (via Fastboot & Mi Flash Tool):**\n  1. Unduh Fastboot ROM resmi berformat .tgz, lalu ekstrak menggunakan 7-Zip di partisi root PC (C:\ atau D:\) [Sumber: Xiaomi Fastboot Protocol].\n  2. Masuk ke Fastboot Mode (Volume Bawah + Power).\n  3. Hubungkan ke PC, buka Mi Flash Tool, pilih folder hasil ekstrak, lalu pilih opsi Clean all di bagian bawah [VERIFIKASI_PERANGKAT].\n  4. Klik Flash dan tunggu proses selesai hingga perangkat restart otomatis ke system [Sumber: Mi Flash Tool Documentation].\n\n- **Google Pixel / AOSP (via Fastboot Script):**\n  1. Unduh factory image resmi dari Google Developers [Sumber: Android Open Source Project / AOSP Documentation].\n  2. Ekstrak arsip ZIP, jalankan script flash-all.bat (Windows) atau flash-all.sh (Linux/macOS) di dalam command prompt / terminal [VERIFIKASI_PERANGKAT].\n  3. Script akan otomatis mem-flash bootloader, radio, vendor, product, system, dan vbmeta image secara berurutan [Sumber: AOSP Fastboot Specs]."
+      },
+      {
+        heading: "3. Mitos vs Fakta: Status Bootloader (UBL), Knox, dan Risiko Relock",
+        body: "Banyak pengguna mengira mengembalikan HP ke Stock ROM akan mengembalikan status perangkat seperti baru dibeli dari pabrik. Berikut fakta teknisnya:\n\n- **Status Unlock Bootloader (UBL):** Pada sebagian besar merek (Xiaomi, POCO, Realme, ASUS, Pixel), proses unlock bootloader meninggalkan bit/flag di partisi keamanan persistent (NVRAM / persist / eFuse). Melakukan unroot atau mengembalikan Stock ROM tidak otomatis mengunci kembali bootloader (re-lock) kecuali Anda melakukan perintah khusus fastboot oem lock atau fastboot flashing lock pada kondisi firmware 100% original stock bawaan pabrik [VERIFIKASI_PERANGKAT]. Mengunci bootloader pada perangkat yang dimodifikasi tanpa verifikasi ketat dapat menyebabkan hard brick total.\n- **Samsung Knox & Garansi Resmi:** Pada perangkat Samsung, proses UBL atau rooting memicu sekering digital eFuse di hardware secara permanen (menjadi 0x1). Mengembalikan firmware stock Odin tidak akan pernah bisa memulihkan status Knox Counter kembali ke 0x0. Garansi hardware resmi pabrik dinyatakan void (hangus) secara permanen meskipun software sudah dikembalikan ke Stock ROM [Sumber: Samsung Knox Security Specification].\n- **Keamanan Google Play Integrity:** Setelah unroot total dan bootloader dikunci kembali (jika didukung perangkat), sertifikasi Play Integrity (MEETS_DEVICE_INTEGRITY) umumnya dapat pulih kembali, memungkinkan aplikasi perbankan berjalan normal tanpa peringatan root [VERIFIKASI_PERANGKAT]."
+      },
+      {
+        heading: "4. Kebijakan Pembaruan OTA (Over-The-Air) Setelah Unroot",
+        body: "Setelah perangkat berhasil dikembalikan ke Stock ROM dan partisi sistem bersih tanpa sisa binary modifikasi:\n\n- **Pembaruan Sistem Resmi:** Perangkat dapat kembali menerima notifikasi pembaruan OTA resmi dari server pabrikan [Sumber: Android OTA System Specs].\n- **Peringatan Penting:** Jangan pernah menginstal pembaruan OTA jika partisi vendor, recovery, atau kernel masih dimodifikasi sebagian (sisa root atau TWRP terinstal). Hal ini akan langsung memicu bootloop atau dm-verity error [VERIFIKASI_PERANGKAT]. Jika ragu, gunakan jasa profesional di TechFix Software untuk pemulihan software jarak jauh yang aman."
+      }
+    ],
+    seo: {
+      title: "Panduan Mengembalikan HP Root ke Stock ROM (Unroot Total)",
+      description: "Cara aman mengembalikan HP Android yang sudah di-root ke kondisi pabrik original (Stock ROM) lengkap dengan panduan flashing resmi.",
+      keywords: [
+        "cara unroot hp total",
+        "kembalikan stock rom android",
+        "flash rom official unroot",
+        "relock bootloader android"
+      ]
+    }
+  }
 ];
