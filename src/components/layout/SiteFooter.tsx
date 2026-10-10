@@ -18,7 +18,7 @@ export function SiteFooter() {
   const guideLinks = [
     { label: "Semua Panduan & Edukasi", href: "/guides" },
     { label: "Penyebab HP Stuck Logo", href: "/guides/apa-penyebab-hp-android-stuck-di-logo" },
-    { label: "Bootloop vs Soft Brick", href: "/guides/perbedaan-bootloop-dan-soft-brick" },
+    { label: "Soft Brick vs Hard Brick", href: "/guides/soft-brick-vs-hard-brick-perbedaan-dan-solusi" },
     { label: "Apakah UBL Hapus Data?", href: "/guides/apakah-unlock-bootloader-menghapus-data" },
     { label: "Panduan Remote AnyDesk", href: "/remote-guide" },
     { label: "Cara Kerja Layanan", href: "/how-it-works" },

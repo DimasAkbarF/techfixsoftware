@@ -199,6 +199,11 @@ export const newGuides: GuideArticle[] = [
     relatedServiceSlugs: ["unbrick", "fix-bootloop", "flash-firmware"],
     sections: [
       {
+        heading: "Bootloop, Soft Brick, dan Hard Brick: Tiga Kondisi Berbeda",
+        body:
+          "Banyak pengguna menyebut semua kegagalan booting sebagai 'mati total', padahal ada tiga kondisi yang berbeda dan penanganannya tidak sama. Bootloop berarti perangkat masih berputar di proses booting: logo merek muncul berulang atau berhenti di animasi pembuka, dan mode recovery maupun fastboot umumnya masih bisa diakses lewat kombinasi tombol. Soft brick lebih dalam: partisi boot atau kernel rusak sehingga layar bisa tetap gelap, tetapi perangkat masih merespons koneksi USB di komputer (misalnya muncul sebagai port EDL atau Download Mode). Hard brick adalah kerusakan fisik, misalnya IC power atau memori flash yang rusak, dan tidak bisa diselesaikan lewat kabel USB.",
+      },
+      {
         heading: "Definisi & Perbedaan Utama: Soft Brick vs Hard Brick",
         body:
           "Perbedaan mendasar antara soft brick dan hard brick terletak pada integritas komponen hardware: Soft Brick adalah kerusakan software di mana perangkat masih memiliki tanda-tanda kehidupan (getar, respon lampu, atau terdeteksi di Device Manager PC sebagai port USB darurat), sehingga umumnya dapat dipulihkan lewat flashing firmware. Sebaliknya, Hard Brick adalah kerusakan fisik pada komponen hardware seperti konsleting IC power, chip memori eMMC/UFS yang terbakar, atau jalur motherboard putus, yang tidak akan pernah bisa diselesaikan hanya dengan kabel USB dan software.",
@@ -235,6 +240,7 @@ export const newGuides: GuideArticle[] = [
       description:
         "Pelajari perbedaan soft brick vs hard brick Android. Kenali tanda port USB EDL 9008, BROM, dan solusi pemulihan software remote tanpa ganti mesin.",
       keywords: [
+        "perbedaan bootloop dan soft brick",
         "soft brick vs hard brick",
         "perbedaan soft brick dan hard brick",
         "hp brick android",

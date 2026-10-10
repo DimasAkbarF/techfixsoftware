@@ -33,6 +33,12 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       // Ojol/absensi article rewritten as a risk article with a new slug.
+      // Duplicate soft-brick article merged into the more complete one.
+      {
+        source: "/guides/perbedaan-bootloop-dan-soft-brick",
+        destination: "/guides/soft-brick-vs-hard-brick-perbedaan-dan-solusi",
+        permanent: true,
+      },
       {
         source: "/guides/panduan-root-hp-untuk-ojol-dan-aplikasi-kerja",
         destination: "/guides/risiko-root-hp-untuk-aplikasi-kerja-dan-ojol",

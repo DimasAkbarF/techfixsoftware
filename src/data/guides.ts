@@ -134,73 +134,6 @@ const baseGuides: GuideArticle[] = [
     },
   },
   {
-    id: "guide-bootloop-vs-softbrick",
-    slug: "perbedaan-bootloop-dan-soft-brick",
-    title: "Perbedaan Bootloop dan Soft Brick pada HP Android",
-    excerpt:
-      "Banyak yang mengira bootloop dan soft brick adalah hal yang sama. Kenali ciri-ciri fisiknya agar Anda tidak salah langkah dalam mengambil tindakan pemulihan.",
-    category: "bootloop",
-    categoryName: "Bootloop & Pemulihan",
-    readTime: "4 menit baca",
-    publishedAt: "2025-01-25",
-    updatedAt: "2025-02-14",
-    keyTakeaways: [
-      "Bootloop: Perangkat masih bisa menampilkan logo/animasi boot dan biasanya masih dapat masuk ke mode Fastboot atau Recovery.",
-      "Soft Brick: Perangkat gagal menyala ke sistem, layar mungkin hitam atau stuck di mode darurat (EDL/Download Mode), namun masih terdeteksi di PC.",
-      "Hard Brick: Kondisi kerusakan hardware fisik atau bootloader rusak permanen tanpa respon arus listrik sama sekali.",
-      "Sebagian besar kondisi bootloop dan soft brick masih dapat dipulihkan melalui perbaikan software terkontrol.",
-    ],
-    whatUserCanCheck: [
-      "Coba masuk ke mode Fastboot/Download mode menggunakan kombinasi tombol sesuai merek.",
-      "Hubungkan HP ke komputer dengan kabel USB dan periksa Device Manager apakah ada perangkat terdeteksi.",
-      "Catat apa yang terjadi persis sebelum perangkat mati atau gagal menyala.",
-    ],
-    whenToConsult: [
-      "Layar tetap hitam tetapi perangkat bergetar berkala atau terdeteksi sebagai driver khusus di PC (misal: Qualcomm HS-USB QDLoader 9008).",
-      "Perangkat mengalami crash setelah flashing ROM tipe lain atau firmware beda region.",
-      "Mode recovery bawaan tidak bisa diakses.",
-    ],
-    relatedServiceSlugs: ["fix-bootloop", "unbrick", "flash-firmware"],
-    sections: [
-      {
-        heading: "Membedakan Status Kesehatan Software Perangkat",
-        body:
-          "Ketika ponsel Android mengalami kegagalan sistem, pemilik perangkat sering panik dan menyebut HP mereka 'mati total'. Padahal dalam terminologi teknis, ada perbedaan jelas antara Bootloop, Soft Brick, dan Hard Brick.",
-      },
-      {
-        heading: "1. Apa Itu Bootloop?",
-        body:
-          "Bootloop berarti perangkat terjebak dalam putaran booting (looping). Gejala utamanya adalah logo merek muncul berulang-ulang atau berhenti di animasi pembuka. Dalam kondisi ini, sistem partisi recovery dan fastboot umumnya masih utuh dan dapat diakses dengan kombinasi tombol fisik.",
-      },
-      {
-        heading: "2. Apa Itu Soft Brick?",
-        body:
-          "Soft brick terjadi ketika partisi boot atau kernel mengalami kerusakan parah sehingga perangkat bahkan tidak bisa memulai proses render animasi di layar. Layar bisa tampak mati atau hanya berkedip, namun saat disambungkan ke PC dengan kabel data, perangkat masih merespons sinyal USB (misalnya dalam mode EDL atau Odin Download Mode). Ini berarti hardware utama masih berfungsi.",
-      },
-      {
-        heading: "Tabel Perbandingan Singkat",
-        body:
-          "Perbedaan mendasar antara kedua kondisi tersebut:",
-        bullets: [
-          "Tampilan Layar: Bootloop menampilkan logo; Soft Brick sering kali hitam pekat atau lampu indikator saja.",
-          "Akses Tombol: Bootloop masih bisa masuk Fastboot/Recovery; Soft Brick memerlukan sambungan PC untuk identifikasi driver.",
-          "Tingkat Kerumitan: Bootloop umumnya dapat ditangani lewat firmware flash standar; Soft Brick membutuhkan file firmware raw khusus atau alat authorized.",
-        ],
-      },
-      {
-        heading: "Langkah Penanganan yang Bijak",
-        body:
-          "Kunci utama: jangan memaksa melakukan flashing berulang kali dengan file sembarang. Memasukkan file firmware yang salah pada perangkat yang sudah soft brick berisiko mengubahnya menjadi kerusakan permanen.",
-      },
-    ],
-    seo: {
-      title: "Perbedaan Bootloop dan Soft Brick",
-      description:
-        "Pahami perbedaan gejala bootloop vs soft brick Android. Pelajari tanda-tanda respon layar, deteksi port PC, dan metode pemulihannya yang tepat.",
-      keywords: ["perbedaan bootloop dan soft brick", "hp soft brick", "tanda hp bootloop", "unbrick android", "fix bootloop"],
-    },
-  },
-  {
     id: "guide-root-safety",
     slug: "apakah-root-android-aman",
     title: "Apakah Root Android Aman? Panduan Risiko, Manfaat, dan Magisk",
@@ -224,7 +157,7 @@ const baseGuides: GuideArticle[] = [
     ],
     whenToConsult: [
       "Anda ingin mengetahui apakah perangkat Anda kompatibel dengan Magisk versi terbaru.",
-      "Anda membutuhkan pendampingan agar proses patching boot image berjalan tanpa resiko bootloop.",
+      "Anda membutuhkan pendampingan agar proses patching boot image berjalan dengan risiko bootloop yang diperkecil melalui cadangan stock image.",
       "Anda ingin memahami cara kerja modul keselamatan dan mitigasi Play Integrity.",
     ],
     relatedServiceSlugs: ["root-android", "unlock-bootloader"],
