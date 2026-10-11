@@ -31,3 +31,9 @@ next-env.d.ts
 # ai agent editor configs
 .codex/
 .cursor/
+
+# private seo strategy files
+seo.md
+COMPETITOR_*.md
+SEO_IMPLEMENTATION_*.md
+SEO_WEEKLY_*.md

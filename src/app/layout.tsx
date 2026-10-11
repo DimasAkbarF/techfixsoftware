@@ -12,14 +12,12 @@ const heading = Schibsted_Grotesk({
   subsets: ["latin"],
   variable: "--font-heading",
   display: "swap",
-  weight: ["600", "700"],
 });
 
 const body = Source_Sans_3({
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
-  weight: ["400", "500", "600"],
 });
 
 const plexMono = IBM_Plex_Mono({
