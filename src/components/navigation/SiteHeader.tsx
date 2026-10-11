@@ -10,12 +10,14 @@ import {
   X,
   ChevronDown,
   ArrowRight,
-  Shield,
-  RefreshCw,
+  RotateCcw,
+  ShieldCheck,
+  Unlock,
   Cpu,
+  HardDrive,
+  LifeBuoy,
   Layers,
-  Sparkles,
-  MapPin,
+  Wrench,
 } from "lucide-react";
 import { mainNav } from "@/components/navigation/navItems";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
@@ -25,34 +27,54 @@ import { trackEvent } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 import { ButtonLink } from "@/components/ui/Button";
 
-const FEATURED_SERVICES = [
+const SERVICE_ITEMS = [
   {
-    title: "Fix Bootloop & Unbrick",
+    label: "Fix Bootloop & Soft Brick",
+    desc: "Solusi HP restart terus & stuck logo",
     href: "/services/fix-bootloop",
-    desc: "Pemulihan HP stuck di logo, auto-reboot, & soft brick",
-    icon: RefreshCw,
-    badge: "Paling Dicari",
+    icon: RotateCcw,
   },
   {
-    title: "Root Android & Magisk",
+    label: "Root Android & Magisk",
+    desc: "Akses root bersih via Magisk / KernelSU",
     href: "/services/root-android",
-    desc: "Systemless root, KernelSU, debloat & optimasi modul",
-    icon: Shield,
-    badge: "Systemless",
+    icon: ShieldCheck,
   },
   {
-    title: "Pasang Custom ROM",
+    label: "Unlock Bootloader (UBL)",
+    desc: "Buka bootloader resmi & aman",
+    href: "/services/unlock-bootloader",
+    icon: Unlock,
+  },
+  {
+    label: "Pasang Custom ROM",
+    desc: "Upgrade OS & tingkatkan performa",
     href: "/services/custom-rom",
-    desc: "LineageOS, PixelOS, crDroid dengan update OS stabil",
     icon: Cpu,
-    badge: "AOSP",
   },
   {
-    title: "Flash Firmware Stock",
+    label: "Flash Firmware Stock",
+    desc: "Kembalikan OS resmi pabrik orisinal",
     href: "/services/flash-firmware",
-    desc: "Kembalikan ke ROM resmi pabrik & unroot total",
+    icon: HardDrive,
+  },
+  {
+    label: "Unbrick & Pemulihan Sistem",
+    desc: "Pemulihan mati total & mode darurat",
+    href: "/services/unbrick",
+    icon: LifeBuoy,
+  },
+  {
+    label: "Recovery TWRP / OrangeFox",
+    desc: "Instalasi custom recovery touch",
+    href: "/services/recovery",
     icon: Layers,
-    badge: "Official",
+  },
+  {
+    label: "Software Repair & Troubleshooting",
+    desc: "Diagnosa & penanganan error software",
+    href: "/services/software-repair",
+    icon: Wrench,
   },
 ];
 
@@ -78,16 +100,12 @@ function HeaderConsultationCTA({ mobile = false, onClick }: { mobile?: boolean; 
         variant="whatsapp"
         size={mobile ? "large" : "small"}
         className={cn(
-          "font-semibold shadow-xs transition-all duration-200 active:scale-[0.98]",
-          mobile && "w-full justify-center py-3.5 text-sm"
+          "font-medium tracking-tight rounded-full transition-all duration-150",
+          mobile ? "w-full justify-center py-3 text-sm" : "text-xs h-9 px-4"
         )}
       >
-        <span className="relative flex size-2 shrink-0">
-          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75" />
-          <span className="relative inline-flex size-2 rounded-full bg-white" />
-        </span>
-        <WhatsAppIcon className="w-4 h-4 mr-0.5 ml-1" />
-        <span>Konsultasi Gratis</span>
+        <WhatsAppIcon className="w-3.5 h-3.5 mr-1.5" />
+        <span>Konsultasi</span>
       </ButtonLink>
     );
   }
@@ -98,10 +116,13 @@ function HeaderConsultationCTA({ mobile = false, onClick }: { mobile?: boolean; 
       onClick={handleClick}
       variant="primary"
       size={mobile ? "large" : "small"}
-      className={cn(mobile && "w-full justify-center")}
+      className={cn(
+        "font-medium tracking-tight rounded-full transition-all duration-150",
+        mobile ? "w-full justify-center py-3 text-sm" : "text-xs h-9 px-4"
+      )}
     >
-      <span>Konsultasi Gratis</span>
-      <ArrowRight className="w-3.5 h-3.5 ml-1" />
+      <span>Konsultasi</span>
+      <ArrowRight className="w-3 h-3 ml-1" />
     </ButtonLink>
   );
 }
@@ -110,12 +131,14 @@ export function SiteHeader() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
+  const dropdownTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 15);
+      setIsScrolled(window.scrollY > 10);
     };
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -124,51 +147,70 @@ export function SiteHeader() {
 
   const closeMenu = useCallback(() => {
     setMenuOpen(false);
-    setDropdownOpen(false);
+    setServicesDropdownOpen(false);
   }, []);
+
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
+    setServicesDropdownOpen(false);
+    setMenuOpen(false);
+  }
 
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = "";
     }
     return () => {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = "";
     };
   }, [menuOpen]);
 
-  // Handle escape key to close dropdown & menu
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setMenuOpen(false);
-        setDropdownOpen(false);
+        setServicesDropdownOpen(false);
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
+  useEffect(() => {
+    if (!servicesDropdownOpen) return;
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setServicesDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [servicesDropdownOpen]);
+
   const handleDropdownEnter = () => {
-    if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
-    setDropdownOpen(true);
+    if (dropdownTimerRef.current) clearTimeout(dropdownTimerRef.current);
+    setServicesDropdownOpen(true);
   };
 
   const handleDropdownLeave = () => {
-    dropdownTimeoutRef.current = setTimeout(() => {
-      setDropdownOpen(false);
+    dropdownTimerRef.current = setTimeout(() => {
+      setServicesDropdownOpen(false);
     }, 150);
   };
+
+  const isServicesActive = pathname.startsWith("/services");
 
   return (
     <>
       <header
         className={cn(
-          "sticky top-0 z-40 w-full transition-all duration-300 ease-in-out border-b",
+          "sticky top-0 z-40 w-full transition-all duration-200",
           isScrolled
-            ? "bg-background/85 backdrop-blur-xl border-border/80 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.06)]"
-            : "bg-background/60 backdrop-blur-md border-border/40"
+            ? "bg-background/80 backdrop-blur-md border-b border-border shadow-xs"
+            : "bg-background/50 backdrop-blur-xs border-b border-border/40"
         )}
       >
         <div className="container-page flex h-16 items-center justify-between gap-4">
@@ -179,126 +221,132 @@ export function SiteHeader() {
             aria-label="Beranda TechFix Software"
             onClick={closeMenu}
           >
-            <div className="relative w-8 h-8 sm:w-9 sm:h-9 overflow-hidden rounded-lg transition-transform duration-200 group-hover:scale-105">
+            <div className="relative w-8 h-8 overflow-hidden rounded-md transition-transform duration-200 group-hover:scale-105">
               <Image
                 src="/techfix-software-logo.png"
                 alt="Logo TechFix Software"
                 fill
-                sizes="(max-width: 640px) 32px, 36px"
+                sizes="32px"
                 className="object-contain"
                 priority
               />
             </div>
-            <div className="flex items-center gap-2">
-              <span className="font-bold tracking-tight text-foreground text-[16px] sm:text-[17px] group-hover:text-accent transition-colors">
-                TechFix Software
-              </span>
-              <span className="hidden xl:inline-flex items-center gap-1 text-[10px] font-mono font-medium px-2 py-0.5 rounded-full bg-accent/10 text-accent border border-accent/20">
-                <Sparkles className="size-2.5" /> Pro Support
-              </span>
-            </div>
+            <span className="font-bold tracking-tight text-foreground text-base sm:text-lg group-hover:text-accent transition-colors">
+              TechFix Software
+            </span>
           </Link>
 
-          {/* Desktop Nav Items */}
-          <nav className="hidden md:flex items-center gap-1 lg:gap-1.5" aria-label="Navigasi Utama">
-            {/* Layanan with Enterprise Dropdown */}
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center gap-6 lg:gap-7" aria-label="Navigasi Utama">
+            {/* Layanan Dropdown */}
             <div
+              ref={dropdownRef}
               className="relative"
               onMouseEnter={handleDropdownEnter}
               onMouseLeave={handleDropdownLeave}
             >
               <button
                 type="button"
-                onClick={() => setDropdownOpen((prev) => !prev)}
+                onClick={() => setServicesDropdownOpen((prev) => !prev)}
                 className={cn(
-                  "flex items-center gap-1 px-3.5 py-2 text-[13px] font-medium rounded-full transition-all duration-200 cursor-pointer",
-                  pathname.startsWith("/services")
-                    ? "text-accent font-semibold bg-accent/10"
-                    : "text-muted-foreground hover:text-foreground hover:bg-muted/70",
-                  dropdownOpen && "bg-muted/80 text-foreground"
+                  "relative flex items-center gap-1 text-[13px] font-medium transition-colors duration-150 py-1 cursor-pointer",
+                  isServicesActive
+                    ? "text-foreground font-semibold"
+                    : "text-muted-foreground hover:text-foreground",
+                  servicesDropdownOpen && "text-foreground"
                 )}
-                aria-expanded={dropdownOpen}
+                aria-expanded={servicesDropdownOpen}
                 aria-haspopup="true"
               >
                 <span>Layanan</span>
                 <ChevronDown
                   className={cn(
-                    "size-3.5 transition-transform duration-200 opacity-70",
-                    dropdownOpen && "rotate-180 opacity-100"
+                    "w-3.5 h-3.5 transition-transform duration-200 opacity-60",
+                    servicesDropdownOpen && "rotate-180 opacity-100"
                   )}
                   aria-hidden="true"
                 />
+                {isServicesActive && (
+                  <span
+                    className="absolute -bottom-1 inset-x-0 h-0.5 bg-accent rounded-full"
+                    aria-hidden="true"
+                  />
+                )}
               </button>
 
-              {/* Mega/Dropdown Panel */}
-              {dropdownOpen && (
+              {/* Refined & UI-Friendly Service Dropdown Menu */}
+              {servicesDropdownOpen && (
                 <div
-                  className="absolute top-full left-0 pt-2 w-[390px] sm:w-[420px] z-50 animate-in fade-in slide-in-from-top-1 duration-150"
+                  className="absolute top-full left-0 pt-2 w-[540px] z-50 animate-in fade-in slide-in-from-top-1 duration-150"
                   role="menu"
+                  aria-label="Katalog Layanan TechFix"
                 >
-                  <div className="rounded-2xl border border-border bg-card/95 backdrop-blur-2xl p-3 shadow-dropdown">
-                    <div className="px-3 py-2 border-b border-border/60 mb-2 flex items-center justify-between">
-                      <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-muted-foreground">
-                        Solusi Software Populer
-                      </span>
-                      <span className="text-[11px] text-accent font-medium">Garansi No Fix No Fee</span>
-                    </div>
-
-                    <div className="grid gap-1">
-                      {FEATURED_SERVICES.map((srv) => {
-                        const Icon = srv.icon;
-                        const isSrvActive = pathname === srv.href;
+                  <div className="rounded-xl border border-border bg-card/98 backdrop-blur-xl shadow-dropdown overflow-hidden">
+                    <div className="grid grid-cols-2 gap-1 p-2">
+                      {SERVICE_ITEMS.map((item) => {
+                        const isItemActive = pathname === item.href;
+                        const Icon = item.icon;
                         return (
                           <Link
-                            key={srv.href}
-                            href={srv.href}
-                            onClick={() => setDropdownOpen(false)}
+                            key={item.href}
+                            href={item.href}
+                            onClick={() => setServicesDropdownOpen(false)}
                             className={cn(
-                              "group/item flex items-start gap-3 p-2.5 rounded-xl transition-all duration-150 cursor-pointer",
-                              isSrvActive
-                                ? "bg-accent/10 text-accent"
-                                : "hover:bg-muted/70 text-foreground"
+                              "group flex items-start gap-2.5 p-2 rounded-lg transition-colors cursor-pointer",
+                              isItemActive
+                                ? "bg-accent/10"
+                                : "hover:bg-muted/70"
                             )}
                             role="menuitem"
                           >
-                            <div className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground group-hover/item:bg-accent group-hover/item:text-accent-foreground transition-colors duration-150">
-                              <Icon className="size-4" />
+                            <div
+                              className={cn(
+                                "size-7 rounded-md flex items-center justify-center shrink-0 mt-0.5 transition-colors",
+                                isItemActive
+                                  ? "bg-accent text-white"
+                                  : "bg-muted text-muted-foreground group-hover:bg-accent/15 group-hover:text-accent"
+                              )}
+                            >
+                              <Icon className="w-3.5 h-3.5" />
                             </div>
-                            <div className="flex-1 min-w-0">
-                              <div className="flex items-center gap-2">
-                                <span className="text-[13px] font-semibold text-foreground group-hover/item:text-accent transition-colors">
-                                  {srv.title}
-                                </span>
-                                <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-muted text-muted-foreground border border-border/50">
-                                  {srv.badge}
-                                </span>
+                            <div className="min-w-0 flex-1">
+                              <div
+                                className={cn(
+                                  "text-xs font-medium leading-snug transition-colors",
+                                  isItemActive
+                                    ? "text-accent font-semibold"
+                                    : "text-foreground group-hover:text-accent"
+                                )}
+                              >
+                                {item.label}
                               </div>
-                              <p className="text-[11px] text-muted-foreground line-clamp-1 mt-0.5">
-                                {srv.desc}
+                              <p className="text-[11px] text-muted-foreground leading-snug mt-0.5 truncate">
+                                {item.desc}
                               </p>
                             </div>
                           </Link>
                         );
                       })}
                     </div>
-
-                    <div className="mt-2.5 pt-2.5 border-t border-border/60 px-2 flex items-center justify-between">
+                    <div className="border-t border-border/60 bg-muted/30 px-3.5 py-2 flex items-center justify-between text-xs">
+                      <span className="text-[11px] text-muted-foreground">
+                        Layanan remote via AnyDesk &amp; TeamViewer
+                      </span>
                       <Link
                         href="/services"
-                        onClick={() => setDropdownOpen(false)}
-                        className="text-xs font-semibold text-accent hover:text-accent-hover transition-colors inline-flex items-center gap-1 cursor-pointer"
+                        onClick={() => setServicesDropdownOpen(false)}
+                        className="flex items-center gap-1 font-semibold text-accent hover:text-accent-hover transition-colors text-[11px] cursor-pointer"
                       >
-                        Lihat Seluruh 8 Layanan Lengkap
-                        <ArrowRight className="size-3 transition-transform group-hover:translate-x-0.5" />
+                        <span>Semua Layanan</span>
+                        <ArrowRight className="w-3 h-3" />
                       </Link>
-                      <span className="text-[10px] text-muted-foreground font-mono">AnyDesk &amp; Onsite</span>
                     </div>
                   </div>
                 </div>
               )}
             </div>
 
-            {/* Standard Nav Links */}
+            {/* Other Nav Items */}
             {mainNav
               .filter((item) => item.href !== "/services")
               .map((item) => {
@@ -310,38 +358,31 @@ export function SiteHeader() {
                     key={item.href}
                     href={item.href}
                     className={cn(
-                      "px-3.5 py-2 text-[13px] font-medium rounded-full transition-all duration-200 cursor-pointer",
+                      "relative text-[13px] font-medium transition-colors duration-150 py-1 cursor-pointer",
                       isActive
-                        ? "text-accent font-semibold bg-accent/10"
-                        : "text-muted-foreground hover:text-foreground hover:bg-muted/70"
+                        ? "text-foreground font-semibold"
+                        : "text-muted-foreground hover:text-foreground"
                     )}
                   >
                     {item.label}
+                    {isActive && (
+                      <span
+                        className="absolute -bottom-1 inset-x-0 h-0.5 bg-accent rounded-full"
+                        aria-hidden="true"
+                      />
+                    )}
                   </Link>
                 );
               })}
           </nav>
 
           {/* Right Action Center */}
-          <div className="flex items-center gap-2.5 sm:gap-3">
-            {/* SaaS-Style Quick Search Trigger (Desktop) */}
+          <div className="flex items-center gap-3">
+            {/* Clean Search Button */}
             <Link
               href="/search"
               aria-label="Cari layanan atau panduan"
-              className="hidden lg:flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-border/80 bg-muted/40 hover:bg-muted/80 text-xs text-muted-foreground hover:text-foreground transition-all duration-200 cursor-pointer group shadow-2xs"
-            >
-              <Search className="size-3.5 text-muted-foreground group-hover:text-accent transition-colors" />
-              <span>Cari solusi...</span>
-              <kbd className="hidden xl:inline-block font-mono text-[10px] bg-background px-1.5 py-0.5 rounded border border-border/70 text-muted-foreground/80">
-                ⌘K
-              </kbd>
-            </Link>
-
-            {/* Compact Search Trigger for Tablets */}
-            <Link
-              href="/search"
-              aria-label="Cari layanan atau panduan"
-              className="flex lg:hidden p-2 text-muted-foreground hover:text-foreground hover:bg-muted/70 rounded-full transition-colors cursor-pointer"
+              className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted/60 rounded-full transition-colors cursor-pointer"
             >
               <Search className="w-4 h-4" />
             </Link>
@@ -351,10 +392,10 @@ export function SiteHeader() {
               <HeaderConsultationCTA />
             </div>
 
-            {/* Mobile Hamburger Toggle Button */}
+            {/* Mobile Menu Button */}
             <button
               type="button"
-              className="p-2 -mr-1.5 text-muted-foreground hover:text-foreground hover:bg-muted/70 rounded-lg md:hidden transition-colors cursor-pointer"
+              className="p-2 -mr-1.5 text-muted-foreground hover:text-foreground hover:bg-muted/60 rounded-lg md:hidden transition-colors cursor-pointer"
               onClick={() => setMenuOpen((prev) => !prev)}
               aria-label={menuOpen ? "Tutup menu navigasi" : "Buka menu navigasi"}
               aria-expanded={menuOpen}
@@ -365,92 +406,108 @@ export function SiteHeader() {
         </div>
       </header>
 
-      {/* Mobile Drawer Navigation (Enterprise Sheet Style) */}
+      {/* Clean Mobile Menu Overlay */}
       {menuOpen && (
         <div
-          className="fixed inset-0 top-16 z-30 bg-background/95 backdrop-blur-2xl md:hidden animate-in fade-in duration-200 flex flex-col border-b border-border shadow-2xl"
+          className="fixed inset-0 top-16 z-30 bg-background/95 backdrop-blur-xl md:hidden animate-fade-in flex flex-col border-b border-border shadow-lg"
           role="dialog"
           aria-modal="true"
           aria-label="Menu navigasi mobile"
         >
-          <nav className="flex-1 overflow-y-auto px-5 py-6">
-            {/* Quick Search on Mobile */}
-            <Link
-              href="/search"
-              onClick={closeMenu}
-              className="flex items-center justify-between px-4 py-3 rounded-xl border border-border bg-muted/50 text-sm text-muted-foreground hover:text-foreground mb-6 transition-colors"
-            >
-              <div className="flex items-center gap-3">
-                <Search className="size-4 text-accent" />
-                <span>Cari masalah, HP, atau panduan...</span>
+          <nav className="flex-1 overflow-y-auto px-6 py-6 flex flex-col justify-between">
+            <div className="flex flex-col gap-1">
+              {/* Mobile Layanan Accordion */}
+              <div className="border-b border-border/40 py-2">
+                <button
+                  type="button"
+                  onClick={() => setMobileServicesOpen((prev) => !prev)}
+                  className="flex w-full items-center justify-between py-2 text-base font-semibold text-foreground"
+                >
+                  <span>Layanan</span>
+                  <ChevronDown
+                    className={cn(
+                      "w-4 h-4 transition-transform duration-200 text-muted-foreground",
+                      mobileServicesOpen && "rotate-180 text-accent"
+                    )}
+                  />
+                </button>
+                {mobileServicesOpen && (
+                  <div className="flex flex-col gap-1 pl-1 pt-2 pb-1 animate-in fade-in duration-150">
+                    {SERVICE_ITEMS.map((item) => {
+                      const isItemActive = pathname === item.href;
+                      const Icon = item.icon;
+                      return (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          onClick={closeMenu}
+                          className={cn(
+                            "flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm transition-colors cursor-pointer",
+                            isItemActive
+                              ? "bg-accent/10 text-accent font-semibold"
+                              : "text-foreground hover:bg-muted/70 hover:text-accent"
+                          )}
+                        >
+                          <div
+                            className={cn(
+                              "size-6 rounded-md flex items-center justify-center shrink-0 transition-colors",
+                              isItemActive
+                                ? "bg-accent text-white"
+                                : "bg-muted text-muted-foreground"
+                            )}
+                          >
+                            <Icon className="w-3.5 h-3.5" />
+                          </div>
+                          <span className="text-xs font-medium truncate">{item.label}</span>
+                        </Link>
+                      );
+                    })}
+                    <Link
+                      href="/services"
+                      onClick={closeMenu}
+                      className="flex items-center justify-between px-2.5 py-2 mt-1 text-xs font-semibold text-accent hover:underline cursor-pointer"
+                    >
+                      <span>Semua Katalog Layanan</span>
+                      <ArrowRight className="w-3 h-3" />
+                    </Link>
+                  </div>
+                )}
               </div>
-              <ArrowRight className="size-4 opacity-50" />
-            </Link>
 
-            {/* Featured Services Grid */}
-            <div className="mb-6">
-              <p className="text-[11px] font-mono font-semibold uppercase tracking-wider text-muted-foreground mb-3 px-1">
-                Layanan Spesialis
-              </p>
-              <div className="grid grid-cols-2 gap-2">
-                {FEATURED_SERVICES.map((srv) => {
-                  const Icon = srv.icon;
+              {/* Remaining Mobile Links */}
+              {mainNav
+                .filter((item) => item.href !== "/services")
+                .map((item) => {
+                  const isActive =
+                    pathname === item.href ||
+                    (item.href !== "/" && item.href !== "/#masalah-android" && pathname.startsWith(item.href));
                   return (
                     <Link
-                      key={srv.href}
-                      href={srv.href}
+                      key={item.href}
+                      href={item.href}
                       onClick={closeMenu}
-                      className="flex flex-col gap-1.5 p-3 rounded-xl border border-border/80 bg-card hover:border-accent hover:bg-muted/30 transition-all"
+                      className={cn(
+                        "py-3 text-base font-medium transition-colors border-b border-border/40 last:border-0",
+                        isActive ? "text-accent font-semibold" : "text-foreground hover:text-accent"
+                      )}
                     >
-                      <div className="flex size-7 items-center justify-center rounded-lg bg-accent/10 text-accent">
-                        <Icon className="size-3.5" />
-                      </div>
-                      <span className="text-xs font-semibold text-foreground line-clamp-1">
-                        {srv.title}
-                      </span>
-                      <span className="text-[10px] text-muted-foreground font-mono">
-                        {srv.badge}
-                      </span>
+                      {item.label}
                     </Link>
                   );
                 })}
-              </div>
             </div>
 
-            {/* General Links */}
-            <div className="space-y-1 border-t border-border/80 pt-4">
-              <p className="text-[11px] font-mono font-semibold uppercase tracking-wider text-muted-foreground mb-2 px-1">
-                Eksplorasi
-              </p>
-              {mainNav.map((item) => {
-                const isActive = pathname === item.href;
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={closeMenu}
-                    className={cn(
-                      "flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm font-semibold transition-colors",
-                      isActive
-                        ? "bg-accent/10 text-accent"
-                        : "text-foreground hover:bg-muted/70"
-                    )}
-                  >
-                    <span>{item.label}</span>
-                    <ArrowRight className="size-3.5 opacity-40" />
-                  </Link>
-                );
-              })}
-            </div>
+            <div className="pt-8 flex flex-col gap-4">
+              <Link
+                href="/search"
+                onClick={closeMenu}
+                className="flex items-center gap-2.5 text-sm font-medium text-muted-foreground hover:text-foreground py-2"
+              >
+                <Search className="size-4" />
+                <span>Cari Layanan &amp; Panduan</span>
+              </Link>
 
-            {/* Bottom Actions & Location */}
-            <div className="mt-8 border-t border-border pt-6 pb-4 flex flex-col gap-4">
               <HeaderConsultationCTA mobile onClick={closeMenu} />
-
-              <div className="flex items-center justify-center gap-1.5 text-xs text-muted-foreground font-medium pt-1">
-                <MapPin className="size-3.5 text-accent shrink-0" />
-                <span>Rangkasbitung, Lebak, Banten • Remote Se-Indonesia</span>
-              </div>
             </div>
           </nav>
         </div>
