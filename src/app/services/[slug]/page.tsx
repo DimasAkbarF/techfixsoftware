@@ -100,10 +100,16 @@ export default async function ServiceDetailPage({ params }: PageProps) {
       url: siteConfig.url,
       telephone: siteConfig.whatsappNumber || undefined,
     },
-    areaServed: {
-      "@type": "Country",
-      name: "Indonesia",
-    },
+    areaServed: [
+      {
+        "@type": "Country",
+        name: "Indonesia",
+      },
+      {
+        "@type": "AdministrativeArea",
+        name: "Rangkasbitung, Kabupaten Lebak, Banten",
+      },
+    ],
     offers: {
       "@type": "Offer",
       priceCurrency: "IDR",

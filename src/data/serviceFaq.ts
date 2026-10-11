@@ -48,6 +48,13 @@ const customServiceFaqs: Record<string, FAQItem[]> = {
       answer:
         "Proses sangat praktis: Anda cukup menyiapkan laptop/PC dengan koneksi internet dan kabel data USB. Teknisi kami akan terhubung via AnyDesk untuk memandu dan mengeksekusi patching boot image serta instalasi modul di hadapan Anda secara transparan dalam waktu 30-45 menit. Anda tidak perlu repot keluar rumah atau meninggalkan HP di konter.",
     },
+    {
+      id: "faq-lokasi-rangkasbitung-root",
+      category: "root-android",
+      question: "Apakah melayani jasa root Android langsung di Rangkasbitung (tatap muka)?",
+      answer:
+        "Ya, bagi Anda yang berdomisili di Rangkasbitung, Kabupaten Lebak, Banten dan sekitarnya, kami melayani penanganan tatap muka (onsite) dengan konfirmasi jadwal terlebih dahulu via WhatsApp. Bagi pelanggan di luar Rangkasbitung atau luar kota, layanan jasa root dilakukan secara online remote via AnyDesk.",
+    },
   ],
 };
 

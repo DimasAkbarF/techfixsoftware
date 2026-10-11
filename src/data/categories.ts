@@ -13,7 +13,7 @@ export const categories: Category[] = [
       title: "Jasa Root Android Profesional — Konsultasi Dulu",
       description:
         "Service root Android dengan pendekatan aman: konsultasi terlebih dahulu, pengecekan kompatibilitas device, dan dukungan Magisk. Klik untuk detail.",
-      keywords: ["root android", "jasa root", "magisk", "akses root"],
+      keywords: ["root android", "jasa root", "jasa root rangkasbitung", "magisk", "akses root"],
     },
   },
   {

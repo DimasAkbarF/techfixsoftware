@@ -9,12 +9,15 @@ export const services: Service[] = [
     categoryId: "root-android",
     group: "modification",
     shortDescription:
-      "Layanan jasa root Android & HP online via remote AnyDesk untuk Xiaomi, Samsung, Pixel, Infinix, Realme. Rekayasa systemless Magisk & KernelSU untuk debloat, backup, dan modul kustomisasi. Hasil bergantung perangkat.",
+      "Layanan jasa root Android & HP online via remote AnyDesk dan layanan tatap muka area Rangkasbitung (Lebak, Banten). Rekayasa systemless Magisk & KernelSU untuk debloat, backup, dan modul kustomisasi.",
     description:
-      "Layanan Jasa Root Android & HP Online di TechFix Software hadir sebagai solusi profesional bagi Anda yang membutuhkan hak akses superuser (su) penuh secara aman, terkontrol, dan dengan upaya memperkecil risiko kerusakan sistem permanen. Berbeda dengan konter servis konvensional yang kerap menggunakan tool berbahaya atau mengharuskan Anda meninggalkan HP berhari-hari, seluruh proses di TechFix Software dikerjakan langsung secara online via remote AnyDesk di hadapan Anda.\n\nKami menerapkan rekayasa systemless root modern menggunakan Magisk v27+, KernelSU (GKI Linux kernel-level), atau APatch. Metode ini bekerja murni pada ramdisk boot.img atau init_boot.img tanpa pernah memodifikasi partisi sistem (/system atau /vendor) yang read-only. Hasilnya, integritas firmware bawaan pabrik tetap terjaga utuh, ponsel terhindar dari resiko hard brick, dan perangkat umumnya bisa di-unroot kembali ke standar pabrik kapan saja jika diperlukan.\n\nLayanan ini dirancang untuk menjawab berbagai kebutuhan nyata pengguna Android di Indonesia:\n1. Pengguna dengan kebutuhan kustomisasi sistem yang sah pada perangkat yang kompatibel.\n2. Pengguna yang paham risiko: root dapat membuat sebagian aplikasi perbankan atau e-wallet menolak dibuka. Kami menjelaskan risikonya secara jujur dan menyarankan HP terpisah.\n3. Aplikasi kerja yang sensitif root: kompatibilitas bisa berubah sewaktu-waktu tanpa jaminan dari pengembang aplikasi.\n4. Pembersihan Bloatware & Iklan Bawaan: Hapus tuntas aplikasi sistem yang rakus penyimpanan dan memicu lag (seperti MSA dan GetApps pada MIUI/HyperOS, atau Palm Store pada Transsion Infinix/Tecno).\n5. Backup Menyeluruh Level Partisi: Mengamankan seluruh data game dan aplikasi kerja via Swift Backup atau Neo Backup tanpa kehilangan progres saat ganti perangkat.\n6. Tuning Audio & Performa Gaming: Instalasi modul audiophile Viper4Android FX / Dolby Atmos serta bypass thermal throttling untuk unlock framerate 90Hz/120Hz yang stabil.\n\nBiaya jasa root Android di TechFix Software sangat terjangkau, transparan, dan kompetitif sesuai dengan merek perangkat dan paket modul yang dipilih. Sebelum pengerjaan dimulai, teknisi kami selalu melakukan backup stock boot.img orisinal sebagai jaminan proteksi anti-bootloop. Konsultasi kelayakan dan verifikasi tipe chipset gratis di awal.",
+      "Layanan Jasa Root Android & HP Online di TechFix Software hadir sebagai solusi profesional bagi Anda yang membutuhkan hak akses superuser (su) penuh secara aman, terkontrol, dan dengan upaya memperkecil risiko kerusakan sistem permanen. Berbeda dengan konter servis konvensional yang kerap menggunakan tool berbahaya atau mengharuskan Anda meninggalkan HP berhari-hari, seluruh proses di TechFix Software dikerjakan langsung secara online via remote AnyDesk di hadapan Anda.\n\nKami menerapkan rekayasa systemless root modern menggunakan Magisk v27+, KernelSU (GKI Linux kernel-level), atau APatch. Metode ini bekerja murni pada ramdisk boot.img atau init_boot.img tanpa pernah memodifikasi partisi sistem (/system atau /vendor) yang read-only. Hasilnya, integritas firmware bawaan pabrik tetap terjaga utuh, ponsel terhindar dari resiko hard brick, dan perangkat umumnya bisa di-unroot kembali ke standar pabrik kapan saja jika diperlukan.\n\nSelain melayani asistensi online jarak jauh via AnyDesk ke seluruh pelosok Indonesia, TechFix Software juga melayani konsultasi dan penanganan jasa root Android langsung secara tatap muka (onsite) untuk pengguna di area Rangkasbitung, Kabupaten Lebak, Banten, dan sekitarnya dengan konfirmasi jadwal via WhatsApp.\n\nLayanan ini dirancang untuk menjawab berbagai kebutuhan nyata pengguna Android di Indonesia:\n1. Pengguna dengan kebutuhan kustomisasi sistem yang sah pada perangkat yang kompatibel.\n2. Pengguna yang paham risiko: root dapat membuat sebagian aplikasi perbankan atau e-wallet menolak dibuka. Kami menjelaskan risikonya secara jujur dan menyarankan HP terpisah.\n3. Aplikasi kerja yang sensitif root: kompatibilitas bisa berubah sewaktu-waktu tanpa jaminan dari pengembang aplikasi.\n4. Pembersihan Bloatware & Iklan Bawaan: Hapus tuntas aplikasi sistem yang rakus penyimpanan dan memicu lag (seperti MSA dan GetApps pada MIUI/HyperOS, atau Palm Store pada Transsion Infinix/Tecno).\n5. Backup Menyeluruh Level Partisi: Mengamankan seluruh data game dan aplikasi kerja via Swift Backup atau Neo Backup tanpa kehilangan progres saat ganti perangkat.\n6. Tuning Audio & Performa Gaming: Instalasi modul audiophile Viper4Android FX / Dolby Atmos serta bypass thermal throttling untuk unlock framerate 90Hz/120Hz yang stabil.\n\nBiaya jasa root Android di TechFix Software sangat terjangkau, transparan, dan kompetitif sesuai dengan merek perangkat dan paket modul yang dipilih. Sebelum pengerjaan dimulai, teknisi kami selalu melakukan backup stock boot.img orisinal sebagai jaminan proteksi anti-bootloop. Konsultasi kelayakan dan verifikasi tipe chipset gratis di awal.",
     problemKeywords: [
       "jasa root",
       "jasa root android",
+      "jasa root rangkasbitung",
+      "jasa root hp rangkasbitung",
+      "jasa root lebak",
       "jasa root hp",
       "jasa root online",
       "jasa root remote",
@@ -133,10 +136,13 @@ export const services: Service[] = [
       },
     ],
     seo: {
-      title: "Jasa Root Android & HP Online (Magisk)",
+      title: "Jasa Root Android & HP Online (Magisk) - Rangkasbitung & Remote",
       description:
-        "Jasa root Android & HP online via remote AnyDesk untuk Xiaomi, Samsung, Pixel, Infinix. Magisk & KernelSU. Tanya teknisi via WhatsApp.",
+        "Jasa root Android & HP online remote AnyDesk dan layanan tatap muka area Rangkasbitung, Lebak. Magisk & KernelSU untuk Xiaomi, Samsung, Pixel. Tanya teknisi via WA.",
       keywords: [
+        "jasa root rangkasbitung",
+        "jasa root hp rangkasbitung",
+        "jasa root lebak banten",
         "jasa root",
         "jasa root android",
         "jasa root hp",
