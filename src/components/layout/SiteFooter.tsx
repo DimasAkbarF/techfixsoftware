@@ -28,7 +28,13 @@ export function SiteFooter() {
           <div>
             <Link href="/" className="flex items-center gap-2 mb-6 group inline-flex">
               <div className="relative w-8 h-8 overflow-hidden">
-                <Image src="/techfix-software-logo.png" alt="Logo" fill className="object-contain" />
+                <Image
+                  src="/techfix-software-logo.png"
+                  alt="Logo TechFix Software"
+                  fill
+                  sizes="32px"
+                  className="object-contain"
+                />
               </div>
               <span className="font-bold text-foreground text-lg group-hover:text-accent transition-colors">
                 TechFix Software

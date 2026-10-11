@@ -60,7 +60,13 @@ export function ComparisonSection() {
                     <div className="flex flex-col items-center text-center gap-3">
                       {/* Optional Mockup Placeholder for left column */}
                       <div className="relative w-16 h-16 opacity-80 mix-blend-multiply dark:mix-blend-screen hidden sm:block">
-                        <Image src="/mockup.webp" alt="Mockup" fill className="object-contain" />
+                        <Image
+                          src="/mockup.webp"
+                          alt="Ilustrasi sistem Android sebelum penanganan"
+                          fill
+                          sizes="64px"
+                          className="object-contain"
+                        />
                       </div>
                       <span className="font-bold text-lg text-foreground">{current.leftLabel}</span>
                     </div>
@@ -69,7 +75,13 @@ export function ComparisonSection() {
                     <div className="flex flex-col items-center text-center gap-3">
                       {/* Optional Mockup Placeholder for right column */}
                       <div className="relative w-16 h-16 opacity-80 mix-blend-multiply dark:mix-blend-screen hidden sm:block">
-                        <Image src="/mockup1.webp" alt="Mockup" fill className="object-contain" />
+                        <Image
+                          src="/mockup1.webp"
+                          alt="Ilustrasi sistem Android setelah perbaikan TechFix Software"
+                          fill
+                          sizes="64px"
+                          className="object-contain"
+                        />
                       </div>
                       <span className="font-bold text-lg text-foreground">{current.rightLabel}</span>
                     </div>

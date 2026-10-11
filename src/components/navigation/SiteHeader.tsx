@@ -90,7 +90,14 @@ export function SiteHeader() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group cursor-pointer" aria-label="Beranda" onClick={closeMenu}>
             <div className="relative w-8 h-8 sm:w-10 sm:h-10 overflow-hidden">
-              <Image src="/techfix-software-logo.png" alt="Logo" fill className="object-contain" priority />
+              <Image
+                src="/techfix-software-logo.png"
+                alt="Logo TechFix Software"
+                fill
+                sizes="(max-width: 640px) 32px, 40px"
+                className="object-contain"
+                priority
+              />
             </div>
             <span className="font-bold tracking-tight text-foreground sm:text-lg group-hover:text-accent transition-colors">
               TechFix Software

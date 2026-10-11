@@ -55,7 +55,7 @@ const ROM_CHIPS: readonly RomChipItem[] = [
     logoSrc: "/evolutionx.svg",
     logoAlt: "Evolution X",
     width: 24,
-    height: 32,
+    height: 24,
     className: "-right-2 top-[40%] sm:-right-6 sm:top-[38%] lg:-right-8",
     drift: "animate-float-slow",
   },
