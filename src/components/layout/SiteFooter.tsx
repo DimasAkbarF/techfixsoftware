@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ShieldAlert, MapPin } from "lucide-react";
-import { author } from "@/data/author";
 
 const serviceLinks = [
   { label: "Fix Bootloop & Soft Brick", href: "/services/fix-bootloop" },
@@ -101,12 +100,20 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-muted-foreground text-center md:text-left">
+        <div className="pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
+          <p className="text-center sm:text-left">
             &copy; {currentYear} TechFix Software. All rights reserved.
           </p>
-          <div className="flex items-center gap-4 text-xs font-medium text-muted-foreground">
-            Dikembangkan oleh {author.name}
+          <div className="flex items-center gap-5">
+            <Link href="/privacy" className="hover:text-accent transition-colors">
+              Kebijakan Privasi
+            </Link>
+            <Link href="/terms" className="hover:text-accent transition-colors">
+              Syarat &amp; Ketentuan
+            </Link>
+            <Link href="/disclaimer" className="hover:text-accent transition-colors">
+              Disclaimer
+            </Link>
           </div>
         </div>
       </div>
