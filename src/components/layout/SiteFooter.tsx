@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ShieldAlert, MapPin, Clock } from "lucide-react";
+import { ShieldAlert, MapPin } from "lucide-react";
 import { author } from "@/data/author";
 
 const serviceLinks = [
@@ -43,13 +43,9 @@ export function SiteFooter() {
             <p className="text-sm text-muted-foreground leading-relaxed mb-6">
               Layanan perbaikan software Android spesialis bootloop, root, custom ROM, dan pemulihan sistem. Profesional, transparan, dan aman.
             </p>
-            <div className="flex flex-col gap-2 text-sm text-muted-foreground">
-              <span className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 shrink-0" /> Jawa Timur, Indonesia
-              </span>
-              <span className="flex items-center gap-2">
-                <Clock className="w-4 h-4 shrink-0" /> Senin - Sabtu (09:00 - 20:00)
-              </span>
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <MapPin className="w-4 h-4 shrink-0 text-accent" />
+              <span>Rangkasbitung, Lebak, Banten, Indonesia</span>
             </div>
           </div>
 
